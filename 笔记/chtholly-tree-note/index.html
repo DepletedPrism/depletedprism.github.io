@@ -21,7 +21,7 @@
 <meta property="og:description" content="I initially named it as “Old Driver Tree” ( Which is my codeforces ID ).(But now I call it Chtholly Tree~). —— ODT in Codeforces Round #449 Editorial  起源珂朵莉树（Chtholly Tree），老司机树又称（Old Driver Tree），因">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/06/01/5cf29141da43e41844.png">
-<meta property="og:updated_time" content="2019-06-01T15:19:46.000Z">
+<meta property="og:updated_time" content="2019-06-01T15:28:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="珂朵莉树学习笔记">
 <meta name="twitter:description" content="I initially named it as “Old Driver Tree” ( Which is my codeforces ID ).(But now I call it Chtholly Tree~). —— ODT in Codeforces Round #449 Editorial  起源珂朵莉树（Chtholly Tree），老司机树又称（Old Driver Tree），因">
@@ -238,7 +238,7 @@
 <li><p><a href="https://www.luogu.org/problemnew/show/P4979" target="_blank" rel="noopener">洛谷 P4979 矿洞：坍塌</a><br>单纯不优化的珂朵莉树只能拿到 70pts（<del>可能是我人傻常数大</del>，不过 O2 一发也是可以过的），但是加入快读和输入处理就能拿到 80pts，也就是多了一个点。</p>
 <ul>
 <li><p>输入处理</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">int</span> cnt = <span class="number">1</span>; <span class="keyword">char</span> last = str[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    <span class="keyword">if</span> (last == str[i]) cnt++;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        Chtholly::s.insert(Chtholly::Node(i-cnt, i<span class="number">-1</span>, last));</span><br><span class="line">        last = str[i];</span><br><span class="line">        cnt = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">Chtholly::s.insert(Chtholly::Node(n+<span class="number">1</span>-cnt, n, last));</span><br><span class="line">Chtholly::s.insert(Chtholly::Node(n+<span class="number">1</span>, n+<span class="number">1</span>, <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> cnt = <span class="number">1</span>; <span class="keyword">char</span> last = str[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    <span class="keyword">if</span> (last == str[i]) cnt++;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        Chtholly::s.insert(Chtholly::Node(i-cnt, i<span class="number">-1</span>, last));</span><br><span class="line">        last = str[i];</span><br><span class="line">        cnt = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">Chtholly::s.insert(Chtholly::Node(n+<span class="number">1</span>-cnt, n, last));</span><br><span class="line">Chtholly::s.insert(Chtholly::Node(n+<span class="number">1</span>, n+<span class="number">1</span>, <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
 <p>以达到在初始状态，值相同的区间已经被合并的目的。</p>
 </li>
 </ul>
@@ -279,7 +279,47 @@
 
     
 
+	
+<div id="gitment_title" class="gitment_title"></div>
+<div id="container" style="display:none"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "zh-CN";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: decodeURI(window.location.pathname),
+      theme: myTheme,
+      owner: 'DepletedPrism',
+      repo: 'depletedprism.github.io',
+      oauth: {
+        client_id: '00b7d951cbba0567e3b7',
+        client_secret: '3fbec031599fde5ee314c81869eae7fa55d88c86'
+      }
+    });
+    gitment.render('container');
+  }
+
+  showGitment();
+</script>
+
   </footer>
+  
 </article>
 
 
