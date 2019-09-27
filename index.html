@@ -80,21 +80,21 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/���/">���</a><span class="category-list-count">1</span></li></ul>
               </li>
             
           
             
               <li class="tag-list-container">
                 <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Others/">Others</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Others/">Others</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">5</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">7</span></li></ul>
               </li>
             
           
@@ -147,6 +147,122 @@
         <div style="max-width: 1000px">
       
           
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/题解/luogu-P2763/">
+  luogu-P2763
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/题解/luogu-P2763/"><span class="article-date">
+  2019-09-27
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/题解/">题解</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph/">Graph</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <hr>
+<ul>
+<li>题目链接：<a href="https://www.luogu.org/problem/P2763" target="_blank" rel="noopener">https://www.luogu.org/problem/P2763</a></li>
+</ul>
+<p>较为明显的二分图模型，依照题意对试题和类型匹配</p>
+<ul>
+<li>建图流程<ul>
+<li>设源点 $S$，汇点 $T$</li>
+<li>对于每个类型 $i$，连边 $(S, i)$，容量为 $V_i$</li>
+<li>对于每道试题 $j$，连边 $(j, T)$，容量为 $1$，表示每道试题仅能使用一次</li>
+<li>对于类型 $i$ 拥有的试题 $j$，连边 $(i,j)$，容量为 $1$</li>
+</ul>
+</li>
+</ul>
+<p>无解的情况就是无法选择足够的试题，体现在网络流中为最大流不足 $\sum_{i=1}^{k}V_i$</p>
+<p>输出方案时，遍历每个类型到试题的边，如果流量为 $1$ 就是该类型中挑选的试题</p>
+          <p>
+            <a href="/题解/luogu-P2763/">
+              阅读全文
+            </a>
+          </p>
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/���/luogu-P2756/">
+  luogu-P2756
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/���/luogu-P2756/"><span class="article-date">
+  2019-09-27
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/���/">���</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph/">Graph</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <hr>
+<ul>
+<li>��Ŀ���ӣ�<a href="https://www.luogu.org/problem/P2756" target="_blank" rel="noopener">https://www.luogu.org/problem/P2756</a></li>
+</ul>
+<p>��Ϊ���ԵĶ���ͼģ�ͣ���ѷ���Ա��Է���Ϊ����ͼ���ƥ�䣬��Ӣ������Ա��Ϊ�󲿵㣬�⼮����Ա��Ϊ�Ҳ��㣬����ƥ��ͺ���</p>
+<p>ʹ������������������һ��ɣ�����ÿ��ƥ��ߣ��� <code>matching[i]</code> ��¼����������� $-1$����ƥ���ϣ�ֱ������ͺ���</p>
+          <p>
+            <a href="/���/luogu-P2756/">
+              阅读全文
+            </a>
+          </p>
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
 
   
   
