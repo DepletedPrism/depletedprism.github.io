@@ -12,18 +12,18 @@
   
 </title>
 
-<meta name="description" content="题目链接：https://www.luogu.org/problem/P2774  满足没有公共边的网格图可以看作二分图，也就是”黑白相间“">
+<meta name="description" content="题目链接：https://www.luogu.org/problem/P2774  满足没有公共边的网格图可以看作二分图，也就是“黑白相间”">
 <meta name="keywords" content="Graph">
 <meta property="og:type" content="article">
 <meta property="og:title" content="方格取数问题 题解">
 <meta property="og:url" content="https://depletedprism.github.io/题解/luogu-P2774/index.html">
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
-<meta property="og:description" content="题目链接：https://www.luogu.org/problem/P2774  满足没有公共边的网格图可以看作二分图，也就是”黑白相间“">
+<meta property="og:description" content="题目链接：https://www.luogu.org/problem/P2774  满足没有公共边的网格图可以看作二分图，也就是“黑白相间”">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-28T11:03:13.383Z">
+<meta property="og:updated_time" content="2019-09-28T11:18:10.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="方格取数问题 题解">
-<meta name="twitter:description" content="题目链接：https://www.luogu.org/problem/P2774  满足没有公共边的网格图可以看作二分图，也就是”黑白相间“">
+<meta name="twitter:description" content="题目链接：https://www.luogu.org/problem/P2774  满足没有公共边的网格图可以看作二分图，也就是“黑白相间”">
 
 
   <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
@@ -188,7 +188,7 @@
 <ul>
 <li>题目链接：<a href="https://www.luogu.org/problem/P2774" target="_blank" rel="noopener">https://www.luogu.org/problem/P2774</a></li>
 </ul>
-<p>满足没有公共边的网格图可以看作二分图，也就是”黑白相间“</p>
+<p>满足没有公共边的网格图可以看作二分图，也就是“黑白相间”</p>
 <a id="more"></a>
 <p>如果正向考虑，每个方格要向非四联通的方格连边，边数较多。不如反向考虑，假设选择所有的方格，减去为满足条件剔除的方格。如果让这个答案最大，就需要让挑出的方格权值和最小。</p>
 <p>又由最小联想到最小割，可以通过最大流求出，于是</p>
