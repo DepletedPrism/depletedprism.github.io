@@ -8,17 +8,22 @@
 
 <title>
   
-    归档
+    网络流 24 题解题报告
   
 </title>
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="DepletedPrism&#39;s Blog">
-<meta property="og:url" content="https://depletedprism.github.io/archives/page/2/index.html">
+<meta name="description" content="网络流 24 道大水题！— abmis  个人认为网络流 24 题并不是一份相当完备的题单，有些题存在比网络流优秀很多的算法，而另有些题建模方法重复，甚至某题是仍未解决的难题…. 不过很多题都是值得一写的，网络流 24 题只是开始，同志仍需努力啊">
+<meta name="keywords" content="Graph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络流 24 题解题报告">
+<meta property="og:url" content="https://depletedprism.github.io/笔记/flow-24-problems/index.html">
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
+<meta property="og:description" content="网络流 24 道大水题！— abmis  个人认为网络流 24 题并不是一份相当完备的题单，有些题存在比网络流优秀很多的算法，而另有些题建模方法重复，甚至某题是仍未解决的难题…. 不过很多题都是值得一写的，网络流 24 题只是开始，同志仍需努力啊">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-02T15:14:25.365Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DepletedPrism&#39;s Blog">
+<meta name="twitter:title" content="网络流 24 题解题报告">
+<meta name="twitter:description" content="网络流 24 道大水题！— abmis  个人认为网络流 24 题并不是一份相当完备的题单，有些题存在比网络流优秀很多的算法，而另有些题建模方法重复，甚至某题是仍未解决的难题…. 不过很多题都是值得一写的，网络流 24 题只是开始，同志仍需努力啊">
 
 
   <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
@@ -146,271 +151,300 @@
       
         <div style="max-width: 1000px">
       
-          
-
+          <article id="post-flow-24-problems" class="article article-type-post">
+  
+    <h1 class="article-header">
+      网络流 24 题解题报告
+    </h1>
   
   
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2019" class="archive-year">2019</a></h1>
-        </div>
-        <div class="post-list">
-    
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/笔记/euler-sieve/">
-  线性筛求积性函数
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/笔记/euler-sieve/"><span class="article-date">
-  2019-08-17
+  <div class="article-info">
+    <span class="article-date">
+  2019-09-27
 </span>
-</a>
-        
+
+    
 	<span class="article-category tagcloud">
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/笔记/">笔记</a></li></ul>
 	</span>
 
 
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Number-Theory/">Number Theory</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <hr>
-<blockquote>
-<p>又名： $\LaTeX$ 初学者练习计划。</p>
-</blockquote>
-<h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>通过欧拉筛计算得到每个数的最小质因子的特性，并在线性时间里计算积性函数。</p>
-          <p>
-            <a href="/笔记/euler-sieve/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
-
-  
-  
     
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/笔记/number-block-note/">
-  数论分块学习笔记
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/笔记/number-block-note/"><span class="article-date">
-  2019-07-30
-</span>
-</a>
-        
-	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/笔记/">笔记</a></li></ul>
-	</span>
-
-
-        
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Number-Theory/">Number Theory</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph/">Graph</a></li></ul>
 	</span>
 
 
-      </div>
-      <div class="article-entry">
-        
-          <hr>
+	
+	<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<span id="busuanzi_container_page_pv">
+		- Total <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Views
+	</span>
+
+  </div>
+  <div class="article-entry">
+    <hr>
 <blockquote>
-<p>学了半天的莫比乌斯反演，结果只听懂了数论分块 = =</p>
+<p>网络流 24 道大水题！<br>— abmis</p>
 </blockquote>
-<h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>对于含有 $\lfloor\frac{n}{i}\rfloor$ 的求和式子，可以通过合并一些相等的 $\lfloor\frac{n}{i}\rfloor$，从而在 $O(\sqrt{n})$ 的时间里算出式子的值</p>
-          <p>
-            <a href="/笔记/number-block-note/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
+<p>个人认为网络流 24 题并不是一份相当完备的题单，有些题存在比网络流优秀很多的算法，而另有些题建模方法重复，甚至某题是仍未解决的难题….</p>
+<p>不过很多题都是值得一写的，网络流 24 题只是开始，同志仍需努力啊</p>
+<a id="more"></a>
+<p>以下是来自 <a href="https://www.byvoid.com/zhs/blog/lpf24-solution" target="_blank" rel="noopener">@BYVoid</a> 的表格，不过魔改了一番，加入了我的个人做法</p>
+<table>
+<thead>
+<tr>
+<th>问题编号</th>
+<th>问题名称</th>
+<th>问题模型</th>
+<th>转化模型</th>
+<th>我的做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>飞行员配对方案问题</td>
+<td>二分图最大匹配</td>
+<td>网络最大流</td>
+<td><a href="/题解/luogu-P2756/">匈牙利算法</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>太空飞行计划问题</td>
+<td>最大权闭合图</td>
+<td>网络最小割</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>最小路径覆盖问题</td>
+<td>有向无环图最小路径覆盖</td>
+<td>网络最大流</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>魔术球问题</td>
+<td>有向无环图最小路径覆盖</td>
+<td>网络最大流</td>
+<td><a href="/题解/luogu-P2765/">网络最大流</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>圆桌问题</td>
+<td>二分图多重匹配</td>
+<td>网络最大流</td>
+<td><a href="/题解/luogu-P3254/">网络最大流</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>最长不下降子序列问题</td>
+<td>最多不相交路径</td>
+<td>网络最大流</td>
+<td><a href="/题解/luogu-P2766/">网络最大流</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>试题库问题</td>
+<td>二分图多重匹配</td>
+<td>网络最大流</td>
+<td><a href="/题解/luogu-P2763/">网络最大流</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>机器人路径规划问题</td>
+<td>(未解决)</td>
+<td>最小费用最大流</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>9</td>
+<td>方格取数问题</td>
+<td>二分图点权最大独立集</td>
+<td>网络最小割</td>
+<td><a href="/题解/luogu-P2774/">二分图 &amp; 最小割</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>餐巾计划问题</td>
+<td>线性规划网络优化</td>
+<td>最小费用最大流</td>
+<td><a href="/题解/luogu-P1251/">上下界最小费用流</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>航空路线问题</td>
+<td>最长不相交路径</td>
+<td>最小费用最大流</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>软件补丁问题</td>
+<td>最小转移代价</td>
+<td>最短路径</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>星际转移问题</td>
+<td>网络判定</td>
+<td>网络最大流</td>
+<td><a href="/题解/luogu-P2754/">网络最大流</a></td>
+</tr>
+<tr>
+<td>14</td>
+<td>孤岛营救问题</td>
+<td>分层图最短路径</td>
+<td>最短路径</td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>汽车加油行驶问题</td>
+<td>分层图最短路径</td>
+<td>最短路径</td>
+<td><a href="/题解/luogu-P4009/">分层图最短路</a></td>
+</tr>
+<tr>
+<td>16</td>
+<td>数字梯形问题</td>
+<td>最大权不相交路径</td>
+<td>最小费用最大流</td>
+<td></td>
+</tr>
+<tr>
+<td>17</td>
+<td>运输问题</td>
+<td>网络费用流量</td>
+<td>最小费用最大流</td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>分配问题</td>
+<td>二分图最佳匹配</td>
+<td>最小费用最大流</td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>负载平衡问题</td>
+<td>最小代价供求</td>
+<td>最小费用最大流</td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>深海机器人问题</td>
+<td>线性规划网络优化</td>
+<td>最小费用最大流</td>
+<td></td>
+</tr>
+<tr>
+<td>21</td>
+<td>最长 k 可重区间集问题</td>
+<td>最大权不相交路径</td>
+<td>最小费用最大流</td>
+<td></td>
+</tr>
+<tr>
+<td>22</td>
+<td>最长 k 可重线段集问题</td>
+<td>最大权不相交路径</td>
+<td>最小费用最大流</td>
+<td></td>
+</tr>
+<tr>
+<td>23</td>
+<td>火星探险问题</td>
+<td>线性规划网络优化</td>
+<td>最小费用最大流</td>
+<td></td>
+</tr>
+<tr>
+<td>24</td>
+<td>骑士共存问题</td>
+<td>二分图最大独立集</td>
+<td>网络最小割</td>
+</tr>
+</tbody>
+</table>
 
-  
-
-  
-  
+  </div>
+  <footer class="article-footer">
     
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/笔记/vim-vimrc-solution/">
-  Vim .vimrc 配置方案
-</a>
-
-      </h3>
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.z" target="_blank" title="署名-非商业性使用-相同方式共享">
+      <img src="/images/cc/cc.png">
       
-
-      <div class="article-info">
-        <a href="/笔记/vim-vimrc-solution/"><span class="article-date">
-  2019-07-13
-</span>
-</a>
+          <img src="/images/cc/by.png">
         
-	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/笔记/">笔记</a></li></ul>
-	</span>
-
-
+          <img src="/images/cc/nc.png">
         
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <hr>
-<blockquote>
-<p>Vim 或 Emacs，总是其他人带入坑的。</p>
-</blockquote>
-<p>为了配置文件的可移植性，只选取了同时使用于 Windows 及 Linux 的特性。</p>
-          <p>
-            <a href="/笔记/vim-vimrc-solution/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
-
-  
-  
-    
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/笔记/chtholly-tree-note/">
-  珂朵莉树学习笔记
-</a>
-
-      </h3>
+          <img src="/images/cc/sa.png">
       
-
-      <div class="article-info">
-        <a href="/笔记/chtholly-tree-note/"><span class="article-date">
-  2019-06-01
-</span>
-</a>
-        
-	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/笔记/">笔记</a></li></ul>
-	</span>
-
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/">Data Structure</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <hr>
-<blockquote>
-<p>I initially named it as “Old Driver Tree” ( Which is my codeforces ID ).<br>(But now I call it Chtholly Tree~).</p>
-<p>—— <a href="http://codeforces.com/profile/ODT" target="_blank" rel="noopener">ODT</a> in <a href="http://codeforces.com/blog/entry/56135" target="_blank" rel="noopener">Codeforces Round #449 Editorial</a></p>
-</blockquote>
-<h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><p>珂朵莉树（Chtholly Tree），老司机树又称（Old Driver Tree），<del>因此我选择叫它珂朵莉树</del>。起源于 <a href="http://codeforces.com/problemset/problem/896/C" target="_blank" rel="noopener">CF896C Willem, Chtholly and Seniorious</a>。</p>
-          <p>
-            <a href="/笔记/chtholly-tree-note/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
-
-  
-  
-    
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/随笔/HAOI-2019/">
-  HAOI 2019 游记
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/随笔/HAOI-2019/"><span class="article-date">
-  2019-04-13
-</span>
-</a>
-        
-	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/随笔/">随笔</a></li></ul>
-	</span>
-
-
-        
-
-      </div>
-      <div class="article-entry">
-        
-          <hr>
-<blockquote>
-<p>阽余身而危死兮，览余初其犹未悔。</p>
-</blockquote>
-<p>概况：某高一入坑的 OIer，<del>划水参加十二省联考的咸鱼</del></p>
-          <p>
-            <a href="/随笔/HAOI-2019/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
-
-
-
-  <div class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/">上一页</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+      <span>
+        本作品采用知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
   </div>
 
 
-</div></section>
+    
+
+	
+<div id="gitment_title" class="gitment_title"></div>
+<div id="container" style="display:none"></div>
+<link rel="stylesheet" href="https://depletedprism.github.io/css/gitment.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script src="https://depletedprism.github.io/scripts/gitment.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "zh-CN";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: decodeURI(window.location.pathname),
+      theme: myTheme,
+      owner: 'DepletedPrism',
+      repo: 'depletedprism.github.io',
+      oauth: {
+        client_id: '00b7d951cbba0567e3b7',
+        client_encoded_secret: 'c10bf5d0540677ab866d50d65fdabbb9b04a726f3417e8b2c4ff8d0fabc8e454fe7b77f7221049bc168919cd525425fefc2513a85ac9468e538860d0a85647fa9a1f0cea'
+      }
+    });
+    gitment.render('container');
+  }
+
+  showGitment();
+</script>
+
+
+  </footer>
+  
+</article>
+
+
+
+
+
+
 
           <div class="main-footer">
   
