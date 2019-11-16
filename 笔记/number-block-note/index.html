@@ -85,7 +85,7 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">10</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">10</span></li></ul>
               </li>
             
           
@@ -99,7 +99,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">15</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -202,16 +202,17 @@
 <p>接下来要确定这段取值相同区间的左右端点，也就是说，<br>对于任意一个 $L$，求最大的 $R$，满足 $\lfloor\frac{n}{L}\rfloor = \lfloor\frac{n}{R}\rfloor$，其中 $R = \lfloor\frac{n}{\lfloor\frac{n}{L}\rfloor}\rfloor$，证明如下</p>
 <blockquote>
 <p>由 $\lfloor\frac{n}{L}\rfloor \leq \frac{n}{L}$，可得 </p>
-<script type="math/tex; mode=display">\lfloor\frac{n}{\lfloor\frac{n}{L}\rfloor}\rfloor \geq \lfloor\frac{n}{\frac{n}{L}}\rfloor = \lfloor L\rfloor = L</script><p>故 $R = \lfloor\frac{n}{\lfloor\frac{n}{L}\rfloor}\rfloor$，此时 $R$ 为最大值</p>
+<p>$$\lfloor\frac{n}{\lfloor\frac{n}{L}\rfloor}\rfloor \geq \lfloor\frac{n}{\frac{n}{L}}\rfloor = \lfloor L\rfloor = L$$</p>
+<p>故 $R = \lfloor\frac{n}{\lfloor\frac{n}{L}\rfloor}\rfloor$，此时 $R$ 为最大值</p>
 </blockquote>
 <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><ul>
 <li><p><a href="https://www.luogu.org/problem/P2261" target="_blank" rel="noopener">洛谷 P2261 [CQOI2007]余数求和</a></p>
 <blockquote>
-<p>求</p>
-<script type="math/tex; mode=display">\sum_{i = 1}^{n}k \bmod i</script><p>其中 $n,\;k\leq10^9$ 且为正整数</p>
+<p>求<br>$$\sum_{i = 1}^{n}k \bmod i$$ </p>
+<p>其中 $n,\;k\leq10^9$ 且为正整数</p>
 </blockquote>
 <ul>
-<li><p>由 $O(1)$ 快速乘的经验，<del>实际上是模运算的定义</del>，原式可化为<br><script type="math/tex">\sum_{i = 1}^{n}(k - \lfloor\frac{k}{i}\rfloor \cdot i)</script> 即<br><script type="math/tex">n\cdot k - \sum_{i=1}^{n}\lfloor\frac{k}{i}\rfloor \cdot i</script>  $\lfloor\frac{k}{i}\rfloor$ 就数论分块了，$\sum_{i=1}^{n}i$ 可以等差数列求和</p>
+<li><p>由 $O(1)$ 快速乘的经验，<del>实际上是模运算的定义</del>，原式可化为<br>$$\sum_{i = 1}^{n}(k - \lfloor\frac{k}{i}\rfloor \cdot i)$$ 即<br>$$n\cdot k - \sum_{i=1}^{n}\lfloor\frac{k}{i}\rfloor \cdot i$$  $\lfloor\frac{k}{i}\rfloor$ 就数论分块了，$\sum_{i=1}^{n}i$ 可以等差数列求和</p>
 <p>不过这道题有一处坑点 = =</p>
 <p>考虑到 C++ 中，除以或模 <code>0</code> 就会 RE，因此需要特判 <code>k/L == 0</code> 的情况。那么，什么时候 $\lfloor\frac{k}{L}\rfloor = 0$ 呢，那肯定是 $\lfloor\frac{k}{L}\rfloor$ 的最后取值了，故 $R$ 取 $n$</p>
 </li>
@@ -222,16 +223,14 @@
 <ul>
 <li><p><a href="https://www.luogu.org/problem/P2260" target="_blank" rel="noopener">洛谷 P2260 [清华集训2012]模积和</a></p>
 <blockquote>
-<p>求<br><script type="math/tex">\sum_{i=1}^{n}\sum_{j=1}^{m}(n \bmod i)\cdot(m\bmod j),\;i \neq j</script> 结果 $\bmod\; 19940417$ 的值。其中 $n,\;m\leq10^9$ 且为正整数</p>
+<p>求<br>$$\sum_{i=1}^{n}\sum_{j=1}^{m}(n \bmod i)\cdot(m\bmod j),\;i \neq j$$ 结果 $\bmod\; 19940417$ 的值。其中 $n,\;m\leq10^9$ 且为正整数</p>
 </blockquote>
 <ul>
 <li>和上一题相似的思路，考虑将模运算置换为取整。不过在这一步前，要先把 $i\neq j$ 的条件干掉</li>
 </ul>
 </li>
 </ul>
-<p><script type="math/tex">\sum_{i=1}^n(n\bmod i) \cdot \sum_{i=1}^m(m\bmod i) - \sum_{i=1}^{\min(n, m)}(n \bmod i)\cdot(m\bmod j)</script> 不妨设 $n\leq m$，这样写起来更简单一点</p>
-<p><script type="math/tex">(n^2 - \sum_{i=1}^{n}\lfloor\frac{n}{i}\rfloor \cdot i)\cdot(m^2 - \sum_{i=1}^{m}\lfloor\frac{m}{i}\rfloor\cdot i) - \sum_{i=1}^n(n \bmod i)\cdot(m\bmod j)</script> 关键是后一个式子，所以拎出来单独看看</p>
-<p><script type="math/tex">\sum_{i=1}^n(n - \lfloor\frac{n}{i}\rfloor \cdot i)\cdot(m - \lfloor\frac{m}{i}\rfloor \cdot i)</script> <script type="math/tex">\sum_{i=1}^n(nm - \lfloor\frac{n}{i}\rfloor \cdot im - \lfloor\frac{m}{i}\rfloor \cdot in + \lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor \cdot i^2)</script> <script type="math/tex">n^{2}m - \sum_{i=1}^{n}i\cdot(\lfloor\frac{n}{i}\rfloor \cdot m + \lfloor\frac{m}{i}\rfloor \cdot n) + \sum_{i=1}^{n}\lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor \cdot i^2</script>     其中 $\sum_{i=1}^{n}i^2 = \frac{n(n+1)(2n+1)}{6}$，为什么呢？参阅：<a href="https://en.wikipedia.org/wiki/Summation" target="_blank" rel="noopener">Summation - Wikipedia</a><br>    不过很奇怪的，上一题 RE 的情况在本题没有出现 = =</p>
+<p>$$\sum_{i=1}^n(n\bmod i) \cdot \sum_{i=1}^m(m\bmod i) - \sum_{i=1}^{\min(n, m)}(n \bmod i)\cdot(m\bmod j)$$ 不妨设 $n\leq m$，这样写起来更简单一点<br>$$(n^2 - \sum_{i=1}^{n}\lfloor\frac{n}{i}\rfloor \cdot i)\cdot(m^2 - \sum_{i=1}^{m}\lfloor\frac{m}{i}\rfloor\cdot i) - \sum_{i=1}^n(n \bmod i)\cdot(m\bmod j)$$ 关键是后一个式子，所以拎出来单独看看<br>$$\sum_{i=1}^n(n - \lfloor\frac{n}{i}\rfloor \cdot i)\cdot(m - \lfloor\frac{m}{i}\rfloor \cdot i)$$ $$\sum_{i=1}^n(nm - \lfloor\frac{n}{i}\rfloor \cdot im - \lfloor\frac{m}{i}\rfloor \cdot in + \lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor \cdot i^2)$$ $$n^{2}m - \sum_{i=1}^{n}i\cdot(\lfloor\frac{n}{i}\rfloor \cdot m + \lfloor\frac{m}{i}\rfloor \cdot n) + \sum_{i=1}^{n}\lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor \cdot i^2$$     其中 $\sum_{i=1}^{n}i^2 = \frac{n(n+1)(2n+1)}{6}$，为什么呢？参阅：<a href="https://en.wikipedia.org/wiki/Summation" target="_blank" rel="noopener">Summation - Wikipedia</a><br>    不过很奇怪的，上一题 RE 的情况在本题没有出现 = =</p>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>感觉这个内容偏向容易一些，<del>毕竟只是其他知识的前置内容</del>，不过到处翻查证明也花了不少时间。<del>因为我证不出来啊</del> = =</p>
 <hr>
 <ul>
