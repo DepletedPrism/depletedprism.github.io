@@ -80,7 +80,7 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">10</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">10</span></li></ul>
               </li>
             
           
@@ -94,7 +94,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -147,6 +147,70 @@
         <div style="max-width: 1000px">
       
           
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/题解/luogu-P2763/">
+  试题库问题 题解
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/题解/luogu-P2763/"><span class="article-date">
+  2019-09-27
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/题解/">题解</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph/">Graph</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <hr>
+<ul>
+<li>题目链接：<a href="https://www.luogu.org/problem/P2763" target="_blank" rel="noopener">https://www.luogu.org/problem/P2763</a></li>
+</ul>
+<p>较为明显的二分图模型，依照题意对试题和类型匹配</p>
+<ul>
+<li>建图流程<ul>
+<li>设源点 $S$，汇点 $T$</li>
+<li>对于每个类型 $i$，连边 $(S, i)$，容量为 $V_i$</li>
+<li>对于每道试题 $j$，连边 $(j, T)$，容量为 $1$，表示每道试题仅能使用一次</li>
+<li>对于类型 $i$ 拥有的试题 $j$，连边 $(i,j)$，容量为 $1$</li>
+</ul>
+</li>
+</ul>
+<p>无解的情况就是无法选择足够的试题，体现在网络流中为最大流不足 $\sum_{i=1}^{k}V_i$</p>
+<p>输出方案时，遍历每个类型到试题的边，如果流量为 $1$ 就是该类型中挑选的试题</p>
+<p>坑点有给定类型需要题目数量为 $0$，把我第一次写的输出方案的方法 Hack 了…</p>
+          <p>
+            <a href="/题解/luogu-P2763/">
+              阅读全文
+            </a>
+          </p>
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
 
   
   

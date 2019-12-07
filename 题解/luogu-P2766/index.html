@@ -85,7 +85,7 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">10</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">10</span></li></ul>
               </li>
             
           
@@ -99,7 +99,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -192,7 +192,8 @@
 <a id="more"></a>
 <p>对于第一问，考虑 DP 求解，不过不同于 $O(n \log n)$  的做法，我们使用 $O(n^2)$ 的做法，以方便维护更多的信息。</p>
 <p>设 $dp[i]$ 为序列 $\text{1~i}$ 的最长不下降子序列长度，显然有转移</p>
-<script type="math/tex; mode=display">dp[i] = \max \\{ \ dp[j] + 1 \\}</script><p>其中 $A_j \leq A_i, j &lt; i$，初始状态有 $dp[i] = 1$，最长长度 $\text{MaxL}$ 为 $\max_{i=1}^{n} dp[i]$</p>
+<p>$$dp[i] = \max \{ \ dp[j] + 1 \}$$ </p>
+<p>其中 $A_j \leq A_i,\ j &lt; i$，初始状态有 $dp[i] = 1$，最长长度 $\text{MaxL}$ 为 $\max_{i=1}^{n} dp[i]$</p>
 <p>对于第二三问，考虑网络流求解。</p>
 <p>怎么把序列个数同网络流联系起来呢？我们可以考虑一种方法，使得到汇点的每一份流量，对应一种序列的构造方案。这样询问个数就可以转化为最大流问题了。</p>
 <ul>
@@ -204,7 +205,7 @@
 <li>$dp[i] = \text{MaxL}$，连边 $(i’,T)$，容量为 $1$</li>
 </ul>
 </li>
-<li>类似 DP 的过程，对于位置 $i$，若有 $j &lt; i, A_i \geq A_j$ 且 $dp[i] = dp[j] + 1$，连边 $(j’,i)$，容量为 $1$</li>
+<li>类似 DP 的过程，对于位置 $i$，若有 $j &lt; i,\ A_i \geq A_j$ 且 $dp[i] = dp[j] + 1$，连边 $(j’,i)$，容量为 $1$</li>
 </ul>
 </li>
 </ul>
