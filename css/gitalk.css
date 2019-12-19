@@ -904,7 +904,7 @@
   text-align: center;
 }
 .gt-container .gt-link {
-  border-bottom: 1px dotted #6190e8;
+  /* border-bottom: 1px dotted #6190e8; */
 }
 .gt-container .gt-link-counts,
 .gt-container .gt-link-project {
