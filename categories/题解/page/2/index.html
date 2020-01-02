@@ -8,13 +8,13 @@
 
 <title>
   
-    标签: Data Structure
+    分类: 题解
   
 </title>
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="DepletedPrism&#39;s Blog">
-<meta property="og:url" content="https://depletedprism.github.io/tags/Data-Structure/index.html">
+<meta property="og:url" content="https://depletedprism.github.io/categories/题解/page/2/index.html">
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
@@ -146,7 +146,7 @@
       
         <div style="max-width: 1000px">
       
-          <h1>Data Structure</h1>
+          <h1>题解</h1>
 
 
   
@@ -156,27 +156,27 @@
 
     <div class="post-list-item article">
       <h3 class="article-header">
-        <a href="/笔记/chtholly-tree-note/">
-  珂朵莉树学习笔记
+        <a href="/题解/luogu-P2754/">
+  「CTSC1999」家园 题解
 </a>
 
       </h3>
       
 
       <div class="article-info">
-        <a href="/笔记/chtholly-tree-note/"><span class="article-date">
-  2019-06-01
+        <a href="/题解/luogu-P2754/"><span class="article-date">
+  2019-09-27
 </span>
 </a>
         
 	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/笔记/">笔记</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/题解/">题解</a></li></ul>
 	</span>
 
 
         
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/">Data Structure</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph/">Graph</a></li></ul>
 	</span>
 
 
@@ -184,13 +184,14 @@
       <div class="article-entry">
         
           <hr>
-<blockquote>
-<p>I initially named it as “Old Driver Tree” ( Which is my codeforces ID ).<br>(But now I call it Chtholly Tree~).</p>
-<p>—— <a href="http://codeforces.com/profile/ODT" target="_blank" rel="noopener">ODT</a> in <a href="http://codeforces.com/blog/entry/56135" target="_blank" rel="noopener">Codeforces Round #449 Editorial</a></p>
-</blockquote>
-<h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><p>珂朵莉树（Chtholly Tree），老司机树又称（Old Driver Tree），<del>因此我选择叫它珂朵莉树</del>。起源于 <a href="http://codeforces.com/problemset/problem/896/C" target="_blank" rel="noopener">CF896C Willem, Chtholly and Seniorious</a>。</p>
+<ul>
+<li>题目链接：<a href="https://www.luogu.org/problem/P2754" target="_blank" rel="noopener">https://www.luogu.org/problem/P2754</a></li>
+</ul>
+<p><del>详见蓝书第五章之网络流例题部分</del></p>
+<p>先考虑无解的情况，即无论如何地球和月球的不连通的，而关于联通性可以用并查集维护，如果将所有路线分别用并查集合并后，地球和月球仍不联通，那么就无解了</p>
+<p>在有解的情况下，显然有运输时间越长，所有人就越可能转移到月球，因此可以二分。但每次二分都要重新建图，那我们可以随时间推进，将现有的图按时间分层，每次引入新的一层点，并在原有基础上求最大流，直到流量大于等于 $k$ 时退出。</p>
           <p>
-            <a href="/笔记/chtholly-tree-note/">
+            <a href="/题解/luogu-P2754/">
               阅读全文
             </a>
           </p>
@@ -203,6 +204,10 @@
   
 
 
+
+  <div class="pagination">
+    <a class="extend prev" rel="prev" href="/categories/题解/">上一页</a><a class="page-number" href="/categories/题解/">1</a><span class="page-number current">2</span>
+  </div>
 
 
 
