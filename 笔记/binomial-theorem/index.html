@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="数学就是用的时候不够用的东西. = =  综述牛顿二项式定理是对二项式定理的推广, 那直接叫广义二项式定理不好吗, 刚开始看 &amp;lt;组合数学&amp;gt; 的时候见到这个东西, 以为没什么用 = =, 后来… 当然本文作者没有仔细严谨地学习相关的数学知识, 内容充满谬误, 恳请指正.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-21T14:41:46.170Z">
+<meta property="og:updated_time" content="2020-01-21T15:57:21.859Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="牛顿二项式定理 学习笔记">
 <meta name="twitter:description" content="数学就是用的时候不够用的东西. = =  综述牛顿二项式定理是对二项式定理的推广, 那直接叫广义二项式定理不好吗, 刚开始看 &amp;lt;组合数学&amp;gt; 的时候见到这个东西, 以为没什么用 = =, 后来… 当然本文作者没有仔细严谨地学习相关的数学知识, 内容充满谬误, 恳请指正.">
@@ -85,7 +85,7 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">14</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">14</span></li></ul>
               </li>
             
           
@@ -99,7 +99,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -210,7 +210,11 @@
 <h3 id="一些例子"><a href="#一些例子" class="headerlink" title="一些例子"></a>一些例子</h3><p>可能在生成函数有关的题目会用到这些东西吧…</p>
 <p>$$1 + x + x^2 + \cdots = \frac{1}{1-x} \\<br>1 + x^2 + x^4 + \cdots = 1 + (x)^2 + (x^2)^2 + \cdots = \frac{1}{1 - x^2} \\<br>x + x^2 + x^3 + \cdots = x\; (1 + x + x^2 + \cdots) = \frac{x}{1 - x} \\<br>1 + x + x^2 + x^3 + x^4 = \frac{1 - x^5}{1-x}$$</p>
 <p>最后一个式子似乎是乱入的… 不过还好是显然的, 直接通分验证即可</p>
-<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><h4 id="BZOJ-3028-食物"><a href="#BZOJ-3028-食物" class="headerlink" title="BZOJ 3028 食物"></a>BZOJ 3028 食物</h4><p>首先您要学会生成函数, 然后这就是一道裸题.</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><h4 id="BZOJ-3028-食物"><a href="#BZOJ-3028-食物" class="headerlink" title="BZOJ 3028 食物"></a>BZOJ 3028 食物</h4><ul>
+<li>题目链接: <a href="https://lydsy.com/JudgeOnline/problem.php?id=3028" target="_blank" rel="noopener">https://lydsy.com/JudgeOnline/problem.php?id=3028</a></li>
+</ul>
+<p><del>乐色 OJ 什么都是权限题</del> = =</p>
+<p>首先您要学会生成函数, 然后这就是一道裸题.</p>
 <p>设生成函数为 $g(x)$, 化简后得<br>$$g(x) = \frac{x}{(1-x)^4} = x \sum_{k=0}^\infty\; \binom{k+3}{k} x^k = \sum_{k=0}^\infty\; \binom{k+2}{k-1} x^k$$</p>
 <p>所以第 $n$ 项系数, 即答案, 为 $\binom{n+2}{n-1} = \binom{n+2}{3} = \frac{1}{6} n(n+1)(n+2)$</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
