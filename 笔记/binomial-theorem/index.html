@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="数学就是用的时候不够用的东西. = =  综述牛顿二项式定理是对二项式定理的推广, 那直接叫广义二项式定理不好吗, 刚开始看 &amp;lt;组合数学&amp;gt; 的时候见到这个东西, 以为没什么用 = =, 后来… 当然本文作者没有仔细严谨地学习相关的数学知识, 内容充满谬误, 恳请指正.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-21T15:57:21.859Z">
+<meta property="og:updated_time" content="2020-01-26T12:05:06.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="牛顿二项式定理 学习笔记">
 <meta name="twitter:description" content="数学就是用的时候不够用的东西. = =  综述牛顿二项式定理是对二项式定理的推广, 那直接叫广义二项式定理不好吗, 刚开始看 &amp;lt;组合数学&amp;gt; 的时候见到这个东西, 以为没什么用 = =, 后来… 当然本文作者没有仔细严谨地学习相关的数学知识, 内容充满谬误, 恳请指正.">
@@ -85,21 +85,21 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">14</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">14</span></li></ul>
               </li>
             
           
             
               <li class="tag-list-container">
                 <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -201,7 +201,7 @@
 <p>对于所有满足 $|z| &lt; 1$ 的任意 $z$, 有<br>$$(1+z) ^ \alpha = \sum_{k=0}^\infty\; \binom{\alpha}{k} z^k$$</p>
 <p>设 $n$ 为正整数, 取 $\alpha$ 为负整数 $-n$, 则<br>$$\binom{\alpha}{k} = \binom{-n}{k} = \frac{-n (-n-1) \cdots (-n-k+1)}{k!} = (-1)^k \binom{n+k-1}{k}$$</p>
 <p>所以<br>$$(1+z)^{-n} = \frac{1}{(1+z)^n} = \sum_{k=0}^\infty\; (-1)^k \binom{n+k-1}{k} z^k$$</p>
-<p>为了干掉那个 $-1$, 令 $z$ 代替 $-z$, 得<br>$$(1-z)^{-n} = \frac{1}{(1-z)^n} = \sum_{k=0}^\infty\; \binom{n+k-1}{k} z^k$$</p>
+<p>为了干掉那个 $-1$, 令 $-z$ 代替 $z$, 得<br>$$(1-z)^{-n} = \frac{1}{(1-z)^n} = \sum_{k=0}^\infty\; \binom{n+k-1}{k} z^k$$</p>
 <p>取 $n=1$, 有 $\binom{n+k-1}{k} = \binom{k}{k} = 1$, 所以<br>$$\frac{1}{1-z} = \sum_{k=0}^\infty\; z^k = 1 + z + z^2 + z^3 + \cdots$$</p>
 <p>类似地, 有<br>$$\frac{1}{1+z} = \sum_{k=0}^\infty\; (-1)^k z^k = 1 - z + z^2 - z^3 \cdots$$</p>
 <p>稍微总结一下</p>
