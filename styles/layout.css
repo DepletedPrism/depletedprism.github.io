@@ -5,6 +5,8 @@ body {
   height: 100%;
   font-family: font-sans;
   color: #333;
+  background: transparent;
+  background: url("/images/background.png");
 }
 .main-container {
   position: absolute;

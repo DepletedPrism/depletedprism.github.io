@@ -195,6 +195,8 @@ body {
   height: 100%;
   font-family: "微软雅黑", "黑体", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
+  background: transparent;
+  background: url("/images/background.png");
 }
 .main-container {
   position: absolute;
