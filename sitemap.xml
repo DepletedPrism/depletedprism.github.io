@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/stirling-polynomial/</loc>
+    
+    <lastmod>2020-02-15T05:34:25.658Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/simple-partial-order/</loc>
+    
+    <lastmod>2020-02-15T05:27:54.160Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://depletedprism.github.io/about/index.html</loc>
     
     <lastmod>2020-02-08T11:29:12.357Z</lastmod>
@@ -26,13 +40,6 @@
     <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P5284/</loc>
     
     <lastmod>2020-02-05T16:19:50.686Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/stirling-polynomial/</loc>
-    
-    <lastmod>2020-01-29T07:02:32.444Z</lastmod>
     
   </url>
   

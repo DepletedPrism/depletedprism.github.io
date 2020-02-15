@@ -85,21 +85,21 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">15</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">15</span></li></ul>
               </li>
             
           
             
               <li class="tag-list-container">
                 <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -191,13 +191,13 @@
 <h4 id="运用到-SA-的性质"><a href="#运用到-SA-的性质" class="headerlink" title="运用到 SA 的性质"></a>运用到 SA 的性质</h4><ol>
 <li><p>SA 中前缀相同的串排在一起, 也就是说, SA 按照字典序对所有后缀排序</p>
 </li>
-<li><p>两子串最长公共前缀 $$\text{LCP}(sa[i], sa[j]) = \min_{k = i+1}^j { \text{height[k]} }$$</p>
+<li><p>两子串最长公共前缀 <script type="math/tex">\text{LCP}(sa[i], sa[j]) = \min_{k = i+1}^j \{ \text{height[k]} \}</script></p>
 </li>
 </ol>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>首先, 我们的任务是确定一个字符串是不是一个字符串的子串, 可以联想到的算法有 AC 自动机, 哈希之类的东西… 不过这道题的字符集大小达到了 $10^4$, 感觉 SA 似乎更可做一点.</p>
 <p>那么, 怎么用 SA 确定一个字符串是否是另一个字符串的子串呢? 可以通过 LCP 来做.</p>
 <p>现在有一个显然的事情, 如果一个字符串 $S$ 是 $T$ 的子串, 那么 $T$ 存在一个后缀 $T’$, 使得 $\text{LCP}(S, T’) = |S|$.</p>
-<p>对于一个 $S$ 和一个 $T$, 可以将 $S,\ T$ 拼接成一个新串, 中间用一个从未出现过的字符连接, 通过对新串求后缀数组, 然后再二分判定.</p>
+<p>对于一个 $S$ 和一个 $T$, 可以将 $S, T$ 拼接成一个新串, 中间用一个从未出现过的字符连接, 通过对新串求后缀数组, 然后再二分判定.</p>
 <p>回到这道题上来, 对于多个 $S$, $T$, 也可以用相同的方式. 对于一个 “点名串” $S$, 包含 $S$ 的字符串一定在 $sa$ 是一段连续的区间. 那么, 现在的问题就是序列上的问题了.</p>
 <ol>
 <li>区间 $[L, R]$ 中不同猫的个数;</li>
