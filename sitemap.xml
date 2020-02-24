@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/UVA-10572/</loc>
+    
+    <lastmod>2020-02-24T13:54:49.011Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/Vim-vimrc-Solution/</loc>
+    
+    <lastmod>2020-02-24T09:12:09.293Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P4762/</loc>
+    
+    <lastmod>2020-02-24T08:55:07.157Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P2336/</loc>
+    
+    <lastmod>2020-02-24T08:53:16.725Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/simple-partial-order/</loc>
+    
+    <lastmod>2020-02-21T16:47:08.721Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P5284/</loc>
     
     <lastmod>2020-02-20T06:00:29.853Z</lastmod>
@@ -12,13 +47,6 @@
     <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P4557/</loc>
     
     <lastmod>2020-02-20T06:00:09.784Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/simple-partial-order/</loc>
-    
-    <lastmod>2020-02-18T17:02:48.283Z</lastmod>
     
   </url>
   
@@ -82,27 +110,6 @@
     <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/euler-sieve/</loc>
     
     <lastmod>2020-01-08T07:53:12.669Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P4762/</loc>
-    
-    <lastmod>2020-01-07T12:05:19.051Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P2336/</loc>
-    
-    <lastmod>2020-01-07T11:11:38.568Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/Vim-vimrc-Solution/</loc>
-    
-    <lastmod>2019-12-31T16:15:45.569Z</lastmod>
     
   </url>
   
