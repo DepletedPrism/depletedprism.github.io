@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="HAOI 2017 的神秘弱省省选难度.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-02T10:20:36.648Z">
+<meta property="og:updated_time" content="2020-03-02T10:35:54.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HAOI 2017 大赏">
 <meta name="twitter:description" content="HAOI 2017 的神秘弱省省选难度.">
@@ -221,7 +221,7 @@
 <h3 id="「HAOI2017」新型城市化"><a href="#「HAOI2017」新型城市化" class="headerlink" title="「HAOI2017」新型城市化"></a>「HAOI2017」新型城市化</h3><h4 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h4><p>给定一张图, 点数为 $n$, 给定 $m$ 条边 <strong>不连</strong>, 满足图可被分成不超过两个完全图.</p>
 <p>现在要加入一条原先不存在的边, 使得加入这条边后, 图的最大团大小至少比原图最大团大小至少增加 $1$.</p>
 <p>求所有满足该性质的边.</p>
-<p>其中, $1 \le n \le 10^4,\ 0 \le m \le \min { 1.5 \times 10^5, \frac{1}{2} n (n+1) }$.</p>
+<p>其中, $1 \le n \le 10^4,\ 0 \le m \le \min \{ 1.5 \times 10^5, \frac{1}{2} n (n+1) \}$.</p>
 <h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>首先可以发现, 给定的图, 也就是给定的不连接的边, 构成一张二分图.</p>
 <p>考虑二分图的一些性质:</p>
 <ol>
@@ -431,5 +431,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>
