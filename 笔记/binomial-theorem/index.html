@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="数学就是用的时候不够用的东西. = =  综述牛顿二项式定理是对二项式定理的推广, 那直接叫广义二项式定理不好吗, 刚开始看 &amp;lt;组合数学&amp;gt; 的时候见到这个东西, 以为没什么用 = =, 后来… 当然本文作者没有仔细严谨地学习相关的数学知识, 内容充满谬误, 恳请指正.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-27T16:50:20.289Z">
+<meta property="og:updated_time" content="2020-03-05T12:33:35.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="牛顿二项式定理 学习笔记">
 <meta name="twitter:description" content="数学就是用的时候不够用的东西. = =  综述牛顿二项式定理是对二项式定理的推广, 那直接叫广义二项式定理不好吗, 刚开始看 &amp;lt;组合数学&amp;gt; 的时候见到这个东西, 以为没什么用 = =, 后来… 当然本文作者没有仔细严谨地学习相关的数学知识, 内容充满谬误, 恳请指正.">
@@ -98,7 +98,7 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">20</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">22</span></li></ul>
               </li>
             
           
@@ -112,7 +112,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -198,32 +198,35 @@
 <h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>牛顿二项式定理是对二项式定理的推广, <del>那直接叫广义二项式定理不好吗</del>, 刚开始看 &lt;组合数学&gt; 的时候见到这个东西, 以为没什么用 = =, 后来…</p>
 <p>当然本文作者没有仔细严谨地学习相关的数学知识, 内容充满谬误, 恳请指正.</p>
 <a id="more"></a>
-<h2 id="陈述"><a href="#陈述" class="headerlink" title="陈述"></a>陈述</h2><h3 id="二项式定理"><a href="#二项式定理" class="headerlink" title="二项式定理"></a>二项式定理</h3><p>对于正整数 $n$ 和任意 $x,\ y$, 有<br>$$(x + y) ^ n = \sum_{k=0}^n\; \binom{n}{k} x^k y ^{n-k}$$</p>
-<p>这就是最常见的二项式定理, 其中 $n$ 可以推广到任意实数, 即</p>
-<h3 id="牛顿二项式定理"><a href="#牛顿二项式定理" class="headerlink" title="牛顿二项式定理"></a>牛顿二项式定理</h3><p>设 $\alpha$ 是实数, 对于所有满足 $0 \leq |x| &lt; |y|$ 的 $x$,  $y$, 有<br>$$(x+y)^\alpha = \sum_{k=0}^\infty\; \binom{\alpha}{k} x^k y^{n-k}$$</p>
-<p>其中<br>$$\binom{\alpha}{k} = \frac{\alpha (\alpha - 1) \cdots (\alpha - k + 1)}{k!} $$</p>
-<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>在此不证.</p>
+<h2 id="陈述"><a href="#陈述" class="headerlink" title="陈述"></a>陈述</h2><h3 id="二项式定理"><a href="#二项式定理" class="headerlink" title="二项式定理"></a>二项式定理</h3><p>对于正整数 $n$ 和任意 $x, y$, 有</p>
+<script type="math/tex; mode=display">(x + y) ^ n = \sum_{k=0}^n\; \binom{n}{k} x^k y ^{n-k}</script><p>这就是最常见的二项式定理, 其中 $n$ 可以推广到任意实数, 即</p>
+<h3 id="牛顿二项式定理"><a href="#牛顿二项式定理" class="headerlink" title="牛顿二项式定理"></a>牛顿二项式定理</h3><p>设 $\alpha$ 是实数, 对于所有满足 $0 \leq |x| &lt; |y|$ 的 $x$,  $y$, 有</p>
+<script type="math/tex; mode=display">(x+y)^\alpha = \sum_{k=0}^\infty\; \binom{\alpha}{k} x^k y^{n-k}</script><p>其中</p>
+<script type="math/tex; mode=display">\binom{\alpha}{k} = \frac{\alpha (\alpha - 1) \cdots (\alpha - k + 1)}{k!}</script><h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>在此不证.</p>
 <h2 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a>简单应用</h2><p>看到这个和式上的无穷的时候, <del>顷刻留下了感动的泪水</del>…</p>
 <h3 id="一些拓展"><a href="#一些拓展" class="headerlink" title="一些拓展"></a>一些拓展</h3><p>设 $z = \frac{x}{y}$, 那么上述定理可以转述为</p>
-<p>对于所有满足 $|z| &lt; 1$ 的任意 $z$, 有<br>$$(1+z) ^ \alpha = \sum_{k=0}^\infty\; \binom{\alpha}{k} z^k$$</p>
-<p>设 $n$ 为正整数, 取 $\alpha$ 为负整数 $-n$, 则<br>$$\binom{\alpha}{k} = \binom{-n}{k} = \frac{-n (-n-1) \cdots (-n-k+1)}{k!} = (-1)^k \binom{n+k-1}{k}$$</p>
-<p>所以<br>$$(1+z)^{-n} = \frac{1}{(1+z)^n} = \sum_{k=0}^\infty\; (-1)^k \binom{n+k-1}{k} z^k$$</p>
-<p>为了干掉那个 $-1$, 令 $-z$ 代替 $z$, 得<br>$$(1-z)^{-n} = \frac{1}{(1-z)^n} = \sum_{k=0}^\infty\; \binom{n+k-1}{k} z^k$$</p>
-<p>取 $n=1$, 有 $\binom{n+k-1}{k} = \binom{k}{k} = 1$, 所以<br>$$\frac{1}{1-z} = \sum_{k=0}^\infty\; z^k = 1 + z + z^2 + z^3 + \cdots$$</p>
-<p>类似地, 有<br>$$\frac{1}{1+z} = \sum_{k=0}^\infty\; (-1)^k z^k = 1 - z + z^2 - z^3 \cdots$$</p>
-<p>稍微总结一下</p>
-<p>如果 $n$ 是正整数, $r$ 是非 $0$ 实数, 那么<br>$$(1-rx)^{-n} = \sum_{k=0}^\infty\; \binom{-n}{k} (-rx)^k$$</p>
-<p>或等价地, 有<br>$$\frac{1}{(1-rx)^n} = \sum_{k=0}^\infty\; \binom{n+k-1}{k} r^k x^k$$ 其中 $|x| &lt; \frac{1}{|r|}$.</p>
+<p>对于所有满足 $|z| &lt; 1$ 的任意 $z$, 有</p>
+<script type="math/tex; mode=display">(1+z) ^ \alpha = \sum_{k=0}^\infty\; \binom{\alpha}{k} z^k</script><p>设 $n$ 为正整数, 取 $\alpha$ 为负整数 $-n$, 则</p>
+<script type="math/tex; mode=display">\binom{\alpha}{k} = \binom{-n}{k} = \frac{-n (-n-1) \cdots (-n-k+1)}{k!} = (-1)^k \binom{n+k-1}{k}</script><p>所以</p>
+<script type="math/tex; mode=display">(1+z)^{-n} = \frac{1}{(1+z)^n} = \sum_{k=0}^\infty\; (-1)^k \binom{n+k-1}{k} z^k</script><p>为了干掉那个 $-1$, 令 $-z$ 代替 $z$, 得</p>
+<script type="math/tex; mode=display">(1-z)^{-n} = \frac{1}{(1-z)^n} = \sum_{k=0}^\infty\; \binom{n+k-1}{k} z^k</script><p>取 $n=1$, 有 $\binom{n+k-1}{k} = \binom{k}{k} = 1$, 所以</p>
+<script type="math/tex; mode=display">\frac{1}{1-z} = \sum_{k=0}^\infty\; z^k = 1 + z + z^2 + z^3 + \cdots</script><p>类似地, 有</p>
+<script type="math/tex; mode=display">\frac{1}{1+z} = \sum_{k=0}^\infty\; (-1)^k z^k = 1 - z + z^2 - z^3 \cdots</script><p>稍微总结一下</p>
+<p>如果 $n$ 是正整数, $r$ 是非 $0$ 实数, 那么</p>
+<script type="math/tex; mode=display">(1-rx)^{-n} = \sum_{k=0}^\infty\; \binom{-n}{k} (-rx)^k</script><p>或等价地, 有</p>
+<script type="math/tex; mode=display">\frac{1}{(1-rx)^n} = \sum_{k=0}^\infty\; \binom{n+k-1}{k} r^k x^k</script><p>其中 $|x| &lt; \frac{1}{|r|}$.</p>
 <h3 id="一些例子"><a href="#一些例子" class="headerlink" title="一些例子"></a>一些例子</h3><p>可能在生成函数有关的题目会用到这些东西吧…</p>
-<p>$$1 + x + x^2 + \cdots = \frac{1}{1-x} \\<br>1 + x^2 + x^4 + \cdots = 1 + (x)^2 + (x^2)^2 + \cdots = \frac{1}{1 - x^2} \\<br>x + x^2 + x^3 + \cdots = x\; (1 + x + x^2 + \cdots) = \frac{x}{1 - x} \\<br>1 + x + x^2 + x^3 + x^4 = \frac{1 - x^5}{1-x}$$</p>
-<p>最后一个式子似乎是乱入的… 不过还好是显然的, 直接通分验证即可</p>
+<script type="math/tex; mode=display">1 + x + x^2 + \cdots = \frac{1}{1-x} \\\ 
+1 + x^2 + x^4 + \cdots = 1 + (x)^2 + (x^2)^2 + \cdots = \frac{1}{1 - x^2} \\\
+x + x^2 + x^3 + \cdots = x\; (1 + x + x^2 + \cdots) = \frac{x}{1 - x} \\\
+1 + x + x^2 + x^3 + x^4 = \frac{1 - x^5}{1-x}</script><p>最后一个式子似乎是乱入的… 不过还好是显然的, 直接通分验证即可</p>
 <h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><h4 id="BZOJ-3028-食物"><a href="#BZOJ-3028-食物" class="headerlink" title="BZOJ 3028 食物"></a>BZOJ 3028 食物</h4><ul>
 <li>题目链接: <a href="https://lydsy.com/JudgeOnline/problem.php?id=3028" target="_blank" rel="noopener">https://lydsy.com/JudgeOnline/problem.php?id=3028</a></li>
 </ul>
 <p><del>乐色 OJ 什么都是权限题</del> = =</p>
 <p>首先您要学会生成函数, 然后这就是一道裸题.</p>
-<p>设生成函数为 $g(x)$, 化简后得<br>$$g(x) = \frac{x}{(1-x)^4} = x \sum_{k=0}^\infty\; \binom{k+3}{k} x^k = \sum_{k=0}^\infty\; \binom{k+2}{k-1} x^k$$</p>
-<p>所以第 $n$ 项系数, 即答案, 为 $\binom{n+2}{n-1} = \binom{n+2}{3} = \frac{1}{6} n(n+1)(n+2)$</p>
+<p>设生成函数为 $g(x)$, 化简后得</p>
+<script type="math/tex; mode=display">g(x) = \frac{x}{(1-x)^4} = x \sum_{k=0}^\infty\; \binom{k+3}{k} x^k = \sum_{k=0}^\infty\; \binom{k+2}{k-1} x^k</script><p>所以第 $n$ 项系数, 即答案, 为 $\binom{n+2}{n-1} = \binom{n+2}{3} = \frac{1}{6} n(n+1)(n+2)$</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li>Richard A. Brualdi. 组合数学. 机械工业出版社, 2012.4.</li>
 </ul>

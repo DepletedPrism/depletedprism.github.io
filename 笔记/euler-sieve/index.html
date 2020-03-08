@@ -98,7 +98,7 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">20</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">22</span></li></ul>
               </li>
             
           
@@ -112,7 +112,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -202,10 +202,10 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = (<span class="keyword">int</span>)<span class="number">1e8</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> Prime[MAXN];       <span class="comment">// 质数表</span></span><br><span class="line"><span class="keyword">bool</span> notPrime[MAXN];   <span class="comment">// 非质数为真</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EulerPrime</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">    notPrime[<span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!notPrime[i]) Prime[++tot] = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; i*Prime[j] &lt;= n; j++) &#123;</span><br><span class="line">            notPrime[i*Prime[j]] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (!(i % Prime[j])) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tot;         <span class="comment">// 返回小于 n 质数个数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>为了便于代码实现，下文使用 $i$ 表示当前所处理的数，用 $p_j$ 表示质数表中第 $j$ 个质数，也就是 <code>Prime[j]</code></p>
-<h2 id="约数函数"><a href="#约数函数" class="headerlink" title="约数函数"></a>约数函数</h2><p>$$\sigma_k(n) = \sum_{d\mid n}d^k$$<br><del>其实这一套函数都是积性的</del></p>
+<h2 id="约数函数"><a href="#约数函数" class="headerlink" title="约数函数"></a>约数函数</h2><script type="math/tex; mode=display">\sigma_k(n) = \sum_{d\mid n}d^k</script><p><del>其实这一套函数都是积性的</del></p>
 <ul>
-<li><p>Part 1 约数个数<br>$$d(n) = \sigma_{0}(n) = \sum_{d\mid n}d^0$$ 由乘法原理及唯一分解定理，若一个数 $n$ 的唯一分解式可以表示为 $n = \prod_{i=1}^{s}p_i^{k_i}$，那么约数个数可以表示为 $$d(n) = (1+k_1) (1+k_2) \cdots (1+k_s)$$</p>
-<p>  通过这个式子，不仅可以证明 $d(n)$ 为积性函数，也提供一种计算方法。</p>
+<li><p>Part 1 约数个数</p>
+<script type="math/tex; mode=display">d(n) = \sigma_{0}(n) = \sum_{d\mid n}d^0$$ 由乘法原理及唯一分解定理，若一个数 $n$ 的唯一分解式可以表示为 $n = \prod_{i=1}^{s}p_i^{k_i}$，那么约数个数可以表示为 $$d(n) = (1+k_1) (1+k_2) \cdots (1+k_s)</script><p>  通过这个式子，不仅可以证明 $d(n)$ 为积性函数，也提供一种计算方法。</p>
 <p>  不妨设 $g(n)$ 为 $n$ 唯一分解中最小质因子指数。</p>
 <ul>
 <li>对于边界，有 $d(1) = 1$</li>
@@ -213,11 +213,11 @@
 <li><p>分两种情况讨论：</p>
 <ul>
 <li><p>$i \bmod p_j \neq 0$<br>即 $p_j$ 为 $i\cdot p_j$ 的最小质因子，且只包含一个。也就是说，在 $i \cdot p_j$ 的唯一分解式中，$p_j$ 指数为 $1$，即 $g(i \cdot p_j)= 1$。</p>
-<p>  另有 $i$ 与 $p_j$ 互质，故  $$d(i \cdot p_j) = d(p_j) \cdot d(i) = 2 \cdot d(i)$$</p>
+<p>  另有 $i$ 与 $p_j$ 互质，故  <script type="math/tex">d(i \cdot p_j) = d(p_j) \cdot d(i) = 2 \cdot d(i)</script></p>
 </li>
 <li><p>$i \bmod p_j = 0$<br>  $p_j$ 仍为 $i\cdot p_j$ 的最小质因子，但不只包含一个。那么，$g(i \cdot p_j)$ 就需要由 $g(i)$ 来更新。不难看出有 $g(i \cdot p_j) = g(i)+1$。</p>
-<p>  根据上文推出来的式子，$d(i)$ 和 $d(i \cdot p_j)$ 可以表示为<br>$$d(i) = (1+g(i)) (1+k_2) \cdots (1+k_s) $$ $$d(i \cdot p_j) = (1+g(i \cdot p_j))(1+k_2)\cdots(1+k_s)$$ 那么 $$d(i \cdot p_j) = d(i) \cdot \frac{(1+g(i \cdot p_j))}{(1+g(i))}$$</p>
-</li>
+<p>  根据上文推出来的式子，$d(i)$ 和 $d(i \cdot p_j)$ 可以表示为</p>
+<script type="math/tex; mode=display">d(i) = (1+g(i)) (1+k_2) \cdots (1+k_s) $$ $$d(i \cdot p_j) = (1+g(i \cdot p_j))(1+k_2)\cdots(1+k_s)$$ 那么 $$d(i \cdot p_j) = d(i) \cdot \frac{(1+g(i \cdot p_j))}{(1+g(i))}</script></li>
 </ul>
 </li>
 </ul>
@@ -225,15 +225,16 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> d[MAXN], g[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EulerPrime</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">    notPrime[<span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line">    d[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!notPrime[i]) &#123;</span><br><span class="line">            Prime[++tot] = i;</span><br><span class="line">            d[i] = <span class="number">2</span>; g[i] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; i*Prime[j] &lt;= n; j++) &#123;</span><br><span class="line">            notPrime[i*Prime[j]] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (!(i % Prime[j])) &#123;</span><br><span class="line">                d[i*Prime[j]] = d[i] / (g[i] + <span class="number">1</span>) * (g[i] + <span class="number">2</span>);</span><br><span class="line">                g[i*Prime[j]] = g[i] + <span class="number">1</span>; </span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            d[i*Prime[j]] = d[i] * <span class="number">2</span>;</span><br><span class="line">            g[i*Prime[j]] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>Part 2 约数和<br>  $$\sigma(n) = \sigma_{1}(n) = \sum_{d\mid n}d$$<br>  其实这一部分同 Part 1 有很多相似部分，有兴趣可以自己推着玩啊。</p>
-<p>  同 Part 1 类似，若一个数 $n$ 的唯一分解式可以表示为 $n = \prod_{i=1}^{s}p_i^{k_i}$，那么约数和可以表示为 $$\sigma(n) = \prod_{i=1}^s(1+p_i^1+\cdots+p_i^{k_i})$$</p>
+<li><p>Part 2 约数和</p>
+<script type="math/tex; mode=display">\sigma(n) = \sigma_{1}(n) = \sum_{d\mid n}d</script><p>  其实这一部分同 Part 1 有很多相似部分，有兴趣可以自己推着玩啊。</p>
+<p>  同 Part 1 类似，若一个数 $n$ 的唯一分解式可以表示为 $n = \prod_{i=1}^{s}p_i^{k_i}$，那么约数和可以表示为 <script type="math/tex">\sigma(n) = \prod_{i=1}^s(1+p_i^1+\cdots+p_i^{k_i})</script></p>
 <p>  同理，我们可以设 $g(n) = \sum_{i=0}^{k_1}{p_1^i}$，其中 $p_1$ 为 $n$ 的最小质因子。</p>
 <ul>
 <li>对于边界，有 $\sigma(1) = 1$</li>
 <li>若 $i$ 为质数，有 $g(i)=\sigma(n)=i+1$</li>
 <li>分两种情况讨论：<ul>
-<li>$i \bmod p_j \neq 0$，即 $i$，$p_j$ 互质<br>  $$g(i \cdot p_j) = (1+\cdots+p_j^k) = p_j + 1$$ $$\sigma(i \cdot p_j) = \sigma(i) \cdot \sigma(p_j) = \sigma(i) \cdot (p_j+1)$$</li>
-<li>$i \bmod p_j = 0$<br>  由 $g(i) = 1+p_j^1+\cdots+p_j^{k_i}$，$g(i \cdot p_j) = 1+p_j^1+\cdots+p_j^{k_i+1}$，可得 $$g(i \cdot p_j) = g(i)\cdot p_j + 1$$<br>  设 $x = (1+p_2^1+\cdots+p_2^{k_2}) \cdots (1+p_s^1+\cdots+p_s^{k_s})$，由 $\sigma(i) = x \cdot g(i)$  及 $\sigma(i \cdot p_j) = x \cdot g(i \cdot p_j)$，可得 $$\sigma(i \cdot p_j) = \sigma(i)\; \frac{g(i \cdot p_j)}{g(i)}$$</li>
+<li>$i \bmod p_j \neq 0$，即 $i$，$p_j$ 互质<script type="math/tex; mode=display">g(i \cdot p_j) = (1+\cdots+p_j^k) = p_j + 1$$ $$\sigma(i \cdot p_j) = \sigma(i) \cdot \sigma(p_j) = \sigma(i) \cdot (p_j+1)</script></li>
+<li>$i \bmod p_j = 0$<br>  由 $g(i) = 1+p_j^1+\cdots+p_j^{k_i}$，$g(i \cdot p_j) = 1+p_j^1+\cdots+p_j^{k_i+1}$，可得 <script type="math/tex">g(i \cdot p_j) = g(i)\cdot p_j + 1</script><br>  设 $x = (1+p_2^1+\cdots+p_2^{k_2}) \cdots (1+p_s^1+\cdots+p_s^{k_s})$，由 $\sigma(i) = x \cdot g(i)$  及 $\sigma(i \cdot p_j) = x \cdot g(i \cdot p_j)$，可得 <script type="math/tex">\sigma(i \cdot p_j) = \sigma(i)\; \frac{g(i \cdot p_j)}{g(i)}</script></li>
 </ul>
 </li>
 </ul>
@@ -247,9 +248,9 @@
 <li>若 i 为质数，$\varphi(i) = i-1$</li>
 <li><p>分两种情况讨论：</p>
 <ul>
-<li>$i \bmod p_j \neq 0$，$i$ 同 $p_j$ 互质，有<br>  $$\varphi(i \cdot p_j) = \varphi(i) \cdot \varphi(p_j)$$</li>
-<li><p>$i \bmod p_j = 0$<br>  对于 $\varphi(p^k)$，有 $\varphi(p^k)=p \cdot \varphi(p^{k-1})$，故<br>  $$\varphi(i \cdot p_j) = \varphi(i) \cdot p_j$$</p>
-<p>  但为什么有 $\varphi(p^k)=p \cdot \varphi(p^{k-1})$ 呢？<br>  考虑小于 $p^k$ 的数中，同 $p^k$ 不互质的数有 $p,2p,\ldots,p^{k-1},p^k$，共 $p^{k-1}$ 个，所以 $$\varphi(p^k)=p^k - p^{k-1}=p\cdot(p^{k-1}-p^{k-2})=p\cdot\varphi(p^{k-1})$$</p>
+<li>$i \bmod p_j \neq 0$，$i$ 同 $p_j$ 互质，有<script type="math/tex; mode=display">\varphi(i \cdot p_j) = \varphi(i) \cdot \varphi(p_j)</script></li>
+<li><p>$i \bmod p_j = 0$<br>  对于 $\varphi(p^k)$，有 $\varphi(p^k)=p \cdot \varphi(p^{k-1})$，故</p>
+<script type="math/tex; mode=display">\varphi(i \cdot p_j) = \varphi(i) \cdot p_j</script><p>  但为什么有 $\varphi(p^k)=p \cdot \varphi(p^{k-1})$ 呢？<br>  考虑小于 $p^k$ 的数中，同 $p^k$ 不互质的数有 $p,2p,\ldots,p^{k-1},p^k$，共 $p^{k-1}$ 个，所以 <script type="math/tex">\varphi(p^k)=p^k - p^{k-1}=p\cdot(p^{k-1}-p^{k-2})=p\cdot\varphi(p^{k-1})</script></p>
 </li>
 </ul>
 </li>
@@ -257,13 +258,13 @@
 </li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> phi[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EulerPrime</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">    notPrime[<span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!notPrime[i]) &#123;</span><br><span class="line">            Prime[++tot] = i;</span><br><span class="line">            phi[i] = i - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; i*Prime[j] &lt;= n; j++) &#123;</span><br><span class="line">            notPrime[i*Prime[j]] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (!(i % Prime[j])) &#123;</span><br><span class="line">                phi[i*Prime[j]] = phi[i] * Prime[j];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            phi[i*Prime[j]] = phi[i] * phi[Prime[j]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h2><p>$$\mu(n) = \begin{cases}1 &amp; n=1 \\ (-1)^s &amp; n = \prod_{i=1}^{s} p_i \\ 0 &amp; otherwise\end{cases}$$<br><del>啊，是懵逼斯乌函数</del></p>
+<h2 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h2><script type="math/tex; mode=display">\mu(n) = \begin{cases}1 & n=1 \\\ (-1)^s & n = \prod_{i=1}^{s} p_i \\\ 0 & otherwise\end{cases}</script><p><del>啊，是懵逼斯乌函数</del></p>
 <ul>
 <li>对于边界，有 $\mu(1) = 1$</li>
 <li>若 i 为质数，有 $\mu(i) = (-1)^1 = -1$</li>
 <li>对于 $i \cdot p_j$，分两种情况讨论<ul>
-<li>$i \bmod p_j \neq 0$，由积性可知<br>  $$\mu(i \cdot p_j) = \mu(i) \cdot \mu(p_j) = -\mu(i)$$</li>
-<li>$i \bmod p_j = 0$，$i \cdot p_j$ 一定包含两相同质因子，故<br>  $$\mu(i \cdot p_j) = 0$$</li>
+<li>$i \bmod p_j \neq 0$，由积性可知<script type="math/tex; mode=display">\mu(i \cdot p_j) = \mu(i) \cdot \mu(p_j) = -\mu(i)</script></li>
+<li>$i \bmod p_j = 0$，$i \cdot p_j$ 一定包含两相同质因子，故<script type="math/tex; mode=display">\mu(i \cdot p_j) = 0</script></li>
 </ul>
 </li>
 </ul>
@@ -271,7 +272,7 @@
 <hr>
 <ul>
 <li>参考文档<ul>
-<li><a href="https://blog.csdn.net/CQBZLYTina/article/details/87552692" target="_blank" rel="noopener">CSDN</a>：数论—整除与素数—筛法（素数筛，约数个数筛，约数和筛）</li>
+<li><a href="https://blog.csdn.net/CQBZLYTina/article/details/87552692" target="_blank" rel="noopener">CSDN</a>：数论—-整除与素数—-筛法（素数筛，约数个数筛，约数和筛）</li>
 <li><a href="https://oi-wiki.org/math/sieve" target="_blank" rel="noopener">OI wiki</a>：筛法</li>
 </ul>
 </li>
