@@ -209,25 +209,25 @@
 </ol>
 <h4 id="题目思路"><a href="#题目思路" class="headerlink" title="题目思路"></a>题目思路</h4><p>记对第 $i$ 个巨龙使用剑的攻击力为 $A_i$.</p>
 <p>容易发现, $A_i$ 的值其实很好确定, 直接在 <code>multiset</code> 上二分即可. 那么, 现在的问题为</p>
-<p>给定 $a_i, A_i, p_i$, 有</p>
-<script type="math/tex; mode=display">
-\begin{equation}  
-\left \\\{
-    \begin{array}{ccc} a_1 - A_1 x &\equiv & 0 \pmod {p_1} \\\ a_2 - A_2 x &\equiv & 0 \pmod {p_2} \\\ &\vdots& \\\ a_n - A_n x &\equiv & 0 \pmod {p_n} \end{array}
-\right.  
-\end{equation}</script><p>求满足条件的最小 $x$, 其中 $p_i$ 不一定为互质.</p>
+<p>给定 $a_i,\ A_i,\ p_i$, 有</p>
+<p>$$<br>\begin{equation}<br>\left \{<br>    \begin{array}{ccc} a_1 - A_1 x &amp;\equiv &amp; 0 \pmod {p_1} \\ a_2 - A_2 x &amp;\equiv &amp; 0 \pmod {p_2} \\ &amp;\vdots&amp; \\ a_n - A_n x &amp;\equiv &amp; 0 \pmod {p_n} \end{array}<br>\right.<br>\end{equation}<br>$$</p>
+<p>求满足条件的最小 $x$, 其中 $p_i$ 不一定为互质.</p>
 <p>其实这只是一个 Ex CRT, 把式子稍微转换一下, 得</p>
-<script type="math/tex; mode=display">x \equiv a_i \cdot A_i^{-1} \pmod {p_i}</script><p>这就和模板题完全一样了, 注意到 $p_i$ 并不是质数, 求乘法逆元的时候跑 exgcd 就好了. 另外会出现无解的情况, 在下文会细谈.</p>
+<p>$$x \equiv a_i \cdot A_i^{-1} \pmod {p_i}$$</p>
+<p>这就和模板题完全一样了, 注意到 $p_i$ 并不是质数, 求乘法逆元的时候跑 exgcd 就好了. 另外会出现无解的情况, 在下文会细谈.</p>
 <p>现在问题已经解决了大半, 但是有一些特判不能忽略.</p>
 <p>首先考虑无解. 一番分析之后可以发现, 无解有两种情况:</p>
 <ul>
 <li><p>化简同余式时无解</p>
 <p>考虑化简的过程, 我们把 $A_i x \equiv a_i \pmod {p_i}$ 化成不定方程的形式, 即</p>
-<script type="math/tex; mode=display">A_i x + y p_i = a_i</script><p>根据裴蜀定理, 该方程有解需要满足 $\gcd(A_i, p_i) \mid a_i$, 否则无解.</p>
+<p>$$A_i x + y p_i = a_i$$</p>
+<p>根据裴蜀定理, 该方程有解需要满足 $\gcd(A_i,\ p_i) \mid a_i$, 否则无解.</p>
 <p>虽然无解的情况已经解决了, 不妨顺水推舟, 把化简的过程写完.</p>
-<p>记 $g = \gcd(A_i, p_i)$, 于是两边同除 $g$, 有</p>
-<script type="math/tex; mode=display">\frac{A_i}{g} x + \frac{p_i}{g} y = \frac{a_i}{g}</script><p>记 $A_i^{-1}$ 为模 $p_i$ 意义下的逆元, 整理, 得</p>
-<script type="math/tex; mode=display">x \equiv \frac{a_i}{g}\cdot A_i^{-1}\pmod{ \frac{p_i}{g} }</script></li>
+<p>记 $g = \gcd(A_i,\ p_i)$, 于是两边同除 $g$, 有</p>
+<p>$$\frac{A_i}{g} x + \frac{p_i}{g} y = \frac{a_i}{g}$$</p>
+<p>记 $A_i^{-1}$ 为模 $p_i$ 意义下的逆元, 整理, 得</p>
+<p>$$x \equiv \frac{a_i}{g}\cdot A_i^{-1}\pmod{ \frac{p_i}{g} }$$</p>
+</li>
 <li><p>合并同余式时无解</p>
 <p>考虑两同余式转换为不定方程后相减, 和上一情况同理.</p>
 </li>
@@ -237,7 +237,8 @@
 <p>考虑特性 1 的反例, 也就是 $a_i &gt; p_i$, 会对以上的过程产生什么影响.</p>
 <p>如果存在一个 $x$, 满足 $A_i x = a_i - p_i$, 依然满足 $A_i x \equiv a_i \pmod {p_i}$, 但显然不满足题意 = =</p>
 <p>幸运的是, 不满足特性 1 的数据点另外满足 $p_i = 1$, 此时答案就是</p>
-<script type="math/tex; mode=display">\max _{i = 1} ^n \\\{\ \lceil \dfrac{a_i}{A_i} \rceil\ \\\}</script><p><del>放到题目背景里就是一直砍, 一直砍</del></p>
+<p>$$\max _{i = 1} ^n \{\ \lceil \dfrac{a_i}{A_i} \rceil\ \}$$</p>
+<p><del>放到题目背景里就是一直砍, 一直砍</del></p>
 <p>那么这道题就做完了 = =.</p>
 <p>比较良心的是, 大样例 (from loj) 存在部分数据满足这几个特殊性质.</p>
 <p>作为 Day2 T1 (应该? ) 算是送温暖吧, 但对于我这种背板选手一发 15 pts 还是算了 = =.</p>
@@ -366,5 +367,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>

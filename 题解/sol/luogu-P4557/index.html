@@ -201,14 +201,16 @@
 <li>二维凸包</li>
 <li>闵可夫斯基和</li>
 </ol>
-<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p>给定两个大小分别为 $n, m$ 的点集, $q$ 次询问, 每次给出一个偏移向量 $\vec{v}$, 问将第二个点集的所有点按这个向量偏移后, 是否存在一个点, 在另一点集的凸包内.</p>
-<p>其中 $3 \le n, m \le 10^5, q \le 10^5$</p>
+<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p>给定两个大小分别为 $n,\ m$ 的点集, $q$ 次询问, 每次给出一个偏移向量 $\vec{v}$, 问将第二个点集的所有点按这个向量偏移后, 是否存在一个点, 在另一点集的凸包内.</p>
+<p>其中 $3 \le n, m \le 10^5,\ q \le 10^5$</p>
 <h4 id="题目思路"><a href="#题目思路" class="headerlink" title="题目思路"></a>题目思路</h4><p>考虑最简单的思路, 每次直接将第二个点集暴力平移, 求凸包, 判断是否存在一个点在另一个凸包内.</p>
 <p>时间复杂度 $O(n \log n + q (m \log m + n m)\,)$, 期望得分 40 pts.</p>
 <p>如果再加一些技巧, 大概是 $O(n \log n + m\log m + q(n\log m + m\log n))\,)$, 期望得分 40 pts, 并没有本质区别…</p>
 <p>换一种思路, 考虑造成冲突的向量范围, 容易得到这样的式子</p>
-<script type="math/tex; mode=display">\exists \ \vec{v},\ \text{s.t.}\ b + \vec{v} = a\ (a \in A, b \in B)</script><p>那么就可以得到 $\vec{v}$ 的范围</p>
-<script type="math/tex; mode=display">\vec{v} = a - b\ (a \in A, b \in B)</script><p>把 $B$ 中点的横纵坐标取反, 就得到了闵可夫斯基和的形式.</p>
+<p>$$\exists \ \vec{v},\ \text{s.t.}\ b + \vec{v} = a\ (a \in A, b \in B)$$</p>
+<p>那么就可以得到 $\vec{v}$ 的范围</p>
+<p>$$\vec{v} = a - b\ (a \in A, b \in B)$$</p>
+<p>把 $B$ 中点的横纵坐标取反, 就得到了闵可夫斯基和的形式.</p>
 <p>考虑到两个凸包的闵可夫斯基和中的边都由两个凸包中的边构成, 而凸包上的边具有单调性, 直接以类似于合并两个有序表的方式进行合并就好了, 这样合并出来的闵可夫斯基和也是个凸包.</p>
 <p>如何统计答案呢? 直接判断偏移向量是否在闵可夫斯基和中的时间复杂度是 $O(n)$ 的, 可以拿到 70 pts 的好成绩.<br>考虑把一个凸包转化为一点到其他点的向量的形式, 这样判断一个向量是否在凸包内可以根据凸包的单调性, 通过二分查找解决.</p>
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p>如果细节明确了, 其实代码不难写…</p>
@@ -337,5 +339,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>
