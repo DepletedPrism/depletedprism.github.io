@@ -350,9 +350,9 @@
       <category term="题解" scheme="https://depletedprism.github.io/categories/%E9%A2%98%E8%A7%A3/"/>
     
     
-      <category term="Graph" scheme="https://depletedprism.github.io/tags/Graph/"/>
-    
       <category term="String" scheme="https://depletedprism.github.io/tags/String/"/>
+    
+      <category term="Graph" scheme="https://depletedprism.github.io/tags/Graph/"/>
     
   </entry>
   
@@ -463,9 +463,9 @@
       <category term="题解" scheme="https://depletedprism.github.io/categories/%E9%A2%98%E8%A7%A3/"/>
     
     
-      <category term="Combinatorics" scheme="https://depletedprism.github.io/tags/Combinatorics/"/>
-    
       <category term="Polynomial" scheme="https://depletedprism.github.io/tags/Polynomial/"/>
+    
+      <category term="Combinatorics" scheme="https://depletedprism.github.io/tags/Combinatorics/"/>
     
   </entry>
   
@@ -520,9 +520,9 @@
       <category term="题解" scheme="https://depletedprism.github.io/categories/%E9%A2%98%E8%A7%A3/"/>
     
     
-      <category term="Dynamic Programing" scheme="https://depletedprism.github.io/tags/Dynamic-Programing/"/>
-    
       <category term="String" scheme="https://depletedprism.github.io/tags/String/"/>
+    
+      <category term="Dynamic Programing" scheme="https://depletedprism.github.io/tags/Dynamic-Programing/"/>
     
   </entry>
   
