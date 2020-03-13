@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/HAOI-2018-sol/</loc>
+    
+    <lastmod>2020-03-13T06:00:05.842Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/UVA-10572/</loc>
+    
+    <lastmod>2020-03-13T05:41:27.411Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/HAOI-2017-sol/</loc>
+    
+    <lastmod>2020-03-13T05:41:27.411Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P2774/</loc>
+    
+    <lastmod>2020-03-13T05:41:27.411Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P2754/</loc>
+    
+    <lastmod>2020-03-13T05:41:27.411Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/about/index.html</loc>
+    
+    <lastmod>2020-03-13T04:27:58.434Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/union-2018-sol/</loc>
+    
+    <lastmod>2020-03-12T06:08:05.876Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/AHOI-HNOI-2017-sol/</loc>
     
     <lastmod>2020-03-10T16:51:48.501Z</lastmod>
@@ -23,7 +72,7 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P4762/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P4762/</loc>
     
     <lastmod>2020-03-09T14:47:03.974Z</lastmod>
     
@@ -37,13 +86,6 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/HAOI-2017-sol/</loc>
-    
-    <lastmod>2020-03-06T08:32:13.976Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/binomial-theorem/</loc>
     
     <lastmod>2020-03-05T12:33:35.109Z</lastmod>
@@ -51,7 +93,7 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P2664/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P2664/</loc>
     
     <lastmod>2020-02-28T16:20:10.434Z</lastmod>
     
@@ -65,7 +107,7 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P4774/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P4774/</loc>
     
     <lastmod>2020-02-28T05:42:17.294Z</lastmod>
     
@@ -79,7 +121,7 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/euler-sieve/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/BZOJ-5093/</loc>
     
     <lastmod>2020-02-27T16:50:20.289Z</lastmod>
     
@@ -93,14 +135,14 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P2766/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P2766/</loc>
     
     <lastmod>2020-02-27T16:50:20.289Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/BZOJ-5093/</loc>
+    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/euler-sieve/</loc>
     
     <lastmod>2020-02-27T16:50:20.289Z</lastmod>
     
@@ -114,13 +156,6 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/UVA-10572/</loc>
-    
-    <lastmod>2020-02-25T06:53:22.156Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/Vim-vimrc-Solution/</loc>
     
     <lastmod>2020-02-24T09:12:09.293Z</lastmod>
@@ -128,30 +163,23 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P2336/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P2336/</loc>
     
     <lastmod>2020-02-24T08:53:16.725Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P5284/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P5284/</loc>
     
     <lastmod>2020-02-20T06:00:29.853Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P4557/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P4557/</loc>
     
     <lastmod>2020-02-20T06:00:09.784Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/about/index.html</loc>
-    
-    <lastmod>2020-02-08T11:29:12.357Z</lastmod>
     
   </url>
   
@@ -163,70 +191,56 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/51nod-1348/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/51nod-1348/</loc>
     
     <lastmod>2020-02-06T03:35:32.288Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P2764/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P2764/</loc>
     
     <lastmod>2019-10-14T13:08:42.678Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P4009/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P4009/</loc>
     
     <lastmod>2019-10-02T15:38:50.730Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P1251/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P1251/</loc>
     
     <lastmod>2019-10-02T14:58:38.631Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P2754/</loc>
-    
-    <lastmod>2019-09-28T11:19:29.593Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P2774/</loc>
-    
-    <lastmod>2019-09-28T11:18:10.609Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P3254/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P3254/</loc>
     
     <lastmod>2019-09-28T11:16:08.035Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P2765/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P2765/</loc>
     
     <lastmod>2019-09-28T09:05:37.552Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P2756/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P2756/</loc>
     
     <lastmod>2019-09-28T08:50:46.842Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/luogu-P2763/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P2763/</loc>
     
     <lastmod>2019-09-28T05:34:30.052Z</lastmod>
     

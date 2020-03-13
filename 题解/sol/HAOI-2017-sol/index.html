@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="HAOI 2017 的神秘弱省省选难度.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-06T08:32:13.976Z">
+<meta property="og:updated_time" content="2020-03-13T05:41:27.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HAOI 2017 大赏">
 <meta name="twitter:description" content="HAOI 2017 的神秘弱省省选难度.">
@@ -97,7 +97,7 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">23</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">25</span></li></ul>
               </li>
             
           
@@ -111,7 +111,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -179,11 +179,6 @@
     
 
 	
-	<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	<span id="busuanzi_container_page_pv">
-		- Total <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Views
-	</span>
-
   </div>
   <div class="article-entry">
     <hr>
@@ -270,7 +265,7 @@
 <li><a href="https://loj.ac/problem/2312" target="_blank" rel="noopener">https://loj.ac/problem/2312</a></li>
 </ul>
 <h4 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h4><p>那么这道题的思路就很显然了, 采用线段树分治, 对时间建线段树, 把边的编号挂在对应的节点上.</p>
-<p>然后考虑如何计算答案. 由于这张图是联通的, 考虑图上的环, 容易发现可以构造出一条从 $1$ 开始又回到 $1$ 的路径, 使得仅有环上的路径经过奇数次.</p>
+<p>然后考虑如何计算答案. 由于这张图是连通的, 考虑图上的环, 容易发现可以构造出一条从 $1$ 开始又回到 $1$ 的路径, 使得仅有环上的路径经过奇数次.</p>
 <p>那么可以记录环上的路径异或值, 并查询其中可以异或到的最大值. 可以使用并查集以及线性基完成.</p>
 <p>不过这屑题中权值二进制位数是 $10^3$ 级别的, 使用 <code>bitset</code> 即可. 考虑到上面都是一些套路性的东西, 于是这道题的难点就是用 <code>bitset</code> 模拟了. = =</p>
 <p>时间复杂度大概是 $O(q \frac{len}{w} \log q \log n)$ ?</p>
@@ -333,13 +328,11 @@
           <div class="main-footer">
   
     © 2020 DepletedPrism&#39;s Blog
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
-	<span id="busuanzi_container_site_uv" style="display:none">
-		- 博客访问数 <span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span> Hits
-	</span>
+    
 	- Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
   
 </div>
+
       
         </div>
       

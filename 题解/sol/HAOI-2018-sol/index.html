@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    HAOI 2018 大赏
+  
+</title>
+
+<meta name="description" content="先祭上出题人题解.  dy0607 的 HAOI2018 Round1 解题报告  然而没有找到 Round 2 的官方题解 (">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HAOI 2018 大赏">
+<meta property="og:url" content="https://depletedprism.github.io/题解/sol/HAOI-2018-sol/index.html">
+<meta property="og:site_name" content="DepletedPrism&#39;s Blog">
+<meta property="og:description" content="先祭上出题人题解.  dy0607 的 HAOI2018 Round1 解题报告  然而没有找到 Round 2 的官方题解 (">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://depletedprism.github.io/images/HAOI-2018-sol/wd.jpg">
+<meta property="og:updated_time" content="2020-03-13T06:00:05.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HAOI 2018 大赏">
+<meta name="twitter:description" content="先祭上出题人题解.  dy0607 的 HAOI2018 Round1 解题报告  然而没有找到 Round 2 的官方题解 (">
+<meta name="twitter:image" content="https://depletedprism.github.io/images/HAOI-2018-sol/wd.jpg">
+
+
+  <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/images/favicon.jpg">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-158626830-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+
+
+</head>
+<body class="monochrome">
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">DepletedPrism&#39;s Blog</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">DepletedPrism&#39;s Blog</a></h1>
+    
+      <p class="subtitle">
+        知其然而不知其所以然是可悲的.
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">DepletedPrism</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="/images/favicon.jpg"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">分类</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">25</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">标签</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">归档</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/index.html" title="Homepage">Homepage</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/DepletedPrism" title="Github" target="_blank" rel="noopener">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://zyzoj.com" title="ZYZOJ" target="_blank" rel="noopener">ZYZOJ</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-sol/HAOI-2018-sol" class="article article-type-post">
+  
+    <h1 class="article-header">
+      HAOI 2018 大赏
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2020-03-12
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/题解/">题解</a></li></ul>
+	</span>
+
+
+    
+
+	
+  </div>
+  <div class="article-entry">
+    <hr>
+<p>先祭上出题人题解.</p>
+<ul>
+<li><a href="https://dy0607.github.io/%E7%9C%81%E9%80%89/oi%E5%8E%86%E7%A8%8B/2018/04/24/HAOI2018-Round1-%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A.html" target="_blank" rel="noopener">dy0607 的 HAOI2018 Round1 解题报告</a></li>
+</ul>
+<p>然而没有找到 Round 2 的官方题解 (</p>
+<a id="more"></a>
+<h3 id="「HAOI2018」奇怪的背包"><a href="#「HAOI2018」奇怪的背包" class="headerlink" title="「HAOI2018」奇怪的背包"></a>「HAOI2018」奇怪的背包</h3><p>要命的 $\gcd$…</p>
+<h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><ul>
+<li><a href="https://loj.ac/problem/2523" target="_blank" rel="noopener">https://loj.ac/problem/2523</a></li>
+</ul>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>所求即为满足</p>
+<p>$$\sum_{i \in S} a_i V_i \equiv w \pmod P$$</p>
+<p>的不同集合 $S$ 个数, 其中 $a_i &gt; 0$, 表示物品选择个数.</p>
+<p>写成不定方程的形式, 即</p>
+<p>$$\sum_{i \in S} a_i V_i + yP = w$$</p>
+<p>根据裴蜀定理, 该方程有解, 则需满足 $\gcd(V_1, V_2, \ldots, P) \mid w$.</p>
+<p>可以发现, 对所有值, 同 $P$ 取 $\gcd$ 并不会影响答案, 那么枚举 $P$ 的约数, 直接 DP 即可.</p>
+<p>直接 DP… 令 $d(P)$ 表示 $P$ 的约数个数, 容易得到时间复杂度 $O(nd(P)$ 的做法, 但是可以进一步优化.</p>
+<p>枚举 $P$ 的约数, 对于同 $P$ 取 $\gcd$ 相同的, 在 DP 时一起算即可.</p>
+<p>具体地, 设 $f(i, j)$ 表示选择 $P$ 前 $i$ 个约数, 得到 $P$ 的第 $j$ 个约数的方案数. 记 $s(i)$ 表示第 $i$ 个约数在 $\gcd(V_j, P)$ 中的出现次数, $d_i$ 表示 $P$ 第 $i$ 个约数. 那么有</p>
+<p>$$f(i, k) = f(i-1, k) + \sum_{\gcd(d_i, d_j) = d_k} f(i-1, j) \cdot (2 ^ {s(i)} -1)$$</p>
+<p>由于 $P$ 的约数中可能存在一些整除关系, 最后 $O(d^2(P))$ 枚举一遍把贡献加起来就好了.</p>
+<p>时间复杂度 $O(\sqrt{P} + n \log P + d ^ 2(P) \log P)$.</p>
+<p>另外祭上某张流传已久的表格…</p>
+<div style="text-align:center;"><img src="/images/HAOI-2018-sol/wd.jpg"> </div>
+
+<p><em><p style="text-align:center;">图源 UOJ 用户群, 至少我是从那里找到的</p></em></p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// LOJ #2523</span></span><br><span class="line"><span class="comment">// DeP</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> IO &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> MAXSIZE = <span class="number">1</span> &lt;&lt; <span class="number">18</span> | <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> buf[MAXSIZE], *p1, *p2;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Gc</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> p1 == p2 &amp;&amp; (p2 = (p1 = buf) + fread(buf, <span class="number">1</span>, MAXSIZE, <span class="built_in">stdin</span>), p1 == p2)? EOF: *p1++; &#125;</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(T&amp; x)</span> </span>&#123;</span><br><span class="line">        x = <span class="number">0</span>; <span class="keyword">int</span> f = <span class="number">0</span>, ch = Gc();</span><br><span class="line">        <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch)) f |= ch == <span class="string">'-'</span>, ch = Gc();</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch)) x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>, ch = Gc();</span><br><span class="line">        <span class="keyword">if</span> (f) x = -x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> IO::read;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e6</span> + <span class="number">5</span>, MAXD = <span class="number">2e3</span> + <span class="number">5</span>, MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, q, P, idx;</span><br><span class="line"><span class="keyword">int</span> id1[MAXN], id2[MAXN], pow2[MAXN];</span><br><span class="line"><span class="keyword">int</span> fact[MAXD], s[MAXD], f[MAXD][MAXD], g[MAXD];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123; <span class="keyword">return</span> !b? a: gcd(b, a  % b); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"input.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="comment">// input</span></span><br><span class="line">    read(n), read(q), read(P);</span><br><span class="line">    m = <span class="built_in">sqrt</span>(P);</span><br><span class="line">    <span class="comment">// sovle</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> d = <span class="number">1</span>; d * d &lt;= P; ++d) <span class="keyword">if</span> (P % d == <span class="number">0</span>) &#123;</span><br><span class="line">        fact[++idx] = d, id1[d] = idx;</span><br><span class="line">        <span class="keyword">if</span> (d * d != P) fact[++idx] = P / d, id2[d] = idx;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v, i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        read(v), v = gcd(v, P), ++s[(v &lt;= m)? id1[v]: id2[P / v]];</span><br><span class="line">    pow2[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) pow2[i] = <span class="number">2L</span>L * pow2[i<span class="number">-1</span>] % MOD;</span><br><span class="line">    f[<span class="number">0</span>][id2[<span class="number">1</span>]] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= idx; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= idx; ++j) &#123;</span><br><span class="line">            <span class="keyword">int</span> w = gcd(fact[i], fact[j]), k = (w &lt;= m)? id1[w]: id2[P / w];</span><br><span class="line">            f[i][k] = (f[i][k] + <span class="number">1L</span>L * f[i<span class="number">-1</span>][j] * (pow2[s[i]] - <span class="number">1</span> + MOD) % MOD) % MOD;</span><br><span class="line">            f[i][j] = (f[i][j] + f[i<span class="number">-1</span>][j]) % MOD;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= idx; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= idx; ++j)</span><br><span class="line">            <span class="keyword">if</span> (fact[i] % fact[j] == <span class="number">0</span>) g[i] = (g[i] + f[idx][j]) % MOD;</span><br><span class="line">    <span class="comment">// output</span></span><br><span class="line">    <span class="keyword">while</span> (q--) &#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> w;</span><br><span class="line">        read(w), w = gcd(w, P), <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, g[(w &lt;= m)? id1[w]: id2[P / w]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+<h3 id="「HAOI2018」反色游戏"><a href="#「HAOI2018」反色游戏" class="headerlink" title="「HAOI2018」反色游戏"></a>「HAOI2018」反色游戏</h3><h4 id="题目链接-1"><a href="#题目链接-1" class="headerlink" title="题目链接"></a>题目链接</h4><ul>
+<li><a href="https://loj.ac/problem/2524" target="_blank" rel="noopener">https://loj.ac/problem/2524</a></li>
+</ul>
+<h4 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h4><p>首先有一个简洁的结论, 所求的方案数为 $2^{m - n + p}$, 其中 $m$ 为边数, $n$ 为点数, $p$ 为连通分量个数.</p>
+<p>官方题解从图论和线性代数两个角度解释了这个结论, 然而我只能流下学不会线性代数的泪水…</p>
+<p>于是从图的连通性入手解释这个结论.</p>
+<p>单独考虑每一个连通分量, 如果该连通分量中存在偶数个黑点, 那么一定存在可行方案; 否则不存在.</p>
+<p>考虑将该连通分量中的黑点任意两两配对, 由于存在偶数个黑点, 所以没有多余. 可以发现</p>
+<ul>
+<li>对于两黑点间的任意一条路径, 不论经过的边数是奇是偶, 总可以构造出一种方案, 使得路径上只有这两个黑点颜色反转.</li>
+<li>对于这些路径的交, 每次把边选 / 不选的状态取反, 不会影响到原来的局面.</li>
+</ul>
+<p>如果存在奇数个黑点, 则不存在以上性质… 因而不存在合法方案.</p>
+<p>同时我们知道了, 配对数和方案数是等价的. 换言之, 每种黑点两两匹配的方案, 唯一对应着一个合法解.</p>
+<p>所以对于一个点数为 $n$ 的连通分量, 有解的情况有 $2^{n-1}$ 种 (拿组合数加起来推一推可知), 由于边数为 $m$, 共 $2^m$ 种情况, 所以每种有解的情况下, 解的个数为 $2^{m-n+1}$. 对 $p$ 个连通分量进行推广, 答案即为 $2 ^ {m - n + p}$.</p>
+<p>似乎还可以从另一个角度解释? 参见 <a href="https://www.cnblogs.com/xjqxjq/p/11781185.html" target="_blank" rel="noopener">https://www.cnblogs.com/xjqxjq/p/11781185.html</a>.</p>
+<p>知道结论后的做法就很明晰了, 跑 tarjan 求割点, 讨论是否有解, 以及删边后整体边数, 点数, 连通分量个数的变化即可.</p>
+<p>时间复杂度 $O(n + m)$.</p>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// LOJ #2524</span></span><br><span class="line"><span class="comment">// DeP</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e5</span> + <span class="number">5</span>, P = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> V[MAXN], pow2[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Graph &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span> <span class="keyword">int</span> nxt, to; &#125; edges[MAXN &lt;&lt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> head[MAXN], deg[MAXN], eidx;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(deg, <span class="number">0</span>, <span class="keyword">sizeof</span> deg), <span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span> head), eidx = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to)</span> </span>&#123;</span><br><span class="line">        edges[++eidx] = (Edge)&#123; head[from], to &#125;, head[from] = eidx;</span><br><span class="line">        ++deg[to];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> Even[MAXN];</span><br><span class="line">    <span class="keyword">int</span> cut[MAXN], dfn[MAXN], low[MAXN], dfs_clock;</span><br><span class="line">    <span class="keyword">int</span> Idx[MAXN], size[MAXN], sub[MAXN], idx;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> child = <span class="number">0</span>;</span><br><span class="line">        Idx[u] = idx, size[u] = V[u];</span><br><span class="line">        low[u] = dfn[u] = ++dfs_clock;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> v, i = head[u]; ~i; i = edges[i].nxt) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!dfn[v = edges[i].to]) &#123;</span><br><span class="line">                tarjan(v, u);</span><br><span class="line">                size[u] += size[v], ++child;</span><br><span class="line">                low[u] = min(low[u], low[v]);</span><br><span class="line">                <span class="keyword">if</span> (low[v] &gt;= dfn[u])</span><br><span class="line">                    ++cut[u], sub[u] += size[v], Even[u] &amp;= !(size[v] &amp; <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dfn[v] &lt; dfn[u] &amp;&amp; v != fa)</span><br><span class="line">                low[u] = min(low[u], dfn[v]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!fa) --cut[u];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// init</span></span><br><span class="line">        dfs_clock = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">1</span>; u &lt;= n; ++u)</span><br><span class="line">            Even[u] = <span class="literal">true</span>, sub[u] = dfn[u] = low[u] = cut[u] = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// solve</span></span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>, s = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">1</span>; u &lt;= n; ++u)</span><br><span class="line">            <span class="keyword">if</span> (!dfn[u]) idx = u, ++p, tarjan(u, <span class="number">0</span>), s += size[u] &amp; <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// output</span></span><br><span class="line">        <span class="keyword">int</span> tot = m - n + p;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, s &gt; <span class="number">0</span>? <span class="number">0</span>: pow2[tot]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">1</span>; u &lt;= n; ++u) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!deg[u]) <span class="built_in">printf</span>(<span class="string">"%d"</span>, s - size[u] &gt; <span class="number">0</span>? <span class="number">0</span>: pow2[tot]);</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d"</span>, (!Even[u] || s - (size[Idx[u]] &amp; <span class="number">1</span>) &gt; <span class="number">0</span> || ((size[Idx[u]] - V[u] - sub[u]) &amp; <span class="number">1</span>))?</span><br><span class="line">                    <span class="number">0</span>: pow2[tot - deg[u] + <span class="number">1</span> + cut[u]]);</span><br><span class="line">            <span class="built_in">putchar</span>(<span class="string">" \n"</span>[u == n]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"input.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    pow2[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; MAXN; ++i) pow2[i] = <span class="number">2L</span>L * pow2[i<span class="number">-1</span>] % P;</span><br><span class="line">    <span class="keyword">int</span> Ti;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;Ti);</span><br><span class="line">    <span class="keyword">while</span> (Ti--) &#123;</span><br><span class="line">        <span class="comment">// init</span></span><br><span class="line">        Graph::init();</span><br><span class="line">        <span class="comment">// input</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> u, v, i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">            Graph::AddEdge(u, v), Graph::AddEdge(v, u);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%1d"</span>, V+i);</span><br><span class="line">        <span class="comment">// solve</span></span><br><span class="line">        Graph::solve();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+<h3 id="「HAOI2018」字串覆盖"><a href="#「HAOI2018」字串覆盖" class="headerlink" title="「HAOI2018」字串覆盖"></a>「HAOI2018」字串覆盖</h3><h4 id="题目链接-2"><a href="#题目链接-2" class="headerlink" title="题目链接"></a>题目链接</h4><ul>
+<li><a href="https://loj.ac/problem/2525" target="_blank" rel="noopener">https://loj.ac/problem/2525</a></li>
+</ul>
+<h4 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h4><p>听说是一道字符串套路工业题? 先咕着…</p>
+<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</div></div>
+<h3 id="「HAOI2018」苹果树"><a href="#「HAOI2018」苹果树" class="headerlink" title="「HAOI2018」苹果树"></a>「HAOI2018」苹果树</h3><h4 id="题目链接-3"><a href="#题目链接-3" class="headerlink" title="题目链接"></a>题目链接</h4><ul>
+<li><a href="https://loj.ac/problem/2526" target="_blank" rel="noopener">https://loj.ac/problem/2526</a></li>
+</ul>
+<h4 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h4><p>先吐槽出题人不把模数的限制写详细一点…</p>
+<p>不过不怎么影响做题来着.</p>
+<p>首先可以发现, 期望再乘 $n!$ 就是大忽悠 = =, 所求即为所有节点数为 $n$ 的二叉树, 两两距离之和的和.</p>
+<p>有一个性质, 一条边 $(i,\ j)$ 被经过的次数为 $s (n - s)$, 其中 $s$ 为 $j$ 对应子树大小. 考虑到 $n \le 2000$, 可以枚举一个点, 以及对应这个点对应子树大小来计算答案.</p>
+<p>设当前枚举到第 $i$ 个点, 前 $i$ 个点的位置都确定了, 且节点 $i$ 某一个儿子的子树大小为 $j$.</p>
+<p>$$\sum_{i=1}^n i! \sum_{j=1}^{n-i} j(n-j) \cdot 2\ \binom{n-i}{j} j! \cdot \prod_{k=i}^{n-j-1}k$$</p>
+<p>再稍微解释一下, 前 $i$ 个点的选择顺序是一个排列, $i$ 到其某一个儿子的边被经过 $j(n-j)$ 次.</p>
+<p>考虑大小为 $j$ 子树的内节点排布情况, 也就是在剩余 $n-i$ 个节点中挑出 $j$ 个节点做一个排列, 由于是二叉树, 方案数 $\times 2$.</p>
+<p>再考虑该子树外的情况, 对于剩下的 $n - j - i$ 个节点, 不能挂在该子树内, 依次有 $i,\ i+1,\ \ldots, n-j-1$ 种选择 (因为每次都新加了一个节点), 由乘法原理乘起来就好了.</p>
+<p>似乎做完了, 其实已经做完了, 后面的累乘预处理一下就好了.</p>
+<p>其实后面的累乘化简一下就消掉了, 也就是</p>
+<p>$$2\sum_{i=1}^n i!(n-i)! \sum_{j=1}^{n-i} j(n-j) \binom{n-j-1}{i-1}$$</p>
+<p>总感觉这个式子有着什么高妙的组合意义.</p>
+<p>时间复杂度 $O(n^2)$.</p>
+<h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h4><p>代码中使用了 1 式.</p>
+<p>2 式代码也交在 loj 上了, 常数小了一倍…</p>
+<div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// LOJ #2526</span></span><br><span class="line"><span class="comment">// DeP</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">2005</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, Mod;</span><br><span class="line"><span class="keyword">int</span> fac[MAXN], C[MAXN][MAXN], f[MAXN][MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"input.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="comment">// input</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;Mod);</span><br><span class="line">    <span class="comment">// init</span></span><br><span class="line">    C[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        C[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; ++j) C[i][j] = (C[i<span class="number">-1</span>][j<span class="number">-1</span>] + C[i<span class="number">-1</span>][j]) % Mod;</span><br><span class="line">    &#125;</span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; ++j) f[i][j] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= n; ++j) f[i][j] = <span class="number">1L</span>L * f[i][j<span class="number">-1</span>] * j % Mod;</span><br><span class="line">    &#125;</span><br><span class="line">    fac[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) fac[i] = <span class="number">1L</span>L * fac[i<span class="number">-1</span>] * i % Mod;</span><br><span class="line">    <span class="comment">// solve</span></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> now = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n - i; ++j) &#123;</span><br><span class="line">            <span class="keyword">int</span> s1 = <span class="number">1L</span>L * j * (n-j) % Mod;</span><br><span class="line">            <span class="keyword">int</span> s2 = <span class="number">2L</span>L * C[n-i][j] * fac[j] % Mod;</span><br><span class="line">            now = (now + <span class="number">1L</span>L * s1 * s2 % Mod * f[i][n - j - <span class="number">1</span>] % Mod) % Mod;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = (ans + <span class="number">1L</span>L * fac[i] * now % Mod) % Mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// output</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+<h3 id="「HAOI2018」染色"><a href="#「HAOI2018」染色" class="headerlink" title="「HAOI2018」染色"></a>「HAOI2018」染色</h3><h4 id="题目链接-4"><a href="#题目链接-4" class="headerlink" title="题目链接"></a>题目链接</h4><ul>
+<li><a href="https://loj.ac/problem/2527" target="_blank" rel="noopener">https://loj.ac/problem/2527</a></li>
+</ul>
+<h4 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h4><p>如果想到了二项式反演, 那么这道题还算套路吧…</p>
+<p><del>可惜没有, 溜了溜了, 还在化卷积上浪费时间, 退役稳了</del></p>
+<p>设 $f(x)$ 表示钦定 $x$ 种颜色出现 $S$ 次, $g(x)$ 表示恰好 $x$ 种颜色出现 $S$ 次.</p>
+<p>记 $N = \min \{ m,\ \lfloor \dfrac{n}{S} \rfloor \}$, 那么答案即为</p>
+<p>$$\sum_{k=0}^N W_k \cdot g(k)$$</p>
+<p>先考虑如何计算 $f(x)$, 也就是在 $m$ 种颜色中挑出 $x$ 种出现 $S$ 次, 任意排列, 且不管其余位置的颜色, 那么可以得到</p>
+<p>$$f(x) = \binom{m}{x} \cdot \frac{n!}{(S!)^x \cdot (n-Sx)!} \cdot (m-x)^{n-Sx}$$</p>
+<p>(中间部分是一个多重集合的排列数, 为了方便就拆开了)</p>
+<p>对于 $f(x)$ 和 $g(x)$, 有</p>
+<p>$$f(x) = \sum_{i=x}^N \binom{i}{x} g(i)$$</p>
+<p>二项式反演一通之后可以得到</p>
+<p>$$g(x) = \sum_{i=x}^N (-1) ^ {i-x} \binom{i}{x} f(i)$$</p>
+<p>把组合数展开, 得</p>
+<p>$$g(x) \cdot x! = \sum_{i=x}^N \frac{(-1)^{i-x}}{(i-x)!}\ i! \cdot f(i)$$</p>
+<p>接下来, 卷积登场. 记 $h(x) = \frac{(-1)^{N-x}}{(N-x)!}$, 那么</p>
+<p>$$g(x) \cdot x! = \sum_{i=x}^N h(N+x-i)\ i!\cdot f(i)$$</p>
+<p>用 NTT 优化计算即可. 时间复杂度 $O(n \log n)$.</p>
+<h4 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// LOJ #2527</span></span><br><span class="line"><span class="comment">// DeP</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> IO &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> MAXSIZE = <span class="number">1</span> &lt;&lt; <span class="number">18</span> | <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> buf[MAXSIZE], *p1, *p2;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Gc</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> p1 == p2 &amp;&amp; (p2 = (p1 = buf) + fread(buf, <span class="number">1</span>, MAXSIZE, <span class="built_in">stdin</span>), p1 == p2)? EOF: *p1++; &#125;</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(T&amp; x)</span> </span>&#123;</span><br><span class="line">        x = <span class="number">0</span>; <span class="keyword">int</span> f = <span class="number">0</span>, ch = Gc();</span><br><span class="line">        <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch)) f |= ch == <span class="string">'-'</span>, ch = Gc();</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch)) x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>, ch = Gc();</span><br><span class="line">        <span class="keyword">if</span> (f) x = -x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> IO::read;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXL = <span class="number">1e7</span> + <span class="number">5</span>, MAXN = <span class="number">1</span> &lt;&lt; <span class="number">19</span> | <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P = <span class="number">1004535809</span>, G = <span class="number">3</span>, iG = <span class="number">334845270</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> fac[MAXL], ifac[MAXL];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (n &lt; m)? <span class="number">0</span>: <span class="number">1L</span>L * fac[n] * ifac[n-m] % P * ifac[m] % P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fpow</span><span class="params">(<span class="keyword">int</span> base, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (b &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) ret = <span class="number">1L</span>L * ret * base % P;</span><br><span class="line">        base = <span class="number">1L</span>L * base * base % P, b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Poly &#123;</span><br><span class="line">    <span class="keyword">int</span> r[MAXN];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; Lim, <span class="keyword">const</span> <span class="keyword">int</span>&amp; L)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; Lim; ++i) r[i] = (r[i&gt;&gt;<span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (L<span class="number">-1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">NTT</span><span class="params">(<span class="keyword">int</span>* f, <span class="keyword">const</span> <span class="keyword">int</span>&amp; Lim, <span class="keyword">const</span> <span class="keyword">int</span>&amp; type)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; Lim; ++i) <span class="keyword">if</span> (i &lt; r[i]) swap(f[i], f[r[i]]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> Mid = <span class="number">1</span>; Mid &lt; Lim; Mid &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> unit = fpow(type &gt; <span class="number">0</span>? G: iG, (P - <span class="number">1</span>) / (Mid &lt;&lt; <span class="number">1</span>));</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Lim; i += Mid &lt;&lt; <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span> w = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; Mid; ++j, w = <span class="number">1L</span>L * w * unit % P) &#123;</span><br><span class="line">                    <span class="keyword">int</span> f0 = f[i+j], f1 = <span class="number">1L</span>L * w * f[i+j+Mid] % P;</span><br><span class="line">                    f[i+j] = (f0 + f1) % P, f[i+j+Mid] = (f0 - f1 + P) % P;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (type &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> inv = fpow(Lim, P<span class="number">-2</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Lim; ++i) f[i] = <span class="number">1L</span>L * f[i] * inv % P;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, S;</span><br><span class="line"><span class="keyword">int</span> A[MAXN], f[MAXN], g[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"input.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="comment">// input</span></span><br><span class="line">    read(n), read(m), read(S);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; ++i) read(A[i]);</span><br><span class="line">    <span class="comment">// init</span></span><br><span class="line">    <span class="keyword">int</span> N = max(max(n, m), S);</span><br><span class="line">    ifac[<span class="number">0</span>] = fac[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; ++i) fac[i] = <span class="number">1L</span>L * fac[i<span class="number">-1</span>] * i % P;</span><br><span class="line">    ifac[N] = fpow(fac[N], P<span class="number">-2</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = N; i; --i) ifac[i<span class="number">-1</span>] = <span class="number">1L</span>L * ifac[i] * i % P;</span><br><span class="line">    <span class="comment">// solve</span></span><br><span class="line">    N = min(m, n / S);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> s1 = <span class="number">1L</span>L * fac[n] * fpow(ifac[S], i) % P * ifac[n - S * i] % P;</span><br><span class="line">        <span class="keyword">int</span> s2 = <span class="number">1L</span>L * fpow(m - i, n - S * i) * fac[i] % P;</span><br><span class="line">        f[i] = <span class="number">1L</span>L * C(m, i) * s1 % P * s2 % P;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        g[i] = ifac[N - i];</span><br><span class="line">        <span class="keyword">if</span> ((N - i) &amp; <span class="number">1</span>) g[i] = P - g[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> Lim = <span class="number">1</span>, L = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (Lim &lt;= N + N) Lim &lt;&lt;= <span class="number">1</span>, ++L;</span><br><span class="line">    Poly::init(Lim, L), Poly::NTT(f, Lim, <span class="number">1</span>), Poly::NTT(g, Lim, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Lim; ++i) g[i] = <span class="number">1L</span>L * g[i] * f[i] % P;</span><br><span class="line">    Poly::NTT(g, Lim, <span class="number">-1</span>);</span><br><span class="line">    <span class="comment">// output</span></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= N; ++i) ans = (ans + <span class="number">1L</span>L * g[i+N] * ifac[i] % P * A[i] % P) % P;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+<hr>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.z" target="_blank" title="署名-非商业性使用-相同方式共享">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/nc.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+  </footer>
+  
+</article>
+
+
+    <link rel="stylesheet" href="/css/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script src="/scripts/gitalk.js"></script>
+
+
+
+
+          <div class="main-footer">
+  
+    © 2020 DepletedPrism&#39;s Blog
+    
+	- Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</body>
+</html>
+--></body></html>

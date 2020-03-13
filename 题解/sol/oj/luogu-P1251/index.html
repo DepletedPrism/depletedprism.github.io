@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    餐巾计划问题 题解
+  
+</title>
+
+<meta name="description" content="题目链接：https://www.luogu.org/problem/P1251  上下界最小费用可行流，用了都说好">
+<meta name="keywords" content="Graph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="餐巾计划问题 题解">
+<meta property="og:url" content="https://depletedprism.github.io/题解/sol/oj/luogu-P1251/index.html">
+<meta property="og:site_name" content="DepletedPrism&#39;s Blog">
+<meta property="og:description" content="题目链接：https://www.luogu.org/problem/P1251  上下界最小费用可行流，用了都说好">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-02T14:58:38.631Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="餐巾计划问题 题解">
+<meta name="twitter:description" content="题目链接：https://www.luogu.org/problem/P1251  上下界最小费用可行流，用了都说好">
+
+
+  <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/images/favicon.jpg">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-158626830-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+
+
+</head>
+<body class="monochrome">
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">DepletedPrism&#39;s Blog</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">DepletedPrism&#39;s Blog</a></h1>
+    
+      <p class="subtitle">
+        知其然而不知其所以然是可悲的.
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">DepletedPrism</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="/images/favicon.jpg"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">分类</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">25</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">标签</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">归档</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/index.html" title="Homepage">Homepage</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/DepletedPrism" title="Github" target="_blank" rel="noopener">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://zyzoj.com" title="ZYZOJ" target="_blank" rel="noopener">ZYZOJ</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-sol/oj/luogu-P1251" class="article article-type-post">
+  
+    <h1 class="article-header">
+      餐巾计划问题 题解
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2019-10-02
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/题解/">题解</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph/">Graph</a></li></ul>
+	</span>
+
+
+	
+  </div>
+  <div class="article-entry">
+    <hr>
+<ul>
+<li>题目链接：<a href="https://www.luogu.org/problem/P1251" target="_blank" rel="noopener">https://www.luogu.org/problem/P1251</a></li>
+</ul>
+<p>上下界最小费用可行流，用了都说好</p>
+<a id="more"></a>
+<p>看到题目后想起来 <code>Rujia Liu</code> 蓝书网络流最后一道例题，不过那道题限制没有这道题多，仅用费用流就可以解决。两题相同的地方为：根据天数建图，并把天数拆点。</p>
+<p>建图前先统一变量名，令 $p$ 是每块新餐巾的费用，$qd$ 是快洗部洗一块餐巾需用天数，$qc$ 是快洗部洗一块餐巾需要的费用，$sd$ 是慢洗部洗一块餐巾需用天数，$sc$ 是慢洗部洗一块餐巾需要的费用。</p>
+<ul>
+<li>建图流程<ul>
+<li>新建附加源、汇点 $s, t$</li>
+<li>对于一天 $i$，拆成 $i$，$i’$，意义为接受餐巾和转移餐巾，<del>或者可以理解为每天的早上和晚上</del></li>
+<li>对于一天 $i$<ul>
+<li>连边 $(s,i)$，容量 $[0,+\infty]$，费用为 $p$，表示购买餐巾</li>
+<li>连边 $(i’, t)$，容量 $[0,+\infty]$，费用为 $0$，表示多余的餐巾可以一直搁着</li>
+<li>连边 $(i, i’)$，容量限定为 $A_i$，即每天需用的餐巾数，费用为 $0$，表示需求</li>
+<li>连边 $(i, i+1)$，容量 $[0,+\infty]$，费用为 $0$，表示今天用不完的餐巾可以明天用</li>
+<li>在天数合法情况下，连边 $(i’, i+qd)$，容量 $[0,A_i]$，费用为 $qc$，表示今天用完的餐巾拿去快洗</li>
+<li>在天数合法情况下，连边 $(i’, i+sd)$，容量 $[0,A_i]$，费用为 $sc$，表示今天用完的餐巾拿去慢洗</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>之后就是套路式上下界了，详见 <a href="https://www.cnblogs.com/mlystdcall/p/6734852.html" target="_blank" rel="noopener">__stdcall 的【教程】上下界网络流建模方法总结</a>，以及膜 __stdcall Orz</p>
+<p>关于坑点就是点数和边数要开够…</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Luogu P1251</span></span><br><span class="line"><span class="comment">// DeP</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> IO &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> MAXSIZE = <span class="number">1</span> &lt;&lt; <span class="number">18</span> | <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> buf[MAXSIZE], *p1, *p2;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Gc</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> p1 == p2 &amp;&amp; (p2 = (p1 = buf) + fread(buf, <span class="number">1</span>, MAXSIZE, <span class="built_in">stdin</span>), p1 == p2)? EOF: *p1++; &#125;</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">void</span> <span class="title">read</span>(<span class="title">T</span>&amp; <span class="title">x</span>) &#123;</span></span><br><span class="line">        x = <span class="number">0</span>; <span class="keyword">int</span> f = <span class="number">0</span>, ch = Gc();</span><br><span class="line">        <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch)) &#123; f |= ch == <span class="string">'-'</span>; ch = Gc(); &#125;</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch)) &#123; x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = Gc(); &#125;</span><br><span class="line">        <span class="keyword">if</span> (f) x = -x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> IO::read;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> LL INF = <span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">2005</span>, MAXV = MAXN * <span class="number">2</span>, MAXE = MAXN * <span class="number">8</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, sd, qd, S, T;</span><br><span class="line">LL p, sc, qc;</span><br><span class="line"><span class="keyword">int</span> A[MAXN]; LL d[MAXV];</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Graph &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span> <span class="keyword">int</span> nxt, to; LL cap, flow, cost; &#125; edges[MAXE &lt;&lt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> head[MAXV], eidx;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123; <span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span> head); eidx = <span class="number">1</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, LL cap, LL cost)</span> </span>&#123;</span><br><span class="line">        edges[++eidx] = (Edge)&#123; head[from], to, cap, <span class="number">0</span>, cost &#125;;</span><br><span class="line">        head[from] = eidx;</span><br><span class="line">        edges[++eidx] = (Edge)&#123; head[to], from, <span class="number">0</span>, <span class="number">0</span>, -cost &#125;;</span><br><span class="line">        head[to] = eidx;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, LL b, LL c, LL cost)</span> </span>&#123;</span><br><span class="line">        d[to] += b; d[from] -= b;</span><br><span class="line">        AddEdge(from, to, c-b, cost);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> MCMF &#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> Graph;</span><br><span class="line">    <span class="keyword">bool</span> inq[MAXV];</span><br><span class="line">    LL d[MAXV], a[MAXV]; <span class="keyword">int</span> pre[MAXV];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">SPFA</span><span class="params">(LL&amp; flow, LL&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; Q;</span><br><span class="line">        <span class="built_in">memset</span>(d, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> d);</span><br><span class="line">        <span class="built_in">memset</span>(inq, <span class="literal">false</span>, <span class="keyword">sizeof</span> inq);</span><br><span class="line">        Q.push(S);</span><br><span class="line">        inq[S] = <span class="literal">true</span>; d[S] = pre[S] = <span class="number">0</span>; a[S] = INF;</span><br><span class="line">        <span class="keyword">while</span> (!Q.empty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> u = Q.front(); Q.pop();</span><br><span class="line">            inq[u] = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; ~i; i = edges[i].nxt) &#123;</span><br><span class="line">                <span class="keyword">const</span> Edge&amp; e = edges[i];</span><br><span class="line">                <span class="keyword">if</span> (d[e.to] &gt; d[u] + e.cost &amp;&amp; e.cap &gt; e.flow) &#123;</span><br><span class="line">                    a[e.to] = min(a[u], e.cap - e.flow);</span><br><span class="line">                    d[e.to] = d[u] + e.cost; pre[e.to] = i;</span><br><span class="line">                    <span class="keyword">if</span> (!inq[e.to]) inq[e.to] = <span class="literal">true</span>, Q.push(e.to);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (d[T] == INF) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        flow += a[T]; cost += a[T] * d[T];</span><br><span class="line">        <span class="keyword">int</span> u = T;</span><br><span class="line">        <span class="keyword">while</span> (u != S) &#123;</span><br><span class="line">            edges[pre[u]].flow += a[T];</span><br><span class="line">            edges[pre[u]^<span class="number">1</span>].flow -= a[T];</span><br><span class="line">            u = edges[pre[u]^<span class="number">1</span>].to;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">LL <span class="title">MCMF</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        LL flow = <span class="number">0</span>, cost = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (SPFA(flow, cost)) ;</span><br><span class="line">        <span class="keyword">return</span> cost;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"input.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="comment">// init</span></span><br><span class="line">    Graph::init();</span><br><span class="line">    <span class="comment">// input</span></span><br><span class="line">    read(n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) read(A[i]);</span><br><span class="line">    read(p); read(qd); read(qc); read(sd); read(sc);</span><br><span class="line">    <span class="comment">// build graph</span></span><br><span class="line">    <span class="keyword">int</span> s = <span class="number">2</span>*n+<span class="number">1</span>, t = <span class="number">2</span>*n+<span class="number">2</span>;</span><br><span class="line">    S = <span class="number">2</span>*n+<span class="number">3</span>; T = <span class="number">2</span>*n+<span class="number">4</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        Graph::AddEdge(i, n+i, A[i], A[i], <span class="number">0</span>);</span><br><span class="line">        Graph::AddEdge(s, i, INF, p);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; n) Graph::AddEdge(i, i+<span class="number">1</span>, INF, <span class="number">0</span>);</span><br><span class="line">        Graph::AddEdge(n+i, t, INF, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i+qd &lt;= n) Graph::AddEdge(i+n, i+qd, <span class="number">0</span>, A[i], qc);</span><br><span class="line">        <span class="keyword">if</span> (i+sd &lt;= n) Graph::AddEdge(i+n, i+sd, <span class="number">0</span>, A[i], sc);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// solve</span></span><br><span class="line">    Graph::AddEdge(t, s, INF, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (d[i] &gt; <span class="number">0</span>) Graph::AddEdge(S, i, d[i], <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> (d[i] &lt; <span class="number">0</span>) Graph::AddEdge(i, T, -d[i], <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// output</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, MCMF::MCMF());</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.z" target="_blank" title="署名-非商业性使用-相同方式共享">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/nc.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+  </footer>
+  
+</article>
+
+
+    <link rel="stylesheet" href="/css/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script src="/scripts/gitalk.js"></script>
+
+
+
+
+          <div class="main-footer">
+  
+    © 2020 DepletedPrism&#39;s Blog
+    
+	- Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</body>
+</html>
+--></body></html>
