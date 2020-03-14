@@ -4,7 +4,7 @@
   <url>
     <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/union-2018-sol/</loc>
     
-    <lastmod>2020-03-13T16:41:13.422Z</lastmod>
+    <lastmod>2020-03-14T05:01:51.548Z</lastmod>
     
   </url>
   
@@ -16,14 +16,7 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/UVA-10572/</loc>
-    
-    <lastmod>2020-03-13T05:41:27.411Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P2754/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/HAOI-2017-sol/</loc>
     
     <lastmod>2020-03-13T05:41:27.411Z</lastmod>
     
@@ -37,7 +30,14 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/HAOI-2017-sol/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/UVA-10572/</loc>
+    
+    <lastmod>2020-03-13T05:41:27.411Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P2754/</loc>
     
     <lastmod>2020-03-13T05:41:27.411Z</lastmod>
     
@@ -114,7 +114,7 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/euler-sieve/</loc>
+    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/BZOJ-5093/</loc>
     
     <lastmod>2020-02-27T16:50:20.289Z</lastmod>
     
@@ -128,21 +128,21 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/sum-of-n/</loc>
-    
-    <lastmod>2020-02-27T16:50:20.289Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/BZOJ-5093/</loc>
-    
-    <lastmod>2020-02-27T16:50:20.289Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://depletedprism.github.io/%E9%A2%98%E8%A7%A3/sol/oj/luogu-P2766/</loc>
+    
+    <lastmod>2020-02-27T16:50:20.289Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/euler-sieve/</loc>
+    
+    <lastmod>2020-02-27T16:50:20.289Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/sum-of-n/</loc>
     
     <lastmod>2020-02-27T16:50:20.289Z</lastmod>
     
