@@ -97,7 +97,7 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">28</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">28</span></li></ul>
               </li>
             
           
@@ -111,7 +111,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -197,7 +197,7 @@
 <p>这周在学校的几个晚上不能用电脑, 无聊翻翻紫书权作复习. LRJ 的书果然是 OI 真理啊</p>
 <blockquote>
 <p>但是有一点需要注意: 理解一个题解和自己独立推导出所有细节还是不一样的, 所以在看完一个难题题解之后最好把它做两遍: 一遍是刚看完题解以后 “趁热打铁”, 一遍是等忘掉题解后自己从头推导一遍.</p>
-<p>—— 刘汝佳 &lt;算法竞赛入门经典 (第 2 版)&gt;</p>
+<p>——— 刘汝佳 &lt;算法竞赛入门经典 (第 2 版)&gt;</p>
 </blockquote>
 <p>附, windows 下修改注册表使得 Esc 和 Caps 互换的注册表文件, <del>还是喜欢 Linux 一行命令解决的简单方式</del>:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Kayboard Layout]</span><br><span class="line">&quot;Scancode Map&quot;=hex:00,00,00,00,00,00,00,00,03,00,00,00,3A,00,01,00,01,00,3A,00,00,00,00,00</span><br></pre></td></tr></table></figure>
@@ -228,7 +228,7 @@
 <p>最大的遗憾就是没有写暴力拍 T1</p>
 </li>
 <li><p>T2</p>
-<p>看到题目后就有 $O(n^4)$ 的带暴力想法, 本着 <del>NOIP</del> CSP-S 暴力打满的精神就先写暴力, 写出来前两个样例直接过了, 开始考虑怎么优化. 想了一会有 $O(n^3)$ 的 DP. 当时我兴致勃勃的去打这个 $O(n^3)$ 的 DP, 因为我算错复杂度以为这是 $O(n^2)$ 能拿到 $50\ pts$.</p>
+<p>看到题目后就有 $O(n^4)$ 的带暴力想法, 本着 <del>NOIP</del> CSP-S 暴力打满的精神就先写暴力, 写出来前两个样例直接过了, 开始考虑怎么优化. 想了一会有 $O(n^3)$ 的 DP. 当时我兴致勃勃的去打这个 $O(n^3)$ 的 DP, 因为我算错复杂度以为这是 $O(n^2)$ 能拿到 $50 pts$.</p>
 <p>好在写出来之后及时发现时间复杂度是假的, 更好的事情是, 再优化到 $O(n^2)$ 也不算难. 改完没能过样例, 心态有点爆炸, 调整一会心态之后部分重构了, 算是过了第二组大样例.</p>
 <p>临近考试结束, 拿着 $O(n^3)$ 的暴力拍了一下, 即便用脚随的数据很假也算是过了几十组. 脑子一热拿这破机子去跑了 恶 臭 不 堪 的第三组样例, 本机上 RE, 检查了一下认为是本地爆栈的问题就不打算管了, 毕竟我也不会手动开栈这种 “禁赛三年” 的操作… (雾, 你的手动 O2 是怎么学会的)</p>
 <p>感觉这题放在 Day 1 T2 应该不会是难题, 可能是我有关键点没有把握, 没能想出来正解是我的无能. 如果因为 T2 退役也是不会令人懊恼的事了. 竞赛的事情啊, 还是以个人实力为基础吧.</p>

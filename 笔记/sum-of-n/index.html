@@ -12,18 +12,18 @@
   
 </title>
 
-<meta name="description" content="我不如小学生.png  作为高中生, 被小学奥 (chang) 数 (shi) 针对了. 于是, 这里集中了形如 $\sum_{i=1}^n i^a,\ (a = 1,\ 2,\ 3,\ \ldots )$, 即前 $n$ 个正整数的 $a$ 次方和的计算公式.">
+<meta name="description" content="我不如小学生.png  作为高中生, 被小学奥 (chang) 数 (shi) 针对了. 于是, 这里集中了形如 $\sum_{i=1}^n i^a, (a = 1, 2, 3, \ldots )$, 即前 $n$ 个正整数的 $a$ 次方和的计算公式.">
 <meta name="keywords" content="Polynomial">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小学数学之前 n 个正整数的 a 次方之和">
 <meta property="og:url" content="https://depletedprism.github.io/笔记/sum-of-n/index.html">
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
-<meta property="og:description" content="我不如小学生.png  作为高中生, 被小学奥 (chang) 数 (shi) 针对了. 于是, 这里集中了形如 $\sum_{i=1}^n i^a,\ (a = 1,\ 2,\ 3,\ \ldots )$, 即前 $n$ 个正整数的 $a$ 次方和的计算公式.">
+<meta property="og:description" content="我不如小学生.png  作为高中生, 被小学奥 (chang) 数 (shi) 针对了. 于是, 这里集中了形如 $\sum_{i=1}^n i^a, (a = 1, 2, 3, \ldots )$, 即前 $n$ 个正整数的 $a$ 次方和的计算公式.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-02-27T16:50:20.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小学数学之前 n 个正整数的 a 次方之和">
-<meta name="twitter:description" content="我不如小学生.png  作为高中生, 被小学奥 (chang) 数 (shi) 针对了. 于是, 这里集中了形如 $\sum_{i=1}^n i^a,\ (a = 1,\ 2,\ 3,\ \ldots )$, 即前 $n$ 个正整数的 $a$ 次方和的计算公式.">
+<meta name="twitter:description" content="我不如小学生.png  作为高中生, 被小学奥 (chang) 数 (shi) 针对了. 于是, 这里集中了形如 $\sum_{i=1}^n i^a, (a = 1, 2, 3, \ldots )$, 即前 $n$ 个正整数的 $a$ 次方和的计算公式.">
 
 
   <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
@@ -98,7 +98,7 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">28</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">28</span></li></ul>
               </li>
             
           
@@ -112,7 +112,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -191,38 +191,30 @@
 <p>我不如小学生.png</p>
 </blockquote>
 <p>作为高中生, 被小学奥 (chang) 数 (shi) 针对了.</p>
-<p>于是, 这里集中了形如 $\sum_{i=1}^n i^a,\ (a = 1,\ 2,\ 3,\ \ldots )$, 即前 $n$ 个正整数的 $a$ 次方和的计算公式.</p>
+<p>于是, 这里集中了形如 $\sum_{i=1}^n i^a, (a = 1, 2, 3, \ldots )$, 即前 $n$ 个正整数的 $a$ 次方和的计算公式.</p>
 <a id="more"></a>
 <h2 id="简单结论"><a href="#简单结论" class="headerlink" title="简单结论"></a>简单结论</h2><p>首先, 有以下结论</p>
-<p>$$\sum_{i=1}^n i = \frac{n(n+1)}{2}$$</p>
-<p>$$\sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}$$</p>
-<p>$$\sum_{i=1}^n i^{3} = \frac{n^2(n+1)^2}{4}$$</p>
-<p>至此, 本文结束, <del>你不应该在这个乐色结论上浪费太多时间 (</del>.</p>
+<script type="math/tex; mode=display">\sum_{i=1}^n i = \frac{n(n+1)}{2}</script><script type="math/tex; mode=display">\sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}</script><script type="math/tex; mode=display">\sum_{i=1}^n i^{3} = \frac{n^2(n+1)^2}{4}</script><p>至此, 本文结束, <del>你不应该在这个乐色结论上浪费太多时间 (</del>.</p>
 <h2 id="结论证明"><a href="#结论证明" class="headerlink" title="结论证明"></a>结论证明</h2><ul>
 <li><p>$a = 1$</p>
 <p>设 $S_n = \sum_{i=1}^n i$, 并容易发现这就是个公差为 $1$ 的等差数列, 直接上求和公式即可.</p>
 <p>但是, 这是小学生的数学, 我们换一种方式</p>
-<p>$$S_n = 1 + 2 + 3 + \cdots + (n-2) + (n-1) + n \\ S_n = n + (n-1) + (n-2) + \cdots + 3 + 2 + 1$$</p>
-<p>显然有</p>
-<p>$$2S_n = (n+1) + (n+1) + (n+1) + \cdots + (n+1) + (n+1) \\ S_n = \frac{n(n+1)}{2}$$</p>
-<p>这是个数列里普通的技巧 “倒序相加”, <del>也就能拿来骗小学生玩了</del></p>
+<script type="math/tex; mode=display">S_n = 1 + 2 + 3 + \cdots + (n-2) + (n-1) + n \\\ S_n = n + (n-1) + (n-2) + \cdots + 3 + 2 + 1</script><p>显然有</p>
+<script type="math/tex; mode=display">2S_n = (n+1) + (n+1) + (n+1) + \cdots + (n+1) + (n+1) \\\ S_n = \frac{n(n+1)}{2}</script><p>这是个数列里普通的技巧 “倒序相加”, <del>也就能拿来骗小学生玩了</del></p>
 <p>但是这个方法不能推广到 $a=2$ 的情况, 于是继续换一种方式</p>
 <p>我们有 $(k-1)^2 = k^2 - 2k + 1$, 移项得 $k^2 - (k-1)^2 = 2k - 1$</p>
-<p>所以 $$\sum_{k=1}^n k^2 - \sum_{k=1}^n (k-1)^2 = 2\sum_{k=1}^n k - n$$</p>
-<p>$$\sum_{k=1}^n k^2 - \sum_{k=1}^{n-1} k^2 = 2\sum_{k=1}^n k - n$$</p>
-<p>所以 $$n^2 = 2S_n - n \\ S_n = \frac{n(n+1)}{2}$$</p>
+<p>所以 <script type="math/tex">\sum_{k=1}^n k^2 - \sum_{k=1}^n (k-1)^2 = 2\sum_{k=1}^n k - n</script></p>
+<script type="math/tex; mode=display">\sum_{k=1}^n k^2 - \sum_{k=1}^{n-1} k^2 = 2\sum_{k=1}^n k - n</script><p>所以 <script type="math/tex">n^2 = 2S_n - n \\\ S_n = \frac{n(n+1)}{2}</script></p>
 </li>
 <li><p>$a = 2$</p>
 <p>同样, 设 $S_n = \sum_{i=1}^n i^2$, 有 $(k-1)^3 = k^3 - 3k^2 + 3k - 1$</p>
-<p>移项, 得 $$k^3 - (k-1)^3 = 3k^2 - 3k + 1$$</p>
-<p>所以 $$\sum_{i=1}^n k^3 - \sum_{i=1}^n (k-1)^3 = 3 \sum_{k=1}^n k^2 - 3 \sum_{i=1}^n k + n$$</p>
-<p>$$\sum_{i=1}^n k^3 - \sum_{i=1}^{n-1} k^3 = n^3 = 3 \sum_{k=1}^n k^2 - 3 \sum_{i=1}^n k + n$$</p>
-<p>经过一番代换, 有 $$\sum_{k=1}^n k^2 = \frac{1}{3} n^3 + \frac{1}{2} n^2 + \frac{1}{6} n = \frac{n(n+1)(2n+1)}{6}$$</p>
+<p>移项, 得 <script type="math/tex">k^3 - (k-1)^3 = 3k^2 - 3k + 1</script></p>
+<p>所以 <script type="math/tex">\sum_{i=1}^n k^3 - \sum_{i=1}^n (k-1)^3 = 3 \sum_{k=1}^n k^2 - 3 \sum_{i=1}^n k + n</script></p>
+<script type="math/tex; mode=display">\sum_{i=1}^n k^3 - \sum_{i=1}^{n-1} k^3 = n^3 = 3 \sum_{k=1}^n k^2 - 3 \sum_{i=1}^n k + n</script><p>经过一番代换, 有 <script type="math/tex">\sum_{k=1}^n k^2 = \frac{1}{3} n^3 + \frac{1}{2} n^2 + \frac{1}{6} n = \frac{n(n+1)(2n+1)}{6}</script></p>
 </li>
 <li><p>$a = 3$</p>
 <p>同理可得, 留给读者当作练习 (</p>
-<p>$$\sum_{i=1}^n i^3 = \frac{n^2(n+1)^2}{4}$$</p>
-<p>当然, 这个公式有另一种理解方式  $$\sum_{i=1}^n i^3 = (\sum_{i=1}^n i)^2 = \frac{n(n+1)}{2} \cdot \frac{n(n+1)}{2}$$</p>
+<script type="math/tex; mode=display">\sum_{i=1}^n i^3 = \frac{n^2(n+1)^2}{4}</script><p>当然, 这个公式有另一种理解方式  <script type="math/tex">\sum_{i=1}^n i^3 = (\sum_{i=1}^n i)^2 = \frac{n(n+1)}{2} \cdot \frac{n(n+1)}{2}</script></p>
 <p>这是为什么呢, 可以参考 <a href="https://proofwiki.org/wiki/Sum_of_Sequence_of_Cubes/Proof_by_Nicomachus" target="_blank" rel="noopener">Nicomachus’s Proof</a></p>
 </li>
 <li><p>$a \geq 4$</p>
