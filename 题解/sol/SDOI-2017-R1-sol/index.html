@@ -187,15 +187,21 @@
 <a id="more"></a>
 <p>不要因为 Round 1 而错怪 SDOI.</p>
 <h3 id="「SDOI2017」数字表格"><a href="#「SDOI2017」数字表格" class="headerlink" title="「SDOI2017」数字表格"></a>「SDOI2017」数字表格</h3><h4 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h4><p>求</p>
-<script type="math/tex; mode=display">\prod_{i=1}^n \prod_{j=1}^m f( \gcd(i, j) ) \mod 10^9 + 7</script><p>其中 $f(n)$ 为斐波那契数列数列第 $n$ 项, $1 \le n,m \le 10^6$, 多组测试数据, $1 \le T \le 1000$.</p>
+<p>$$\prod_{i=1}^n \prod_{j=1}^m f( \gcd(i, j) ) \mod 10^9 + 7$$</p>
+<p>其中 $f(n)$ 为斐波那契数列数列第 $n$ 项, $1 \le n,m \le 10^6$, 多组测试数据, $1 \le T \le 1000$.</p>
 <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><ul>
 <li><a href="https://loj.ac/problem/2000" target="_blank" rel="noopener">https://loj.ac/problem/2000</a></li>
 </ul>
 <p>看到 $\gcd$ 不如来反演一波. 不妨令 $n \le m$.</p>
 <p>枚举约数并整理, 有</p>
-<script type="math/tex; mode=display">\prod_{i=1}^n \prod_{j=1}^m \prod_{d = 1}^n f(d) [\gcd(i, j) = d]</script><script type="math/tex; mode=display">\prod_{d=1}^n f(d) ^ {\sum\limits_{i=1}^n \sum\limits_{j=1}^m{\gcd(i, j) = d}}</script><p>由莫比乌斯反演的套路, 得</p>
-<script type="math/tex; mode=display">\prod_{d=1}^n f(d) ^ {\sum\limits_{T=1}^{\lfloor \frac{n}{d} \rfloor} \mu (T) \lfloor \frac{n}{Td} \rfloor \lfloor \frac{m}{Td} \rfloor}</script><script type="math/tex; mode=display">\prod_{T=1}^n (\prod_{d\mid T} f(d) ^ {\mu (\frac{T}{d})}) ^ {\lfloor \frac{n}{T} \rfloor \lfloor \frac{m}{T} \rfloor}</script><p>设 $g(T) = \prod_{d\mid T} f(d) ^ {\mu (\frac{T}{d})}$, 则所求即为</p>
-<script type="math/tex; mode=display">\prod_{T=1}^n g(T) ^ {\lfloor \frac{n}{T} \rfloor \lfloor \frac{m}{T} \rfloor}</script><p>考虑计算 $g(T)$. 可以发现, 由于 $\mu(n)$ 取值只有 $0, -1, 1$, 计算 $g(T)$ 可以通过枚举倍数简单地实现. 时间复杂度 $O(n \ln n)$.</p>
+<p>$$\prod_{i=1}^n \prod_{j=1}^m \prod_{d = 1}^n f(d) [\gcd(i, j) = d]$$</p>
+<p>$$\prod_{d=1}^n f(d) ^ {\sum\limits_{i=1}^n \sum\limits_{j=1}^m{\gcd(i, j) = d}}$$</p>
+<p>由莫比乌斯反演的套路, 得</p>
+<p>$$\prod_{d=1}^n f(d) ^ {\sum\limits_{T=1}^{\lfloor \frac{n}{d} \rfloor} \mu (T) \lfloor \frac{n}{Td} \rfloor \lfloor \frac{m}{Td} \rfloor}$$</p>
+<p>$$\prod_{T=1}^n (\prod_{d\mid T} f(d) ^ {\mu (\frac{T}{d})}) ^ {\lfloor \frac{n}{T} \rfloor \lfloor \frac{m}{T} \rfloor}$$</p>
+<p>设 $g(T) = \prod_{d\mid T} f(d) ^ {\mu (\frac{T}{d})}$, 则所求即为</p>
+<p>$$\prod_{T=1}^n g(T) ^ {\lfloor \frac{n}{T} \rfloor \lfloor \frac{m}{T} \rfloor}$$</p>
+<p>考虑计算 $g(T)$. 可以发现, 由于 $\mu(n)$ 取值只有 $0, -1, 1$, 计算 $g(T)$ 可以通过枚举倍数简单地实现. 时间复杂度 $O(n \ln n)$.</p>
 <p>配合前缀积和数论分块即可, 注意快速幂时间复杂度 $O(\log b)$.</p>
 <p>时间复杂度 $O(n \log P + n \ln n + T \cdot n \sqrt n \log P)$.</p>
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
@@ -223,7 +229,8 @@
 <h4 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h4><p>要求和是 $p$ 的倍数, 那么显然是模 $p$ 意义下为 $0$ 了. 考虑到至少有一个数为质数的限制可以通过减法原理解决, 即计算一遍所有数的方案数, 再减去只用合数的答案.</p>
 <p>容易想到一个暴力 DP:</p>
 <p>设 $f(i, j)$ 表示选 $i$ 个数, 加起来模 $p$ 为 $j$ 的方案数. 则</p>
-<script type="math/tex; mode=display">f(i, j) = \sum_k f(i-1, (j - k)\mod p)</script><p>每次选择满足限制的 $k$ 就好了.</p>
+<p>$$f(i, j) = \sum_k f(i-1, (j - k)\mod p)$$</p>
+<p>每次选择满足限制的 $k$ 就好了.</p>
 <p>观察到 DP 中每次转移都是一样的, 考虑用矩阵快速幂优化.</p>
 <p>容易想到 $O(mp)$ 的构造矩阵方法, 考虑在模 $p$ 意义下, 矩阵中某一列 (或者是某一行) 是循环的, 于是可以在 $O(m + p^2)$ 的时间内构造.</p>
 <p>具体实现的时候有一些细节, 还是参考代码实现吧.</p>
@@ -238,8 +245,10 @@
 </ul>
 <h4 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h4><p>看到式子之后容易联想到 0/1 分数规划. 所以直接考虑二分答案.</p>
 <p>假设当前答案 $\ge x$, 也就是</p>
-<script type="math/tex; mode=display">C = \frac{ \sum a_i' }{ \sum b_i' } \ge x</script><p>进一步转化,得</p>
-<script type="math/tex; mode=display">\sum (a_i' - b_i' x) \ge 0</script><p>然后就可以用二分图最大匹配解决了. 具体地说, 二分图内两两边权 $w_{i, j} = a_{i, j} - b_{i, j} x$, 如果最大权匹配 $\ge 0$ 则当前二分到的 $x$ 合法.</p>
+<p>$$C = \frac{ \sum a_i’ }{ \sum b_i’ } \ge x$$</p>
+<p>进一步转化,得</p>
+<p>$$\sum (a_i’ - b_i’ x) \ge 0$$</p>
+<p>然后就可以用二分图最大匹配解决了. 具体地说, 二分图内两两边权 $w_{i, j} = a_{i, j} - b_{i, j} x$, 如果最大权匹配 $\ge 0$ 则当前二分到的 $x$ 合法.</p>
 <p>二分图最大权匹配部分采用 KM 算法, 时间复杂度 $O(n^3 \log w)$. 其中 $w$ 为权值上界.</p>
 <p>突然有一种工程界很喜欢 KM 算法的错觉.</p>
 <h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h4><p>听说写费用流有点卡常? 我这一个写 KM 的哪知道啊 = =</p>
@@ -269,9 +278,14 @@
 <li><a href="https://loj.ac/problem/2005" target="_blank" rel="noopener">https://loj.ac/problem/2005</a></li>
 </ul>
 <h4 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h4><p>读过高中必修课本的 (忘了是哪本了 = =) 都知道, 询问的 $\hat a$ 可以展开, 当然不知道这个式子也是可推的…</p>
-<script type="math/tex; mode=display">\hat a = \frac{\sum\limits_{i = L} ^ R (x_i - \bar{x})(y_i - \bar{y})}{\sum\limits_{i = L} ^ R (x_i - \bar{x}) ^ 2} = \frac{ \sum\limits_{i=L}^R x_i y_i - n \bar x \bar y }{\sum\limits_{i=L}^R x_i^2 - n \bar x^2}</script><p>对于询问, 直接用线段树维护 $\sum {x_i}, \sum {y_i}, \sum x_i y_i, \sum x_i ^ 2$ 就可以回答了.</p>
+<p>$$\hat a = \frac{\sum\limits_{i = L} ^ R (x_i - \bar{x})(y_i - \bar{y})}{\sum\limits_{i = L} ^ R (x_i - \bar{x}) ^ 2} = \frac{ \sum\limits_{i=L}^R x_i y_i - n \bar x \bar y }{\sum\limits_{i=L}^R x_i^2 - n \bar x^2}$$</p>
+<p>对于询问, 直接用线段树维护 $\sum {x_i},\ \sum {y_i},\ \sum x_i y_i,\ \sum x_i ^ 2$ 就可以回答了.</p>
 <p>区间加… 把这几个东西加起来再展开就好了.</p>
-<script type="math/tex; mode=display">\sum_{i=L}^R (x_i + S) = \sum_{i=L}^R x_i + (R-L+1) \cdot S</script><script type="math/tex; mode=display">\sum_{i=L}^R (y_i + T) = \sum_{i=L}^R y_i + (R-L+1) \cdot T</script><script type="math/tex; mode=display">\sum_{i=L}^R (x_i + S) (y_i + T) = \sum_{i=L}^R x_i y_i + T \sum_{i=L}^R x_i + S \sum_{i=L}^R y_i + (R-L+1) \cdot ST</script><script type="math/tex; mode=display">\sum_{i=L}^R (x_i + S) ^ 2 = \sum_{i=L}^R x_i^2 + 2S \sum_{i=L}^R x_i + (R-L+1) \cdot S^2</script><p>区间赋值… 注意所赋值具有特殊性, 也就是第 $i$ 个位置改成 $i$, 然后再跑一遍区间加的操作就好了.</p>
+<p>$$\sum_{i=L}^R (x_i + S) = \sum_{i=L}^R x_i + (R-L+1) \cdot S$$</p>
+<p>$$\sum_{i=L}^R (y_i + T) = \sum_{i=L}^R y_i + (R-L+1) \cdot T$$</p>
+<p>$$\sum_{i=L}^R (x_i + S) (y_i + T) = \sum_{i=L}^R x_i y_i + T \sum_{i=L}^R x_i + S \sum_{i=L}^R y_i + (R-L+1) \cdot ST$$</p>
+<p>$$\sum_{i=L}^R (x_i + S) ^ 2 = \sum_{i=L}^R x_i^2 + 2S \sum_{i=L}^R x_i + (R-L+1) \cdot S^2$$</p>
+<p>区间赋值… 注意所赋值具有特殊性, 也就是第 $i$ 个位置改成 $i$, 然后再跑一遍区间加的操作就好了.</p>
 <p><del>看错条件多推了一倍的式子, 人没了</del></p>
 <h4 id="代码实现-5"><a href="#代码实现-5" class="headerlink" title="代码实现"></a>代码实现</h4><p>线段树的细节无非是传标记的时候容易挂… 然后就喜闻乐见地挂了.</p>
 <div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
