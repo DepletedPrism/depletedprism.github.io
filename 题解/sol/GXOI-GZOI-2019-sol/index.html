@@ -97,21 +97,21 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">30</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">30</span></li></ul>
               </li>
             
           
             
               <li class="tag-list-container">
                 <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -192,8 +192,8 @@
 <p>如果子矩阵 AND 值为 $1$, 则子矩阵内都为 $1$.</p>
 <p>同理, 如果子矩阵 OR 值为 $1$, 则子矩阵任意存在一个 $1$ 即可.</p>
 <p>先考虑 AND 的情况.</p>
-<p>记 $f(i, j)$ 为位置 $(i,\ j)$ 上方 (包含 $(i,\ j)$) 最多 $1$ 的个数. 那么固定行的位置 $i$, 从左向右枚举列的位置 $j$, 每个位置 $(i, j)$ 对全 $1$ 子矩阵的贡献可看作 $f(i, j)$ 向左延伸的最大距离, 用单调栈维护这个过程即可.</p>
-<p>OR 的情况类似. 任意存在一个 $1$ 的情况不好统计, 如果枚举矩阵中每一个位置 $(i,\ j)$, 那么以这个位置为右下角的子矩阵共有 $i \times j$ 个. 可以用所有情况减去子矩阵内都为 $0$ 的情况. 这样就 AND 一样了.</p>
+<p>记 $f(i, j)$ 为位置 $(i, j)$ 上方 (包含 $(i, j)$) 最多 $1$ 的个数. 那么固定行的位置 $i$, 从左向右枚举列的位置 $j$, 每个位置 $(i, j)$ 对全 $1$ 子矩阵的贡献可看作 $f(i, j)$ 向左延伸的最大距离, 用单调栈维护这个过程即可.</p>
+<p>OR 的情况类似. 任意存在一个 $1$ 的情况不好统计, 如果枚举矩阵中每一个位置 $(i, j)$, 那么以这个位置为右下角的子矩阵共有 $i \times j$ 个. 可以用所有情况减去子矩阵内都为 $0$ 的情况. 这样就 AND 一样了.</p>
 <p>时间复杂度 $(n ^ 2 \log A)$, 其中 $A$ 为矩阵内最大值.</p>
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p>随手打了个 $998244353$ 作为模数结果调半天的是屑…</p>
 <div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
@@ -209,8 +209,8 @@
 <p>如果之前有做过其他麻将 / 斗地主一类的题, 容易有高维 DP 的思路.</p>
 <p>现在需要注意顺子, 刻子, 以及雀头的个数. 记 $f(i, j, k, l, s)$ 表示考虑完第 $i$ 张牌, 共组合成 $j$ 组面子, 准备以第 $i-1$ 张牌开始的顺子有 $k$ 组, 准备以第 $i$ 张牌开始的顺子有 $l$ 组, 且雀头的个数为 $s$.</p>
 <p>以顺子为例, 记 $s$ 为第 $i + 1$ 张牌加入 $c$ 张时对分数的贡献, $\operatorname{Cnt}(i + 1)$ 为第 $i + 1$ 张牌剩余个数, 那么有</p>
-<p>$$f(i + 1,\ j + k,\ l,\ c - k - l,\ 0) = \max_{c = k + l} ^ {\operatorname{Cnt}(i + 1)} \{ s \cdot f(i,\ j,\ k,\ l,\ 0 ) \} \\<br>f(i + 1,\ j + k,\ l,\ c - k - l,\ 1) = \max_{c = k + l} ^ {\operatorname{Cnt}(i + 1)} \{ s \cdot f(i,\ j,\ k,\ l,\ 1 ) \}$$</p>
-<p>剩下的刻子和雀头的转移类似, 也就是在顺子的基础上多挑出一些牌组成刻子 / 雀头.</p>
+<script type="math/tex; mode=display">f(i + 1,\ j + k,\ l,\ c - k - l,\ 0) = \max_{c = k + l} ^ {\operatorname{Cnt}(i + 1)} \\\{ s \cdot f(i,\ j,\ k,\ l,\ 0 ) \\\} \\\\
+f(i + 1,\ j + k,\ l,\ c - k - l,\ 1) = \max_{c = k + l} ^ {\operatorname{Cnt}(i + 1)} \\\{ s \cdot f(i,\ j,\ k,\ l,\ 1 ) \\\}</script><p>剩下的刻子和雀头的转移类似, 也就是在顺子的基础上多挑出一些牌组成刻子 / 雀头.</p>
 <p>还有一些值得注意的地方:</p>
 <ol>
 <li>三组顺子和三组刻子的等价的, 每次枚举顺子组数不超过 $2$ 即可.</li>
@@ -232,15 +232,13 @@
 <p>考虑如何处理第一部分.</p>
 <p>注意到两直线相交的条件为 $y_0$ 和 $y_1$ 在 $x_{st}$ 处和 $x_{ed}$ 处的呈逆序, 并保证直线交点个数不大 ($\le 500,000$). 那么直接枚举直线, 暴力统计所有满足的直线计算交点即可. 具体可通过在 <code>set</code> 中二分实现.</p>
 <p>设不计嘉宾团的影响下的答案为 $w$, 选择 $x$ 处交点交换, 共有 $m$ 个交点. 则有</p>
-<p>$$w = a x + b \cdot (m - x)$$</p>
-<p>容易发现 $w$ 是关于 $x$ 的一次函数, 其极值显然在 $x$ 的上下界处取到.</p>
+<script type="math/tex; mode=display">w = a x + b \cdot (m - x)</script><p>容易发现 $w$ 是关于 $x$ 的一次函数, 其极值显然在 $x$ 的上下界处取到.</p>
 <p>一个显然的上界是交点个数. 注意到交换航线的操作并不影响纵坐标相对顺序, “能交换就交换” 一定能保持原有的相对位置.</p>
 <p>如果将一个位置向在终点处对应位置的实际编号连边, 一定会构成多个环. <del>实际上是多个置换</del>. 而让大小为 $l$ 的环有序的交换次数为 $l - 1$.</p>
 <p>记环个数为 $c$, 总次数为</p>
-<p>$$\sum_{i = 1} ^ c (l_i - 1) = \sum_{i = 1} ^ c l_i - c = n - c$$</p>
-<p>此处 DFS 遍历一遍所有环统计个数即可.</p>
+<script type="math/tex; mode=display">\sum_{i = 1} ^ c (l_i - 1) = \sum_{i = 1} ^ c l_i - c = n - c</script><p>此处 DFS 遍历一遍所有环统计个数即可.</p>
 <p>考虑如何处理第二部分.</p>
-<p>倾斜的正方形不好处理, 考虑旋转坐标轴, 使得正方形的边同坐标轴平行即可. 这里我将坐标轴逆时针旋转 $\frac{\pi}{4}$, 并将横纵坐标同时乘 $\sqrt 2$, 得出原坐标系下点 $(x,\ y)$ 在旋转后的坐标系中坐标为 $(x + y,\ y - x)$.</p>
+<p>倾斜的正方形不好处理, 考虑旋转坐标轴, 使得正方形的边同坐标轴平行即可. 这里我将坐标轴逆时针旋转 $\frac{\pi}{4}$, 并将横纵坐标同时乘 $\sqrt 2$, 得出原坐标系下点 $(x, y)$ 在旋转后的坐标系中坐标为 $(x + y, y - x)$.</p>
 <p>此时直接二维数点即可. 拆成扫描线后是经典问题, 同时只需要 BIT 即可实现.</p>
 <p>记交点个数为 $m$, 那么时间复杂度为 $O\big( n \log n + (m + k) \log (m + k) \big)$.</p>
 <h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><p>想清楚细节之后写起来就十分快乐, 调试的时候就非常快乐了 (</p>
@@ -255,22 +253,15 @@
 <p>假定不考虑 $1 \times 1$ 方砖的影响, 那么剩下的就是经典问题了, 其方案数为 Fibonacci 数列, 并记 Fibonacci 数列第 $n$ 项为 $f_n$, 同时有 $f_0 = 1$.</p>
 <p>如果将两个 $1\times 1$ 方砖填入 $2 \times n$ 的格子, 且要求两方砖分别处于第一列和最后一列, 那么只在 $n \ge 3$ 的情况下有合法方案, 可能的方案只有两种, 且具体排布方式和 $n$ 的奇偶性相关.</p>
 <p>此时可以得到这样的思路: 枚举两方砖的间距, 将整体分成两部分, 统计方案数. 可以得出方案数为</p>
-<p>$$2 \sum_{i = 3} ^ {n} \sum_{j = 0} ^ {n - i} f_j \cdot f_{n - i - j}$$</p>
-<p><del>卷积!</del> 卷个锤子. 交换求和顺序, 得</p>
-<p>$$2 \sum_{i = 0} ^ {n - 3} f_i \sum_{j = 0} ^ {n - i - 3} f_j$$</p>
-<p>设 Fibonacci 数列的前缀和第 $n$ 项为 $s_n$, 有 $s_n = s_{n - 1} + s_{n - 2} + 1 = f_{n + 2} - 1$. 归纳可证.</p>
+<script type="math/tex; mode=display">2 \sum_{i = 3} ^ {n} \sum_{j = 0} ^ {n - i} f_j \cdot f_{n - i - j}</script><p><del>卷积!</del> 卷个锤子. 交换求和顺序, 得</p>
+<script type="math/tex; mode=display">2 \sum_{i = 0} ^ {n - 3} f_i \sum_{j = 0} ^ {n - i - 3} f_j</script><p>设 Fibonacci 数列的前缀和第 $n$ 项为 $s_n$, 有 $s_n = s_{n - 1} + s_{n - 2} + 1 = f_{n + 2} - 1$. 归纳可证.</p>
 <p>带入原式, 得</p>
-<p>$$ 2 \sum_{i = 0} ^ {n - 3} f_i \cdot (f_{n - i - 1} - 1) =<br>2 \sum_{i = 0} ^ {n - 3} f_i \cdot f_{n - i - 1} - 2 f_{n - 1} + 2 $$</p>
-<p>设 $g_n = \sum\limits_{ i = 0 } ^ n f_i \cdot f_{n - i}$, 那么可化为</p>
-<p>$$2\ (\sum_{i = 0} ^ {n - 1} f_i \cdot f_{n - i - 1} - f_{n - 1} \cdot f_0 - f_{n - 2} \cdot f_1) - 2 f_{n - 1} + 2$$</p>
-<p>$$2 g_{n - 1} - 2 f_{n - 2} - 4 f_{n - 1} + 2$$</p>
-<p>现在的问题在于如何快速求出 $g_n$.</p>
-<p>$$ g_n = \sum_{i = 0} ^ {n - 1} f_i \cdot f_{n - i} = \sum_{i = 0} ^ {n - 2} f_i \cdot (f_{n - i - 1} + f_{n - i - 2}) + f_{n} + f_{n - 1} $$</p>
-<p><del>想必大家都知道接下来要做什么</del></p>
-<p>$$g_n = (f_{n - 1} + \sum_{i = 0} ^ {n - 2} f_i \cdot f_{n - i - 1} ) + \sum_{i = 0} ^ {n - 2} f_i \cdot f_{n - i - 2} + f_n = g_{n - 1} + g_{n - 2} + f_n$$</p>
-<p>设 $\mathbf{A_{n}} = \begin{bmatrix} f_{n - 1} \\ f_n \\ g_{n - 1} \\ g_{n} \end{bmatrix}$, 有</p>
-<p>$$\mathbf{A_i} = \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 1 &amp; 1 &amp; 1 &amp; 1 \end{bmatrix} \times \mathbf{A_{i - 1}}$$</p>
-<p>矩阵快速幂即可.</p>
+<script type="math/tex; mode=display">2 \sum_{i = 0} ^ {n - 3} f_i \cdot (f_{n - i - 1} - 1) =
+2 \sum_{i = 0} ^ {n - 3} f_i \cdot f_{n - i - 1} - 2 f_{n - 1} + 2</script><p>设 $g_n = \sum\limits_{ i = 0 } ^ n f_i \cdot f_{n - i}$, 那么可化为</p>
+<script type="math/tex; mode=display">2\ (\sum_{i = 0} ^ {n - 1} f_i \cdot f_{n - i - 1} - f_{n - 1} \cdot f_0 - f_{n - 2} \cdot f_1) - 2 f_{n - 1} + 2</script><script type="math/tex; mode=display">2 g_{n - 1} - 2 f_{n - 2} - 4 f_{n - 1} + 2</script><p>现在的问题在于如何快速求出 $g_n$.</p>
+<script type="math/tex; mode=display">g_n = \sum_{i = 0} ^ {n - 1} f_i \cdot f_{n - i} = \sum_{i = 0} ^ {n - 2} f_i \cdot (f_{n - i - 1} + f_{n - i - 2}) + f_{n} + f_{n - 1}</script><p><del>想必大家都知道接下来要做什么</del></p>
+<script type="math/tex; mode=display">g_n = (f_{n - 1} + \sum_{i = 0} ^ {n - 2} f_i \cdot f_{n - i - 1} ) + \sum_{i = 0} ^ {n - 2} f_i \cdot f_{n - i - 2} + f_n = g_{n - 1} + g_{n - 2} + f_n</script><p>设 $\mathbf{A_{n}} = \begin{bmatrix} f_{n - 1} \\ f_n \\ g_{n - 1} \\ g_{n} \end{bmatrix}$, 有</p>
+<script type="math/tex; mode=display">\mathbf{A_i} = \begin{bmatrix} 0 & 1 & 0 & 0 \\\ 1 & 1 & 0 & 0 \\\ 0 & 0 & 0 & 1 \\\ 1 & 1 & 1 & 1 \end{bmatrix} \times \mathbf{A_{i - 1}}</script><p>矩阵快速幂即可.</p>
 <p>时间复杂度为 $O(T \cdot 4 ^ 3 \log n)$.</p>
 <p><del>那个 12 x 12 的矩阵是大力设状态, xjb 转移的产物.</del></p>
 <h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
@@ -286,8 +277,8 @@
 <p>每次枚举关键点在二进制下的每一位, 按二进制下该位在值将关键点分作两个部分. 建立源点 $s$ 向某一部分连边, 边权为 $0$. 建立汇点 $t$, 令另一部分向 $t$ 连边, 边权为 $0$. 此时 $s$ 到 $t$ 的最短路即为第一部分关键点到另一部分关键点距离的最小值. 重复 $\log k$ 次即可.</p>
 <p>但是还存在时间复杂度为 $O(T \cdot m \log m)$ 的做法.</p>
 <p>同样建立源点 $s$, 向所有关键点连边, 边权为 $0$, 求 $s$ 出发的最短路. 在反图上建立源点 $s$, 向所有关键点连边, 边权为 $0$, 在反图上再次求以 $s$ 为起点的最短路.</p>
-<p>两次求最短路的同时, 分别记录到达点 $u$ 的最短路长度 $d_1(u),\ d_2(u)$, 以及 $p_1(u),\ p_2(u)$, 表示到达 $u$ 的最短路是从关键点 $p(u)$ 出发的.</p>
-<p>对于关键点间最短距离, 其路径上一定不存在另一个关键点. 那么, 枚举每条边 $(u,\ v,\ w)$, 在保证 $p_1(u) \neq p_2(v)$ 的情况下用 $d_1(u) + w + d_2(v)$ 更新答案即可.</p>
+<p>两次求最短路的同时, 分别记录到达点 $u$ 的最短路长度 $d_1(u), d_2(u)$, 以及 $p_1(u), p_2(u)$, 表示到达 $u$ 的最短路是从关键点 $p(u)$ 出发的.</p>
+<p>对于关键点间最短距离, 其路径上一定不存在另一个关键点. 那么, 枚举每条边 $(u, v, w)$, 在保证 $p_1(u) \neq p_2(v)$ 的情况下用 $d_1(u) + w + d_2(v)$ 更新答案即可.</p>
 <p>具体实现时不需要显式地建出 $s$. 因为 $s$ 到关键点一定是最短路, 直接将最短路长度初始化后丢进堆里就好了.</p>
 <p>由于只跑两次最短路, 使用 <code>priority_queue</code> 实现的 Dijkstra, 时间复杂度为 $O(T \cdot m \log m)$.</p>
 <p><del>我实在看不懂那些长篇大论的题解在证个什么</del>.</p>

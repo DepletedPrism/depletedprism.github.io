@@ -98,21 +98,21 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">30</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">30</span></li></ul>
               </li>
             
           
             
               <li class="tag-list-container">
                 <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -275,7 +275,7 @@
 <p>建权值线段树, 动态开点.</p>
 <p>按照初始序列建可持久化线段树, 每个位置对应的线段树, 就是包含这个位置前缀信息的线段树了.</p>
 <p>具体地说, 先建出一个空树, 然后对于每个位置, 在上一个位置的基础上拓展, 尽量利用之前以及储存过的信息, 再建出一颗新树. 这样每次新增的节点数为 $O(\log n)$, 总共建出 $n$ 颗线段树, 总空间复杂度为 $O(n \log n + n \log n)$.</p>
-<p>这样对于每个询问 $[L,\ R]$, 按照前缀和的基本思想, 在 $L-1,\ R$ 两颗树上进行二分就好了, 即记录当前二分到的两颗树的左子树 size 之差 (因为是求第 $k$ 小), 然后分类讨论移动到左子树还是右子树.</p>
+<p>这样对于每个询问 $[L, R]$, 按照前缀和的基本思想, 在 $L-1, R$ 两颗树上进行二分就好了, 即记录当前二分到的两颗树的左子树 size 之差 (因为是求第 $k$ 小), 然后分类讨论移动到左子树还是右子树.</p>
 <p>时间复杂度: $O(n \log n)$</p>
 <p><strong>代码实现</strong></p>
 <div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
@@ -365,7 +365,7 @@
 </ul>
 <p>大概是权值线段树套普通线段树 ?</p>
 <p><del>话说这种直接给出操作的数据结构应该是几年前的画风吧 ?</del></p>
-<p>首先对题意进行转化, 将加入的元素看作一个带有两种属性的元素, 那么操作 1 就是加入 $(l, c),\ (l+1, c),\ \ldots, (r, c)$ 这些点, 操作 2 就是查询第一个属性 $a$ 满足 $l \le a \le r$ 的点集中第 $k$ 大.</p>
+<p>首先对题意进行转化, 将加入的元素看作一个带有两种属性的元素, 那么操作 1 就是加入 $(l, c), (l+1, c), \ldots, (r, c)$ 这些点, 操作 2 就是查询第一个属性 $a$ 满足 $l \le a \le r$ 的点集中第 $k$ 大.</p>
 <p>于是就可以很自然地联想到树套树了. 但是区间加入一个数的操作不好实现, 所以就有了一个朴素的想法: 在外层线段树上维护权值, 在内层维护位置.</p>
 <p>现在的问题就很明朗了:</p>
 <ul>
@@ -388,9 +388,9 @@
 </ul>
 <p>带权动态逆序对.</p>
 <p><del>题外话: 这题有点题意杀, 不过模拟一遍样例就好了</del></p>
-<p>仍然使用上一题的转化思路, 题目所求即为 $n$ 个带有两种属性的元素 $(a_i,\ b_i)$ 中满足 $a_i &lt; a_j$ 且 $b_i &gt; b_j$ 的元素对权值和.</p>
+<p>仍然使用上一题的转化思路, 题目所求即为 $n$ 个带有两种属性的元素 $(a_i, b_i)$ 中满足 $a_i &lt; a_j$ 且 $b_i &gt; b_j$ 的元素对权值和.</p>
 <p>交换位置的操作可以看作删除两个元素后加入两个新元素, 所以问题的关键在于加入 / 删除元素对答案的影响.</p>
-<p>每次查询一个元素 $(a,\ b)$ 的影响, 对这个元素有贡献的, 一定满足:</p>
+<p>每次查询一个元素 $(a, b)$ 的影响, 对这个元素有贡献的, 一定满足:</p>
 <ul>
 <li><p>第一维 $&lt; a$, 第二维 $&gt; b$</p>
 </li>
