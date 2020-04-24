@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="综述拜读了毒瘤的数据结构课件, 深受启发, 甚是谔谔, 当即感觉自己之前一直在玩泥巴. 初学数据结构, 恳请指正.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-09T06:10:52.673Z">
+<meta property="og:updated_time" content="2020-04-24T08:10:55.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些简单的偏序维护问题">
 <meta name="twitter:description" content="综述拜读了毒瘤的数据结构课件, 深受启发, 甚是谔谔, 当即感觉自己之前一直在玩泥巴. 初学数据结构, 恳请指正.">
@@ -98,7 +98,7 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">30</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">31</span></li></ul>
               </li>
             
           
@@ -112,7 +112,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -313,7 +313,8 @@
 <li>题目链接: <a href="https://www.luogu.com.cn/problem/P5471" target="_blank" rel="noopener">https://www.luogu.com.cn/problem/P5471</a></li>
 </ul>
 <p><em>如果直接用 K-D Tree 建图, <del>如果用四分树甚至可以 AC</del>, 可以收获 88 pts 的好成绩</em></p>
-<p><em>卡卡常可以卡过? 为什么不尝试更快的做法呢…</em></p>
+<p><del><em>卡卡常可以卡过? 为什么不尝试更快的做法呢…</em></del></p>
+<p>这个写法似乎在 UOJ 被叉掉了 (</p>
 <p>那么怎么做呢? 考虑模拟 Dijkstra 的过程, 把这个 K-D Tree 当成堆使用, 记录子树内最小路径长度 (用于更新答案), 以及最大路径长度 (用于剪枝).</p>
 <p>具体地说, 因为每个点的最短距离只会被更新一次, 所以 K-D Tree 要维护</p>
 <ol>
@@ -334,7 +335,7 @@
 <h4 id="Luogu-P3380【模板】二逼平衡树（树套树）"><a href="#Luogu-P3380【模板】二逼平衡树（树套树）" class="headerlink" title="Luogu P3380【模板】二逼平衡树（树套树）"></a>Luogu P3380【模板】二逼平衡树（树套树）</h4><ul>
 <li>题目链接: <a href="https://www.luogu.com.cn/problem/P3380" target="_blank" rel="noopener">https://www.luogu.com.cn/problem/P3380</a></li>
 </ul>
-<p>采用线段树套平衡树的方法, 为了好些一些, 内层平衡树我选择了 无旋 Treap.</p>
+<p>采用线段树套平衡树的方法, 为了好写一些, 内层平衡树我选择了 无旋 Treap.</p>
 <ol>
 <li><p>$k$ 在区间内的排名</p>
 <p>把区间丢到线段树上处理, 把区间拆分后得到的排名相加即可. 单次操作时间复杂度 $O(\log^2 n)$</p>
@@ -371,10 +372,10 @@
 <ul>
 <li><p>对于操作 1: 在外层线段树单点插入一个值, 并在这个位置对应的线段树区间加 1, 表明这个位置加入值了.</p>
 <p>注意到代码中使用了 “标记永久化” 的技巧, 这样会比每次下传标记要快, <del>但是我要卡常为什么不直接写整体二分呢?</del></p>
-<p>单次操作时间复杂度 $O(log^2 n)$.</p>
+<p>单次操作时间复杂度 $O(\log^2 n)$.</p>
 </li>
 <li><p>对于操作 2: 在外层线段树上二分, 和普通权值线段树的操作没什么大的差别, 只是查询子树大小的 $O(\log n)$ 而已…</p>
-<p>单次操作时间复杂度 $O(log^2 n)$.</p>
+<p>单次操作时间复杂度 $O(\log^2 n)$.</p>
 </li>
 </ul>
 <p><strong>代码实现</strong></p>
