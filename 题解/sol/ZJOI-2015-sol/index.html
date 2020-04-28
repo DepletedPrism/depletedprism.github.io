@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="做这套题纯粹是为了好玩… 结果惨遭吊打 = =">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-24T13:47:12.525Z">
+<meta property="og:updated_time" content="2020-04-28T15:52:25.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ZJOI 2015 大赏">
 <meta name="twitter:description" content="做这套题纯粹是为了好玩… 结果惨遭吊打 = =">
@@ -190,12 +190,9 @@
 <h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p><del>点分树是不可能的, 这辈子不可能写的. 数据结构又不会, 只能写写模板这样子.</del></p>
 <p>考虑重链剖分.</p>
 <p>不妨钦定 $1$ 为根. 记 $s_u$ 为 $u$ 子树内 $d$ 值之和. 对于一条边 $(u, v)$, 如果选择 $v$ 比 $u$ 更优, 也就是最终花费的变化量为负, 即</p>
-<p>$$ w(u, v) \cdot (s_u - s_v) - w(u, v) \cdot s_v &lt; 0 \\ 2 s_v &gt; s_u $$</p>
-<p>因此有一个在线段树上二分 DFS 序, 找出最优点 $v$ 的做法.</p>
+<script type="math/tex; mode=display">w(u, v) \cdot (s_u - s_v) - w(u, v) \cdot s_v < 0 \\\ 2 s_v > s_u</script><p>因此有一个在线段树上二分 DFS 序, 找出最优点 $v$ 的做法.</p>
 <p>同时记 $\text{dist}(u)$ 为点 $u$ 到根节点的距离, 那么最小花费可以表示为</p>
-<p>$$\sum_{v = 1} ^ n d_v \cdot \text{dist}(u, v) = \sum_{v = 1} ^ n d_v \cdot \big(\text{dist}(u) + \text{dist}(v) - 2 \text{dist}(\text{LCA}(u, v))\big)$$</p>
-<p>$$\text{dist}(u) \sum_{v = 1} ^ n d_v + \sum_{v = 1} ^ n d_v \cdot \text{dist}(v) - 2 \sum_{v = 1} ^ n d_v \cdot \text{dist}(\text{LCA}(u, v))$$</p>
-<p>前两项很好维护, 记录 $d_v$ 和 $d_v \cdot \text{dist}(v)$ 的和即可.</p>
+<script type="math/tex; mode=display">\sum_{v = 1} ^ n d_v \cdot \text{dist}(u, v) = \sum_{v = 1} ^ n d_v \cdot \big(\text{dist}(u) + \text{dist}(v) - 2 \text{dist}(\text{LCA}(u, v))\big)</script><script type="math/tex; mode=display">\text{dist}(u) \sum_{v = 1} ^ n d_v + \sum_{v = 1} ^ n d_v \cdot \text{dist}(v) - 2 \sum_{v = 1} ^ n d_v \cdot \text{dist}(\text{LCA}(u, v))</script><p>前两项很好维护, 记录 $d_v$ 和 $d_v \cdot \text{dist}(v)$ 的和即可.</p>
 <p>注意到 $u$ 的子树内的点, 同 $u$ 的 LCA 一定是 $u$, 而其他点和 $u$ 的 LCA 一定在 $u$ 到根的路径上.</p>
 <p>考虑使用重链剖分统计这些可能成为 LCA 的点对答案的贡献.</p>
 <p>每次 $d_v$ 改变时, 从 $v$ 到根节点依次修改, 将变化量 $e$ 加入子树内包含 $v$ 的节点上. 设这些节点为 $u$, $u$ 的父亲节点为 $f$, 此时对答案贡献的变化即为 $e \cdot \big( \text{dist}(u) - \text{dist}(f) \big)$, 即 $u$ 到 $f$ 的边贡献的变化量. 用线段树维护就好了.</p>
@@ -215,13 +212,10 @@
 <p>但是在恰好第 $k$ 次加入边得到连通图的情况不好统计, 做一步转化: 恰好加入第 $k$ 条边后图连通的方案数, 为: 加入这条边前不连通的方案数 - 加入这条边后不连通的方案数.</p>
 <p>考虑用状压 DP 来求这个东西. 设 $f(S, i)$ 为当前选择的点集为 $S$, 已经使用了 $i$ 条边, 点集不连通的方案数.</p>
 <p>记点集的全集为 $U$, $d(S)$ 为同点集 $S$ 相关的边的个数, 那么答案为</p>
-<p>$$\sum_{k = 1} ^ m \frac{k}{m + 1} \left(\frac{f(U, k - 1)}{\binom{d(U)}{k - 1}} - \frac{f(U, k)}{\binom{d(U)}{k}}\right)$$</p>
-<p>化简, 得</p>
-<p>$$\frac{1}{m + 1} \sum_{k = 1} ^ {m - 1} \frac{f(U, k)}{\binom{d(U)}{k}}$$</p>
-<p>同时, 点集连通的方案数为 $\binom{d(S)}{i} - f(S, i)$, 其中 $d(S)$ 可以通过枚举子集算出, 而点集连通时的方案数在转移 $f$ 时会用到.</p>
+<script type="math/tex; mode=display">\sum_{k = 1} ^ m \frac{k}{m + 1} \left(\frac{f(U, k - 1)}{\binom{d(U)}{k - 1}} - \frac{f(U, k)}{\binom{d(U)}{k}}\right)</script><p>化简, 得</p>
+<script type="math/tex; mode=display">\frac{1}{m + 1} \sum_{k = 1} ^ {m - 1} \frac{f(U, k)}{\binom{d(U)}{k}}</script><p>同时, 点集连通的方案数为 $\binom{d(S)}{i} - f(S, i)$, 其中 $d(S)$ 可以通过枚举子集算出, 而点集连通时的方案数在转移 $f$ 时会用到.</p>
 <p>点集不连通的情况可看作由一个连通非空子集上加边, 并保证新加入的点中存在不连通情况得出的. 因此有</p>
-<p>$$f(S, i) = \sum_{ T \subset S,\ T \neq \varnothing } \sum_{j = 0} ^ {d(T)} \binom{d(S \setminus T)}{i - j} \cdot \left(\binom{d(T)}{j} - f(T, j)\right)$$</p>
-<p>枚举子集转移即可. 注意转移时, 需要钦定 $S$ 中某个点, 使得 $T$ 必须包含该点, 否则会重复计算一些情况. 实现时可使用 <code>lowbit</code>.</p>
+<script type="math/tex; mode=display">f(S, i) = \sum_{ T \subset S,\ T \neq \varnothing } \sum_{j = 0} ^ {d(T)} \binom{d(S \setminus T)}{i - j} \cdot \left(\binom{d(T)}{j} - f(T, j)\right)</script><p>枚举子集转移即可. 注意转移时, 需要钦定 $S$ 中某个点, 使得 $T$ 必须包含该点, 否则会重复计算一些情况. 实现时可使用 <code>lowbit</code>.</p>
 <p>至于为什么钦点一个点是对的, 可参看 <a href="https://www.luogu.com.cn/blog/command-block/solution-p3343" target="_blank" rel="noopener">command_block 的题解</a></p>
 <p>时间复杂度大概是 $O(m3 ^ n)$?</p>
 <h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><p>轻微压行.</p>
@@ -395,5 +389,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>

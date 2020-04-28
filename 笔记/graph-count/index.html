@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="老年健忘选手终于下定决心去学数数了. 综述大概是利用生成函数推出一些式子, 然后拿多项式去算吧 = =">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-21T04:41:41.553Z">
+<meta property="og:updated_time" content="2020-04-28T15:52:25.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些简单的图计数问题">
 <meta name="twitter:description" content="老年健忘选手终于下定决心去学数数了. 综述大概是利用生成函数推出一些式子, 然后拿多项式去算吧 = =">
@@ -195,62 +195,47 @@
 <p>最好有跑地比谁都快的板子, 以免在做题的时候被卡常.</p>
 </li>
 <li><p>生成函数</p>
-<p>对于一个数列 ${ a_n }$, 有</p>
-<p>${ a_n }$ 的普通生成函数 (<strong>O</strong>rdinary <strong>G</strong>enerating <strong>F</strong>unction, OGF), 为</p>
-<p>$$g(x) = \sum\limits_{k = 0}^\infty a_k x^k$$</p>
-<p>常用于处理无标号问题.</p>
-<p>${ a_n }$ 的指数生成函数, (<strong>E</strong>xponential <strong>G</strong>enerating <strong>F</strong>unction, EGF), 为</p>
-<p>$$g(x) = \sum\limits_{k = 0}^\infty a_k \frac{x^k}{k!}$$</p>
-<p>常用于处理有标号问题.</p>
-<p>${ a_n }$ 的组合生成函数, 为</p>
-<p>$$g(x) = \sum\limits_{k = 0}^\infty a_k \frac{x^k}{2 ^ \binom{k}{2} k!}$$</p>
-<p>其中 “组合生成函数” 是从 JOHNKRAM 课件里看来的新东西, 似乎只在有标号有向图计数中用到过…</p>
+<p>对于一个数列 $\{ a_n \}$, 有</p>
+<p>$\{ a_n \}$ 的普通生成函数 (<strong>O</strong>rdinary <strong>G</strong>enerating <strong>F</strong>unction, OGF), 为</p>
+<script type="math/tex; mode=display">g(x) = \sum\limits_{k = 0}^\infty a_k x^k</script><p>常用于处理无标号问题.</p>
+<p>$\{ a_n \}$ 的指数生成函数, (<strong>E</strong>xponential <strong>G</strong>enerating <strong>F</strong>unction, EGF), 为</p>
+<script type="math/tex; mode=display">g(x) = \sum\limits_{k = 0}^\infty a_k \frac{x^k}{k!}</script><p>常用于处理有标号问题.</p>
+<p>$\{ a_n \}$ 的组合生成函数, 为</p>
+<script type="math/tex; mode=display">g(x) = \sum\limits_{k = 0}^\infty a_k \frac{x^k}{2 ^ \binom{k}{2} k!}</script><p>其中 “组合生成函数” 是从 JOHNKRAM 课件里看来的新东西, 似乎只在有标号有向图计数中用到过…</p>
 </li>
 <li><p>拉格朗日反演</p>
 <p>在遇到多项式复合逆的时候快速计算出某一位的值.</p>
 <p>设多项式 $F(x),\ G(x)$ 满足 $F(G(x)) = G(F(x)) = x$, 并记 $[x^n]F(x)$ 表示 $F(x)$ 的第 $n$ 次项系数, 那么</p>
-<p>$$ [x^n] G(x) = \frac{1}{n} [x^{n-1}] \left(\frac{x}{F(x)}\right)^n $$</p>
-<p>还有一个拓展形式. 设 $H(x)$ 是另一个多项式, 那么</p>
-<p>$$ [x^n] H\left(G(x)\right) = \frac{1}{n} [x^{n-1}] H’(x) \left(\frac{x}{F(x)}\right)^n $$</p>
-</li>
+<script type="math/tex; mode=display">[x^n] G(x) = \frac{1}{n} [x^{n-1}] \left(\frac{x}{F(x)}\right)^n</script><p>还有一个拓展形式. 设 $H(x)$ 是另一个多项式, 那么</p>
+<script type="math/tex; mode=display">[x^n] H\left(G(x)\right) = \frac{1}{n} [x^{n-1}] H'(x) \left(\frac{x}{F(x)}\right)^n</script></li>
 </ol>
 <h2 id="连通-不连通"><a href="#连通-不连通" class="headerlink" title="连通 / 不连通?"></a>连通 / 不连通?</h2><p>对于有标号元素 $A$ 组成的集合 $B$, 不妨设 $A$ 的 EGF 为 $A(x)$, 考虑到集合内的元素没有顺序关系. 可以得到 $B$ 的 EGF 为</p>
-<p>$$B(x) = \sum_{k = 0} ^ \infty \frac{A(x) ^ k}{k!} = \exp A(x)$$</p>
-<p>应用在图计数中, 可以将非连通图看作多个连通图构成的集合.</p>
+<script type="math/tex; mode=display">B(x) = \sum_{k = 0} ^ \infty \frac{A(x) ^ k}{k!} = \exp A(x)</script><p>应用在图计数中, 可以将非连通图看作多个连通图构成的集合.</p>
 <p>也就是在确定连通图个数的 EGF 后, 可以通过多项式 $\exp$ 得出非连通图个数的 EGF.</p>
 <h2 id="有标号无向图计数"><a href="#有标号无向图计数" class="headerlink" title="有标号无向图计数"></a>有标号无向图计数</h2><h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><p>考虑到 Prufer 序列将一个带标号且有 $n$ 个节点的树用 $[1,\ n]$ 中 $n-2$ 个整数表示, 且 Prufer 序列同树一一对应. 那么, 直接统计 Prufer 序列的个数即可.</p>
 <p>记树的 EGF 为 $T(x)$, 那么</p>
-<p>$$T(x) = \sum_{k = 2} ^ \infty \frac{k ^ {k - 2}}{k!} x^k$$</p>
-<p>此时得到是无根树的结果, 而对于有根树, 枚举根的位置计算即可, 也就是无根树的个数乘以点数.</p>
+<script type="math/tex; mode=display">T(x) = \sum_{k = 2} ^ \infty \frac{k ^ {k - 2}}{k!} x^k</script><p>此时得到是无根树的结果, 而对于有根树, 枚举根的位置计算即可, 也就是无根树的个数乘以点数.</p>
 <h3 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h3><p>对于含有 $n$ 个点的无向图, 先考虑不连通的情况, 直接利用 $\binom{n}{2}$ 条边的存在情况计算即可.</p>
 <p>记无向图的 EGF 为 $G(x)$, 那么</p>
-<p>$$G(x) = \sum_{k = 0} ^ \infty \frac{2 ^ \binom{n}{2}}{k!} x ^ k$$</p>
-<p>根据之前的讨论, 无向连通图的 EGF 即为 $\exp G(x)$.</p>
+<script type="math/tex; mode=display">G(x) = \sum_{k = 0} ^ \infty \frac{2 ^ \binom{n}{2}}{k!} x ^ k</script><p>根据之前的讨论, 无向连通图的 EGF 即为 $\exp G(x)$.</p>
 <h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><ul>
 <li><a href="https://www.luogu.com.cn/problem/P4841" target="_blank" rel="noopener">Luogu P4841 城市规划</a></li>
 </ul>
 <h3 id="基环树"><a href="#基环树" class="headerlink" title="基环树"></a>基环树</h3><p>基环树即为包含 $n$ 个节点, $n$ 条边的简单图. 在形态上仅有一个简单环, 且环上每一个节点都是一棵有根树的根节点.</p>
 <p>回忆有标号环的计数, 以及圆排列公式. 对于组合对象 $A$, 由 $A$ 构成的环 $B$ 的 EGF 为</p>
-<p>$$B(x) = \sum_{k = 1} ^ \infty \frac{(k - 1)!}{k!} A(x) ^ k = \sum_{k = 1} ^ \infty \frac{1}{k} A(x) ^ k = - \ln \left(1 - A(x)\right)$$</p>
-<p>注意到基环树上一定存在一个长度 $\ge 3$ 的环, 记有根树的 EGF 为 $T(x)$, 基环树的 EGF 为 $C(x)$, 那么</p>
-<p>$$T(x) = \sum_{k = 1} ^ \infty \frac{k ^ {k - 1}}{k!} x^k $$</p>
-<p>考虑到基环树中的环没有方向, 可以翻转, 直接套用上面的公式会算重.</p>
-<p>$$C(x) = \frac{1}{2} \sum_{k = 3} ^ \infty \frac{T(x) ^ k}{k}$$</p>
-<p>化简之后可得</p>
-<p>$$C(x) = \frac{1}{2} \ln \big(1 - T(x)\big) - \frac{1}{2} T(x) - \frac{1}{4} T(x) ^ 2$$</p>
-<p>利用多项式 $\ln$ 和多项式乘法即可在 $O(n\log n)$ 的时间复杂度内计算.</p>
+<script type="math/tex; mode=display">B(x) = \sum_{k = 1} ^ \infty \frac{(k - 1)!}{k!} A(x) ^ k = \sum_{k = 1} ^ \infty \frac{1}{k} A(x) ^ k = - \ln \left(1 - A(x)\right)</script><p>注意到基环树上一定存在一个长度 $\ge 3$ 的环, 记有根树的 EGF 为 $T(x)$, 基环树的 EGF 为 $C(x)$, 那么</p>
+<script type="math/tex; mode=display">T(x) = \sum_{k = 1} ^ \infty \frac{k ^ {k - 1}}{k!} x^k</script><p>考虑到基环树中的环没有方向, 可以翻转, 直接套用上面的公式会算重.</p>
+<script type="math/tex; mode=display">C(x) = \frac{1}{2} \sum_{k = 3} ^ \infty \frac{T(x) ^ k}{k}</script><p>化简之后可得</p>
+<script type="math/tex; mode=display">C(x) = \frac{1}{2} \ln \big(1 - T(x)\big) - \frac{1}{2} T(x) - \frac{1}{4} T(x) ^ 2</script><p>利用多项式 $\ln$ 和多项式乘法即可在 $O(n\log n)$ 的时间复杂度内计算.</p>
 <h3 id="仙人掌"><a href="#仙人掌" class="headerlink" title="仙人掌"></a>仙人掌</h3><p>如果一个无向连通图任意一条边最多属于一个简单环, 那么称这个无向连通图为仙人掌.</p>
 <p>先钦定仙人掌上某一点为根, 设 “有根仙人掌” 个数的 EGF 为 $C(x)$, 最后在结果的系数上除 $n$ 即可.</p>
 <p>从 “任意一条边最多属于一个简单环” 这一条件入手. 考虑根节点连出的边, 可以分为简单环上和不属于任何简单环的独立边两种.</p>
 <p>对于环上的边, 设环中点数为 $k + 1$, 考虑环上每一个节点都可以作为有根仙人掌的根, 那么环的生成函数为 $\frac{1}{2} C(x) ^ k$. 对于独立边, 另一端点为有根仙人掌的根, 其生成函数为 $C(x)$.</p>
 <p>而根节点连出的边可看作上述两种情况构成的集合, 同时考虑根节点的影响, 可以得出</p>
-<p>$$C(x) = x \exp\left( C(x) + \frac{1}{2} \sum_{k = 2} ^ \infty C(x) ^ k\right) = x \exp \frac{2C(x) - C(x) ^ 2}{2 - 2 C(x)}$$</p>
-<p><em>此处也可以从圆方树的角度考虑, 可以得到同样的结果.</em></p>
+<script type="math/tex; mode=display">C(x) = x \exp\left( C(x) + \frac{1}{2} \sum_{k = 2} ^ \infty C(x) ^ k\right) = x \exp \frac{2C(x) - C(x) ^ 2}{2 - 2 C(x)}</script><p><em>此处也可以从圆方树的角度考虑, 可以得到同样的结果.</em></p>
 <p><em>详见: <a href="https://blog.csdn.net/qq_39972971/article/details/89214832" target="_blank" rel="noopener">https://blog.csdn.net/qq_39972971/article/details/89214832</a></em></p>
 <p>然后套牛顿迭代的式子, 记 $C_0(x)$ 为模 $x ^ {\lceil \frac{n}{2} \rceil}$ 意义下的结果, $C(x)$ 为模 $x ^ n$ 意义下的结果, 同时记录 $T(x)$ 来便于表述, 有</p>
-<p>$$T(x) = x \exp \frac{ 2C_0(x) - C_0 (x) ^ 2 }{ 2 - 2 C_0(x) ^ 2 }$$</p>
-<p>$$C(x) = C_0(x) - \frac{ 2T(x) - 2 C_0 }{ \Big( 1 + 1\ /\ \big(C_0(x) ^ 2 - 2C_0(x) + 1\big) \Big) T(x) - 2 }$$</p>
-<p><em>详细的过程可以在 <a href="https://memset0.cn/loj6569" target="_blank" rel="noopener">memset0 的博客</a> 内找到.</em></p>
+<script type="math/tex; mode=display">T(x) = x \exp \frac{ 2C_0(x) - C_0 (x) ^ 2 }{ 2 - 2 C_0(x) ^ 2 }</script><script type="math/tex; mode=display">C(x) = C_0(x) - \frac{ 2T(x) - 2 C_0 }{ \Big( 1 + 1\ /\ \big(C_0(x) ^ 2 - 2C_0(x) + 1\big) \Big) T(x) - 2 }</script><p><em>详细的过程可以在 <a href="https://memset0.cn/loj6569" target="_blank" rel="noopener">memset0 的博客</a> 内找到.</em></p>
 <p>至此我们得出了在 $O(n\log n)$ 的时间复杂度内计算 $n$ 项的做法. 实现时可以合并一部分式子来避免重复计算, 以及便于实现.</p>
 <h4 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h4><ul>
 <li><a href="https://loj.ac/problem/6569" target="_blank" rel="noopener">LOJ #6569 仙人掌计数</a></li>
@@ -258,16 +243,11 @@
 </ul>
 <h3 id="二分图"><a href="#二分图" class="headerlink" title="二分图"></a>二分图</h3><p>二分图为节点可分作两个集合, 且保证集合内部不存在边的图.</p>
 <p>先考虑将二分图的两个部分黑白染色, 枚举黑色节点的个数 $k$, 容易得到黑白染色的二分图个数 $f_n$ 为</p>
-<p>$$f_n = \sum_{k = 0} ^ n \binom{n}{k} 2 ^ {k (n - k)}$$</p>
-<p>我们有 $k (n - k) = \binom{n}{2} - \binom{k}{2} - \binom{n - k}{2}$, 所以原式可化作</p>
-<p>$$f_n = \sum_{k = 0} ^ n \frac{n!}{k! (n - k)!} 2 ^ \binom{n}{2} 2 ^ {-\binom{k}{2}} 2 ^ {-\binom{n - k}{2}}$$</p>
-<p>$$\frac{f_n}{n!\ 2 ^ {\binom{n}{2}}} = \sum_{k = 0} ^ n \frac{1}{(n - k)!\ 2 ^ \binom{n - k}{2}} \cdot \frac{1}{k!\ 2 ^ \binom{k}{2}}$$</p>
-<p>显然是卷积的形式, 利用 FFT 即可在 $O(n \log n)$ 的时间内计算.</p>
+<script type="math/tex; mode=display">f_n = \sum_{k = 0} ^ n \binom{n}{k} 2 ^ {k (n - k)}</script><p>我们有 $k (n - k) = \binom{n}{2} - \binom{k}{2} - \binom{n - k}{2}$, 所以原式可化作</p>
+<script type="math/tex; mode=display">f_n = \sum_{k = 0} ^ n \frac{n!}{k! (n - k)!} 2 ^ \binom{n}{2} 2 ^ {-\binom{k}{2}} 2 ^ {-\binom{n - k}{2}}</script><script type="math/tex; mode=display">\frac{f_n}{n!\ 2 ^ {\binom{n}{2}}} = \sum_{k = 0} ^ n \frac{1}{(n - k)!\ 2 ^ \binom{n - k}{2}} \cdot \frac{1}{k!\ 2 ^ \binom{k}{2}}</script><p>显然是卷积的形式, 利用 FFT 即可在 $O(n \log n)$ 的时间内计算.</p>
 <p>接下来考虑去掉染色怎么做.</p>
 <p>设黑白染色后的二分图 EGF 为 $F(x)$, 不染色二分图 EGF 为 $B(x)$, 连通的不染色二分图为 $C(x)$. 那么有</p>
-<p>$$F(x) = \sum_{k = 0} ^ \infty \frac{2 ^ k C(x) ^ k}{k!} = \exp \big(2C(x)\big)$$</p>
-<p>$$B(x) = \sum_{k = 0} ^ \infty \frac{C(x) ^ k}{k!} = \exp \big( C(x) \big)$$</p>
-<p>容易发现 $B(x) = \sqrt {F(x)}$, 利用多项式开方即可在 $O(n \log n)$ 的时间内计算.</p>
+<script type="math/tex; mode=display">F(x) = \sum_{k = 0} ^ \infty \frac{2 ^ k C(x) ^ k}{k!} = \exp \big(2C(x)\big)</script><script type="math/tex; mode=display">B(x) = \sum_{k = 0} ^ \infty \frac{C(x) ^ k}{k!} = \exp \big( C(x) \big)</script><p>容易发现 $B(x) = \sqrt {F(x)}$, 利用多项式开方即可在 $O(n \log n)$ 的时间内计算.</p>
 <h4 id="例题-2"><a href="#例题-2" class="headerlink" title="例题"></a>例题</h4><ul>
 <li><a href="https://zyzoj.com/problem/1191" target="_blank" rel="noopener">ZYZOJ #1191 有标号二分图计数</a></li>
 <li><a href="http://cogs.pro:8081/cogs/problem/problem.php?pid=vzQSJVjPj" target="_blank" rel="noopener">COGS 2393 [HZOI 2015] 有标号的二分图计数 II</a></li>
@@ -283,19 +263,12 @@
 </ul>
 <h2 id="有标号有向图计数"><a href="#有标号有向图计数" class="headerlink" title="有标号有向图计数"></a>有标号有向图计数</h2><h3 id="有向无环图"><a href="#有向无环图" class="headerlink" title="有向无环图"></a>有向无环图</h3><p>考虑容斥.</p>
 <p>设 $d_n$ 表示有 $n$ 个节点的 DAG 个数, 且不要求弱连通. 记 $A_{n, i}$ 表示有 $n$ 个节点, 其中有 $i$ 个节点入度为 $0$. 有</p>
-<p>$$d_n = \mid \bigcap_{i = 0} ^ n A_{n, i} \mid$$</p>
-<p>根据容斥原理展开, 得</p>
-<p>$$d_n = \sum_{k = 1} ^ n (-1) ^ {k - 1} \sum_{1 \le i_1, \ldots, i_k \le n} ^ {} \mid \bigcup_{j = 1} ^ k A_{n, i_j} \mid$$</p>
-<p>注意到后者的并集大小和 $i_j$ 具体取值无关, 也就是在 $n$ 个点中取出 $k$ 个点, 而将这 $k$ 个点删去后剩余 $n - k$ 个点仍然组成 DAG, 且这 $k$ 个点同其余点连边不破坏两边的性质. 因此可得出</p>
-<p>$$d_n = \sum_{k = 1} ^ n (-1) ^ {k - 1} \binom{n}{k} d_{n - k} 2 ^ {k (n - k)}$$</p>
-<p>我们有 $k (n - k) = \binom{n}{2} - \binom{k}{2} - \binom{n - k}{2}$, 所以原式可化作</p>
-<p>$$d_n = \sum_{k = 1} ^ n (-1) ^ {k - 1} \frac{n!}{k! (n - k)!} d_{n - k} 2 ^ \binom{n}{2} 2 ^ {-\binom{k}{2}} 2 ^ {-\binom{n - k}{2}}$$</p>
-<p>$$\frac{d_n}{n!\ 2 ^ {\binom{n}{2}}} = \sum_{k = 1} ^ n \frac{d_{n - k}}{(n - k)!\ 2 ^ {\binom{n - k}{2}}} \cdot \frac{(-1) ^ {k - 1}}{k!\ 2 ^ \binom{k}{2}}$$</p>
-<p>设 $d_n$ 的组合生成函数为 $D(x)$, 同时设</p>
-<p>$$F(x) = \sum\limits_{k = 1} ^ \infty \frac{(-1) ^ {k - 1}}{k!\ 2 ^ \binom{k}{2}}$$</p>
-<p>那么有</p>
-<p>$$D(x) = D(x)  F(x) + 1 \\ D(x) = \frac{1}{1 - F(x)}$$</p>
-<p>一次求乘法逆即可. 时间复杂度 $O(n\log n)$.</p>
+<script type="math/tex; mode=display">d_n = \mid \bigcap_{i = 0} ^ n A_{n, i} \mid</script><p>根据容斥原理展开, 得</p>
+<script type="math/tex; mode=display">d_n = \sum_{k = 1} ^ n (-1) ^ {k - 1} \sum_{1 \le i_1, \ldots, i_k \le n} ^ {} \mid \bigcup_{j = 1} ^ k A_{n, i_j} \mid</script><p>注意到后者的并集大小和 $i_j$ 具体取值无关, 也就是在 $n$ 个点中取出 $k$ 个点, 而将这 $k$ 个点删去后剩余 $n - k$ 个点仍然组成 DAG, 且这 $k$ 个点同其余点连边不破坏两边的性质. 因此可得出</p>
+<script type="math/tex; mode=display">d_n = \sum_{k = 1} ^ n (-1) ^ {k - 1} \binom{n}{k} d_{n - k} 2 ^ {k (n - k)}</script><p>我们有 $k (n - k) = \binom{n}{2} - \binom{k}{2} - \binom{n - k}{2}$, 所以原式可化作</p>
+<script type="math/tex; mode=display">d_n = \sum_{k = 1} ^ n (-1) ^ {k - 1} \frac{n!}{k! (n - k)!} d_{n - k} 2 ^ \binom{n}{2} 2 ^ {-\binom{k}{2}} 2 ^ {-\binom{n - k}{2}}</script><script type="math/tex; mode=display">\frac{d_n}{n!\ 2 ^ {\binom{n}{2}}} = \sum_{k = 1} ^ n \frac{d_{n - k}}{(n - k)!\ 2 ^ {\binom{n - k}{2}}} \cdot \frac{(-1) ^ {k - 1}}{k!\ 2 ^ \binom{k}{2}}</script><p>设 $d_n$ 的组合生成函数为 $D(x)$, 同时设</p>
+<script type="math/tex; mode=display">F(x) = \sum\limits_{k = 1} ^ \infty \frac{(-1) ^ {k - 1}}{k!\ 2 ^ \binom{k}{2}}</script><p>那么有</p>
+<script type="math/tex; mode=display">D(x) = D(x)  F(x) + 1 \\\ D(x) = \frac{1}{1 - F(x)}</script><p>一次求乘法逆即可. 时间复杂度 $O(n\log n)$.</p>
 <p>简洁的形式背后一定有我不能理解的高妙组合意义…</p>
 <h4 id="例题-5"><a href="#例题-5" class="headerlink" title="例题"></a>例题</h4><ul>
 <li><a href="https://www.luogu.com.cn/problem/P6295" target="_blank" rel="noopener">Luogu P6295 有标号 DAG 计数</a></li>
@@ -305,23 +278,15 @@
 <li><a href="https://zyzoj.com/problem/1164" target="_blank" rel="noopener">ZYZOJ #1164 有标号强连通图计数</a></li>
 </ul>
 <h2 id="标号-不标号"><a href="#标号-不标号" class="headerlink" title="标号 / 不标号?"></a>标号 / 不标号?</h2><p>首先定义形式幂级数的 Euler 变换. 即</p>
-<p>$$\mathcal E\big(F(x)\big) = \prod_{k = 0} ^ \infty (1 + x ^ k + x ^ {2k} + \cdots) ^ {f_k} = \prod_{k = 0} ^ \infty (\frac{1}{1 - x ^ k}) ^ {f_k}$$</p>
-<p>类比于 exp, Euler 变换的组合意义即为选取若干无标号元素组成集合的方案数. 注意无标号元素的影响, 某些在有标号情况下不同的方案在无标号情况下相同.</p>
+<script type="math/tex; mode=display">\mathcal E\big(F(x)\big) = \prod_{k = 0} ^ \infty (1 + x ^ k + x ^ {2k} + \cdots) ^ {f_k} = \prod_{k = 0} ^ \infty (\frac{1}{1 - x ^ k}) ^ {f_k}</script><p>类比于 exp, Euler 变换的组合意义即为选取若干无标号元素组成集合的方案数. 注意无标号元素的影响, 某些在有标号情况下不同的方案在无标号情况下相同.</p>
 <p>利用一些运算的技巧, 可以得到</p>
-<p>$$\mathcal E\big(F(x)\big) = \exp \left( \sum_{i = 0} ^ \infty f_i \sum_{j = 0} ^ \infty \frac{1}{j} x ^ {ij} \right) = \exp \left( \sum_{k = 0} ^ \infty \frac{1}{k} F(x ^ k) \right)$$</p>
-<p>这个结果也可以通过 Polya 定理得到.</p>
+<script type="math/tex; mode=display">\mathcal E\big(F(x)\big) = \exp \left( \sum_{i = 0} ^ \infty f_i \sum_{j = 0} ^ \infty \frac{1}{j} x ^ {ij} \right) = \exp \left( \sum_{k = 0} ^ \infty \frac{1}{k} F(x ^ k) \right)</script><p>这个结果也可以通过 Polya 定理得到.</p>
 <h2 id="无标号图计数"><a href="#无标号图计数" class="headerlink" title="无标号图计数"></a>无标号图计数</h2><h3 id="有根树"><a href="#有根树" class="headerlink" title="有根树"></a>有根树</h3><p>借助 Euler 变换, 有根树可看作根节点接上若干子树. 设无标号有根树 OGF 为 $F(x)$, 那么有</p>
-<p>$$F(x) = x \cdot \mathcal E \big(F(x)\big) = x \cdot \prod_{k = 0} ^ \infty (\frac{1}{1 - x ^ k}) ^ {f_k}$$</p>
-<p>两边同时取 $\ln$, 得</p>
-<p>$$\ln F(x) = \ln x - \sum_{k = 0} ^ \infty f_k \ln (1 - x ^ k)$$</p>
-<p>求导, 得</p>
-<p>$$\frac{F(x)’}{F(x)} = \frac{1}{x} + \sum_{k = 1} ^ \infty f_k \cdot \frac{k x ^ {k - 1}}{1 - x ^ k}$$</p>
-<p>两侧同时乘 $F(x) \cdot x$, 得</p>
-<p>$$x \cdot F(x)’ = F(x) + F(x) \left( \sum_{k = 1} ^ \infty k f_k \cdot \frac{x ^ k}{1 - x ^ k}\right)$$</p>
-<p>取第 $n$ 项系数, 同时设 $g_n = \sum_{k \mid n} k f_k$. 则有</p>
-<p>$$n \cdot f_n = f_n + \sum_{k = 1} ^ n f_k g_{n - k}$$</p>
-<p>$$f_n = \frac{1}{n - 1} \sum_{k = 1} ^ n f_k g_{n - k}$$</p>
-<p>分治 FFT 计算即可, 时间复杂度为 $O(n \log ^ 2 n)$.</p>
+<script type="math/tex; mode=display">F(x) = x \cdot \mathcal E \big(F(x)\big) = x \cdot \prod_{k = 0} ^ \infty (\frac{1}{1 - x ^ k}) ^ {f_k}</script><p>两边同时取 $\ln$, 得</p>
+<script type="math/tex; mode=display">\ln F(x) = \ln x - \sum_{k = 0} ^ \infty f_k \ln (1 - x ^ k)</script><p>求导, 得</p>
+<script type="math/tex; mode=display">\frac{F(x)'}{F(x)} = \frac{1}{x} + \sum_{k = 1} ^ \infty f_k \cdot \frac{k x ^ {k - 1}}{1 - x ^ k}</script><p>两侧同时乘 $F(x) \cdot x$, 得</p>
+<script type="math/tex; mode=display">x \cdot F(x)' = F(x) + F(x) \left( \sum_{k = 1} ^ \infty k f_k \cdot \frac{x ^ k}{1 - x ^ k}\right)</script><p>取第 $n$ 项系数, 同时设 $g_n = \sum_{k \mid n} k f_k$. 则有</p>
+<script type="math/tex; mode=display">n \cdot f_n = f_n + \sum_{k = 1} ^ n f_k g_{n - k}</script><script type="math/tex; mode=display">f_n = \frac{1}{n - 1} \sum_{k = 1} ^ n f_k g_{n - k}</script><p>分治 FFT 计算即可, 时间复杂度为 $O(n \log ^ 2 n)$.</p>
 <p>实现时, 在计算 $f_n$ 后枚举 $n$ 的倍数更新 $g$. 注意到如果分治的左端点为 $1$, $g$ 位数不够. 在计算左区间对右区间的贡献时, 需要额外注意.</p>
 <div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123; <span class="comment">// [L, R)</span></span><br><span class="line">    <span class="keyword">if</span> (R-L &lt; <span class="number">2</span>) &#123;</span><br><span class="line">        f[L] = (L == <span class="number">1</span>)? <span class="number">1</span>: <span class="number">1L</span>L * f[L] * inv[L - <span class="number">1</span>] % P;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">1L</span>L * L * f[L] % P, i = L; i &lt;= n; i += L)</span><br><span class="line">            g[i] = (g[i] + v) % P;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> Mid = (L + R) / <span class="number">2</span>;</span><br><span class="line">    solve(L, Mid);</span><br><span class="line">    <span class="keyword">if</span> (L == <span class="number">1</span>) &#123;</span><br><span class="line">        Mul(f, Mid, g + L, Mid - L, h);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = Mid; i &lt; R; ++i) f[i] = (f[i] + h[i - L]) % P;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Mul(f + L, Mid - L, g, R - L, h);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = Mid; i &lt; R; ++i) f[i] = (f[i] + h[i - L]) % P;</span><br><span class="line">        Mul(f, R - L, g + L, Mid - L, h);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = Mid; i &lt; R; ++i) f[i] = (f[i] + h[i - L]) % P;</span><br><span class="line">    &#125;</span><br><span class="line">    solve(Mid, R);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -330,10 +295,8 @@
 <p>另外存在时间复杂度为 $O(n \log n)$ 的牛顿迭代实现. 在常数和推导过程上都没有什么优势…</p>
 <h3 id="无根树"><a href="#无根树" class="headerlink" title="无根树"></a>无根树</h3><p>一个经典的套路是只讨论根为重心的情况, 那么用有根树个数 $f_n$ 减去根不是重心的个数即为无根树个数. 此时根据 $n$ 的奇偶性不同存在 $1$ 或 $2$ 个重心, 讨论的情况相对较少.</p>
 <p>对于 $n$ 为奇数的情况, 重心唯一. 考虑根节点和任意一条和儿子相连的边, 如果根节点不是重心, 那么该儿子的子树大小 $&gt; \lfloor \frac{n}{2} \rfloor$. 可以得出无根树个数为</p>
-<p>$$f_n - \sum_{k = \lfloor \frac{n}{2} \rfloor + 1} ^ {n - 1} f_k \cdot f_{n - k}$$</p>
-<p>对于 $n$ 为偶数的情况, 重心不唯一. 如果按照奇数的方法计算, 则另外要注意到根和该儿子都为重心的情况. 此时如果断开这条边, 得到的两棵树不同, 则会在之前的过程中重复统计. 也就是说, 需要在奇数的基础上额外减去</p>
-<p>$$\binom{f_{n / 2}}{2}$$</p>
-<p>利用有根树的计算方法即可.</p>
+<script type="math/tex; mode=display">f_n - \sum_{k = \lfloor \frac{n}{2} \rfloor + 1} ^ {n - 1} f_k \cdot f_{n - k}</script><p>对于 $n$ 为偶数的情况, 重心不唯一. 如果按照奇数的方法计算, 则另外要注意到根和该儿子都为重心的情况. 此时如果断开这条边, 得到的两棵树不同, 则会在之前的过程中重复统计. 也就是说, 需要在奇数的基础上额外减去</p>
+<script type="math/tex; mode=display">\binom{f_{n / 2}}{2}</script><p>利用有根树的计算方法即可.</p>
 <h4 id="例题-7"><a href="#例题-7" class="headerlink" title="例题"></a>例题</h4><ul>
 <li><a href="https://www.luogu.com.cn/problem/P5900" target="_blank" rel="noopener">Luogu P5900 无标号无根树计数</a></li>
 </ul>
@@ -477,5 +440,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>

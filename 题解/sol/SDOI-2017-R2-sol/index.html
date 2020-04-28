@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -12,18 +12,18 @@
   
 </title>
 
-<meta name="description" content="图源 ZZQ’s Blog, 至少我是从那里找到的 这 Round 2 也太毒瘤了 = =">
+<meta name="description" content="图源 ZZQ&apos;s Blog, 至少我是从那里找到的 这 Round 2 也太毒瘤了 = =">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SDOI 2017 Round 2 大赏">
 <meta property="og:url" content="https://depletedprism.github.io/题解/sol/SDOI-2017-R2-sol/index.html">
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
-<meta property="og:description" content="图源 ZZQ’s Blog, 至少我是从那里找到的 这 Round 2 也太毒瘤了 = =">
+<meta property="og:description" content="图源 ZZQ&apos;s Blog, 至少我是从那里找到的 这 Round 2 也太毒瘤了 = =">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://depletedprism.github.io/images/SDOI-2017-sol/SDOI.jpg">
-<meta property="og:updated_time" content="2020-04-09T06:10:52.677Z">
+<meta property="og:updated_time" content="2020-04-28T16:07:02.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SDOI 2017 Round 2 大赏">
-<meta name="twitter:description" content="图源 ZZQ’s Blog, 至少我是从那里找到的 这 Round 2 也太毒瘤了 = =">
+<meta name="twitter:description" content="图源 ZZQ&apos;s Blog, 至少我是从那里找到的 这 Round 2 也太毒瘤了 = =">
 <meta name="twitter:image" content="https://depletedprism.github.io/images/SDOI-2017-sol/SDOI.jpg">
 
 
@@ -186,7 +186,7 @@
     <hr>
 <div style="text-align:center;"><img src="/images/SDOI-2017-sol/SDOI.jpg"> </div>
 
-<p><em><p style="text-align:center;">图源 <a href="https://www.cnblogs.com/zzqsblog/p/7523003.html" target="_blank" rel="noopener">ZZQ’s Blog</a>, 至少我是从那里找到的</p></em></p>
+<p><em><p style="text-align:center;">图源 <a href="https://www.cnblogs.com/zzqsblog/p/7523003.html" target="_blank" rel="noopener">ZZQ's Blog</a>, 至少我是从那里找到的</p></em></p>
 <p>这 Round 2 也太毒瘤了 = =</p>
 <a id="more"></a>
 <p>久 等 了.</p>
@@ -196,20 +196,16 @@
 </ul>
 <h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>首先有一个多项式做法.</p>
 <p>构造一个生成函数 $g(x)$, 其 $k$ 次项系数表示掷一次骰子造成伤害 $k$ 的概率, 则</p>
-<p>$$g(x) = \sum_{k=0}^{X-1} \frac{1}{X} x^k$$</p>
-<p>那么 $g(x)^Y$ 的 $A_i$ 到 $B_i$ 次项和即为答案.</p>
+<script type="math/tex; mode=display">g(x) = \sum_{k=0}^{X-1} \frac{1}{X} x^k</script><p>那么 $g(x)^Y$ 的 $A_i$ 到 $B_i$ 次项和即为答案.</p>
 <p>对于这个多项式幂函数的计算, 可以用带大常数的 $O(n \log n)$ 多项式 $\exp$ , 或者朴素快速幂 $O(n \log ^2 n)$.</p>
 <p>但是有精巧的做法, 此处直接把点值做 $Y$ 次幂就好了.</p>
 <p>当年考场 AC 似乎有更为精巧的优化方法, 好像 myy 的论文 &lt;再探快速傅里叶变换&gt; 里有涉及, <del>以后再说以后再说</del></p>
 <p>对于大数据 <del>如果问什么是大数据, 那就是 FFT 跑不过的数据</del>, 则要用到 <a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86#%E6%9E%97%E5%BE%B7%E4%BC%AF%E6%A0%BC%EF%BC%8D%E5%88%97%E7%BB%B4%E5%AE%9A%E7%90%86" target="_blank" rel="noopener">中心极限定理</a>.</p>
 <p>记 $\zeta_{n} = \dfrac{\bar X - \mu}{\sigma / \sqrt n} = \dfrac{\sum\limits_{i=1}^n X_i - n \mu}{\sqrt {n \sigma ^2 }}$, 根据中心极限定理, 当 $n \rightarrow \infty$ 时, 认为其满足正态分布 $N(0, 1)$.</p>
 <p>而正态分布 $N(\mu, \sigma^2)$ 的概率密度函数为</p>
-<p>$$f(x) = \frac{1}{\sqrt{ 2 \sigma^2 \pi }} e ^{ -\frac {(x-\mu)^2}{2 \sigma ^2} }$$</p>
-<p>对于 $N(0, 1)$, 带进去可得</p>
-<p>$$f(x) = \frac{1}{\sqrt{ 2 \pi}} e ^{ -\frac{x^2}{2} }$$</p>
-<p>具体应用到这道题中, 用自适应 Simpson 计算</p>
-<p>$$\int _a^b f(x)\ dx$$</p>
-<p>就好了, 其中 $a = \dfrac{A_i - Y \mu}{\sqrt{ Y \sigma ^2 }},\ b = \dfrac{B_i - Y\mu}{\sqrt{ Y \sigma ^ 2}}$.</p>
+<script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{ 2 \sigma^2 \pi }} e ^{ -\frac {(x-\mu)^2}{2 \sigma ^2} }</script><p>对于 $N(0, 1)$, 带进去可得</p>
+<script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{ 2 \pi}} e ^{ -\frac{x^2}{2} }</script><p>具体应用到这道题中, 用自适应 Simpson 计算</p>
+<script type="math/tex; mode=display">\int _a^b f(x)\ dx</script><p>就好了, 其中 $a = \dfrac{A_i - Y \mu}{\sqrt{ Y \sigma ^2 }},\ b = \dfrac{B_i - Y\mu}{\sqrt{ Y \sigma ^ 2}}$.</p>
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p>就这样吧 = =, 只能流下没有数理基础的眼泪.</p>
 <p>至今不知道为什么直接大力 Simpson $[L, R]$ 会挂, 取端点做差就对了 = =</p>
 <p>可能是因为 $L$ 正负性的问题?</p>
@@ -249,8 +245,7 @@
 <p>此处信息仍具有可减性, 维护数非 0 部分的积, 以及乘积中 0 的个数即可了.</p>
 <p>落实到代码中就是那个 <code>Num</code> 了.</p>
 <p>还有个可以借鉴的 Trick 就是化简矩阵减小常数了. 直接搬来 immortalCO 的公式.</p>
-<p>$$\begin{pmatrix} \underline{a_1} &amp; \underline{b_1} &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ \underline{c_1} &amp; \underline{d_1} &amp; 1 \end{pmatrix} \times \begin{pmatrix} \underline{a_2} &amp; \underline{b_2} &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ \underline{c_2} &amp; \underline{d_2} &amp; 1 \end{pmatrix} = \begin{pmatrix} \underline{a_1 a_2} &amp; \underline{b_1 + a_1 b_2} &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ \underline{a_2 c_1 + c_2} &amp; \underline{b_2 c_1 + d_1 + d_2} &amp; 1 \end{pmatrix}$$</p>
-<p>运用这个 Trick 的时候, 需要额外注意矩阵的运算顺序.</p>
+<script type="math/tex; mode=display">\begin{pmatrix} \underline{a_1} & \underline{b_1} & 0 \\ 0 & 1 & 0 \\ \underline{c_1} & \underline{d_1} & 1 \end{pmatrix} \times \begin{pmatrix} \underline{a_2} & \underline{b_2} & 0 \\ 0 & 1 & 0 \\ \underline{c_2} & \underline{d_2} & 1 \end{pmatrix} = \begin{pmatrix} \underline{a_1 a_2} & \underline{b_1 + a_1 b_2} & 0 \\ 0 & 1 & 0 \\ \underline{a_2 c_1 + c_2} & \underline{b_2 c_1 + d_1 + d_2} & 1 \end{pmatrix}</script><p>运用这个 Trick 的时候, 需要额外注意矩阵的运算顺序.</p>
 <p>动态 DP 采用树链剖分实现, 时间复杂度 $O(n\log ^ 3 n)$.</p>
 <p><del>最近一群毒瘤看着这个 log^3 不爽, 看来要去学 DDP 的 LCT 实现了</del></p>
 <h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
@@ -269,8 +264,7 @@
 <p>但是这个算法有一个明显的问题, 遇到原图中点数度数很大的情况就会连很多边…</p>
 <p>考虑如何优化这个过程. </p>
 <p>对于 Trie 上一个节点 $u$, 将 $u$ 周围一圈节点按 DFS 序排序, 类似于后缀数组, 设 $h_i = \operatorname{LCP}(s_i, s_{i+1})$, 那么</p>
-<p>$$\operatorname{LCP}(s_L,\ s_R) = \min \{ h_j \mid L \le j \le R \}$$</p>
-<p>利用后缀数组中常见套路, 可以利用单调栈求出 LCP 为 $h_i$ 的一段区间, 然后点向区间连边, 区间向点连边即可. 利用线段树优化建图即可.</p>
+<script type="math/tex; mode=display">\operatorname{LCP}(s_L,\ s_R) = \min \{ h_j \mid L \le j \le R \}</script><p>利用后缀数组中常见套路, 可以利用单调栈求出 LCP 为 $h_i$ 的一段区间, 然后点向区间连边, 区间向点连边即可. 利用线段树优化建图即可.</p>
 <p>但是有更加简便的办法. 还是引用 <a href="https://www.cnblogs.com/clrs97/p/7833797.html" target="_blank" rel="noopener">Claris 的博客</a>:</p>
 <blockquote>
 <p>枚举每个 $h_i$ 作为分界线，那么新图中两侧的点均可以通过不超过 $h_i$ 的代价互相访问.</p>
@@ -291,22 +285,14 @@
 </ul>
 <h4 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h4><p>如果把所求和已知交换, 那么这道题就是一道生成函数套路题了.</p>
 <p>设序列 $a_i$ 表示元素 $i$ 是否存在于集合 $S$ 中. 那么取 $S$ 中元素之和的方案数的生成函数为</p>
-<p>$$F(x) = \prod_{i \in S} (\sum_{k=0}^{\infty} x^{ki}) = \prod_{i \in S} \frac{1}{1 - x^i} = \prod_{i=1}^n (\frac{1}{1 - x^i} ) ^ {a_i}$$</p>
-<p>看到乘积不爽. 两边同时取 $\ln$, 得</p>
-<p>$$- \ln F(x) = \sum_{i=1}^n a_i \ln (1-x^i)$$</p>
-<p>记 $g(x) = \ln (1-x^i)$, 那么对 $g(x)$ 求导得到</p>
-<p>$$\frac{(1 - x^i)’}{1 - x^i} = \frac{-i x^{i-1}}{1 - x^i} = g’(x)$$</p>
-<p>由广义二项式定理, 得</p>
-<p>$$-ix^{i-1} \sum_{k=0}^{\infty} x ^{ki} = -\sum_{k=0}^{\infty} i x^{ki +i-1} = g’(x)$$</p>
-<p>再积分, 得</p>
-<p>$$-\sum_{k=0} ^ {\infty} \frac{i}{ki + i} x^{ki + i} = -\sum_{k=1}^{\infty} \frac{1}{k} x ^ {ki} = g(x) $$</p>
-<p>所以我们就得到了</p>
-<p>$$g(x) = \ln (1 - x^i) = -\sum_{k=1}^{\infty} \frac{1}{k} x^{ki}$$</p>
-<p>代入原式, 可以得到</p>
-<p>$$\ln F(x) = \sum_{i=1}^n a_i \sum_{k=1}^{\infty} \frac{1}{k} x^{ki}$$</p>
-<p>设 $T = ki$, 并交换枚举顺序, 得</p>
-<p>$$\ln F(x) = \sum_{T=1}^\infty (\sum_{d \mid T} a_d \frac{d}{T} ) x^T$$</p>
-<p>至此, 这道题就做完了. 对给定的 $F(x)$ 求 $\ln$ 后莫比乌斯反演即可.</p>
+<script type="math/tex; mode=display">F(x) = \prod_{i \in S} (\sum_{k=0}^{\infty} x^{ki}) = \prod_{i \in S} \frac{1}{1 - x^i} = \prod_{i=1}^n (\frac{1}{1 - x^i} ) ^ {a_i}</script><p>看到乘积不爽. 两边同时取 $\ln$, 得</p>
+<script type="math/tex; mode=display">- \ln F(x) = \sum_{i=1}^n a_i \ln (1-x^i)</script><p>记 $g(x) = \ln (1-x^i)$, 那么对 $g(x)$ 求导得到</p>
+<script type="math/tex; mode=display">\frac{(1 - x^i)'}{1 - x^i} = \frac{-i x^{i-1}}{1 - x^i} = g'(x)</script><p>由广义二项式定理, 得</p>
+<script type="math/tex; mode=display">-ix^{i-1} \sum_{k=0}^{\infty} x ^{ki} = -\sum_{k=0}^{\infty} i x^{ki +i-1} = g'(x)</script><p>再积分, 得</p>
+<script type="math/tex; mode=display">-\sum_{k=0} ^ {\infty} \frac{i}{ki + i} x^{ki + i} = -\sum_{k=1}^{\infty} \frac{1}{k} x ^ {ki} = g(x)</script><p>所以我们就得到了</p>
+<script type="math/tex; mode=display">g(x) = \ln (1 - x^i) = -\sum_{k=1}^{\infty} \frac{1}{k} x^{ki}</script><p>代入原式, 可以得到</p>
+<script type="math/tex; mode=display">\ln F(x) = \sum_{i=1}^n a_i \sum_{k=1}^{\infty} \frac{1}{k} x^{ki}</script><p>设 $T = ki$, 并交换枚举顺序, 得</p>
+<script type="math/tex; mode=display">\ln F(x) = \sum_{T=1}^\infty (\sum_{d \mid T} a_d \frac{d}{T} ) x^T</script><p>至此, 这道题就做完了. 对给定的 $F(x)$ 求 $\ln$ 后莫比乌斯反演即可.</p>
 <p>此处并不需要筛出来 $\mu$ 之后 $O(\sqrt n)$ 枚举约数… 直接利用 <a href="http://vfleaking.blog.uoj.ac/blog/87" target="_blank" rel="noopener">VFleaKing 反演课件</a> 里的技巧即可.</p>
 <p>时间复杂度 $O(n\log n)$.</p>
 <p>其实整个过程叫做 “Euler Transform”? 类似的技巧也在 <a href="https://www.luogu.com.cn/problem/P4389" target="_blank" rel="noopener">Luogu P4389 付公主的背包</a> 用到过.</p>
@@ -332,7 +318,7 @@
 <p>开 始 了.</p>
 <p>我们先把 $T$ 倒过来再插入 $S$, 得到一个新串 $S_1 T_n S_2 T_{n-1} \cdots S_n T_1$, 那么 CBA 的判断就是在判断得到的新串是否可以被拆成 3 个偶回文串.</p>
 <p>可以在新串上枚举一个拆分点, 现在的问题就是: 判断后缀是否构成一个双回文串.</p>
-<p>有一个来自 <wc2017 金策="" 字符串算法选讲=""> 的结论</wc2017></p>
+<p>有一个来自 <wc2017 金策 字符串算法选讲> 的结论</wc2017></p>
 <blockquote>
 <p>如果 $s = ab$, $a$, $b$ 都是回文串, 则称 $s$ 是一个双回文串.</p>
 <p>如果 $s$ 是一个双回文串, 则存在一种拆分方法 $s = ab$, 使得 $a$ 是 $s$ 的最长回文前缀, 或者 $b$ 是 $s$ 的最长回文后缀.</p>
@@ -483,5 +469,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>

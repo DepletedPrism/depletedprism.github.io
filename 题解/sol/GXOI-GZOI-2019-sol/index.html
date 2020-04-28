@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="从 LOJ 的通过人数可以看出, 这里没有毒瘤题. 假的, 都是毒瘤.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-19T14:31:25.453Z">
+<meta property="og:updated_time" content="2020-04-28T16:14:48.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GXOI &#x2F; GZOI 2019 大赏">
 <meta name="twitter:description" content="从 LOJ 的通过人数可以看出, 这里没有毒瘤题. 假的, 都是毒瘤.">
@@ -209,8 +209,8 @@
 <p>如果之前有做过其他麻将 / 斗地主一类的题, 容易有高维 DP 的思路.</p>
 <p>现在需要注意顺子, 刻子, 以及雀头的个数. 记 $f(i, j, k, l, s)$ 表示考虑完第 $i$ 张牌, 共组合成 $j$ 组面子, 准备以第 $i-1$ 张牌开始的顺子有 $k$ 组, 准备以第 $i$ 张牌开始的顺子有 $l$ 组, 且雀头的个数为 $s$.</p>
 <p>以顺子为例, 记 $s$ 为第 $i + 1$ 张牌加入 $c$ 张时对分数的贡献, $\operatorname{Cnt}(i + 1)$ 为第 $i + 1$ 张牌剩余个数, 那么有</p>
-<p>$$f(i + 1,\ j + k,\ l,\ c - k - l,\ 0) = \max_{c = k + l} ^ {\operatorname{Cnt}(i + 1)} \{ s \cdot f(i,\ j,\ k,\ l,\ 0 ) \} \\<br>f(i + 1,\ j + k,\ l,\ c - k - l,\ 1) = \max_{c = k + l} ^ {\operatorname{Cnt}(i + 1)} \{ s \cdot f(i,\ j,\ k,\ l,\ 1 ) \}$$</p>
-<p>剩下的刻子和雀头的转移类似, 也就是在顺子的基础上多挑出一些牌组成刻子 / 雀头.</p>
+<script type="math/tex; mode=display">f(i + 1,\ j + k,\ l,\ c - k - l,\ 0) = \max_{c = k + l} ^ {\operatorname{Cnt}(i + 1)} \{ s \cdot f(i,\ j,\ k,\ l,\ 0 ) \} \\
+f(i + 1,\ j + k,\ l,\ c - k - l,\ 1) = \max_{c = k + l} ^ {\operatorname{Cnt}(i + 1)} \{ s \cdot f(i,\ j,\ k,\ l,\ 1 ) \}</script><p>剩下的刻子和雀头的转移类似, 也就是在顺子的基础上多挑出一些牌组成刻子 / 雀头.</p>
 <p>还有一些值得注意的地方:</p>
 <ol>
 <li>三组顺子和三组刻子的等价的, 每次枚举顺子组数不超过 $2$ 即可.</li>
@@ -232,13 +232,11 @@
 <p>考虑如何处理第一部分.</p>
 <p>注意到两直线相交的条件为 $y_0$ 和 $y_1$ 在 $x_{st}$ 处和 $x_{ed}$ 处的呈逆序, 并保证直线交点个数不大 ($\le 500,000$). 那么直接枚举直线, 暴力统计所有满足的直线计算交点即可. 具体可通过在 <code>set</code> 中二分实现.</p>
 <p>设不计嘉宾团的影响下的答案为 $w$, 选择 $x$ 处交点交换, 共有 $m$ 个交点. 则有</p>
-<p>$$w = a x + b \cdot (m - x)$$</p>
-<p>容易发现 $w$ 是关于 $x$ 的一次函数, 其极值显然在 $x$ 的上下界处取到.</p>
+<script type="math/tex; mode=display">w = a x + b \cdot (m - x)</script><p>容易发现 $w$ 是关于 $x$ 的一次函数, 其极值显然在 $x$ 的上下界处取到.</p>
 <p>一个显然的上界是交点个数. 注意到交换航线的操作并不影响纵坐标相对顺序, “能交换就交换” 一定能保持原有的相对位置.</p>
 <p>如果将一个位置向在终点处对应位置的实际编号连边, 一定会构成多个环. <del>实际上是多个置换</del>. 而让大小为 $l$ 的环有序的交换次数为 $l - 1$.</p>
 <p>记环个数为 $c$, 总次数为</p>
-<p>$$\sum_{i = 1} ^ c (l_i - 1) = \sum_{i = 1} ^ c l_i - c = n - c$$</p>
-<p>此处 DFS 遍历一遍所有环统计个数即可.</p>
+<script type="math/tex; mode=display">\sum_{i = 1} ^ c (l_i - 1) = \sum_{i = 1} ^ c l_i - c = n - c</script><p>此处 DFS 遍历一遍所有环统计个数即可.</p>
 <p>考虑如何处理第二部分.</p>
 <p>倾斜的正方形不好处理, 考虑旋转坐标轴, 使得正方形的边同坐标轴平行即可. 这里我将坐标轴逆时针旋转 $\frac{\pi}{4}$, 并将横纵坐标同时乘 $\sqrt 2$, 得出原坐标系下点 $(x,\ y)$ 在旋转后的坐标系中坐标为 $(x + y,\ y - x)$.</p>
 <p>此时直接二维数点即可. 拆成扫描线后是经典问题, 同时只需要 BIT 即可实现.</p>
@@ -255,22 +253,15 @@
 <p>假定不考虑 $1 \times 1$ 方砖的影响, 那么剩下的就是经典问题了, 其方案数为 Fibonacci 数列, 并记 Fibonacci 数列第 $n$ 项为 $f_n$, 同时有 $f_0 = 1$.</p>
 <p>如果将两个 $1\times 1$ 方砖填入 $2 \times n$ 的格子, 且要求两方砖分别处于第一列和最后一列, 那么只在 $n \ge 3$ 的情况下有合法方案, 可能的方案只有两种, 且具体排布方式和 $n$ 的奇偶性相关.</p>
 <p>此时可以得到这样的思路: 枚举两方砖的间距, 将整体分成两部分, 统计方案数. 可以得出方案数为</p>
-<p>$$2 \sum_{i = 3} ^ {n} \sum_{j = 0} ^ {n - i} f_j \cdot f_{n - i - j}$$</p>
-<p><del>卷积!</del> 卷个锤子. 交换求和顺序, 得</p>
-<p>$$2 \sum_{i = 0} ^ {n - 3} f_i \sum_{j = 0} ^ {n - i - 3} f_j$$</p>
-<p>设 Fibonacci 数列的前缀和第 $n$ 项为 $s_n$, 有 $s_n = s_{n - 1} + s_{n - 2} + 1 = f_{n + 2} - 1$. 归纳可证.</p>
+<script type="math/tex; mode=display">2 \sum_{i = 3} ^ {n} \sum_{j = 0} ^ {n - i} f_j \cdot f_{n - i - j}</script><p><del>卷积!</del> 卷个锤子. 交换求和顺序, 得</p>
+<script type="math/tex; mode=display">2 \sum_{i = 0} ^ {n - 3} f_i \sum_{j = 0} ^ {n - i - 3} f_j</script><p>设 Fibonacci 数列的前缀和第 $n$ 项为 $s_n$, 有 $s_n = s_{n - 1} + s_{n - 2} + 1 = f_{n + 2} - 1$. 归纳可证.</p>
 <p>带入原式, 得</p>
-<p>$$ 2 \sum_{i = 0} ^ {n - 3} f_i \cdot (f_{n - i - 1} - 1) =<br>2 \sum_{i = 0} ^ {n - 3} f_i \cdot f_{n - i - 1} - 2 f_{n - 1} + 2 $$</p>
-<p>设 $g_n = \sum\limits_{ i = 0 } ^ n f_i \cdot f_{n - i}$, 那么可化为</p>
-<p>$$2\ (\sum_{i = 0} ^ {n - 1} f_i \cdot f_{n - i - 1} - f_{n - 1} \cdot f_0 - f_{n - 2} \cdot f_1) - 2 f_{n - 1} + 2$$</p>
-<p>$$2 g_{n - 1} - 2 f_{n - 2} - 4 f_{n - 1} + 2$$</p>
-<p>现在的问题在于如何快速求出 $g_n$.</p>
-<p>$$ g_n = \sum_{i = 0} ^ {n - 1} f_i \cdot f_{n - i} = \sum_{i = 0} ^ {n - 2} f_i \cdot (f_{n - i - 1} + f_{n - i - 2}) + f_{n} + f_{n - 1} $$</p>
-<p><del>想必大家都知道接下来要做什么</del></p>
-<p>$$g_n = (f_{n - 1} + \sum_{i = 0} ^ {n - 2} f_i \cdot f_{n - i - 1} ) + \sum_{i = 0} ^ {n - 2} f_i \cdot f_{n - i - 2} + f_n = g_{n - 1} + g_{n - 2} + f_n$$</p>
-<p>设 $\mathbf{A_{n}} = \begin{bmatrix} f_{n - 1} \\ f_n \\ g_{n - 1} \\ g_{n} \end{bmatrix}$, 有</p>
-<p>$$\mathbf{A_i} = \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 1 &amp; 1 &amp; 1 &amp; 1 \end{bmatrix} \times \mathbf{A_{i - 1}}$$</p>
-<p>矩阵快速幂即可.</p>
+<script type="math/tex; mode=display">2 \sum_{i = 0} ^ {n - 3} f_i \cdot (f_{n - i - 1} - 1) =
+2 \sum_{i = 0} ^ {n - 3} f_i \cdot f_{n - i - 1} - 2 f_{n - 1} + 2</script><p>设 $g_n = \sum\limits_{ i = 0 } ^ n f_i \cdot f_{n - i}$, 那么可化为</p>
+<script type="math/tex; mode=display">2\ (\sum_{i = 0} ^ {n - 1} f_i \cdot f_{n - i - 1} - f_{n - 1} \cdot f_0 - f_{n - 2} \cdot f_1) - 2 f_{n - 1} + 2</script><script type="math/tex; mode=display">2 g_{n - 1} - 2 f_{n - 2} - 4 f_{n - 1} + 2</script><p>现在的问题在于如何快速求出 $g_n$.</p>
+<script type="math/tex; mode=display">g_n = \sum_{i = 0} ^ {n - 1} f_i \cdot f_{n - i} = \sum_{i = 0} ^ {n - 2} f_i \cdot (f_{n - i - 1} + f_{n - i - 2}) + f_{n} + f_{n - 1}</script><p><del>想必大家都知道接下来要做什么</del></p>
+<script type="math/tex; mode=display">g_n = (f_{n - 1} + \sum_{i = 0} ^ {n - 2} f_i \cdot f_{n - i - 1} ) + \sum_{i = 0} ^ {n - 2} f_i \cdot f_{n - i - 2} + f_n = g_{n - 1} + g_{n - 2} + f_n</script><p>设 $\mathbf{A_{n}} = \begin{bmatrix} f_{n - 1} \\ f_n \\ g_{n - 1} \\ g_{n} \end{bmatrix}$, 有</p>
+<script type="math/tex; mode=display">\mathbf{A_i} = \begin{bmatrix} 0 & 1 & 0 & 0 \\ 1 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 1 & 1 & 1 \end{bmatrix} \times \mathbf{A_{i - 1}}</script><p>矩阵快速幂即可.</p>
 <p>时间复杂度为 $O(T \cdot 4 ^ 3 \log n)$.</p>
 <p><del>那个 12 x 12 的矩阵是大力设状态, xjb 转移的产物.</del></p>
 <h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
@@ -434,5 +425,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>

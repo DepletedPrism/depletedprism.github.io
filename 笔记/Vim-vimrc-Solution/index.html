@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="Vim 或 Emacs，总是其他人带入坑的。  为了配置文件的可移植性，只选取了同时使用于 Windows 及 Linux 的特性。 为了考场上能用，只选取了部分配置。其实是不想深究啊">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-24T09:12:09.293Z">
+<meta property="og:updated_time" content="2020-04-28T16:33:19.594Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vim .vimrc 解决方案">
 <meta name="twitter:description" content="Vim 或 Emacs，总是其他人带入坑的。  为了配置文件的可移植性，只选取了同时使用于 Windows 及 Linux 的特性。 为了考场上能用，只选取了部分配置。其实是不想深究啊">
@@ -204,18 +204,19 @@
 <figure class="highlight vim"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">nu</span></span><br><span class="line"><span class="keyword">set</span> tabstop=<span class="number">4</span></span><br><span class="line"><span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">4</span></span><br><span class="line"><span class="keyword">colorscheme</span> desert</span><br><span class="line"><span class="keyword">set</span> guifont=consola<span class="variable">s:h12</span></span><br></pre></td></tr></table></figure>
 <h4 id="键盘映射"><a href="#键盘映射" class="headerlink" title="键盘映射"></a>键盘映射</h4><p>但是只有配置文件怎么能愉快地使用 Vim 呢, 于是, 有以下键盘映射, 将 <code>Caps Lock</code> 和 <code>Esc</code> 互换.</p>
 <ul>
-<li><p>对于 Windows</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Kayboard Layout]</span><br><span class="line">&quot;Scancode Map&quot;=hex:00,00,00,00,00,00,00,00,03,00,00,00,3A,00,01,00,01,00,3A,00,00,00,00,00</span><br></pre></td></tr></table></figure>
+<li>对于 Windows</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line">  </span><br><span class="line">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Kayboard Layout]</span><br><span class="line">&quot;Scancode Map&quot;=hex:00,00,00,00,00,00,00,00,03,00,00,00,3A,00,01,00,01,00,3A,00,00,00,00,00</span><br></pre></td></tr></table></figure>
 <p>保存为 <code>&lt;filename&gt;.reg</code> 然后双击添加到注册表就好了. 因为是写在注册表里的, 所以要注销 / 重启之后才能应用</p>
 <p><del>如果打过东方的话, 可以发现 ZUN 正作里绝大多数是不支持这样的键盘映射的, 也就是说, 键盘映射失效了</del></p>
-</li>
-<li><p>对于 Ubuntu (实际上支持 Xmodmap 都可以用的…)</p>
+<ul>
+<li>对于 Ubuntu (实际上支持 Xmodmap 都可以用的…)</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">clear Lock</span><br><span class="line">keysym Caps_Lock = Escape</span><br><span class="line">keysym Escape = Caps_Lock</span><br><span class="line">add Lock = Caps_Lock</span><br></pre></td></tr></table></figure>
 <p>写到 <code>.Xmodmap</code> 之后在终端里输入, 感觉上用其他文件名也是可以的, 不过没有试过</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmodmap .Xmodmap</span><br></pre></td></tr></table></figure>
 <p>唯一的缺点是重启之后就需要重新打一遍命令了, 解决方法应该是让这条命令自动运行吧, 不过没有研究…</p>
-</li>
-</ul>
+<hr>
 
   </div>
   <footer class="article-footer">
@@ -337,5 +338,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>

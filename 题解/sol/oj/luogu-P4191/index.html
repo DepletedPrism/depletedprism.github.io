@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="题目链接: https://www.luogu.com.cn/problem/P4191  这道题真是奥妙重重, 直接暴露了我 FFT 那一套单位根的东西没搞懂 = =">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-25T08:51:14.014Z">
+<meta property="og:updated_time" content="2020-04-28T16:07:02.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「CTSC 2010」性能优化 题解">
 <meta name="twitter:description" content="题目链接: https://www.luogu.com.cn/problem/P4191  这道题真是奥妙重重, 直接暴露了我 FFT 那一套单位根的东西没搞懂 = =">
@@ -193,35 +193,24 @@
 <p>这道题真是奥妙重重, 直接暴露了我 FFT 那一套单位根的东西没搞懂 = =</p>
 <a id="more"></a>
 <h4 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h4><p>给定两个序列 $a_0,\ a_1,\ \ldots, a_{n - 1}$, 以及 $b_0,\ b_1,\ \ldots, b_{n - 1}$, 定义一种运算</p>
-<p>$$c_{r} = \sum_{(p + q) \bmod n = r} a_p \cdot b_q$$</p>
-<p>也就是循环卷积. 求 $a \cdot b ^ c$ 各项模 $n + 1$ 后的值.</p>
+<script type="math/tex; mode=display">c_{r} = \sum_{(p + q) \bmod n = r} a_p \cdot b_q</script><p>也就是循环卷积. 求 $a \cdot b ^ c$ 各项模 $n + 1$ 后的值.</p>
 <p>其中 $n$ 在质因数分解后每个质因数不超过 $10$, $n + 1$ 为质数, 且 $n \le 5 \times 10 ^ 5$, $a_i, b_i, C \le 10 ^ 9$.</p>
 <h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>先观察循环卷积是个什么东西.</p>
 <p>根据 <del>等比数列求和</del> 单位根反演, 有</p>
-<p>$$\frac{1}{n} \sum_{0 \le k &lt; n} \omega_{n}^{vk} = [v \bmod n = 0]$$</p>
-<p>那么有</p>
-<p>$$c_r = \sum_{(p + q) \bmod n = r} a_p \cdot b_q = \sum_{p,\ q} \frac{1}{n} \sum_{0 \le k &lt; n} \omega_{n}^{(p + q - r) k} \cdot a_p b_q$$</p>
-<p>稍微整理一下, 得</p>
-<p>$$c_r = \frac{1}{n} \sum_{0 \le k &lt; n} \omega_{n} ^ {-rk} \left( \sum_{0 \le p &lt; n} a_p \omega_{n}^{pk} \right) \left( \sum_{0 \le q &lt; n} b_q \omega_{n}^{qk}\right)$$</p>
-<p>那么对 $a$, $b$ 做 DFT, 乘起来再做一次 IDFT 即可得出 $c$.</p>
+<script type="math/tex; mode=display">\frac{1}{n} \sum_{0 \le k < n} \omega_{n}^{vk} = [v \bmod n = 0]</script><p>那么有</p>
+<script type="math/tex; mode=display">c_r = \sum_{(p + q) \bmod n = r} a_p \cdot b_q = \sum_{p,\ q} \frac{1}{n} \sum_{0 \le k < n} \omega_{n}^{(p + q - r) k} \cdot a_p b_q</script><p>稍微整理一下, 得</p>
+<script type="math/tex; mode=display">c_r = \frac{1}{n} \sum_{0 \le k < n} \omega_{n} ^ {-rk} \left( \sum_{0 \le p < n} a_p \omega_{n}^{pk} \right) \left( \sum_{0 \le q < n} b_q \omega_{n}^{qk}\right)</script><p>那么对 $a$, $b$ 做 DFT, 乘起来再做一次 IDFT 即可得出 $c$.</p>
 <p>问题在于, $n$ 不满足 FFT 的要求, 即 $n$ 不是 $2$ 的幂次. 现在要处理的事情就是混合基 FFT 的计算.</p>
 <p>将 $n$ 质因数分解, 得到</p>
-<p>$$n = 2 ^ {c_1} \times 3 ^ {c_2} \times 5 ^ {c_3} \times 7 ^ {c_4}$$</p>
-<p>在做朴素 FFT 时有 $n = 2 ^ c$, 每次将序列分作两部分合并. 现在, 将序列分作 $p$ 部分 ($p \in \{2 ,\ 3,\ 5,\ 7 \}$) 部分, 然后合并.</p>
+<script type="math/tex; mode=display">n = 2 ^ {c_1} \times 3 ^ {c_2} \times 5 ^ {c_3} \times 7 ^ {c_4}</script><p>在做朴素 FFT 时有 $n = 2 ^ c$, 每次将序列分作两部分合并. 现在, 将序列分作 $p$ 部分 ($p \in \{2 ,\ 3,\ 5,\ 7 \}$) 部分, 然后合并.</p>
 <p>重新推导 DFT 的式子. 将多项式的系数按照次项模 $p$ 意义下不同取值分为 $p$ 组, 记作 $F_r(x)$, 即</p>
-<p>$$F_r(x) = \sum_{0 \le k &lt; n} f_{kp + r} x^ k$$</p>
-<p>取 $F_r(x)$ 在 $x = \omega_{n} ^ i\ (0 \le i &lt; n)$ 处的点值. 同时需要将 $p$ 组点值合并为 $pn$ 组点值. 合并后的多项式为</p>
-<p>$$F(x) = \sum_{0 \le k &lt; pn} f_k x ^ k$$</p>
-<p>利用单位根的性质, 可以得到</p>
-<p>$$\omega_{pn}^{kp + r} = \left( \omega_{n} ^ k \right) ^ {\frac{kp + r}{kp}} = \omega_{n}^k \cdot \omega_{pn} ^ r$$</p>
-<p>那么有</p>
-<p>$$F(\omega_{pn} ^ i) = \sum_{0 \le k &lt; pn} f_k \cdot (\omega_{pn}^i) ^ k = \sum_{0\le r &lt; p} (\omega_{pn} ^ i) ^ r F_r(\omega_{n}^i)$$</p>
-<p>其中 $0 \le i &lt; pn$, 不妨将 $i$ 表示为 $an + b$. 则</p>
-<p>$$F(\omega_{pn} ^ {an + b}) = \sum_{0 \le r &lt; p} \left( \omega_{pn} ^ {an+b} \right) ^ r F_r (\omega_n ^ b)$$</p>
-<p>此时得出了在 $O(p)$ 的时间复杂度内合并一处点值的方法.</p>
+<script type="math/tex; mode=display">F_r(x) = \sum_{0 \le k < n} f_{kp + r} x^ k</script><p>取 $F_r(x)$ 在 $x = \omega_{n} ^ i\ (0 \le i &lt; n)$ 处的点值. 同时需要将 $p$ 组点值合并为 $pn$ 组点值. 合并后的多项式为</p>
+<script type="math/tex; mode=display">F(x) = \sum_{0 \le k < pn} f_k x ^ k</script><p>利用单位根的性质, 可以得到</p>
+<script type="math/tex; mode=display">\omega_{pn}^{kp + r} = \left( \omega_{n} ^ k \right) ^ {\frac{kp + r}{kp}} = \omega_{n}^k \cdot \omega_{pn} ^ r</script><p>那么有</p>
+<script type="math/tex; mode=display">F(\omega_{pn} ^ i) = \sum_{0 \le k < pn} f_k \cdot (\omega_{pn}^i) ^ k = \sum_{0\le r < p} (\omega_{pn} ^ i) ^ r F_r(\omega_{n}^i)</script><p>其中 $0 \le i &lt; pn$, 不妨将 $i$ 表示为 $an + b$. 则</p>
+<script type="math/tex; mode=display">F(\omega_{pn} ^ {an + b}) = \sum_{0 \le r < p} \left( \omega_{pn} ^ {an+b} \right) ^ r F_r (\omega_n ^ b)</script><p>此时得出了在 $O(p)$ 的时间复杂度内合并一处点值的方法.</p>
 <p>IDFT 时类似, 根据下式可在 DFT 的基础上简单计算.</p>
-<p>$$c_r = \frac{1}{n} \sum_{0 \le k &lt; n} a_k \omega_{n}^{-rk} = \frac{1}{n} \sum_{0 \le k &lt; n} a_k \omega_{n} ^ {r(n-k)}$$</p>
-<p>如果追求迭代实现, 那么在预处理每个元素分治时的位置需要精巧实现.</p>
+<script type="math/tex; mode=display">c_r = \frac{1}{n} \sum_{0 \le k < n} a_k \omega_{n}^{-rk} = \frac{1}{n} \sum_{0 \le k < n} a_k \omega_{n} ^ {r(n-k)}</script><p>如果追求迭代实现, 那么在预处理每个元素分治时的位置需要精巧实现.</p>
 <p>注意到 $n + 1$ 保证为质数, 且根据 $n$ 的性质可以快速计算原根. 利用原根作为单位根就好了.</p>
 <p>再来分析时间复杂度. 分治计算的过程中, 层数 $\sum\limits_{i = 1} ^ 4 c_i = O(\log n)$, 每层合并的复杂度为 $O(pn)$ 且 $p$ 为常数, 因此总时间复杂度为 $O(n \log n)$.</p>
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p>参考了 <a href="https://www.luogu.com.cn/blog/wengweijie/solution-p4191" target="_blank" rel="noopener">Weng_Weijie</a> 的迭代实现. <del>问就是奥妙重重</del></p>
@@ -353,5 +342,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>

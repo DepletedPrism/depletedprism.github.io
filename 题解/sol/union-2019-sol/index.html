@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="其实之前都已经写地差不多了…">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-13T14:14:15.471Z">
+<meta property="og:updated_time" content="2020-04-28T16:07:02.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="十二省联考 2019 大赏">
 <meta name="twitter:description" content="其实之前都已经写地差不多了…">
@@ -225,10 +225,9 @@
 <p>观察到数据中有</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">264708066 1996649514996338529</span><br><span class="line">264708068 1589589654696467295</span><br></pre></td></tr></table></figure>
 <p>那么有</p>
-<p>$$1996649514996338529 \times 19^2 \equiv 1589589654696467295\pmod m$$</p>
-<p>即</p>
-<p>$$m \mid (1996649514996338529 \times 19^2 -1589589654696467295 ) \\<br>  m \mid 719200885258981741674$$</p>
-<p>先考虑 $m$ 是素数的情况, 用 Linux 下命令 <code>factor</code> 分解, 得</p>
+<script type="math/tex; mode=display">1996649514996338529 \times 19^2 \equiv 1589589654696467295\pmod m</script><p>即</p>
+<script type="math/tex; mode=display">m \mid (1996649514996338529 \times 19^2 -1589589654696467295 ) \\\
+  m \mid 719200885258981741674</script><p>先考虑 $m$ 是素数的情况, 用 Linux 下命令 <code>factor</code> 分解, 得</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">719200885258981741674: 2 3 23 5211600617818708273</span><br></pre></td></tr></table></figure>
 <p>选择 $5211600617818708273$ 检验, 发现这就是要找的模数.</p>
 </li>
@@ -292,8 +291,7 @@
 <h4 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h4><p>考虑背包.</p>
 <p>如果 $k = 0$, 此时为城市选定阵营, 为学校选定导师两种决策互不影响, 直接朴素背包计算方案数, 利用乘法原理相乘即可.</p>
 <p>具体地说, 用 $f(i)$ 表示选择蓝阵营总人数为 $i$ 的方案数, $g(i)$ 表示选择鸭派系总人数为 $i$ 的方案数, 记 $S$ 为总人数和, 那么答案为</p>
-<p>$$\sum_{i = S - C1} ^ {C0} f(i) \sum_{j = S - D1} ^ {D0} g(j)$$</p>
-<p>此时时间复杂度为 $O((n + c) M)$.</p>
+<script type="math/tex; mode=display">\sum_{i = S - C1} ^ {C0} f(i) \sum_{j = S - D1} ^ {D0} g(j)</script><p>此时时间复杂度为 $O((n + c) M)$.</p>
 <p>如果 $k &gt; 0$, 没有偏好的城市 / 学校不会受到影响, 直接用以上方法处理即可.</p>
 <p>考虑有偏好的城市 / 学校如何处理. 观察到 $k$ 很小, 此时使用高维 DP. 设 $F(i, j)$ 表示在有偏好的城市及学校中, 城市选择蓝阵营人数为 $i$, 学校选择鸭派系人数为 $j$ 的方案数.</p>
 <p>转移有些复杂… 大力讨论学校偏好即可. 此时动态维护阵营和派系的人数上限可减小常数.</p>
@@ -327,21 +325,17 @@
 <p>推广到 $k$ 个连通块的情况, 也就是满足题目要求的点集 $T$ 为一个连通块.</p>
 <p>设连通块边集为 $E$, 点集为 $V$, 考虑到树上连通块的性质, 有 $|E| - |V| = 1$.</p>
 <p>那么可以通过容斥计算答案. 设 $f(u)$ 表示以点 $u$ 为中心点的联通块数, $g(e)$ 表示以边 $e$ 的两个端点为中心点联通块数, 那么答案可表示为</p>
-<p>$$\sum_{u \in V} f(u)^k - \sum_{e \in E} g(e)^k$$</p>
-<p>于是就可以 DP 了. 以下过程中钦定根节点为 $1$.</p>
+<script type="math/tex; mode=display">\sum_{u \in V} f(u)^k - \sum_{e \in E} g(e)^k</script><p>于是就可以 DP 了. 以下过程中钦定根节点为 $1$.</p>
 <p>设 $f(i, j)$ 表示以 $i$ 为根的子树, 包含节点 $i$ 且同 $i$ 距离不超过 $j$ 的连通块个数. 那么转移为</p>
-<p>$$f(u, i) = \prod_{v \in son(u)} \left(f(v, i-1) + 1\right)$$</p>
-<p>设 $g(i, j)$ 表示包含节点 $i$, 不包含以 $i$ 为根的子树, 且同 $i$ 距离不超过 $j$ 的连通块个数. 记 $fa$ 为 $u$ 父亲节点, 那么转移为</p>
-<p>$$g(u, i) = g(fa, i-1) \prod_{v \in son(fa),\ v \neq u} \left(f(v, i-2) + 1\right) + 1$$</p>
-<p>记边 $(u, v)$ 中 $v$ 为较深节点, 那么答案为</p>
-<p>$$\sum_{u = 1} ^ n \big(f(u, L)\cdot g(u, L)\big) ^ k - \sum_{(u, v) \in E} \big(f(v, L-1) \cdot (g(v, L) - 1)\big) ^ k$$</p>
-<p>此时直接树形 DP, 两次 DFS 分别处理 $f,\ g$ 即可.</p>
+<script type="math/tex; mode=display">f(u, i) = \prod_{v \in son(u)} \left(f(v, i-1) + 1\right)</script><p>设 $g(i, j)$ 表示包含节点 $i$, 不包含以 $i$ 为根的子树, 且同 $i$ 距离不超过 $j$ 的连通块个数. 记 $fa$ 为 $u$ 父亲节点, 那么转移为</p>
+<script type="math/tex; mode=display">g(u, i) = g(fa, i-1) \prod_{v \in son(fa),\ v \neq u} \left(f(v, i-2) + 1\right) + 1</script><p>记边 $(u, v)$ 中 $v$ 为较深节点, 那么答案为</p>
+<script type="math/tex; mode=display">\sum_{u = 1} ^ n \big(f(u, L)\cdot g(u, L)\big) ^ k - \sum_{(u, v) \in E} \big(f(v, L-1) \cdot (g(v, L) - 1)\big) ^ k</script><p>此时直接树形 DP, 两次 DFS 分别处理 $f,\ g$ 即可.</p>
 <p>时间复杂度 $O(nL)$. 36 pts 滚出.</p>
 <p><del>使用长链剖分, 可回退数据结构, 离线求逆元优化即可 AC</del>.</p>
 <p>注意到 $f,\ g$ 的转移可以通过长链剖分优化, 转移时可以用数据结构维护.</p>
 <p>另外 $f,\ g$ 的状态在设计时, 给出的限制是 “距离不超过”. 记 $d(u)$ 为节点 $u$ 到子树内叶子的最长距离, 那么不管 $L$ 的限制, 第二维 $\geq d(u)$ 的状态和第二维等于 $d(u)$ 的状态值相等.</p>
 <p>直接记录 $d(u)$ 的值, 对于超过 $d(u)$ 的部分直接取 $d(u)$ 的值即可.</p>
-<p>转移对 $f,\ g$ 的修改只是后缀乘, 全局加, 以及单点修改. 利用可回退数据结构 — 也就是用类似栈的结构记录操作, 每次记录修改的位置和值, 回退时恢复 — 即可. 此步骤的时间复杂度和空间复杂度都是 $O(n)$.</p>
+<p>转移对 $f,\ g$ 的修改只是后缀乘, 全局加, 以及单点修改. 利用可回退数据结构 —- 也就是用类似栈的结构记录操作, 每次记录修改的位置和值, 回退时恢复 —- 即可. 此步骤的时间复杂度和空间复杂度都是 $O(n)$.</p>
 <p>回退时还有一个细节. 在更新 $g$ 的值时, 为了使将来会用到的值不会被提前弹出, 所以转移 $g$ 时需要将 DFS 序翻转.</p>
 <p>后缀乘时可能出现模数 $P$ 的倍数, 也就是要考虑后缀乘 $0$ 的问题. 另外维护一个标记, 表示这个标记后的值全部为 $0$ 即可. 注意此时的 “为 $0$” 指经过 $ax + b$ 的标记运算后为 $0$, 也就是后缀赋值 $-\frac{b}{a}$.</p>
 <p>但是转移 $g$ 时需要用到乘法逆元. 所幸需要用到的值的逆元可以不考虑 $L$ 的限制, 通过一次 DFS 求出. 那么用 “线性求逆元” 的 Trick $O(n)$ 计算就好了.</p>
@@ -478,5 +472,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="高一玩泥巴的时候陪着学长做过… 然而只是暴力的忠实选手. 结果现在还是暴力的忠实选手.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-09T06:10:52.673Z">
+<meta property="og:updated_time" content="2020-04-28T16:07:02.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="九省联考 2018 大赏">
 <meta name="twitter:description" content="高一玩泥巴的时候陪着学长做过… 然而只是暴力的忠实选手. 结果现在还是暴力的忠实选手.">
@@ -258,7 +258,7 @@
 </ul>
 <p>考虑其他选手的影响. 由录取方案的最优性可知, 只有排名比 $i$ 靠前的选手对 $i$ 有影响, 那么每位选手直接在上一位选手的残量网络上建边即可.</p>
 <p>未被枚举到的志愿录取时, 需要及时把此档志愿所建的边回退掉, 以避免多出用不到的废边, 从而影响时间复杂度的正确性…</p>
-<p>对于第二问, 可以发现答案可以二分 — 如果选手到了第 $1$ 名, 还不能达到自己的要求, 那肯定会沮丧了.</p>
+<p>对于第二问, 可以发现答案可以二分 —- 如果选手到了第 $1$ 名, 还不能达到自己的要求, 那肯定会沮丧了.</p>
 <p>我们二分一个答案 $x$, 表示选手 $i$ 不沮丧时的 <strong>最小排名</strong>. <code>check</code> 的时候前 $x-1$ 名选手的录取情况并不会改变, 再次基础上加入选手 $i$ 的前 $s_i$ 个志愿, 判断新图是否存在增广路即可.</p>
 <p>每次都建一次新图, 并把前 $x-1$ 名选手匹配好有些麻烦, 时间复杂度还很高. 考虑到解决第一问时, 已经把这些匹配求过一遍了, 所以记录选手录取情况的前缀图, 每次 <code>check</code> 调用即可. 因为点数很小, 所以可以保证每次暴力复制的复杂度.</p>
 <p>时间复杂度大概是 $O(\ T(n^2m + n^2 \log n)\ )$?</p>
@@ -282,15 +282,9 @@
 <p>丢掉对链个数的限制, 容易得到一个 $O(n)$ 的 DP:</p>
 <p>设 $f(i, j)$ 表示以节点 $i$ 为根的子树内, 且节点 $i$ 度数为 $j \in \{ 0,\ 1,\ 2 \}$ 的最大边权和, 以及达到该边权和所用的最少链数.</p>
 <p>首先有初值</p>
-<p>$$f(u, 0) = 0,\ f(u, 1) = 0 $$</p>
-<p>$$f(u, 2) = \max\{ 0, -s \}$$</p>
-<p>记边 $(u, v)$ 边权为 $w(u, v)$, 那么转移为</p>
-<p>$$f(u, 0) = \max\{ f(u, 0),\ f(u, 0) + f(v, 0) \}$$</p>
-<p>$$f(u, 1) = \max\{ f(u, 1),\ f(u, 1) + f(v, 0),\ f(u, 0) + f(v, 1) + w(u, v) \}$$</p>
-<p>$$f(u, 2) = \max\{ f(u, 2),\ f(u, 2) + f(v, 0),\ f(u, 1) + f(v, 1) + w(u, v) - s \}$$</p>
-<p>以及一个节点 DP 完后, 还需要合并答案.</p>
-<p>$$f(u, 0) = \max\{ f(u, 0),\ f(u, 1) - s,\ f(u, 2) \}$$</p>
-<p>这样就能解释通了… 只用度数考虑 <del>会发现解释不通</del></p>
+<script type="math/tex; mode=display">f(u, 0) = 0,\ f(u, 1) = 0</script><script type="math/tex; mode=display">f(u, 2) = \max\{ 0, -s \}</script><p>记边 $(u, v)$ 边权为 $w(u, v)$, 那么转移为</p>
+<script type="math/tex; mode=display">f(u, 0) = \max\{ f(u, 0),\ f(u, 0) + f(v, 0) \}</script><script type="math/tex; mode=display">f(u, 1) = \max\{ f(u, 1),\ f(u, 1) + f(v, 0),\ f(u, 0) + f(v, 1) + w(u, v) \}</script><script type="math/tex; mode=display">f(u, 2) = \max\{ f(u, 2),\ f(u, 2) + f(v, 0),\ f(u, 1) + f(v, 1) + w(u, v) - s \}</script><p>以及一个节点 DP 完后, 还需要合并答案.</p>
+<script type="math/tex; mode=display">f(u, 0) = \max\{ f(u, 0),\ f(u, 1) - s,\ f(u, 2) \}</script><p>这样就能解释通了… 只用度数考虑 <del>会发现解释不通</del></p>
 <p>这一步的 DP 就相当于拿一条斜率为 $s$ 的直线去切这个图像, 并得到凸包上一点 $(k,\ f(1, 0))$. 接着根据 $k$ 和 $K+1$ 的关系来调整斜率, 直到同凸包交点为 $(K+1,\ f(1, 0))$.</p>
 <p>时间复杂度 $O(n \log w)$. 其中 $w$ 为答案上下界之差.</p>
 <h4 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
@@ -304,10 +298,8 @@
 <p><del>还是 <a href="http://labelray.top/2019/03/01/%E4%B9%9D%E7%9C%81%E8%81%94%E8%80%83-2018-%E5%88%B6%E8%83%A1%E7%AA%9C/" target="_blank" rel="noopener">Labelray</a> 讲地好哇.</del></p>
 <p>还是拿 Labelray 的题解再展开说一点东西.</p>
 <p>对于 Case 2.1, 我个人认为最终的答案应为</p>
-<p>$$\sum_{i=1}^{n-1} (r_{i+1} - l_n) \cdot (l_{i+1} - l_i)$$</p>
-<p>化简之后可以得到</p>
-<p>$$\sum_{i=1}^{n-1} r_{i+1} (r_{i+1}-r_i) - l_n \cdot \sum_{i=1}^{n-1} (r_{i+1} - r_i) $$</p>
-<p>以及 Case 3, 在满足限制 $l_n &lt; r_{i+1} &lt; r_1 + len - 1$ 时, 直接在线段树上查询区间 $(l_n,\ r_1 + len - 1]$, 则会缺失左边界.</p>
+<script type="math/tex; mode=display">\sum_{i=1}^{n-1} (r_{i+1} - l_n) \cdot (l_{i+1} - l_i)</script><p>化简之后可以得到</p>
+<script type="math/tex; mode=display">\sum_{i=1}^{n-1} r_{i+1} (r_{i+1}-r_i) - l_n \cdot \sum_{i=1}^{n-1} (r_{i+1} - r_i)</script><p>以及 Case 3, 在满足限制 $l_n &lt; r_{i+1} &lt; r_1 + len - 1$ 时, 直接在线段树上查询区间 $(l_n,\ r_1 + len - 1]$, 则会缺失左边界.</p>
 <p>具体地说, 由于使用右端点 $r_i$ 的差代替左端点 $l_i$ 的差, 在计算时会漏掉 $r_i &lt; l_n &lt; r_{i+1}$ 的情况, 但此时对应左边一刀切在 $(l_i, l_{i+1})$ 的情况仍然合法. 于是在统计中需要加入 $[1,\ l_n]$ 的最大端点, 同线段树查询结果合并即可.</p>
 <p>时间复杂度 $O(n \log n + q \log n)$.</p>
 <h4 id="代码实现-5"><a href="#代码实现-5" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
@@ -436,5 +428,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>

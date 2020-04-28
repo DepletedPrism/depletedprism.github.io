@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="HAOI 2017 的神秘弱省省选难度.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-09T06:10:52.673Z">
+<meta property="og:updated_time" content="2020-04-28T16:07:02.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HAOI 2017 大赏">
 <meta name="twitter:description" content="HAOI 2017 的神秘弱省省选难度.">
@@ -222,13 +222,11 @@
 <p>先考虑没有障碍怎么做.</p>
 <p>可以发现一个性质: 到达某一个点 $(x,\ y,\ z)$ 的方案数, 只和每个坐标在二进制表示中 $1$ 的个数有关.</p>
 <p>设 $f(x,\ y,\ z)$ 表示某个坐标中 $1$ 的个数分别为 $x,\ y,\ z$, 那么可以写出转移:</p>
-<p>$$f(x,\ y,\ z) = \sum_{i=1}^x \binom{x}{i} f(x - i,\ y,\ z) + \sum_{j=1}^y \binom{y}{j} f(x,\ y - j,\ z) \\ + \sum_{k=1}^z \binom{z}{k} f(x,\ y,\ z - k)$$</p>
-<p>那么 $f(x,\ y,\ z)$ 可以在 $O(\log^ 3 n)$ 的时间内计算. <del>听说数据弱, 这样就有 80 pts?</del></p>
+<script type="math/tex; mode=display">f(x,\ y,\ z) = \sum_{i=1}^x \binom{x}{i} f(x - i,\ y,\ z) + \sum_{j=1}^y \binom{y}{j} f(x,\ y - j,\ z) \\ + \sum_{k=1}^z \binom{z}{k} f(x,\ y,\ z - k)</script><p>那么 $f(x,\ y,\ z)$ 可以在 $O(\log^ 3 n)$ 的时间内计算. <del>听说数据弱, 这样就有 80 pts?</del></p>
 <p>考虑加上障碍怎么做.</p>
 <p>设 $g(i)$ 表示从出发点到第 $i$ 个障碍的方案数. 如果不考虑其他障碍的影响, 那么直接从 $f(x,\ y,\ z)$ 转移就好了. 如果考虑, 则需要减去 $O \rightarrow j \rightarrow i$ 的方案数, 其中 $O \rightarrow j$ 就是 $g(j)$, $j \rightarrow i$ 可以通过 $f(x,\ y,\ z)$ 计算.</p>
 <p>形式化一点, 即</p>
-<p>$$g(i) = f(x,\ y,\ z) - \sum_{j} g(j) \cdot f(x’, y’, z’)$$</p>
-<p>其中的细节参考代码实现.</p>
+<script type="math/tex; mode=display">g(i) = f(x,\ y,\ z) - \sum_{j} g(j) \cdot f(x', y', z')</script><p>其中的细节参考代码实现.</p>
 <p>将终点 $(n,\ m,\ r)$ 加入障碍点, 则 $g(o)$ 即为答案.</p>
 <p>时间复杂度 $O(\log^3 n + o \log o + o^2) = O(o^2)$. <del>o &lt;= 1e4 当然是按信仰跑.</del></p>
 <p>为了便于实现以及方便计算, 将所有障碍点按坐标依次从小到大排序. 并通过预处理加速统计某个数二进制下 $1$ 的个数.</p>
@@ -412,5 +410,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>

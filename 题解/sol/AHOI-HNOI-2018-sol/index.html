@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="其实不想再写 18 年的题了… 再写就没时间写 19 年的了 ( 果然立 flag 就是用来倒的. 话说这套题单看正解, 还挺考验思维的?">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-09T06:10:52.673Z">
+<meta property="og:updated_time" content="2020-04-28T16:07:02.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AHOI &#x2F; HNOI 2018 大赏">
 <meta name="twitter:description" content="其实不想再写 18 年的题了… 再写就没时间写 19 年的了 ( 果然立 flag 就是用来倒的. 话说这套题单看正解, 还挺考验思维的?">
@@ -208,20 +208,14 @@
 <h4 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h4><p>将选择物品这个过程的顺序倒过来, 也就是在某个时刻 $t$, 从位置 $i$ 开始先前移动, 每个物品在时刻 $T_j$ 消失, 需要在每个物品消失前到达该物品的位置.</p>
 <p>此时容易看出, 选择好位置和时刻之后, 一刻不停地走才能得到当前状态下的最优解. 本题做法就此展开.</p>
 <p>首先将出现时刻序列 $T_i$ 倍长, 记当前出发位置为 $i$ ($i \in [n,\ 2n)$), 当前时刻为 $t$, 则标记所有物品的限制可以表示为</p>
-<p>$$\forall\ j \in (i-n,\ i],\ t - (i - j) \ge T_j$$</p>
-<p>即</p>
-<p>$$t \ge (T_j - j) + i$$</p>
-<p>记 $a_j = T_j - j$, 那么答案为</p>
-<p>$$\min_{i = n} ^ {2n - 1} \{ \max_{j = i - n + 1} ^ {i} \{ a_j \} + i \}$$</p>
-<p>对 $i$ 进行一些变换, 得</p>
-<p>$$\min_{i = 1} ^ n \{ \max_{j = i} ^ {i + n -1} \{ a_j \} + i \} + (n-1)$$</p>
-<p>考虑到 $i \le j &lt; i + n$ 这个限制又臭又长, 因为 $a_i = T_i - i &gt; a_{i + n} = T_{i + n} - (i + n) = T_i - i - n$, 所以此时的 $a_j$ 就是个后缀最大值, 即</p>
-<p>$$\min_{i = 1} ^ n \{ \max_{j = i} ^ {2 n} \{ a_j \} + i \} + (n-1)$$</p>
-<p>考虑某一个位置 $j$, 令 $j$ 满足 $a_j$ 为后缀最大值, 那么从 $j-1$ 往前找到第一个满足 $a_i &gt; a_j$ 的位置 $i$, 此时答案为 $a_j + i + 1$.</p>
+<script type="math/tex; mode=display">\forall\ j \in (i-n,\ i],\ t - (i - j) \ge T_j</script><p>即</p>
+<script type="math/tex; mode=display">t \ge (T_j - j) + i</script><p>记 $a_j = T_j - j$, 那么答案为</p>
+<script type="math/tex; mode=display">\min_{i = n} ^ {2n - 1} \{ \max_{j = i - n + 1} ^ {i} \{ a_j \} + i \}</script><p>对 $i$ 进行一些变换, 得</p>
+<script type="math/tex; mode=display">\min_{i = 1} ^ n \{ \max_{j = i} ^ {i + n -1} \{ a_j \} + i \} + (n-1)</script><p>考虑到 $i \le j &lt; i + n$ 这个限制又臭又长, 因为 $a_i = T_i - i &gt; a_{i + n} = T_{i + n} - (i + n) = T_i - i - n$, 所以此时的 $a_j$ 就是个后缀最大值, 即</p>
+<script type="math/tex; mode=display">\min_{i = 1} ^ n \{ \max_{j = i} ^ {2 n} \{ a_j \} + i \} + (n-1)</script><p>考虑某一个位置 $j$, 令 $j$ 满足 $a_j$ 为后缀最大值, 那么从 $j-1$ 往前找到第一个满足 $a_i &gt; a_j$ 的位置 $i$, 此时答案为 $a_j + i + 1$.</p>
 <p>如果此时 $a_j$ 不是后缀最大值, 那么答案和后缀最大值的情况相同.</p>
 <p>就此我们得到了一个单调栈做法, 即维护一个 $a_j$ 值从右到左单调上升的栈, 并设栈中元素为 $p_i$, 令 $p_0 = 0$, 答案即为</p>
-<p>$$\min_{i = 1} ^ j \{ a_{p_i} + p_{i-1} + 1\} + n - 1 = \min_{i = 1} ^ j \{ a_{p_i} + p_{i-1}\} + n$$</p>
-<p>利用线段树维护这个单调栈即可. 还是由于 $a_i = T_i - i,\ a_{i + n} = T_{i + n} - i - n$, 此时只需要维护 $[1,\ n]$ 即可.</p>
+<script type="math/tex; mode=display">\min_{i = 1} ^ j \{ a_{p_i} + p_{i-1} + 1\} + n - 1 = \min_{i = 1} ^ j \{ a_{p_i} + p_{i-1}\} + n</script><p>利用线段树维护这个单调栈即可. 还是由于 $a_i = T_i - i,\ a_{i + n} = T_{i + n} - i - n$, 此时只需要维护 $[1,\ n]$ 即可.</p>
 <p>类似的技巧也在 <a href="https://www.luogu.com.cn/problem/P4198" target="_blank" rel="noopener">Luogu P4198 楼房重建</a> 中使用过.</p>
 <p>时间复杂度 $O(n \log ^2 n)$.</p>
 <h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
@@ -234,15 +228,12 @@
 </ul>
 <h4 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h4><p>首先考虑树的情况下怎么做.</p>
 <p>设 $f(i, j)$ 表示以节点 $i$ 为根的子树内, 第 $i$ 个点选 ($j = 1$) / 不选 ($j = 0$) 时的方案数, 容易得到转移</p>
-<p>$$f(u, 1) \prod_{v \in son(u)} f(v, 0) \\ f(u, 0) = \prod_{v \in son(u)} (\ f(v, 0) + f(v, 1)\ )$$</p>
-<p>观察到 $n - 1 \le m \le n + 10$ 的限制, 可以得到一个 $O(n 2 ^ {m - n + 1})$, 即依次枚举非树边的选择情况, 以此为限制修改 DP 初始值, 每次都做一次整棵树的 DP.</p>
+<script type="math/tex; mode=display">f(u, 1) \prod_{v \in son(u)} f(v, 0) \\ f(u, 0) = \prod_{v \in son(u)} (\ f(v, 0) + f(v, 1)\ )</script><p>观察到 $n - 1 \le m \le n + 10$ 的限制, 可以得到一个 $O(n 2 ^ {m - n + 1})$, 即依次枚举非树边的选择情况, 以此为限制修改 DP 初始值, 每次都做一次整棵树的 DP.</p>
 <p>此时仍有优化的余地, 考虑到非树边很少, 影响到的点很少, 可以对这些点建出虚树, 并在虚树上 DP.</p>
 <p>具体地说, 考虑虚树上一条边 $(u, v)$, 其在树边上路径为 $k_1,\ k_2,\ \ldots,\ k_n$ (其中 $k_1 = u$, $k_n = v$), 此时 $v$ 对 $u$ 的答案有贡献. 即</p>
-<p>$$f(k_i, 1) := f(k_i, 1) \cdot f(k_{i+1}, 0) \\ f(k_i, 0) := f(k_i, 0) \cdot (\ f(k_{i+1}, 0) + f(k_{i+1}, 1)\ )$$</p>
-<p>手动展开之后式子有些复杂… 冷静一下可以发现, 其中的系数都是一样的, 直接按照定义预处理出来就好了.</p>
+<script type="math/tex; mode=display">f(k_i, 1) := f(k_i, 1) \cdot f(k_{i+1}, 0) \\ f(k_i, 0) := f(k_i, 0) \cdot (\ f(k_{i+1}, 0) + f(k_{i+1}, 1)\ )</script><p>手动展开之后式子有些复杂… 冷静一下可以发现, 其中的系数都是一样的, 直接按照定义预处理出来就好了.</p>
 <p>记 $k(u, i, j)$ 表示节点 $u$, 由状态 $i$ 到达状态 $j$, DP 转移时的系数. 则虚树边上的转移可写作</p>
-<p>$$f(u, 0) = \prod_{v \in son(u)} (\ k(v, 1, 0) \cdot f(v, 1) + k(v, 0, 0) \cdot f(v, 0)\ ) \\ f(u, 1) = \prod_{v \in son(u)} (\ k(v, 1, 1) \cdot f(v, 1) + k(v, 0, 1) \cdot f(v, 0)\ )$$</p>
-<p>还应注意到, 虚树上 DP 的初始值并不是 $1$ — 而是原树上, 子树内不包含虚树上结点的 DP 值.</p>
+<script type="math/tex; mode=display">f(u, 0) = \prod_{v \in son(u)} (\ k(v, 1, 0) \cdot f(v, 1) + k(v, 0, 0) \cdot f(v, 0)\ ) \\ f(u, 1) = \prod_{v \in son(u)} (\ k(v, 1, 1) \cdot f(v, 1) + k(v, 0, 1) \cdot f(v, 0)\ )</script><p>还应注意到, 虚树上 DP 的初始值并不是 $1$ —- 而是原树上, 子树内不包含虚树上结点的 DP 值.</p>
 <p>考虑为什么是这样. 如果原树某个节点, 其子树包含有虚数上节点, 那么此时原树上的答案已经在计算系数的过程中贡献到最终答案了. 因而只考虑子树内不包含虚树上节点的部分即可.</p>
 <p>时间复杂度 $O(n + (m-n+1)\ 2 ^ {m - n + 1})$.</p>
 <h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><p>实际为了缓存友好, DP 状态的顺序稍有改变.</p>
@@ -280,12 +271,9 @@
 <p>于是可以得到一个贪心策略. 首先找到当前权值最小的位置 $p$, 如果 $p$ 在树上没有父亲, 也就是 $a_p = 0$, 此时一定选择 $p$; 否则在选择 $a_p$ 后立刻选择 $p$.</p>
 <p>因此可以将 $p$ 和 $a_p$ 合并, 具体而言, 每次取出最小值, 更新信息并利用并查集合并即可.</p>
 <p>剩余的问题就是如何找到这个最小值了. 考虑到合并一些节点之后, 得到的就是一个序列. 假有两个序列 $a$, $b$, 记两个序列的权值分别为 $W_a$, $W_b$, 那么</p>
-<p>$$W_a = \sum_{i = p}^{s_a} (p + i)\ w_{a_i} \\ W_b = \sum_{i = p} ^ {s_b} (p + i)\ w_{b_i}$$</p>
-<p>考虑两序列拼接的两种方式, 即</p>
-<p>$$W_{ab} = \sum_{i = 1} ^ {s_a} (p + i)\ w_{a_i} + \sum_{i = 1} ^ {s_b} (p + i + s_a)\ w_{b_i} \\ W_{ba} = \sum_{i = 1} ^ {s_b} (p + i)\ w_{b_i} + \sum_{i = 1} ^ {s_a} (p + i + s_b)\ w_{a_i}$$</p>
-<p>若选择 $ab$ 的形式使得答案更大, 那么有 $W_{ab} &gt; W_{ba}$, 即</p>
-<p>$$s_b \sum_{i = 1} ^ {s_a} w_{a_i} &lt; s_a \sum_{i = 1} ^ {s_b} w_{b_i}$$</p>
-<p>于是万事大吉.</p>
+<script type="math/tex; mode=display">W_a = \sum_{i = p}^{s_a} (p + i)\ w_{a_i} \\\ W_b = \sum_{i = p} ^ {s_b} (p + i)\ w_{b_i}</script><p>考虑两序列拼接的两种方式, 即</p>
+<script type="math/tex; mode=display">W_{ab} = \sum_{i = 1} ^ {s_a} (p + i)\ w_{a_i} + \sum_{i = 1} ^ {s_b} (p + i + s_a)\ w_{b_i} \\\ W_{ba} = \sum_{i = 1} ^ {s_b} (p + i)\ w_{b_i} + \sum_{i = 1} ^ {s_a} (p + i + s_b)\ w_{a_i}</script><p>若选择 $ab$ 的形式使得答案更大, 那么有 $W_{ab} &gt; W_{ba}$, 即</p>
+<script type="math/tex; mode=display">s_b \sum_{i = 1} ^ {s_a} w_{a_i} < s_a \sum_{i = 1} ^ {s_b} w_{b_i}</script><p>于是万事大吉.</p>
 <p>时间复杂度 $O(n \log n)$.</p>
 <h4 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h4><p>如果考虑节点 $0$ 在计算答案时的影响, 则需要把 <code>W[0]</code> 设为 INF, 但是这个 INF 太大爆 <code>long long</code> (虽然不影响结果), 太小会 WA = =</p>
 <p>那就直接不考虑吧 (</p>
@@ -298,15 +286,12 @@
 <li><a href="https://loj.ac/problem/2510" target="_blank" rel="noopener">https://loj.ac/problem/2510</a></li>
 </ul>
 <h4 id="解题思路-5"><a href="#解题思路-5" class="headerlink" title="解题思路"></a>解题思路</h4><p>观察式子</p>
-<p>$$c_i \cdot (a_i + x) \cdot (b_i + y)$$</p>
-<p>可以发现, 这个式子没有用.</p>
+<script type="math/tex; mode=display">c_i \cdot (a_i + x) \cdot (b_i + y)</script><p>可以发现, 这个式子没有用.</p>
 <p>题目给定的其实是一颗以 $1$ 为根, 共 $2n - 1$ 个节点的二叉树, 叶节点都是乡村. 并钦定连向左儿子的边为公路, 连向右儿子的边为铁路.</p>
 <p>设 $f(u, i, j)$ 表示节点 $u$, 其到根节点共经过 $i$ 条公路, $j$ 条铁路. 则</p>
 <p>对于叶子 $u$, 有</p>
-<p>$$f(u, i, j) = c_u \cdot (a_u + i) \cdot (b_u + j)$$</p>
-<p>对于其他节点 $u$, 记 $u$ 左儿子为 $lc$, 右儿子为 $rc$, 有转移</p>
-<p>$$f(u, i, j) = \min \{ f(lc, i + 1, j) + f(rc, i, j),\ f(lc, i, j) + f(rc, i,  j + 1) \}$$</p>
-<p>答案即为 $f(1, 0, 0)$.</p>
+<script type="math/tex; mode=display">f(u, i, j) = c_u \cdot (a_u + i) \cdot (b_u + j)</script><p>对于其他节点 $u$, 记 $u$ 左儿子为 $lc$, 右儿子为 $rc$, 有转移</p>
+<script type="math/tex; mode=display">f(u, i, j) = \min \{ f(lc, i + 1, j) + f(rc, i, j),\ f(lc, i, j) + f(rc, i,  j + 1) \}</script><p>答案即为 $f(1, 0, 0)$.</p>
 <p>以及一个卡空间的方法. 考虑到每次计算 $f(u, i, j)$ 时, 只是利用了一条链, 不相交的链之间不会互相影响, 若记二叉树最大深度为 $h$, 第一维只需记录 $2h$ 位即可.</p>
 <p>时间复杂度 $O(h ^ 2 n)$.</p>
 <h4 id="代码实现-5"><a href="#代码实现-5" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">点击显示 / 隐藏 </div></div><div class="fold">
@@ -436,5 +421,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>

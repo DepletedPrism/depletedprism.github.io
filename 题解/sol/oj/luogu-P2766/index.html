@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="题目链接：https://www.luogu.org/problem/P2766  不看题解死都想不出来祭">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-09T06:10:52.677Z">
+<meta property="og:updated_time" content="2020-04-28T16:07:02.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最长不下降子序列问题 题解">
 <meta name="twitter:description" content="题目链接：https://www.luogu.org/problem/P2766  不看题解死都想不出来祭">
@@ -194,8 +194,7 @@
 <a id="more"></a>
 <p>对于第一问，考虑 DP 求解，不过不同于 $O(n \log n)$  的做法，我们使用 $O(n^2)$ 的做法，以方便维护更多的信息。</p>
 <p>设 $dp[i]$ 为序列 $\text{1~i}$ 的最长不下降子序列长度，显然有转移</p>
-<p>$$dp[i] = \max \{ \ dp[j] + 1 \}$$ </p>
-<p>其中 $A_j \leq A_i,\ j &lt; i$，初始状态有 $dp[i] = 1$，最长长度 $\text{MaxL}$ 为 $\max_{i=1}^{n} dp[i]$</p>
+<script type="math/tex; mode=display">dp[i] = \max \{ \ dp[j] + 1 \}</script><p>其中 $A_j \leq A_i,\ j &lt; i$，初始状态有 $dp[i] = 1$，最长长度 $\text{MaxL}$ 为 $\max_{i=1}^{n} dp[i]$</p>
 <p>对于第二三问，考虑网络流求解。</p>
 <p>怎么把序列个数同网络流联系起来呢？我们可以考虑一种方法，使得到汇点的每一份流量，对应一种序列的构造方案。这样询问个数就可以转化为最大流问题了。</p>
 <ul>
@@ -341,5 +340,23 @@
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
 <script src="/scripts/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 </html>
+--></body></html>
