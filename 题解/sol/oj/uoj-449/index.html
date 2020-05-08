@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    「集训队作业 2018」喂鸽子 题解
+  
+</title>
+
+<meta name="description" content="个人现在感觉这是一道有启发意义的期望题. 大体是利用 Min-Max 容斥计算期望, 以及 NTT 优化时间复杂度.">
+<meta name="keywords" content="Polynomial,Probability &amp; Mean">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「集训队作业 2018」喂鸽子 题解">
+<meta property="og:url" content="https://depletedprism.github.io/题解/sol/oj/uoj-449/index.html">
+<meta property="og:site_name" content="DepletedPrism&#39;s Blog">
+<meta property="og:description" content="个人现在感觉这是一道有启发意义的期望题. 大体是利用 Min-Max 容斥计算期望, 以及 NTT 优化时间复杂度.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-08T05:53:29.170Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「集训队作业 2018」喂鸽子 题解">
+<meta name="twitter:description" content="个人现在感觉这是一道有启发意义的期望题. 大体是利用 Min-Max 容斥计算期望, 以及 NTT 优化时间复杂度.">
+
+
+  <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/images/favicon.jpg">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-158626830-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+
+
+</head>
+<body class="monochrome">
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">DepletedPrism&#39;s Blog</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">DepletedPrism&#39;s Blog</a></h1>
+    
+      <p class="subtitle">
+        知其然而不知其所以然是可悲的.
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">DepletedPrism</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="/images/favicon.jpg"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">分类</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">34</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">标签</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/">Probability & Mean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">归档</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">29</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/index.html" title="Homepage">Homepage</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/DepletedPrism" title="Github" target="_blank" rel="noopener">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://zyzoj.com" title="ZYZOJ" target="_blank" rel="noopener">ZYZOJ</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-sol/oj/uoj-449" class="article article-type-post">
+  
+    <h1 class="article-header">
+      「集训队作业 2018」喂鸽子 题解
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2020-05-06
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/题解/">题解</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Polynomial/">Polynomial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Probability-Mean/">Probability & Mean</a></li></ul>
+	</span>
+
+
+	
+  </div>
+  <div class="article-entry">
+    <hr>
+<p>个人现在感觉这是一道有启发意义的期望题.</p>
+<p>大体是利用 Min-Max 容斥计算期望, 以及 NTT 优化时间复杂度.</p>
+<a id="more"></a>
+<p><del>我 喂 我 自 己</del></p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>显然可以使用 Min-Max 容斥.</p>
+<p>记 $X_i$ 为第 $i$ 只鸽子喂饱的期望时间, 也可称作期望喂饱该鸽子的玉米粒个数. 同时记 $S$ 为鸽子的全集, 也就是全部的鸽子. 套用 Min-Max 容斥可得</p>
+<script type="math/tex; mode=display">E(\max_{i \in S}\{X_i\}) = \sum_{T \subset S,\ T \neq \varnothing} (-1) ^ {\mid T \mid - 1} E(\min_{i \in T}\{ X_i \})</script><p>注意到每只鸽子之间并没有区别, 所以直接枚举集合大小即可. 设 $g(m)$ 表示喂 $m$ 只鸽子, 最早喂饱一只的期望时间. 则</p>
+<script type="math/tex; mode=display">E(\max_{i \in S}\{X_i\}) = \sum_{m = 1} ^ n \binom{n}{m} g(m) \cdot \frac{n}{m}</script><p>此处等式右侧需乘上 $\frac{n}{m}$, 表示同时喂 $n$ 只鸽子, 喂到钦定的 $m$ 只鸽子的期望次数.</p>
+<p>现在的问题转为如何快速求出 $g(m)$. 设 $f(m, i)$ 表示喂 $m$ 只鸽子, 喂 $i$ 粒玉米, 不存在任何一只鸽子被喂饱的概率. 那么至多只能喂 $m(k-1)$ 粒, 有</p>
+<script type="math/tex; mode=display">g(m) = \sum_{i = 0} ^ {m(k - 1)} f(m, i) = 1 + \sum_{i = 1} ^ {m(k-1)} f(m, i)</script><p><em>此处将 $f(m, 0)$ 单独列出, 以避免讨论.</em></p>
+<p>对于计算 $f(m, i)$, 有一个朴素的想法是, 用不喂饱任何一只鸽子的方案数除以总共的方案数. 设 $h(m, i)$ 表示喂 $m$ 只鸽子, 喂 $i$ 粒玉米, 不存在任何一只鸽子被喂饱的方案数, 则有</p>
+<script type="math/tex; mode=display">f(m, i) = \frac{1}{m ^ i} h(m, i)</script><p>对于 $h(m, i)$, 可以枚举喂某一只鸽子的玉米粒数, 得出</p>
+<script type="math/tex; mode=display">h(m, i) = \sum_{j = 0} ^ {\min\{ i,\ k - 1 \}} \binom{i}{j}\ h(m - 1, i - j) = i! \cdot \sum_{j = 0} ^ {\min\{ i,\ k - 1\}} \frac{h(m - 1, i - j)}{(i - j)!} \cdot \frac{1}{j!}</script><p>是一个卷积的形式, 用 NTT 计算即可. 和式中的 $\min$ 其实很好处理, 每次计算只取后者的前 $k - 1$ 次项即可.</p>
+<p>时间复杂度 $O(n ^ 2 k \log nk)$.</p>
+<p>另外存在时间复杂度为 $O(n ^ 2 k)$ 的优秀做法. <del>已经拿去喂鸽子了</del>.</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// UOJ #449</span></span><br><span class="line"><span class="comment">// DeP</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXK = <span class="number">1e3</span> + <span class="number">5</span>, MAXM = <span class="number">5e1</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> LOG = <span class="number">17</span>, MAXN = <span class="number">1</span> &lt;&lt; LOG | <span class="number">1</span>, P = <span class="number">998244353</span>, G = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> W[LOG][MAXN];</span><br><span class="line"><span class="keyword">int</span> inv[MAXN], fac[MAXN], ifac[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (n &lt; m)? <span class="number">0</span>: <span class="number">1L</span>L * fac[n] * ifac[m] % P * ifac[n - m] % P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fpow</span><span class="params">(<span class="keyword">int</span> base, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> ret = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (b &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (b &amp; <span class="number">1</span>) ret = <span class="number">1L</span>L * ret * base % P;</span><br><span class="line">    base = <span class="number">1L</span>L * base * base % P, b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Poly &#123;</span><br><span class="line">  <span class="keyword">int</span> r[MAXN];</span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; Lim, <span class="keyword">const</span> <span class="keyword">int</span>&amp; L)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; Lim; ++i) r[i] = (r[i&gt;&gt;<span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (L<span class="number">-1</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">NTT</span><span class="params">(<span class="keyword">int</span>* f, <span class="keyword">const</span> <span class="keyword">int</span>&amp; Lim, <span class="keyword">const</span> <span class="keyword">int</span>&amp; type)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; Lim; ++i) <span class="keyword">if</span> (i &lt; r[i]) swap(f[i], f[r[i]]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>, Mid = <span class="number">1</span>; Mid &lt; Lim; ++k, Mid &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> <span class="keyword">int</span>* w = W[k];</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Lim; i += Mid &lt;&lt; <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; Mid; ++j) &#123;</span><br><span class="line">          <span class="keyword">int</span> f0 = f[i+j], f1 = <span class="number">1L</span>L * w[j] * f[i+j+Mid] % P;</span><br><span class="line">          f[i+j] = (f0 + f1) % P, f[i+j+Mid] = (f0 - f1 + P) % P;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (type &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> iv = fpow(Lim, P - <span class="number">2</span>);</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Lim; ++i) f[i] = <span class="number">1L</span>L * iv * f[i] % P;</span><br><span class="line">      reverse(f + <span class="number">1</span>, f + Lim);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Mul</span><span class="params">(<span class="keyword">int</span>* f, <span class="keyword">const</span> <span class="keyword">int</span>&amp; n, <span class="keyword">int</span>* g, <span class="keyword">const</span> <span class="keyword">int</span>&amp; m, <span class="keyword">int</span>* h)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> A[MAXN], B[MAXN];</span><br><span class="line">    <span class="keyword">int</span> Lim = <span class="number">1</span>, L = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (Lim &lt; n + m - <span class="number">1</span>) Lim &lt;&lt;= <span class="number">1</span>, ++L;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Lim; ++i)</span><br><span class="line">      A[i] = (i &lt; n)? f[i]: <span class="number">0</span>, B[i] = (i &lt; m)? g[i]: <span class="number">0</span>;</span><br><span class="line">    init(Lim, L), NTT(A, Lim, <span class="number">1</span>), NTT(B, Lim, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Lim; ++i) h[i] = <span class="number">1L</span>L * A[i] * B[i] % P;</span><br><span class="line">    NTT(h, Lim, <span class="number">-1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PolyPre</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">  inv[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; ++i)</span><br><span class="line">    inv[i] = <span class="number">1L</span>L * inv[P % i] * (P - P / i) % P;</span><br><span class="line">  fac[<span class="number">0</span>] = ifac[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">    fac[i] = <span class="number">1L</span>L * i * fac[i - <span class="number">1</span>] % P;</span><br><span class="line">    ifac[i] = <span class="number">1L</span>L * inv[i] * ifac[i - <span class="number">1</span>] % P;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> w, i = <span class="number">0</span>, Mid = <span class="number">1</span>; i &lt; LOG; ++i, Mid &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    W[i][<span class="number">0</span>] = <span class="number">1</span>, w = fpow(G, (P - <span class="number">1</span>) / (Mid &lt;&lt; <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; Mid; ++j)</span><br><span class="line">      W[i][j] = <span class="number">1L</span>L * w * W[i][j - <span class="number">1</span>] % P;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, K;</span><br><span class="line"><span class="keyword">int</span> g[MAXM], f[MAXM][MAXN], h[MAXM][MAXN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> A[MAXN], B[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">  freopen(<span class="string">"input.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;K);</span><br><span class="line">  PolyPre(n * K);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// h(m, i) = sum_&#123;j = 0&#125; ^ min(i, k - 1) C(i, j) * h(m - 1, i - j)</span></span><br><span class="line">  h[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">1</span>; m &lt;= n; ++m) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= (m - <span class="number">1</span>) * (K - <span class="number">1</span>); ++i)</span><br><span class="line">      A[i] = <span class="number">1L</span>L * h[m - <span class="number">1</span>][i] * ifac[i] % P;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= K - <span class="number">1</span>; ++i) <span class="comment">// i &lt;= K - 1</span></span><br><span class="line">      B[i] = ifac[i];</span><br><span class="line">    Poly::Mul(A, (m - <span class="number">1</span>) * (K - <span class="number">1</span>) + <span class="number">1</span>, B, K, A);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m * (K - <span class="number">1</span>); ++i)</span><br><span class="line">      h[m][i] = <span class="number">1L</span>L * fac[i] * A[i] % P;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// f(m, i) = h(m, i) / (i ^ m)</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">1</span>; m &lt;= n; ++m)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m * (K - <span class="number">1</span>); ++i)</span><br><span class="line">      f[m][i] = <span class="number">1L</span>L * h[m][i] * fpow(inv[m], i) % P;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// g(m) = sum_&#123;i = 0&#125; ^ m (k-1) f(m, i)</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">1</span>; m &lt;= n; ++m) &#123;</span><br><span class="line">    g[m] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m * (K - <span class="number">1</span>); ++i)</span><br><span class="line">      g[m] = (g[m] + f[m][i]) % P;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; ++k) &#123;</span><br><span class="line">    <span class="keyword">int</span> s = <span class="number">1L</span>L * C(n, k) * g[k] % P * n % P * inv[k] % P;</span><br><span class="line">    ans = (ans + ((k &amp; <span class="number">1</span>)? s: P - s)) % P;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.z" target="_blank" title="署名-非商业性使用-相同方式共享">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/nc.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+  </footer>
+  
+</article>
+
+
+    <link rel="stylesheet" href="/css/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script src="/scripts/gitalk.js"></script>
+
+
+
+
+          <div class="main-footer">
+  
+    © 2020 DepletedPrism&#39;s Blog
+    
+	- Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</body>
+</html>
+--></body></html>
