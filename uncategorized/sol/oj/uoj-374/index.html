@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    「ZJOI2018」历史
+  
+</title>
+
+<meta name="description" content="题目连接: https://uoj.ac/problem/374  一道非常有意思的 Link-Cut Tree 题.">
+<meta name="keywords" content="Data Structure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「ZJOI2018」历史">
+<meta property="og:url" content="https://depletedprism.github.io/uncategorized/sol/oj/uoj-374/index.html">
+<meta property="og:site_name" content="DepletedPrism&#39;s Blog">
+<meta property="og:description" content="题目连接: https://uoj.ac/problem/374  一道非常有意思的 Link-Cut Tree 题.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-11T06:52:08.656Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「ZJOI2018」历史">
+<meta name="twitter:description" content="题目连接: https://uoj.ac/problem/374  一道非常有意思的 Link-Cut Tree 题.">
+
+
+  <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/images/favicon.jpg">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-158626830-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <!-- End Google Analytics --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</head>
+<body class="monochrome">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">DepletedPrism&#39;s Blog</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">DepletedPrism&#39;s Blog</a></h1>
+    
+      <p class="subtitle">
+        知其然而不知其所以然是可悲的.
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">DepletedPrism</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="/images/favicon.jpg"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">分类</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">34</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">标签</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/">Probability & Mean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">归档</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">30</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/index.html" title="Homepage">Homepage</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/DepletedPrism" title="Github" target="_blank" rel="noopener">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://zyzoj.com" title="ZYZOJ" target="_blank" rel="noopener">ZYZOJ</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-sol/oj/uoj-374" class="article article-type-post">
+  
+    <h1 class="article-header">
+      「ZJOI2018」历史
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2020-05-10
+</span>
+
+    
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/">Data Structure</a></li></ul>
+	</span>
+
+
+	
+  </div>
+  <div class="article-entry">
+    <hr>
+<ul>
+<li>题目连接: <a href="https://uoj.ac/problem/374" target="_blank" rel="noopener">https://uoj.ac/problem/374</a></li>
+</ul>
+<p>一道非常有意思的 Link-Cut Tree 题.</p>
+<a id="more"></a>
+<p><del>ZJOI2018 唯一可做题</del></p>
+<h4 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h4><p>给定一棵有 $n$ 个节点的树, 根节点为 $1$. 在该树基础上建立 LCT, 同时给出第 $i$ 个点 <code>access</code> 的次数为 $a_i$. $m$ 次修改, 修改为将 $a_{x_i}$ 的值增加 $w_i$.</p>
+<p>分别求出初始状态下, 和 $m$ 次修改后, <code>access</code> 操作中改变虚实链次数总和的最大值.</p>
+<p>其中, $n,m \le 4 \times 10 ^ 5,\ a_i, w_i \le 10 ^ 7$.</p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>先考虑不带修改怎么做.</p>
+<p>首先每个点 <code>access</code> 操作时只会影响该点到根节点路径上的点, 因此影响一个点到其儿子边的虚实的操作只会发生在该点的子树内. 所以将每个子树分开考虑, 统计答案时直接求和即可.</p>
+<p>注意到来自同一子树内的连续两次 <code>access</code> 操作, 并不会改变该子树根 $v$ 到 $v$ 的父亲 $u$ 这条边的虚实. 记 $u$ 的 <code>access</code> 次数为 $A_0$, 其儿子 $v$ 的子树内部 <code>access</code> 次数和分别为 $A_i$, 且节点 $u$ 共有 $m$ 个儿子. 那么问题可转化为</p>
+<blockquote>
+<p>给定若干个球, 总共有 $0$ 到 $m$ 共 $m + 1$ 种颜色, 第 $i$ 种颜色的球有 $A_i$ 个.</p>
+<p>现在要构造一种球的排列, 使得相邻两个球颜色不同的间隔数尽量多.</p>
+</blockquote>
+<p>有一个贪心的思路: 选择小球个数最多的颜色, 将这些小球排成一列. 同时将其余小球插入这列小球之间. 用更加形式化的语言可描述为</p>
+<p>记 $h = \max\limits_{i = 0} ^ m \{A_i \}$, $t = \sum\limits_{i = 0} ^ m A_i$, 分两种情况讨论.</p>
+<ol>
+<li><p>$2h \le t$, 此时答案为 $t - 1$.</p>
+<p>即所有的小球中存在至多一半的球有相同颜色.</p>
+</li>
+<li><p>$2h \ge t + 1$, 此时答案为 $2 (t - h)$.</p>
+<p>此种情况下按照上述策略贪心, 则不可避免存在多出一部分相同颜色的小球. 无论怎样改变已经放置的小球, 都无法使得不同颜色小球间隔数增加. 统计放置这些相同颜色小球前的间隔数, 即可计算答案.</p>
+</li>
+</ol>
+<p>也就是 $\min \{ t - 1,\ 2(t - h) \}$.</p>
+<p>因而可以得到一个做法: 直接 DFS 整棵树, 分别统计每棵子树对答案贡献. 可以在 $O(n)$ 的时间复杂度内计算.</p>
+<p>观察上述结论中两种情况的性质. 设 $s_u$ 为 $u$ 子树内的 <code>access</code> 次数之和.</p>
+<p>对于带修改的情况, 对于一条边 $(u, fa)$, 将满足 $2s_u \ge s_{fa} + 1$ 的边视作实链, 否则视为虚链. 类比于重链剖分, 虚链的个数有 $O(\log \sum a_i) = O(\log n)$ 个, 且连向 $fa$ 的实链唯一, 实儿子一定是 $u$.</p>
+<p>对于一条实链, 每次单点修改 $u$ 的值时, $fa$ 处的答案不会改变: 此时 $h$ 的值不会发生变化, 且 $t - h$ 的差值不变.</p>
+<p>可以直接用 LCT 来维护, 每次修改后暴力 <code>access</code> 沿当前点到根的路径依次修改即可. 注意实现时的细节, 以及虚实链的改变需要遵循上述条件.</p>
+<p>时间复杂度 $O(n \log n)$.</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// UOJ #374</span></span><br><span class="line"><span class="comment">// DeP</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG(args...) fprintf(stderr, ##args)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> IO &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">int</span> MAXSIZE = <span class="number">1</span> &lt;&lt; <span class="number">18</span> | <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">char</span> buf[MAXSIZE], *p1, *p2;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Gc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> p1 == p2 &amp;&amp;</span><br><span class="line">      (p2 = (p1 = buf) + fread(buf, <span class="number">1</span>, MAXSIZE, <span class="built_in">stdin</span>), p1 == p2)? EOF: *p1++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(T&amp; x)</span> </span>&#123;</span><br><span class="line">    x = <span class="number">0</span>; <span class="keyword">int</span> f = <span class="number">0</span>, ch = Gc();</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch)) f |= ch == <span class="string">'-'</span>, ch = Gc();</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch)) x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>, ch = Gc();</span><br><span class="line">    <span class="keyword">if</span> (f) x = -x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> IO::read;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">ckmax</span><span class="params">(T&amp; a, <span class="keyword">const</span> T&amp; b)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (a &lt; b)? a = b, <span class="literal">true</span>: <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">4e5</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, q;</span><br><span class="line">LL ans;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> LCT &#123;</span><br><span class="line">  <span class="keyword">int</span> ch[<span class="number">2</span>][MAXN], pre[MAXN];</span><br><span class="line">  LL s[MAXN], is[MAXN], val[MAXN];</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">maintain</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; nd)</span> </span>&#123;</span><br><span class="line">    s[nd] = is[nd] + val[nd];</span><br><span class="line">    <span class="keyword">if</span> (ch[<span class="number">0</span>][nd]) s[nd] += s[ch[<span class="number">0</span>][nd]];</span><br><span class="line">    <span class="keyword">if</span> (ch[<span class="number">1</span>][nd]) s[nd] += s[ch[<span class="number">1</span>][nd]];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">which</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; u)</span> </span>&#123; <span class="keyword">return</span> pre[u]? ch[<span class="number">1</span>][pre[u]] == u: <span class="number">0</span>; &#125;</span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">nroot</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pre[u]? ch[<span class="number">0</span>][pre[u]] == u || ch[<span class="number">1</span>][pre[u]] == u: <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fa = pre[u], w = which(u);</span><br><span class="line">    pre[u] = pre[fa];</span><br><span class="line">    <span class="keyword">if</span> (nroot(fa)) ch[which(fa)][pre[fa]] = u;</span><br><span class="line">    ch[w][fa] = ch[w ^ <span class="number">1</span>][u];</span><br><span class="line">    <span class="keyword">if</span> (ch[w ^ <span class="number">1</span>][u]) pre[ch[w ^ <span class="number">1</span>][u]] = fa;</span><br><span class="line">    ch[w ^ <span class="number">1</span>][u] = fa, pre[fa] = u;</span><br><span class="line">    maintain(fa);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (nroot(u)) &#123;</span><br><span class="line">      <span class="keyword">int</span> fa = pre[u];</span><br><span class="line">      <span class="keyword">if</span> (nroot(fa)) which(fa) == which(u)? rotate(fa): rotate(u);</span><br><span class="line">      rotate(u);</span><br><span class="line">    &#125;</span><br><span class="line">    maintain(u);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">inline</span> LL <span class="title">calc</span><span class="params">(<span class="keyword">int</span> u, LL t, LL h)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ch[<span class="number">1</span>][u]) <span class="keyword">return</span> <span class="number">2</span> * (t - h);</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">2</span> * val[u] &gt;= t + <span class="number">1</span>) <span class="keyword">return</span> <span class="number">2</span> * (t - val[u]);</span><br><span class="line">    <span class="keyword">return</span> t - <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">access</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">const</span> <span class="keyword">int</span>&amp; w)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> v = u;</span><br><span class="line">    <span class="keyword">for</span> (u = pre[u]; u; v = u, u = pre[u]) &#123; <span class="comment">// start from pre[u]</span></span><br><span class="line">      splay(u);</span><br><span class="line">      LL t = s[u] - s[ch[<span class="number">0</span>][u]], h = s[ch[<span class="number">1</span>][u]];</span><br><span class="line">      ans -= calc(u, t, h);</span><br><span class="line">      s[u] += w, t += w, is[u] += w;</span><br><span class="line">      <span class="keyword">if</span> (<span class="number">2</span> * h &lt; t + <span class="number">1</span>)</span><br><span class="line">        ch[<span class="number">1</span>][u] = <span class="number">0</span>, is[u] += h;</span><br><span class="line">      <span class="keyword">if</span> (<span class="number">2</span> * s[v] &gt;= t + <span class="number">1</span>) <span class="comment">// update weight son</span></span><br><span class="line">        ch[<span class="number">1</span>][u] = v, h = s[v], is[u] -= h;</span><br><span class="line">      ans += calc(u, t, h);</span><br><span class="line">      maintain(u);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Mdy</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">const</span> <span class="keyword">int</span>&amp; w)</span> </span>&#123;</span><br><span class="line">    splay(u);</span><br><span class="line">    LL t = s[u] - s[ch[<span class="number">0</span>][u]], h = s[ch[<span class="number">1</span>][u]];</span><br><span class="line">    ans -= calc(u, t, h);</span><br><span class="line">    val[u] += w, t += w, s[u] += w;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">2</span> * h &lt; t + <span class="number">1</span>)</span><br><span class="line">      ch[<span class="number">1</span>][u] = <span class="number">0</span>, is[u] += h;</span><br><span class="line">    ans += calc(u, t, h);</span><br><span class="line">    maintain(u), access(u, w);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Graph &#123;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span> <span class="keyword">int</span> nxt, to; &#125; edges[MAXN &lt;&lt; <span class="number">1</span>];</span><br><span class="line">  <span class="keyword">int</span> head[MAXN], eidx;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123; <span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span> head), eidx = <span class="number">1</span>; &#125;</span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to)</span> </span>&#123;</span><br><span class="line">    edges[++eidx] = (Edge)&#123; head[from], to &#125;, head[from] = eidx;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> LCT;</span><br><span class="line">    <span class="keyword">int</span> rson = <span class="number">-1</span>;</span><br><span class="line">    LL &amp;t = s[u], h = val[u]; t = val[u];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v, i = head[u]; ~i; i = edges[i].nxt) &#123;</span><br><span class="line">      <span class="keyword">if</span> ((v = edges[i].to) == pre[u]) <span class="keyword">continue</span>;</span><br><span class="line">      pre[v] = u, dfs(v), t += s[v];</span><br><span class="line">      <span class="keyword">if</span> (ckmax(h, s[v])) rson = v;</span><br><span class="line">    &#125;</span><br><span class="line">    ans += min(t - <span class="number">1</span>, <span class="number">2</span> * (t - h));</span><br><span class="line">    <span class="keyword">if</span> (rson &gt; <span class="number">0</span> &amp;&amp; <span class="number">2</span> * h &gt;= t + <span class="number">1</span>)</span><br><span class="line">      ch[<span class="number">1</span>][u] = rson, is[u] = s[u] - s[rson] - val[u];</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      is[u] = s[u] - val[u];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">  freopen(<span class="string">"data/ex_history2.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">  Graph::init();</span><br><span class="line"></span><br><span class="line">  read(n), read(q);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) read(LCT::val[i]);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> u, v, i = <span class="number">1</span>; i &lt; n; ++i)</span><br><span class="line">    read(u), read(v), Graph::AddEdge(u, v), Graph::AddEdge(v, u);</span><br><span class="line"></span><br><span class="line">  Graph::dfs(<span class="number">1</span>), <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> x, w; q; --q) &#123;</span><br><span class="line">    read(x), read(w), LCT::Mdy(x, w);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li>ZJOI2018 day1 solution by ???</li>
+<li>Kelin, <a href="https://blog.csdn.net/BeNoble_/article/details/79706461" target="_blank" rel="noopener">[ZJOI2018]历史</a></li>
+</ul>
+<hr>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.z" target="_blank" title="署名-非商业性使用-相同方式共享">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/nc.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+  </footer>
+  
+</article>
+
+
+    <link rel="stylesheet" href="/css/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script src="/scripts/gitalk.js"></script>
+
+
+
+
+          <div class="main-footer">
+  
+    © 2020 DepletedPrism&#39;s Blog
+    
+	- Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>

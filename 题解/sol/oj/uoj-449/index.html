@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -12,18 +12,18 @@
   
 </title>
 
-<meta name="description" content="个人现在感觉这是一道有启发意义的期望题. 大体是利用 Min-Max 容斥计算期望, 以及 NTT 优化时间复杂度.">
+<meta name="description" content="题目链接: https://uoj.ac/problem/449  个人现在感觉这是一道有启发意义的期望题. 大体是利用 Min-Max 容斥计算期望, 以及 NTT 优化时间复杂度.">
 <meta name="keywords" content="Polynomial,Probability &amp; Mean">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「集训队作业 2018」喂鸽子 题解">
 <meta property="og:url" content="https://depletedprism.github.io/题解/sol/oj/uoj-449/index.html">
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
-<meta property="og:description" content="个人现在感觉这是一道有启发意义的期望题. 大体是利用 Min-Max 容斥计算期望, 以及 NTT 优化时间复杂度.">
+<meta property="og:description" content="题目链接: https://uoj.ac/problem/449  个人现在感觉这是一道有启发意义的期望题. 大体是利用 Min-Max 容斥计算期望, 以及 NTT 优化时间复杂度.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-08T05:53:29.170Z">
+<meta property="og:updated_time" content="2020-05-11T06:52:48.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「集训队作业 2018」喂鸽子 题解">
-<meta name="twitter:description" content="个人现在感觉这是一道有启发意义的期望题. 大体是利用 Min-Max 容斥计算期望, 以及 NTT 优化时间复杂度.">
+<meta name="twitter:description" content="题目链接: https://uoj.ac/problem/449  个人现在感觉这是一道有启发意义的期望题. 大体是利用 Min-Max 容斥计算期望, 以及 NTT 优化时间复杂度.">
 
 
   <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
@@ -48,7 +48,7 @@
     ga('send', 'pageview');
 
   </script>
-  <!-- End Google Analytics -->
+  <!-- End Google Analytics --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -56,7 +56,7 @@
 
 </head>
 <body class="monochrome">
-  <div class="mobile-header">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="mobile-header">
   <button class="sidebar-toggle" type="button">
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
@@ -105,14 +105,14 @@
             
               <li class="tag-list-container">
                 <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/">Probability & Mean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/">Probability & Mean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">29</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">30</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -187,6 +187,9 @@
   </div>
   <div class="article-entry">
     <hr>
+<ul>
+<li>题目链接: <a href="https://uoj.ac/problem/449" target="_blank" rel="noopener">https://uoj.ac/problem/449</a></li>
+</ul>
 <p>个人现在感觉这是一道有启发意义的期望题.</p>
 <p>大体是利用 Min-Max 容斥计算期望, 以及 NTT 优化时间复杂度.</p>
 <a id="more"></a>
@@ -323,25 +326,24 @@
 
 
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
-<script src="/scripts/main.js"></script>
+<script src="/scripts/main.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 </body>
 </html>
---></body></html>
