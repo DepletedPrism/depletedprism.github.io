@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="记录以备忘. 综述虽然是很基础的东西, 但是不妨回头再看它一眼. 又因为本文定位于备忘, 所有不会有关于任何公式的证明, 其实就是公式的罗列… 如果真的对证明感兴趣, 不妨去文末的参看资料看看.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-21T12:19:21.405Z">
+<meta property="og:updated_time" content="2020-05-23T02:53:15.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="容斥原理 备忘录">
 <meta name="twitter:description" content="记录以备忘. 综述虽然是很基础的东西, 但是不妨回头再看它一眼. 又因为本文定位于备忘, 所有不会有关于任何公式的证明, 其实就是公式的罗列… 如果真的对证明感兴趣, 不妨去文末的参看资料看看.">
@@ -98,7 +98,7 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">38</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">39</span></li></ul>
               </li>
             
           
@@ -112,7 +112,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">34</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">35</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -195,7 +195,7 @@
 <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>设全集 $U$ 中有 $n$ 中不同条件 $P_{i\ldots n}$, 记 $A_i$ 为满足条件 $P_i$ 元素的集合.</p>
 <h3 id="由集合的交计算集合的并"><a href="#由集合的交计算集合的并" class="headerlink" title="由集合的交计算集合的并"></a>由集合的交计算集合的并</h3><script type="math/tex; mode=display">| \bigcup_{i = 1} ^ n A_i | = \sum_{k = 1} ^ n (-1) ^ {k - 1} \sum_{1 \le i_1,\ \cdots,\ i_k \le n} | \bigcap_{j = 1} ^ k A_{i_j} |</script><h3 id="由补集的并计算集合的交"><a href="#由补集的并计算集合的交" class="headerlink" title="由补集的并计算集合的交"></a>由补集的并计算集合的交</h3><script type="math/tex; mode=display">|\bigcap_{i = 1} ^ n A_i| = |U| - |\bigcup_{i = 1} ^ n \bar A_i|</script><p>直接将之前的式子带入, 则有</p>
 <script type="math/tex; mode=display">|\bigcap_{i = 1} ^ n A_i| = |U| - \sum_{k = 1} ^ n (-1) ^ {k - 1} \sum_{1 \le i_1,\ \cdots,\ i_k \le n} | \bigcap_{j = 1} ^ k \bar A_{i_j} |</script><p>进一步可以得到</p>
-<script type="math/tex; mode=display">|\bigcap_{i = 1} ^ n A_i| = \sum_{k = 0} ^ n (-1) ^ k \sum_{1 \le i_1,\ \cdots,\ i_k \le n} |\bigcap_{j = 1} ^ n \bar A_{i_j}|</script><p>至于其他情况, 可用摩根定律进行转化.</p>
+<script type="math/tex; mode=display">|\bigcap_{i = 1} ^ n A_i| = \sum_{k = 0} ^ n (-1) ^ k \sum_{1 \le i_1,\ \cdots,\ i_k \le n} |\bigcap_{j = 1} ^ k \bar A_{i_j}|</script><p>至于其他情况, 可用摩根定律进行转化.</p>
 <p>很多时候集合中元素具体是什么不会影响结果, 此时枚举集合大小同时乘一个组合数作为系数就可以得出一些式子.</p>
 <h2 id="推广"><a href="#推广" class="headerlink" title="推广"></a>推广</h2><h3 id="二项式反演"><a href="#二项式反演" class="headerlink" title="二项式反演"></a>二项式反演</h3><script type="math/tex; mode=display">g(n) = \sum_{k = n} ^ m \binom{k}{n} f(k) \Leftrightarrow f(n) = \sum_{k = n} ^ m (-1) ^ {k - n} \binom{k}{n} g(n)</script><p>虽然本质是容斥原理, 但是在实际中可能 (?) 会更好用一点.</p>
 <p>此时的 $f(n)$, $g(n)$ 有组合意义, 例如 $f(n)$ 表示在总共 $m$ 个物品中, 恰好选择 $n$ 个满足某个条件元素的方案数, $g(n)$ 表示钦定 $n$ 个满足某个条件元素的方案数.</p>
