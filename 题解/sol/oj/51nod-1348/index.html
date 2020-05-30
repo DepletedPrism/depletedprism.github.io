@@ -12,18 +12,18 @@
   
 </title>
 
-<meta name="description" content="题目链接: https://www.51nod.com/Challenge/Problem.html#problemId=1348  分治 FFT 如果使用三模数 NTT, 那么每次合并只需要记录实际模数下的答案…">
+<meta name="description" content="题目链接 https://www.51nod.com/Challenge/Problem.html#problemId=1348  分治 FFT 如果使用三模数 NTT, 那么每次合并只需要记录实际模数下的答案…">
 <meta name="keywords" content="Polynomial">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「51nod 1348」乘积之和 题解">
 <meta property="og:url" content="https://depletedprism.github.io/题解/sol/oj/51nod-1348/index.html">
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
-<meta property="og:description" content="题目链接: https://www.51nod.com/Challenge/Problem.html#problemId=1348  分治 FFT 如果使用三模数 NTT, 那么每次合并只需要记录实际模数下的答案…">
+<meta property="og:description" content="题目链接 https://www.51nod.com/Challenge/Problem.html#problemId=1348  分治 FFT 如果使用三模数 NTT, 那么每次合并只需要记录实际模数下的答案…">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-09T06:10:52.673Z">
+<meta property="og:updated_time" content="2020-05-27T04:47:37.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「51nod 1348」乘积之和 题解">
-<meta name="twitter:description" content="题目链接: https://www.51nod.com/Challenge/Problem.html#problemId=1348  分治 FFT 如果使用三模数 NTT, 那么每次合并只需要记录实际模数下的答案…">
+<meta name="twitter:description" content="题目链接 https://www.51nod.com/Challenge/Problem.html#problemId=1348  分治 FFT 如果使用三模数 NTT, 那么每次合并只需要记录实际模数下的答案…">
 
 
   <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
@@ -98,21 +98,21 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">41</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">42</span></li></ul>
               </li>
             
           
             
               <li class="tag-list-container">
                 <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/">Probability & Mean</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/">Probability & Mean</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">37</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">38</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -187,8 +187,8 @@
   </div>
   <div class="article-entry">
     <hr>
-<ul>
-<li>题目链接: <a href="https://www.51nod.com/Challenge/Problem.html#problemId=1348" target="_blank" rel="noopener">https://www.51nod.com/Challenge/Problem.html#problemId=1348</a></li>
+<h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><ul>
+<li><a href="https://www.51nod.com/Challenge/Problem.html#problemId=1348" target="_blank" rel="noopener">https://www.51nod.com/Challenge/Problem.html#problemId=1348</a></li>
 </ul>
 <p>分治 FFT 如果使用三模数 NTT, 那么每次合并只需要记录实际模数下的答案…</p>
 <a id="more"></a>
