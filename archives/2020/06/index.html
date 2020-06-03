@@ -8,22 +8,17 @@
 
 <title>
   
-    Vim .vimrc 解决方案
+    归档: 2020/6
   
 </title>
 
-<meta name="description" content="Vim 或 Emacs，总是其他人带入坑的。  为了配置文件的可移植性，只选取了同时使用于 Windows 及 Linux 的特性。 为了考场上能用，只选取了部分配置。其实是不想深究啊">
-<meta name="keywords" content="Vim">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Vim .vimrc 解决方案">
-<meta property="og:url" content="https://depletedprism.github.io/笔记/Vim-vimrc-Solution/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DepletedPrism&#39;s Blog">
+<meta property="og:url" content="https://depletedprism.github.io/archives/2020/06/index.html">
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
-<meta property="og:description" content="Vim 或 Emacs，总是其他人带入坑的。  为了配置文件的可移植性，只选取了同时使用于 Windows 及 Linux 的特性。 为了考场上能用，只选取了部分配置。其实是不想深究啊">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-30T12:37:01.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vim .vimrc 解决方案">
-<meta name="twitter:description" content="Vim 或 Emacs，总是其他人带入坑的。  为了配置文件的可移植性，只选取了同时使用于 Windows 及 Linux 的特性。 为了考场上能用，只选取了部分配置。其实是不想深究啊">
+<meta name="twitter:title" content="DepletedPrism&#39;s Blog">
 
 
   <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
@@ -158,95 +153,60 @@
       
         <div style="max-width: 1000px">
       
-          <article id="post-Vim-vimrc-Solution" class="article article-type-post">
+          
+
   
-    <h1 class="article-header">
-      Vim .vimrc 解决方案
-    </h1>
   
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <h1><a href="/archives/2020" class="archive-year">2020</a></h1>
+        </div>
+        <div class="post-list">
+    
   
 
-  <div class="article-info">
-    <span class="article-date">
-  2019-07-13
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/题解/sol/BJOI-2018-sol/">
+  BJOI 2018 简要题解
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/题解/sol/BJOI-2018-sol/"><span class="article-date">
+  2020-06-01
 </span>
-
-    
+</a>
+        
 	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/笔记/">笔记</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/题解/">题解</a></li></ul>
 	</span>
 
 
-    
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li></ul>
-	</span>
-
-
-	
-  </div>
-  <div class="article-entry">
-    <hr>
-<blockquote>
-<p>Vim 或 Emacs，总是其他人带入坑的。</p>
-</blockquote>
-<p>为了配置文件的可移植性，只选取了同时使用于 Windows 及 Linux 的特性。</p>
-<p>为了考场上能用，只选取了部分配置。<del>其实是不想深究啊</del></p>
-<a id="more"></a>
-<p>其实是因为 HA 机房大多是 Windows 系统 = =</p>
-<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><ul>
-<li>配置文件内容总览</li>
-</ul>
-<figure class="highlight vim"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">nu</span>                          <span class="comment">"显示行号</span></span><br><span class="line"><span class="keyword">set</span> cursorline                  <span class="comment">"高亮当前行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> autoindent                  <span class="comment">"自动缩进</span></span><br><span class="line"><span class="keyword">set</span> tabstop=<span class="number">2</span>                   <span class="comment">"制表符占用 2 空格</span></span><br><span class="line"><span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">2</span>                <span class="comment">"expandtab 情况下，backspace 删除 2 空格</span></span><br><span class="line"><span class="keyword">set</span> softtabstop=<span class="number">2</span>               <span class="comment">"自动缩进 2 空格</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">colorscheme</span> desert              <span class="comment">"使用 desert 配色方案</span></span><br><span class="line"><span class="keyword">set</span> guifont=consola<span class="variable">s:h12</span>        <span class="comment">"设置字体为 consolas 且字号为 10</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>精简版:</li>
-</ul>
-<figure class="highlight vim"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">nu</span></span><br><span class="line"><span class="keyword">set</span> tabstop=<span class="number">2</span></span><br><span class="line"><span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">2</span></span><br><span class="line"><span class="keyword">colorscheme</span> desert</span><br><span class="line"><span class="keyword">set</span> guifont=consola<span class="variable">s:h12</span></span><br></pre></td></tr></table></figure>
-<h4 id="键盘映射"><a href="#键盘映射" class="headerlink" title="键盘映射"></a>键盘映射</h4><p>但是只有配置文件怎么能愉快地使用 Vim 呢, 于是, 有以下键盘映射, 将 <code>Caps Lock</code> 和 <code>Esc</code> 互换.</p>
-<ul>
-<li>对于 Windows</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line">  </span><br><span class="line">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Kayboard Layout]</span><br><span class="line">&quot;Scancode Map&quot;=hex:00,00,00,00,00,00,00,00,03,00,00,00,3A,00,01,00,01,00,3A,00,00,00,00,00</span><br></pre></td></tr></table></figure>
-<p>保存为 <code>&lt;filename&gt;.reg</code> 然后双击添加到注册表就好了. 因为是写在注册表里的, 所以要注销 / 重启之后才能应用</p>
-<p><del>如果打过东方的话, 可以发现 ZUN 正作里绝大多数是不支持这样的键盘映射的, 也就是说, 键盘映射失效了</del></p>
-<ul>
-<li>对于 Ubuntu (实际上支持 Xmodmap 都可以用的…)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">clear Lock</span><br><span class="line">keysym Caps_Lock = Escape</span><br><span class="line">keysym Escape = Caps_Lock</span><br><span class="line">add Lock = Caps_Lock</span><br></pre></td></tr></table></figure>
-<p>写到 <code>.Xmodmap</code> 之后在终端里输入, 感觉上用其他文件名也是可以的, 不过没有试过</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmodmap .Xmodmap</span><br></pre></td></tr></table></figure>
-<p>唯一的缺点是重启之后就需要重新打一遍命令了, 解决方法应该是让这条命令自动运行吧, 不过没有研究…</p>
-<hr>
-
-  </div>
-  <footer class="article-footer">
-    
-  <div class="cc">
-    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.z" target="_blank" title="署名-非商业性使用-相同方式共享">
-      <img src="/images/cc/cc.png">
-      
-          <img src="/images/cc/by.png">
         
-          <img src="/images/cc/nc.png">
+
+      </div>
+      <div class="article-entry">
         
-          <img src="/images/cc/sa.png">
-      
-      <span>
-        本作品采用知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可。
-      </span>
-    </a>
-  </div>
+          <hr>
+<p>这是 6 月份还在写省选题的悲惨故事.</p>
+          <p>
+            <a href="/题解/sol/BJOI-2018-sol/">
+              阅读全文
+            </a>
+          </p>
+        
+      </div>
+    </div>
 
-
-  </footer>
   
-</article>
 
 
-    <link rel="stylesheet" href="/css/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <div id="gitalk-container"></div>
-    <script src="/scripts/gitalk.js"></script>
 
 
 
@@ -262,7 +222,7 @@
       
         </div>
       
-    </div>
+    </section></div>
   </div>
   <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -357,4 +317,4 @@
 
 </body>
 </html>
---></body></html>
+--></div></body></html>
