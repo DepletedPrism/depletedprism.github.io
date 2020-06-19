@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="题目链接 https://codeforces.com/problemset/problem/321/E https://m1.oi-archive.org:9000/problem/?oj=bzoj&amp;amp;pid=5311  同时总结一些 DP 优化的方法.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-18T14:30:31.216Z">
+<meta property="og:updated_time" content="2020-06-19T01:58:40.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF321E Ciel and Gondolas 题解">
 <meta name="twitter:description" content="题目链接 https://codeforces.com/problemset/problem/321/E https://m1.oi-archive.org:9000/problem/?oj=bzoj&amp;amp;pid=5311  同时总结一些 DP 优化的方法.">
@@ -105,14 +105,14 @@
             
               <li class="tag-list-container">
                 <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Greedy/">Greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/">Probability & Mean</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Greedy/">Greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/">Probability & Mean</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">42</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">43</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -193,7 +193,6 @@
 </ul>
 <p>同时总结一些 DP 优化的方法.</p>
 <a id="more"></a>
-<p><strong>WARNING on 2020.6.18: 此文章有锅, 待修</strong></p>
 <h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><ul>
 <li>算法 0: 暴力 DP</li>
 </ul>
@@ -211,14 +210,14 @@
 <li>算法 2: 凸优化</li>
 </ul>
 <p>考虑凸优化, 或者称之为 “wqs 二分” / 带权二分.</p>
-<p>如果忽略分作 $k$ 组的限制, 设所分组数为 $x$, 对于每个 $x$, 其最小花费是关于 $x$ 的下凸函数.</p>
+<p>如果忽略分作 $k$ 组的限制, 设所分组数为 $x$, 对于每个 $x$, 其最小花费是关于 $x$ 的下凸函数. 证明可参考 <a href="https://www.cnblogs.com/Itst/p/12805678.html" target="_blank" rel="noopener">Itst: 浅谈满足四边形不等式的序列划分问题的答案凸性</a>.</p>
 <p>此时二分斜率 $s$, 对于剩下的问题, 设 $f(i)$ 表示前 $i$ 个人中, 任意选择组成队伍的个数时的最小花费. 则有转移</p>
 <script type="math/tex; mode=display">f(i) = \min_{1 < j \le i} \{ f(j - 1) + w(j, i) + s \}</script><p>同时要记录选出队伍组数以在二分时确定改变斜率的范围.</p>
 <p>朴素 DP 的时间复杂度为 $O(n ^ 2 \log w)$, 显得有些鸡肋.</p>
 <p>但内层的 DP 还是可以优化的. 实际上, 在 $i$ 一定时, 代价函数 $w$ 关于 $j$ 单调递增, 体现在 $f(i)$ 关于 $i$ 的图像上即为下凸包.</p>
-<p>此时维护凸包即可. 在枚举 $i$ 的过程中, 在 $i$ 之前的凸包上的点没有意义, 直接删去. 那么利用双端队列维护凸包. 在向凸包中加入一个点时, 需要二分出其加入的位置, 因此要记录凸包中每一条边端点对应决策位置.</p>
+<p>此时维护凸包即可. 在枚举 $i$ 的过程中, 在 $i$ 之前的凸包上的点没有意义, 直接删去. 那么利用双端队列维护凸包. 在向凸包中加入一个点时, 需要二分出其加入的位置, 因此要记录凸包中每一条边两端点所在位置.</p>
 <p>维护凸包的操作体现在决策中就是 “决策点会向后更新一段连续的区间”.</p>
-<p>时间复杂度 $O(n \log k \log w)$, 其中 $w$ 表示斜率最大值和最小值之差.</p>
+<p>时间复杂度 $O(n \log n \log w)$, 其中 $w$ 表示斜率最大值和最小值之差.</p>
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><ul>
 <li>算法 0</li>
 </ul>

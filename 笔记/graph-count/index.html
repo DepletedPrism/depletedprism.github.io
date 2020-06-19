@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="老年健忘选手终于下定决心去学数数了. 综述大概是利用生成函数推出一些式子, 然后拿多项式去算吧 = =">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-25T00:47:53.538Z">
+<meta property="og:updated_time" content="2020-06-19T04:35:04.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些简单的图计数问题">
 <meta name="twitter:description" content="老年健忘选手终于下定决心去学数数了. 综述大概是利用生成函数推出一些式子, 然后拿多项式去算吧 = =">
@@ -105,14 +105,14 @@
             
               <li class="tag-list-container">
                 <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Greedy/">Greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/">Probability & Mean</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Greedy/">Greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/">Probability & Mean</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
             
               <li class="archive-list-container">
                 <a href="javascript:;">归档</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/4096/">4096</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">42</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">43</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">16</span></li></ul>
               </li>
             
           
@@ -197,19 +197,19 @@
 <li><p>生成函数</p>
 <p>对于一个数列 $\{ a_n \}$, 有</p>
 <p>$\{ a_n \}$ 的普通生成函数 (<strong>O</strong>rdinary <strong>G</strong>enerating <strong>F</strong>unction, OGF), 为</p>
-<script type="math/tex; mode=display">g(x) = \sum\limits_{k = 0}^\infty a_k x^k</script><p>常用于处理无标号问题.</p>
+<script type="math/tex; mode=display">g(x) = \sum\limits_{k = 0}^\infty a_k x^k</script><p>常用于处理无标号计数问题.</p>
 <p>$\{ a_n \}$ 的指数生成函数, (<strong>E</strong>xponential <strong>G</strong>enerating <strong>F</strong>unction, EGF), 为</p>
-<script type="math/tex; mode=display">g(x) = \sum\limits_{k = 0}^\infty a_k \frac{x^k}{k!}</script><p>常用于处理有标号问题.</p>
+<script type="math/tex; mode=display">g(x) = \sum\limits_{k = 0}^\infty a_k \frac{x^k}{k!}</script><p>常用于处理有标号计数问题.</p>
 <p>$\{ a_n \}$ 的组合生成函数, 为</p>
 <script type="math/tex; mode=display">g(x) = \sum\limits_{k = 0}^\infty a_k \frac{x^k}{2 ^ \binom{k}{2} k!}</script><p>其中 “组合生成函数” 是从 JOHNKRAM 课件里看来的新东西, 似乎只在有标号有向图计数中用到过…</p>
 </li>
 <li><p>拉格朗日反演</p>
-<p>在遇到多项式复合逆的时候快速计算出某一位的值.</p>
+<p>在遇到多项式复合逆的时候快速计算出某一位的值. 如果要计算多个位的值, 可考虑分块. 详见 <a href="https://www.luogu.com.cn/problem/P5809" target="_blank" rel="noopener">Luogu P5809 【模板】多项式复合逆</a>.</p>
 <p>设多项式 $F(x),\ G(x)$ 满足 $F(G(x)) = G(F(x)) = x$, 并记 $[x^n]F(x)$ 表示 $F(x)$ 的第 $n$ 次项系数, 那么</p>
 <script type="math/tex; mode=display">[x^n] G(x) = \frac{1}{n} [x^{n-1}] \left(\frac{x}{F(x)}\right)^n</script><p>还有一个拓展形式. 设 $H(x)$ 是另一个多项式, 那么</p>
 <script type="math/tex; mode=display">[x^n] H\left(G(x)\right) = \frac{1}{n} [x^{n-1}] H'(x) \left(\frac{x}{F(x)}\right)^n</script></li>
 </ol>
-<h2 id="连通-不连通"><a href="#连通-不连通" class="headerlink" title="连通 / 不连通?"></a>连通 / 不连通?</h2><p>对于有标号元素 $A$ 组成的集合 $B$, 不妨设 $A$ 的 EGF 为 $A(x)$, 考虑到集合内的元素没有顺序关系. 可以得到 $B$ 的 EGF 为</p>
+<h2 id="连通-不连通"><a href="#连通-不连通" class="headerlink" title="连通 / 不连通?"></a>连通 / 不连通?</h2><p>对于有标号元素 $A$ 组成的集合 $B$, 不妨设 $A$ 的 EGF 为 $A(x)$. 考虑到集合内的元素没有顺序关系, 可以得到 $B$ 的 EGF 为</p>
 <script type="math/tex; mode=display">B(x) = \sum_{k = 0} ^ \infty \frac{A(x) ^ k}{k!} = \exp A(x)</script><p>应用在图计数中, 可以将非连通图看作多个连通图构成的集合.</p>
 <p>也就是在确定连通图个数的 EGF 后, 可以通过多项式 $\exp$ 得出非连通图个数的 EGF.</p>
 <h2 id="有标号无向图计数"><a href="#有标号无向图计数" class="headerlink" title="有标号无向图计数"></a>有标号无向图计数</h2><h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><p>考虑到 Prufer 序列将一个带标号且有 $n$ 个节点的树用 $[1,\ n]$ 中 $n-2$ 个整数表示, 且 Prufer 序列同树一一对应. 那么, 直接统计 Prufer 序列的个数即可.</p>
@@ -232,8 +232,7 @@
 <p>从 “任意一条边最多属于一个简单环” 这一条件入手. 考虑根节点连出的边, 可以分为简单环上和不属于任何简单环的独立边两种.</p>
 <p>对于环上的边, 设环中点数为 $k + 1$, 考虑环上每一个节点都可以作为有根仙人掌的根, 那么环的生成函数为 $\frac{1}{2} C(x) ^ k$. 对于独立边, 另一端点为有根仙人掌的根, 其生成函数为 $C(x)$.</p>
 <p>而根节点连出的边可看作上述两种情况构成的集合, 同时考虑根节点的影响, 可以得出</p>
-<script type="math/tex; mode=display">C(x) = x \exp\left( C(x) + \frac{1}{2} \sum_{k = 2} ^ \infty C(x) ^ k\right) = x \exp \frac{2C(x) - C(x) ^ 2}{2 - 2 C(x)}</script><p><em>此处也可以从圆方树的角度考虑, 可以得到同样的结果.</em></p>
-<p><em>详见: <a href="https://blog.csdn.net/qq_39972971/article/details/89214832" target="_blank" rel="noopener">https://blog.csdn.net/qq_39972971/article/details/89214832</a></em></p>
+<script type="math/tex; mode=display">C(x) = x \exp\left( C(x) + \frac{1}{2} \sum_{k = 2} ^ \infty C(x) ^ k\right) = x \exp \frac{2C(x) - C(x) ^ 2}{2 - 2 C(x)}</script><p><em>此处也可以从圆方树的角度考虑, 可以得到同样的结果. 详见: <a href="https://blog.csdn.net/qq_39972971/article/details/89214832" target="_blank" rel="noopener">https://blog.csdn.net/qq_39972971/article/details/89214832</a></em></p>
 <p>然后套牛顿迭代的式子, 记 $C_0(x)$ 为模 $x ^ {\lceil \frac{n}{2} \rceil}$ 意义下的结果, $C(x)$ 为模 $x ^ n$ 意义下的结果, 同时记录 $T(x)$ 来便于表述, 有</p>
 <script type="math/tex; mode=display">T(x) = x \exp \frac{ 2C_0(x) - C_0 (x) ^ 2 }{ 2 - 2 C_0(x) ^ 2 }</script><script type="math/tex; mode=display">C(x) = C_0(x) - \frac{ 2T(x) - 2 C_0 }{ \Big( 1 + 1\ /\ \big(C_0(x) ^ 2 - 2C_0(x) + 1\big) \Big) T(x) - 2 }</script><p><em>详细的过程可以在 <a href="https://memset0.cn/loj6569" target="_blank" rel="noopener">memset0 的博客</a> 内找到.</em></p>
 <p>至此我们得出了在 $O(n\log n)$ 的时间复杂度内计算 $n$ 项的做法. 实现时可以合并一部分式子来避免重复计算, 以及便于实现.</p>
