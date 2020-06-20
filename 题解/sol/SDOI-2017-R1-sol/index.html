@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
 <meta property="og:description" content="考虑到写详解有点花时间, 不写又容易忘 = =, 那就写个大概吧. SD 两轮省选 (可能?) 会比较科学一点吧">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-09T06:10:52.677Z">
+<meta property="og:updated_time" content="2020-06-19T14:44:10.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SDOI 2017 Round 1 大赏">
 <meta name="twitter:description" content="考虑到写详解有点花时间, 不写又容易忘 = =, 那就写个大概吧. SD 两轮省选 (可能?) 会比较科学一点吧">
@@ -187,7 +187,7 @@
 <a id="more"></a>
 <p>不要因为 Round 1 而错怪 SDOI.</p>
 <h3 id="「SDOI2017」数字表格"><a href="#「SDOI2017」数字表格" class="headerlink" title="「SDOI2017」数字表格"></a>「SDOI2017」数字表格</h3><h4 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h4><p>求</p>
-<script type="math/tex; mode=display">\prod_{i=1}^n \prod_{j=1}^m f( \gcd(i, j) ) \mod 10^9 + 7</script><p>其中 $f(n)$ 为斐波那契数列数列第 $n$ 项, $1 \le n,m \le 10^6$, 多组测试数据, $1 \le T \le 1000$.</p>
+<script type="math/tex; mode=display">\prod_{i=1}^n \prod_{j=1}^m f( \gcd(i, j) ) \bmod 10^9 + 7</script><p>其中 $f(n)$ 为斐波那契数列数列第 $n$ 项, $1 \le n,m \le 10^6$, 多组测试数据, $1 \le T \le 1000$.</p>
 <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><ul>
 <li><a href="https://loj.ac/problem/2000" target="_blank" rel="noopener">https://loj.ac/problem/2000</a></li>
 </ul>
@@ -223,7 +223,7 @@
 <h4 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h4><p>要求和是 $p$ 的倍数, 那么显然是模 $p$ 意义下为 $0$ 了. 考虑到至少有一个数为质数的限制可以通过减法原理解决, 即计算一遍所有数的方案数, 再减去只用合数的答案.</p>
 <p>容易想到一个暴力 DP:</p>
 <p>设 $f(i, j)$ 表示选 $i$ 个数, 加起来模 $p$ 为 $j$ 的方案数. 则</p>
-<script type="math/tex; mode=display">f(i, j) = \sum_k f(i-1, (j - k)\mod p)</script><p>每次选择满足限制的 $k$ 就好了.</p>
+<script type="math/tex; mode=display">f(i, j) = \sum_k f(i-1, (j - k)\bmod p)</script><p>每次选择满足限制的 $k$ 就好了.</p>
 <p>观察到 DP 中每次转移都是一样的, 考虑用矩阵快速幂优化.</p>
 <p>容易想到 $O(mp)$ 的构造矩阵方法, 考虑在模 $p$ 意义下, 矩阵中某一列 (或者是某一行) 是循环的, 于是可以在 $O(m + p^2)$ 的时间内构造.</p>
 <p>具体实现的时候有一些细节, 还是参考代码实现吧.</p>
