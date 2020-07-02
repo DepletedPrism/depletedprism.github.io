@@ -21,7 +21,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://depletedprism.github.io/images/HAOI-2020/=.png">
 <meta property="og:image" content="https://depletedprism.github.io/images/HAOI-2020/shuidajiao001.png">
-<meta property="og:updated_time" content="2020-06-20T09:09:16.701Z">
+<meta property="og:updated_time" content="2020-07-02T14:34:45.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HAOI 2020 退役记">
 <meta name="twitter:description" content="这就是, 路的尽头吗.">
@@ -170,7 +170,7 @@
 
   <div class="article-info">
     <span class="article-date">
-  2020-06-19
+  2020-06-21
 </span>
 
     
@@ -212,16 +212,41 @@
 <p>准考证总算不是一张纸了, 看来可以胸牌退役了 (<del>胸牌作伴好还乡</del></p>
 <h2 id="Day-1-1"><a href="#Day-1-1" class="headerlink" title="Day 1"></a>Day 1</h2><p>考试日.</p>
 <p>看到一堆熟悉的人名, 可惜都不认识. 键盘映射又忘了, 老年选手预定.</p>
+<p>看一眼发现 MinGW 里 gcc 版本比 NOI Linux 里的还老, cmd 又体验极差, 然后又把 Dev-cpp 装上了. (事后才想起来有 Powershell 可以用…</p>
+<p><strong>8sNm5X91Thq=+35y</strong></p>
 <p>开局看到 “组合数问题”, 脊背发凉. 感觉 T1, T2 挺可做, 后来就没有后来了.</p>
 <p>写了写暴力. T2 白给 30 pts, T3 一脸暴力比正解难写的样子. 想了想 T1, 有点慌, 感觉做不出来就没了. 结果胡出来一个 $O(n \log ^ 2 x)$ 的做法, 写半天过了大样例.</p>
 <p>想不出来线性做法, 算了算得分感觉不大行, T1 估计全场 100 pts, 我拿个 60 pts 有锤子用啊 = =</p>
 <p>感觉 T1 标算会应该是线性, 多个 $\log$ 就不管了, 节约时间就没有拍. 中间有去做其他题. T2 感觉能用 Stirling 数把自然数幂干掉, 推了推却没有结果, 感觉是公式记错或者是方向之类的问题. T3 真就一点也不会, 没根据地糊点代码就溜了.</p>
-<p>交完题后立刻发现 T2 限制中 $m = 0$ 就是二项式定理, 没时间写了, 快乐.</p>
+<p>交完代码之后立刻发现 T2 限制中 $m = 0$ 就是二项式定理, 没时间写了, 又丢 10 pts, 快乐.</p>
 <p>下考场, 不想找教练就直接回家了.</p>
 <p>Day 1 期望得分: 60 + 30 + 0 = 90 pts.</p>
 <p>参照最终结果, 倒不如把花在 T3 的时间用来给 T1 对拍 / 卡常, 或是想想更可做的 T2.</p>
 <p>感觉 HA 的标准分大概在 150 pts 左右? 技不如人甘拜下风. 虽然不大有进省队的希望, 但还是打算给自己的竞赛生涯来个不遗憾的结尾吧.</p>
 <p>本来想 vp 一场 Edu Round 练手, 结果 <del>到家就去做习题集了, 导数真好玩 (</del> 到家就开始颓废了.</p>
+<h2 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h2><p>考试日.</p>
+<p>终于默写对键盘映射了. <del>Full Power Mode!</del></p>
+<p><strong>Ybd906-sv?4tbqz2</strong></p>
+<p>开局看题. 看完一遍之后会了 0 + 10 + 30, 感觉要翻盘大概 Day 2 要考 200+ pts?</p>
+<p>看起来 T1 蛮可做的. 又看了一遍题之后发现自己读错题了… 写了个 $O(nm!)$ 的 30 pts 签到. 然后就不会了…</p>
+<p>扫了眼 T2 数据范围, 似乎 $O(n ^ 2)$ 会输的很惨. 想了个 $O(n \log v)$ 逐位考虑的做法, 写出来后发现奥妙重重, 连样例都过不了.</p>
+<p>T3 推了推式子就有 50 pts 了. 大概正解就是 Matrix-Tree 定理之类的东西?</p>
+<p>Day 2 期望得分: 30 + 10 + 50 = 90 pts.</p>
+<p>晚上回学校上晚自习, 去原来的班里找了个空位置就回机房了, 应该是在机房的最后一个晚自习了. <del>所以颓了一晚上</del>.</p>
+<h2 id="Day-3"><a href="#Day-3" class="headerlink" title="Day 3"></a>Day 3</h2><p>回班了, 看周围人准备期末考试.</p>
+<h2 id="Day-4"><a href="#Day-4" class="headerlink" title="Day 4"></a>Day 4</h2><p>晚自习的时候知道了成绩, FST 了 (</p>
+<blockquote>
+<p>不对拍就等于没有写.</p>
+<p>—stdcall</p>
+</blockquote>
+<h2 id="Day-5"><a href="#Day-5" class="headerlink" title="Day 5"></a>Day 5</h2><p>端午放假.</p>
+<p>回去看了看 D1T1 怎么挂的, 改了改结果 AC 了.</p>
+<p>结果 AC 了.</p>
+<p>$O(q \log ^ 2 x)$ AC 了, <del>好像明白自己是怎么退役的了.</del> 仔细算了算, D1T1 拍一下就可以最后一名进队了 (</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>学文化课比学 OI 在心态上平稳许多, 没有什么努力一通之后因为各种原因就一无所有的事情发生吧.</p>
+<p><del>暗示自己高考将翻车, 实际上我把所有能决定自己人生轨迹的考试都考砸了 (</del></p>
+<p>可能以后想到自己再无参与国赛的机会, 或者是在其他人问道 “你进省队了吗” 之类问题的时候, 会有一阵无法消去的无力感.</p>
+<p>那才是心之所向啊.</p>
 <hr>
 
   </div>
