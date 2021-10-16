@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -12,18 +12,18 @@
   
 </title>
 
-<meta name="description" content="学了半天的莫比乌斯反演，结果只听懂了数论分块 = =  综述对于含有 $\lfloor\frac{n}{i}\rfloor$ 的求和式子，可以通过合并一些相等的 $\lfloor\frac{n}{i}\rfloor$，从而在 $O(\sqrt{n})$ 的时间里算出式子的值">
-<meta name="keywords" content="Number Theory">
+<meta name="description" content="学了半天的莫比乌斯反演，结果只听懂了数论分块 &#x3D; &#x3D;  综述对于含有 $\lfloor\frac{n}{i}\rfloor$ 的求和式子，可以通过合并一些相等的 $\lfloor\frac{n}{i}\rfloor$，从而在 $O(\sqrt{n})$ 的时间里算出式子的值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数论分块学习笔记">
-<meta property="og:url" content="https://depletedprism.github.io/笔记/number-block-note/index.html">
+<meta property="og:url" content="https://depletedprism.github.io/%E7%AC%94%E8%AE%B0/number-block-note/index.html">
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
-<meta property="og:description" content="学了半天的莫比乌斯反演，结果只听懂了数论分块 = =  综述对于含有 $\lfloor\frac{n}{i}\rfloor$ 的求和式子，可以通过合并一些相等的 $\lfloor\frac{n}{i}\rfloor$，从而在 $O(\sqrt{n})$ 的时间里算出式子的值">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-28T16:31:13.609Z">
+<meta property="og:description" content="学了半天的莫比乌斯反演，结果只听懂了数论分块 &#x3D; &#x3D;  综述对于含有 $\lfloor\frac{n}{i}\rfloor$ 的求和式子，可以通过合并一些相等的 $\lfloor\frac{n}{i}\rfloor$，从而在 $O(\sqrt{n})$ 的时间里算出式子的值">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-30T15:02:54.000Z">
+<meta property="article:modified_time" content="2020-04-28T16:31:13.609Z">
+<meta property="article:author" content="DepletedPrism">
+<meta property="article:tag" content="Number Theory">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数论分块学习笔记">
-<meta name="twitter:description" content="学了半天的莫比乌斯反演，结果只听懂了数论分块 = =  综述对于含有 $\lfloor\frac{n}{i}\rfloor$ 的求和式子，可以通过合并一些相等的 $\lfloor\frac{n}{i}\rfloor$，从而在 $O(\sqrt{n})$ 的时间里算出式子的值">
 
 
   <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
@@ -33,7 +33,10 @@
   <link rel="icon" href="/images/favicon.jpg">
 
 
+
 <link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+
+
 <link rel="stylesheet" href="/styles/main.css">
 
 
@@ -41,8 +44,15 @@
 
 
 
-</head>
-<body class="monochrome">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+<body
+  
+    class="monochrome"
+  
+  >
   <div class="mobile-header">
   <button class="sidebar-toggle" type="button">
     <span class="icon-bar"></span>
@@ -85,14 +95,14 @@
             
               <li class="category-list-container">
                 <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/题解/">题解</a><span class="category-list-count">45</span></li></ul>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a><span class="category-list-count">45</span></li></ul>
               </li>
             
           
             
               <li class="tag-list-container">
                 <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/">Combinatorics</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/">Graph</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Greedy/">Greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/">Polynomial</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/">Probability & Mean</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/" rel="tag">Combinatorics</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/" rel="tag">Dynamic Programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/" rel="tag">Graph</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Greedy/" rel="tag">Greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/" rel="tag">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/" rel="tag">Polynomial</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/" rel="tag">Probability & Mean</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/" rel="tag">String</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
@@ -109,7 +119,7 @@
           
             
               <li>
-                <a href="/index.html" title="Homepage">Homepage</a>
+                <a href="/index.html" title="Homepage" external="false">Homepage</a>
               </li>
             
           
@@ -154,13 +164,13 @@
 
     
 	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/笔记/">笔记</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li></ul>
 	</span>
 
 
     
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Number-Theory/">Number Theory</a></li></ul>
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Number-Theory/" rel="tag">Number Theory</a></li></ul>
 	</span>
 
 
@@ -172,7 +182,7 @@
 <p>学了半天的莫比乌斯反演，结果只听懂了数论分块 = =</p>
 </blockquote>
 <h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>对于含有 $\lfloor\frac{n}{i}\rfloor$ 的求和式子，可以通过合并一些相等的 $\lfloor\frac{n}{i}\rfloor$，从而在 $O(\sqrt{n})$ 的时间里算出式子的值</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>考虑计算</p>
 <script type="math/tex; mode=display">\sum_{d = 1}^{n} \lfloor\frac{n}{d}\rfloor</script><p><del>显然有 O(n) 的做法，但我们继续考虑更优的解法</del> = =</p>
 <p>可以发现，$\lfloor\frac{n}{d}\rfloor$ 会出现相同的值，$O(n)$  的做法慢就慢在对于相同的 $\lfloor\frac{n}{d}\rfloor$ 计算了多次…</p>
@@ -189,7 +199,7 @@
 <p>由 $\lfloor\frac{n}{L}\rfloor \leq \frac{n}{L}$，可得 </p>
 <script type="math/tex; mode=display">\lfloor\frac{n}{\lfloor\frac{n}{L}\rfloor}\rfloor \geq \lfloor\frac{n}{\frac{n}{L}}\rfloor = \lfloor L\rfloor = L</script><p>故 $R = \lfloor\frac{n}{\lfloor\frac{n}{L}\rfloor}\rfloor$，此时 $R$ 为最大值</p>
 </blockquote>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="洛谷-P2261-CQOI2007-余数求和"><a href="#洛谷-P2261-CQOI2007-余数求和" class="headerlink" title="洛谷 P2261 [CQOI2007]余数求和"></a><a href="https://www.luogu.org/problem/P2261" target="_blank" rel="noopener">洛谷 P2261 [CQOI2007]余数求和</a></h3><blockquote>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="洛谷-P2261-CQOI2007-余数求和"><a href="#洛谷-P2261-CQOI2007-余数求和" class="headerlink" title="洛谷 P2261 [CQOI2007]余数求和"></a><a href="https://www.luogu.org/problem/P2261">洛谷 P2261 [CQOI2007]余数求和</a></h3><blockquote>
 <p>求</p>
 <script type="math/tex; mode=display">\sum_{i = 1}^{n}k \bmod i</script><p>其中 $n,\;k\leq10^9$ 且为正整数</p>
 </blockquote>
@@ -200,21 +210,21 @@
 <script type="math/tex; mode=display">n\cdot k - \sum_{i=1}^{n}\lfloor\frac{k}{i}\rfloor \cdot i</script><p>$\lfloor\frac{k}{i}\rfloor$ 就数论分块了，$\sum_{i=1}^{n}i$ 可以等差数列求和</p>
 <p>不过这道题有一处坑点 = =</p>
 <p>考虑到 C++ 中，除以或模 <code>0</code> 就会 RE，因此需要特判 <code>k/L == 0</code> 的情况。那么，什么时候 $\lfloor\frac{k}{L}\rfloor = 0$ 呢，那肯定是 $\lfloor\frac{k}{L}\rfloor$ 的最后取值了，故 $R$ 取 $n$</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">G = n*k;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> L = <span class="number">1</span>, R; L &lt;= n; L = R+<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (k/L) R = min(k / (k/L), n);</span><br><span class="line">    <span class="keyword">else</span> R = n;</span><br><span class="line">    G -= (k/L) * (L+R)*(R-L+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="洛谷-P2260-清华集训2012-模积和"><a href="#洛谷-P2260-清华集训2012-模积和" class="headerlink" title="洛谷 P2260 [清华集训2012]模积和"></a><a href="https://www.luogu.org/problem/P2260" target="_blank" rel="noopener">洛谷 P2260 [清华集训2012]模积和</a></h3><blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">G = n*k;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> L = <span class="number">1</span>, R; L &lt;= n; L = R+<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (k/L) R = <span class="built_in">min</span>(k / (k/L), n);</span><br><span class="line">    <span class="keyword">else</span> R = n;</span><br><span class="line">    G -= (k/L) * (L+R)*(R-L+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="洛谷-P2260-清华集训2012-模积和"><a href="#洛谷-P2260-清华集训2012-模积和" class="headerlink" title="洛谷 P2260 [清华集训2012]模积和"></a><a href="https://www.luogu.org/problem/P2260">洛谷 P2260 [清华集训2012]模积和</a></h3><blockquote>
 <p>求</p>
 <script type="math/tex; mode=display">\sum_{i=1}^{n}\sum_{j=1}^{m}(n \bmod i)\cdot(m\bmod j),\;i \neq j</script><p>结果 $\bmod\; 19940417$ 的值。其中 $n,\;m\leq10^9$ 且为正整数</p>
 </blockquote>
 <p>和上一题相似的思路，考虑将模运算置换为取整。不过在这一步前，要先把 $i\neq j$ 的条件干掉</p>
 <script type="math/tex; mode=display">\sum_{i=1}^n(n\bmod i) \cdot \sum_{i=1}^m(m\bmod i) - \sum_{i=1}^{\min(n, m)}(n \bmod i)\cdot(m\bmod j)</script><p>不妨设 $n\leq m$，这样写起来更简单一点</p>
 <script type="math/tex; mode=display">(n^2 - \sum_{i=1}^{n}\lfloor\frac{n}{i}\rfloor \cdot i)\cdot(m^2 - \sum_{i=1}^{m}\lfloor\frac{m}{i}\rfloor\cdot i) - \sum_{i=1}^n(n \bmod i)\cdot(m\bmod j)</script><p>关键是后一个式子，所以拎出来单独看看</p>
-<script type="math/tex; mode=display">\sum_{i=1}^n(n - \lfloor\frac{n}{i}\rfloor \cdot i)\cdot(m - \lfloor\frac{m}{i}\rfloor \cdot i)</script><script type="math/tex; mode=display">\sum_{i=1}^n(nm - \lfloor\frac{n}{i}\rfloor \cdot im - \lfloor\frac{m}{i}\rfloor \cdot in + \lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor \cdot i^2)</script><script type="math/tex; mode=display">n^{2}m - \sum_{i=1}^{n}i\cdot(\lfloor\frac{n}{i}\rfloor \cdot m + \lfloor\frac{m}{i}\rfloor \cdot n) + \sum_{i=1}^{n}\lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor \cdot i^2</script><p>其中 $\sum_{i=1}^{n}i^2 = \frac{n(n+1)(2n+1)}{6}$，为什么呢？参阅：<a href="https://en.wikipedia.org/wiki/Summation" target="_blank" rel="noopener">Summation - Wikipedia</a></p>
+<script type="math/tex; mode=display">\sum_{i=1}^n(n - \lfloor\frac{n}{i}\rfloor \cdot i)\cdot(m - \lfloor\frac{m}{i}\rfloor \cdot i)</script><script type="math/tex; mode=display">\sum_{i=1}^n(nm - \lfloor\frac{n}{i}\rfloor \cdot im - \lfloor\frac{m}{i}\rfloor \cdot in + \lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor \cdot i^2)</script><script type="math/tex; mode=display">n^{2}m - \sum_{i=1}^{n}i\cdot(\lfloor\frac{n}{i}\rfloor \cdot m + \lfloor\frac{m}{i}\rfloor \cdot n) + \sum_{i=1}^{n}\lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor \cdot i^2</script><p>其中 $\sum_{i=1}^{n}i^2 = \frac{n(n+1)(2n+1)}{6}$，为什么呢？参阅：<a href="https://en.wikipedia.org/wiki/Summation">Summation - Wikipedia</a></p>
 <p>注意本题的范围，上一题 RE 的情况在本题没有出现 = =</p>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>感觉这个内容偏向容易一些，<del>毕竟只是其他知识的前置内容</del>，不过到处翻查证明也花了不少时间。</p>
 <p><del>因为我证不出来啊</del> = =</p>
 <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
 <li>11Dimensions：从 1 开始的数论</li>
-<li><a href="https://oi-wiki.org/math/mobius/" target="_blank" rel="noopener">OI Wiki</a>：莫比乌斯反演</li>
+<li><a href="https://oi-wiki.org/math/mobius/">OI Wiki</a>：莫比乌斯反演</li>
 </ul>
 <hr>
 
@@ -246,7 +256,7 @@
 
           <div class="main-footer">
   
-    © 2021 DepletedPrism&#39;s Blog
+    © 2019-2021 DepletedPrism&#39;s Blog
     
 	- Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
   
@@ -257,10 +267,16 @@
       
     </div>
   </div>
-  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
-  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
-  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
 
   <!-- Root element of PhotoSwipe. Must have class pswp. -->
   <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -324,12 +340,20 @@
     </div>
   </div>
 
-  <script src="/PhotoSwipe/photoswipe.js"></script>
-  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+  
+<script src="/PhotoSwipe/photoswipe.js"></script>
+
+  
+<script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
 
 
 <script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+
+
 <script src="/scripts/main.js"></script>
+
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -350,4 +374,3 @@
 
 </body>
 </html>
---></body></html>
