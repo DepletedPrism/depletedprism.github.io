@@ -20,7 +20,7 @@
 <meta property="og:description" content="今天的 Codeforces 有在下饭吗? 是原先在 洛谷的文章 的精神续作, 直接原因是受 某个学长的视频 的启发.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-16T05:19:11.000Z">
-<meta property="article:modified_time" content="2021-12-17T07:41:03.319Z">
+<meta property="article:modified_time" content="2022-04-11T14:27:16.551Z">
 <meta property="article:author" content="DepletedPrism">
 <meta name="twitter:card" content="summary">
 
@@ -178,25 +178,46 @@
 <span id="more"></span>
 <p>新的在前头, 老的在后面. 当然只有我写过的 = =</p>
 <p><em>不配打 Div. 1, 有些 Div. 1 的题只是因为出现在了 Div. 2 里, 所以有写.</em></p>
-<h2 id="Round-761-Div-2"><a href="#Round-761-Div-2" class="headerlink" title="Round #761 (Div. 2)"></a>Round #761 (Div. 2)</h2><h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>首先直接对 $S$ 排序, 此时只有 $S$ 中同时存在 <code>a</code>, <code>b</code>, <code>c</code> 且 $T$ 为 <code>&quot;abc&quot;</code> 时 $T$ 对排序后的 $S$ 有影响, 这个时候把所有的 <code>c</code> 放在所有的 <code>b</code> 前面就好了.</p>
-<h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><p>令 $c = 1$, 然后直接暴力找 $a$, $b$ 就好了.</p>
-<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>对于一个数 $a_i$, 经过一次操作后可以得到从 $1$ 到 $\lfloor \frac{a_i - 1}{2} \rfloor$ 的任一整数. 然后从小到大构造排列, 如果原先就存在需要的数, 就用原来的, 否则选择一个最小的满足条件的 $a_i$ 进行一次操作.</p>
-<h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><p>记 $f(i)$ 表示 <code>? i i+1 i+2</code> 得到的结果.</p>
+<h2 id="Round-781-Div-2"><a href="#Round-781-Div-2" class="headerlink" title="Round #781 (Div. 2)"></a>Round #781 (Div. 2)</h2><h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>构造. 输出 1, n - 3, 1, 1.</p>
+<p><del>system testing 的时候 A FST 一大片, 还好是假的</del></p>
+<h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><p>模拟. 首先最后数组里的所有数都会是原先出现次数最多的那个数, 一直重复替换其他数值, 然后复制替换后的数组这个过程就好了.</p>
+<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>首先 spreading 只会发生在某个节点的孩子节点中, 那么 infection 就可以依次选择所有节点的孩子集合, 如果选择完之后还存在没有被感染的节点, 选择未感染节点数最多的孩子集合, 感染一个就好了.</p>
+<h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><p>看到这个数据范围先猜一个二进制.</p>
+<p>考虑计算 $x \bmod 2^k$ 的值, 这个可以递推得到. 假定已经知道了 $x \bmod 2^{k - 1} = r$, 现在来计算 $x \bmod 2^k$. 考虑 $r$ 的意义, $r$ 就是 $x$ 二进制下前 $k$ 位组成的数, 如果 $x$ 的第 $k + 1$ 位是 1, 那么 $\gcd(x + 2^{k-1} - r,\ 2^k) = 2^k$, 否则就是 0. 这个 gcd 可以体现为 $\gcd(x + 2^{k-1} - r,\ x + 2^{k-1} - r + 2^k)$, 然后询问就好了.</p>
+<p>最终的答案就是 $x \bmod 2^{30}$, 总共询问次数就是 30 次.</p>
+<h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><p>对于小于 $2^k$ 的数, 只需要维护 $a_i$ 前 $k + 1$ 小的位置. 可以利用归纳法证明, 使 $a_i | a_j$ 最小的 $i$ 和 $j$ 一定出现在这 $k + 1$ 个位置中. 用线段树大力维护就好了.</p>
+<p><del>赛时维护了前 2 小的位置, 写着写着发现假了. 官方题解里看到有莫队写法了, 莫队已经走向国际化了 (</del></p>
+<h2 id="Edu-Round-125-Div-2"><a href="#Edu-Round-125-Div-2" class="headerlink" title="Edu Round #125 (Div. 2)"></a>Edu Round #125 (Div. 2)</h2><h3 id="A-1"><a href="#A-1" class="headerlink" title="A"></a>A</h3><p>$O(n^4)$ 暴力 DP.</p>
+<p>进一步思考, 答案不会超过 2. 因为可以先从 $(0,\ 0)$ 到 $(x,\ 0)$, 然后再到 $(x,\ y)$. 此外再额外讨论答案是 0 和是 1 情况就好了.</p>
+<h3 id="B-1"><a href="#B-1" class="headerlink" title="B"></a>B</h3><p>贪心. 能 +x 就加, 不行就 -y.</p>
+<h3 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h3><p>模拟. 括号匹配和回文串判定都是经典问题, 这就是个缝合题 (</p>
+<p>然后就写了个栈又写了个哈希… 其实没有必要, 首先依次枚举每一个字符, 讨论一下遇到的是 <code>(</code> 还是 <code>)</code> 然后计算答案就好了.</p>
+<h3 id="D-1"><a href="#D-1" class="headerlink" title="D"></a>D</h3><p>调和级数复杂度 (枚举倍数) 与二分. 注意读题, 关键在于一次 battle 只能选择一种 unit. 维护一个花费 $c$ 能买到的 unit 的最大 $h_i d_i$, 记作 $g(c)$, 然后用 $g(c)$ 计算预算小于等于 $c$ 时的 $x h_i d_i$ 最大值 $f(c)$, 其中 $x$ 表示 unit 的数量. 时间复杂度可以做到 $O(C \log C + C)$.</p>
+<p>对于每个询问, 在 $f(c)$ 上二分就好了. 总体时间复杂度 $O(n + (C + m)\log C)$.</p>
+<h2 id="Edu-Round-124-Div-2"><a href="#Edu-Round-124-Div-2" class="headerlink" title="Edu Round #124 (Div. 2)"></a>Edu Round #124 (Div. 2)</h2><h3 id="A-2"><a href="#A-2" class="headerlink" title="A"></a>A</h3><p>第一轮之后就只剩奇数了, 所以答案是 $2 ^ n - 1$.</p>
+<h3 id="B-2"><a href="#B-2" class="headerlink" title="B"></a>B</h3><p>假定 $a_i$ 升序, 对于 $i &gt; j$, 反例就是 $2 |a_i - a_j| \geq a_i + a_j$ 即 $a_i \geq 3 a_j$. 所以依次输出 3 的幂就好了.</p>
+<h3 id="C-2"><a href="#C-2" class="headerlink" title="C"></a>C</h3><p>两行中的每个端点向另一行连边就好了, 但是需要分类讨论. 直接讨论具体的连边情况是比较复杂的, 但最后的答案只关心数值, 列出所以情况下最少花费并取最小值就好了.</p>
+<h3 id="D-2"><a href="#D-2" class="headerlink" title="D"></a>D</h3><p>答案只会是给定点上下左右的点, 当然不包括给定的点. 然后建图跑最短路就好了.</p>
+<p>虽然, 事实上只需要从外围向里 BFS 就结束了…</p>
+<h2 id="Round-761-Div-2"><a href="#Round-761-Div-2" class="headerlink" title="Round #761 (Div. 2)"></a>Round #761 (Div. 2)</h2><h3 id="A-3"><a href="#A-3" class="headerlink" title="A"></a>A</h3><p>首先直接对 $S$ 排序, 此时只有 $S$ 中同时存在 <code>a</code>, <code>b</code>, <code>c</code> 且 $T$ 为 <code>&quot;abc&quot;</code> 时 $T$ 对排序后的 $S$ 有影响, 这个时候把所有的 <code>c</code> 放在所有的 <code>b</code> 前面就好了.</p>
+<h3 id="B-3"><a href="#B-3" class="headerlink" title="B"></a>B</h3><p>令 $c = 1$, 然后直接暴力找 $a$, $b$ 就好了.</p>
+<h3 id="C-3"><a href="#C-3" class="headerlink" title="C"></a>C</h3><p>对于一个数 $a_i$, 经过一次操作后可以得到从 $1$ 到 $\lfloor \frac{a_i - 1}{2} \rfloor$ 的任一整数. 然后从小到大构造排列, 如果原先就存在需要的数, 就用原来的, 否则选择一个最小的满足条件的 $a_i$ 进行一次操作.</p>
+<h3 id="D-3"><a href="#D-3" class="headerlink" title="D"></a>D</h3><p>记 $f(i)$ 表示 <code>? i i+1 i+2</code> 得到的结果.</p>
 <p>首先每三个位置分作一组询问, 得到 $f(i),\ f(i + 3),\ \cdots$, 由于 $k$ 范围的限制, 一定会存在一个 $i$, 使得 $f(i) \neq f(i+3)$. 然后查询 $f(i + 1)$, $f(i + 2)$. 从 $i$ 到 $i + 5$ 之间一定会有一个位置 $p$, 满足 $f(p) \neq f(p - 1)$ 且 $p$ 和 $p+1$ 一定一个是 imposter, 一个是 crewmate. 此时根据 <code>? p p+1 i</code> 就可以知道 $i$ 的成分, 这样再来 $4$ 次就可以知道从 $i$ 到 $i+5$ 中除去 $p$ 和 $p+1$ 的答案, 额外查询 $1$ 个 <code>? imposter crewmate p</code> 就可以得到 $p$ 和 $p+1$ 的答案.</p>
 <p>对于剩下的 $\frac n3 - 2$ 个三元组, 借助于一个确定的 imposter 和一个确定的 crewmate 并根据 $f(i)$ 的值讨论就好了, 每个三元组用 $2$ 次询问.</p>
 <p>总询问次数是 $n + 3$.</p>
-<h2 id="Edu-Round-118-Div-2"><a href="#Edu-Round-118-Div-2" class="headerlink" title="Edu Round #118 (Div. 2)"></a>Edu Round #118 (Div. 2)</h2><h3 id="A-1"><a href="#A-1" class="headerlink" title="A"></a>A</h3><p>注意读题. 当 $x + y$ 是奇数时无解, 否则给出答案 $(\lfloor \frac x2 \rfloor,\ \lceil \frac y2 \rceil)$.</p>
-<h3 id="B-1"><a href="#B-1" class="headerlink" title="B"></a>B</h3><p>贪心. 尽可能把较大的数放在左边, 较小的数放在右边. 如果按照该原则无法构造出符合限制的答案, 那么一定无解.</p>
-<h3 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h3><p><del>学二分, 拿红名.</del> 发送出去的表情数量是随行数单调增加的, 直接二分就好了.</p>
-<h3 id="D-1"><a href="#D-1" class="headerlink" title="D"></a>D</h3><p>和求 GCD 思路差不多的一道题. 首先考虑 $a = b$ 的情况, 直接判断 $a$ 和 $x$ 是否相等. 再令 $a &lt; b$, 并记答案为 $f(a,\ b)$, 枚举一些后继情况之后可以发现</p>
-<script type="math/tex; mode=display">f(a,\ b) = \begin{cases}\text{true} & a \mid b - x \\ \text{false} & b < x\ \text{or}\ a = 0 \\ f(b \bmod a,\ a) & \text{otherwise} \end{cases}</script><h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><p>对于信息 $j$, 如果学生 $i$ 满足 $m_i = j$, 那么对答案有贡献 $\frac{\min\{ k_i,\ t \}}{t}$. 注意到一个重要条件 $k_i \leq 20$. 首先考虑 $t &gt; 20$ 的情况, 容易发现该条件下 $t+1$ 时的答案一定小于 $t$ 时的答案. 于是从 $1$ 到 $20$ 枚举 $t$, 对于每一个 $t$ 选择对答案贡献最多的 $t$ 个信息就好了.</p>
+<h2 id="Edu-Round-118-Div-2"><a href="#Edu-Round-118-Div-2" class="headerlink" title="Edu Round #118 (Div. 2)"></a>Edu Round #118 (Div. 2)</h2><h3 id="A-4"><a href="#A-4" class="headerlink" title="A"></a>A</h3><p>注意读题. 当 $x + y$ 是奇数时无解, 否则给出答案 $(\lfloor \frac x2 \rfloor,\ \lceil \frac y2 \rceil)$.</p>
+<h3 id="B-4"><a href="#B-4" class="headerlink" title="B"></a>B</h3><p>贪心. 尽可能把较大的数放在左边, 较小的数放在右边. 如果按照该原则无法构造出符合限制的答案, 那么一定无解.</p>
+<h3 id="C-4"><a href="#C-4" class="headerlink" title="C"></a>C</h3><p><del>学二分, 拿红名.</del> 发送出去的表情数量是随行数单调增加的, 直接二分就好了.</p>
+<h3 id="D-4"><a href="#D-4" class="headerlink" title="D"></a>D</h3><p>和求 GCD 思路差不多的一道题. 首先考虑 $a = b$ 的情况, 直接判断 $a$ 和 $x$ 是否相等. 再令 $a &lt; b$, 并记答案为 $f(a,\ b)$, 枚举一些后继情况之后可以发现</p>
+<script type="math/tex; mode=display">f(a,\ b) = \begin{cases}\text{true} & a \mid b - x \\ \text{false} & b < x\ \text{or}\ a = 0 \\ f(b \bmod a,\ a) & \text{otherwise} \end{cases}</script><h3 id="E-1"><a href="#E-1" class="headerlink" title="E"></a>E</h3><p>对于信息 $j$, 如果学生 $i$ 满足 $m_i = j$, 那么对答案有贡献 $\frac{\min\{ k_i,\ t \}}{t}$. 注意到一个重要条件 $k_i \leq 20$. 首先考虑 $t &gt; 20$ 的情况, 容易发现该条件下 $t+1$ 时的答案一定小于 $t$ 时的答案. 于是从 $1$ 到 $20$ 枚举 $t$, 对于每一个 $t$ 选择对答案贡献最多的 $t$ 个信息就好了.</p>
 <p>时间复杂度 $O(n + km\log m)$.</p>
-<h2 id="Round-736-Div-2"><a href="#Round-736-Div-2" class="headerlink" title="Round #736 (Div. 2)"></a>Round #736 (Div. 2)</h2><h3 id="A-2"><a href="#A-2" class="headerlink" title="A"></a>A</h3><p>注意到 $P \geq 5$, 那么 $P - 1$ 一定是个偶数, 直接输出 $(P - 1) / 2$ 和 $P - 1$ 就好了.</p>
-<h3 id="B-2"><a href="#B-2" class="headerlink" title="B"></a>B</h3><p>贪心, 让每个棋子的最终位置尽可能往一边靠就好了.</p>
-<h2 id="Round-736-Div-1"><a href="#Round-736-Div-1" class="headerlink" title="Round #736 (Div. 1)"></a>Round #736 (Div. 1)</h2><h3 id="A-3"><a href="#A-3" class="headerlink" title="A"></a>A</h3><p>注意读题, 查询操作并不会改变图的结构, 所以不是模拟, 是分类讨论 = =</p>
+<h2 id="Round-736-Div-2"><a href="#Round-736-Div-2" class="headerlink" title="Round #736 (Div. 2)"></a>Round #736 (Div. 2)</h2><h3 id="A-5"><a href="#A-5" class="headerlink" title="A"></a>A</h3><p>注意到 $P \geq 5$, 那么 $P - 1$ 一定是个偶数, 直接输出 $(P - 1) / 2$ 和 $P - 1$ 就好了.</p>
+<h3 id="B-5"><a href="#B-5" class="headerlink" title="B"></a>B</h3><p>贪心, 让每个棋子的最终位置尽可能往一边靠就好了.</p>
+<h2 id="Round-736-Div-1"><a href="#Round-736-Div-1" class="headerlink" title="Round #736 (Div. 1)"></a>Round #736 (Div. 1)</h2><h3 id="A-6"><a href="#A-6" class="headerlink" title="A"></a>A</h3><p>注意读题, 查询操作并不会改变图的结构, 所以不是模拟, 是分类讨论 = =</p>
 <p>首先, 孤立的点, 以及编号大于所有相邻结点的点一定不会被删去. 其次, 对于一个结点 $u$, 如果存在相邻的点 $v$ 满足 $v &gt; u$, 那么 $u$ 最终一定被删去. 那么对一个结点 $u$ 记录相邻且编号大于 $u$ 的结点个数, 并依此维护答案就好了.</p>
 <p>时间复杂度 $O(m + q)$.</p>
-<h3 id="B-3"><a href="#B-3" class="headerlink" title="B"></a>B</h3><p>记 $d_i = a_i - a_{i - 1}$, 那么 $a_{L\ldots R}$ 是 friends group 的条件就是 $\gcd(d_{L + 1},\ \ldots,\ d_{R}) \geq 2$. 此时二分区间长度, 并维护区间 GCD 就好了. 可以用 ST 表或是线段树来实现.</p>
+<h3 id="B-6"><a href="#B-6" class="headerlink" title="B"></a>B</h3><p>记 $d_i = a_i - a_{i - 1}$, 那么 $a_{L\ldots R}$ 是 friends group 的条件就是 $\gcd(d_{L + 1},\ \ldots,\ d_{R}) \geq 2$. 此时二分区间长度, 并维护区间 GCD 就好了. 可以用 ST 表或是线段树来实现.</p>
 <p>如果用 ST 表, 那么时间复杂度为 $O(n \log n)$.</p>
 <hr>
 
