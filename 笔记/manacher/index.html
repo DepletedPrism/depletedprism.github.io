@@ -20,7 +20,7 @@
 <meta property="og:description" content="一直记不住的 马拉车 板子。前几天校内选拔赛还不会写，惨遭吊打。 综述对于一个长度为 $n$ 的字符串，Manacher 可以在 $O(n)$ 的时间内对每个位置 $i$ 计算一个类似于最长回文半径的东西。具体而言，Manacher 在扫描每个位置的时候，维护一个右端点最靠右的回文串的左右端点，并借助于这个回文串来计算需要的信息。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-22T06:38:09.000Z">
-<meta property="article:modified_time" content="2022-04-03T11:03:24.980Z">
+<meta property="article:modified_time" content="2022-07-09T06:50:08.203Z">
 <meta property="article:author" content="DepletedPrism">
 <meta property="article:tag" content="String">
 <meta name="twitter:card" content="summary">
@@ -201,6 +201,7 @@
 <p>首先是经典的求一个字符串中最长回文子串长度，此时可以对字符串正反做两次哈希然后二分，时间复杂度 $O(n\log n)$。</p>
 <p>在忘记 Manacher 怎么写的时候很实用。</p>
 <p>事实上存在时间复杂度为 $O(n)$ 的做法，不过没有单纯用二分直接。详见 <a href="https://oi-wiki.org/string/hash/#_4">https://oi-wiki.org/string/hash/#_4</a>。</p>
+<p>不过这道题有点卡常, 我写的双模数哈希的 $O(n)$ 做法 TLE 了, 换成自然溢出就过了, 但显然后者是不可取的 (</p>
 <h3 id="Luogu-P4555-国家集训队-最长双回文串"><a href="#Luogu-P4555-国家集训队-最长双回文串" class="headerlink" title="Luogu P4555 [国家集训队]最长双回文串"></a>Luogu P4555 [国家集训队]最长双回文串</h3><h4 id="题目链接-1"><a href="#题目链接-1" class="headerlink" title="题目链接"></a>题目链接</h4><ul>
 <li><a href="https://www.luogu.com.cn/problem/P4555">https://www.luogu.com.cn/problem/P4555</a></li>
 </ul>
