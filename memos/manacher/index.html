@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    Manacher 备忘录
+  
+</title>
+
+<meta name="description" content="一直记不住的 马拉车 板子. 前几天校内选拔赛还不会写, 惨遭吊打.  综述对于一个长度为 $n$ 的字符串, Manacher 可以在 $O(n)$ 的时间内对每个位置 $i$ 计算一个类似于最长回文半径的东西. 具体而言, Manacher 在扫描每个位置的时候, 维护一个右端点最靠右的回文串的左右端点, 并借助于这个回文串来计算需要的信息.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Manacher 备忘录">
+<meta property="og:url" content="https://depletedprism.github.io/memos/manacher/index.html">
+<meta property="og:site_name" content="DepletedPrism&#39;s Blog">
+<meta property="og:description" content="一直记不住的 马拉车 板子. 前几天校内选拔赛还不会写, 惨遭吊打.  综述对于一个长度为 $n$ 的字符串, Manacher 可以在 $O(n)$ 的时间内对每个位置 $i$ 计算一个类似于最长回文半径的东西. 具体而言, Manacher 在扫描每个位置的时候, 维护一个右端点最靠右的回文串的左右端点, 并借助于这个回文串来计算需要的信息.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-05T10:42:32.179Z">
+<meta property="article:author" content="DepletedPrism">
+<meta property="article:tag" content="String">
+<meta name="twitter:card" content="summary">
+
+
+  <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/images/favicon.jpg">
+
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+
+
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">DepletedPrism&#39;s Blog</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">DepletedPrism&#39;s Blog</a></h1>
+    
+      <p class="subtitle">
+        厌离秽土, 欣求净土.
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">DepletedPrism</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="/images/favicon.jpg"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">分类</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a><span class="category-list-count">48</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">标签</a>
+                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/" rel="tag">Combinatorics</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/" rel="tag">Graph</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Greedy/" rel="tag">Greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/" rel="tag">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/" rel="tag">Polynomial</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/" rel="tag">Probability & Mean</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/" rel="tag">String</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">归档</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">42</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">15</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/index.html" title="Homepage" external="false">Homepage</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/DepletedPrism" title="Github" target="_blank" rel="noopener">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://codeforces.com/profile/DepletedPrism" title="Codeforces" target="_blank" rel="noopener">Codeforces</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-memos/manacher" class="article article-type-post">
+  
+    <h1 class="article-header">
+      Manacher 备忘录
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2022-03-22
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/" rel="tag">String</a></li></ul>
+	</span>
+
+
+	
+  </div>
+  <div class="article-entry">
+    <hr>
+<p>一直记不住的 <del>马拉车</del> 板子. 前几天校内选拔赛还不会写, 惨遭吊打. </p>
+<h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>对于一个长度为 $n$ 的字符串, Manacher 可以在 $O(n)$ 的时间内对每个位置 $i$ 计算一个类似于最长回文半径的东西.</p>
+<p>具体而言, Manacher 在扫描每个位置的时候, 维护一个右端点最靠右的回文串的左右端点, 并借助于这个回文串来计算需要的信息.</p>
+<span id="more"></span>
+<h2 id="回文性质的描述"><a href="#回文性质的描述" class="headerlink" title="回文性质的描述"></a>回文性质的描述</h2><p>记 $d_1(i)$ 表示以位置 $i$ 为中心的长度为奇数的回文串个数, 那么以 $i$ 为中心的最长回文串长度即 $2d_1(i) - 1$.</p>
+<p>记 $d_2(i)$ 表示, 以位置 $i$ 和 $i-1$ 为中心的长度为偶数的回文串个数, 同样可以得到以 $i$ 和 $i-1$ 为中心的最长回文串长度为 $2d_2(i)$. 容易发现 $d_2(1)$ 是没有意义的.</p>
+<h2 id="d-1-与-d-2-的计算"><a href="#d-1-与-d-2-的计算" class="headerlink" title="$d_1$ 与 $d_2$ 的计算"></a>$d_1$ 与 $d_2$ 的计算</h2><p>首先来考虑 $d_1$. 对于一个长度为 $n$ 的字符串 $s$, 枚举每个位置 $i$, 并维护右端点最靠右的回文串的左右端点 $l$ 和 $r$. </p>
+<p>优先考虑 $i &lt; r$ 的情况. 此时对于一个位置 $i$, 可以在维护的这个回文串中得到一个对称的位置 $x$, 对于正整数 $k$, 如果 $s_{x-k}$ 到 $s_{x+k}$ 是回文串, 那么 $s_{i-k}$ 到 $s_{i+k}$ 同样是回文串. </p>
+<script type="math/tex; mode=display">\cdots s_l \cdots \overbrace{s_{x-k} \cdots s_x \cdots s_{x+k}} \cdots \overbrace{s_{i-k} \cdots s_i \cdots s_{i+k}} \cdots s_r \cdots</script><p>由此可以得到</p>
+<script type="math/tex; mode=display">d_1(i) \geq \min\{r - i,\ d_1(x)\}</script><p>容易发现 $x$ 就是 $l + r - i$. 随后需要继续暴力维护 $d_1(i)$ 以保证其正确性. </p>
+<p>对于 $i \geq r$ 的情况, 上面的讨论显然是不能沿用的, 暴力计算就好了. </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>, r = <span class="number">0</span>, i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">  <span class="keyword">int</span> k = (i &gt; r)? <span class="number">1</span>: <span class="built_in">min</span>(r - i, d1[l + r - i]);</span><br><span class="line">  <span class="keyword">while</span> (i - k &gt;= <span class="number">1</span> &amp;&amp; i + k &lt;= n &amp;&amp; s[i - k] == s[i + k])</span><br><span class="line">    ++k;</span><br><span class="line">  d1[i] = k--;</span><br><span class="line">  <span class="keyword">if</span> (i + k &gt; r)</span><br><span class="line">    l = i - k, r = i + k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>$d_2$ 的情况类似, 此处直接给出代码实现</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>, r = <span class="number">0</span>, i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">  <span class="keyword">int</span> k = (i &gt; r)? <span class="number">0</span>: <span class="built_in">min</span>(r - i + <span class="number">1</span>, d2[l + r - i + <span class="number">1</span>]);</span><br><span class="line">  <span class="keyword">while</span> (i - k - <span class="number">1</span> &gt;= <span class="number">1</span> &amp;&amp; i + k &lt;= n &amp;&amp; s[i - k - <span class="number">1</span>] == s[i + k])</span><br><span class="line">    ++k;</span><br><span class="line">  d2[i] = k--;</span><br><span class="line">  <span class="keyword">if</span> (i + k &gt; r)</span><br><span class="line">    l = i - k - <span class="number">1</span>, r = i + k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>考虑 Manacher 维护的右端点 $r$ 在整个过程中单调不减, 而每次大力计算 $d$ 的过程至少令 $r$ 后移一位, 可以感性认识到时间复杂度为 $O(n)$.</p>
+<h2 id="偶数长度的简化处理"><a href="#偶数长度的简化处理" class="headerlink" title="偶数长度的简化处理"></a>偶数长度的简化处理</h2><p>如果在字符串的每个字符之间都插入一个相同的特殊字符, 就可以把 $d_2$ 的计算转化为 $d_1$ 的情况. 具体而言, 对原来的字符串做这样的变换 <code>abbaab --&gt; #a#b#b#a#a#b#</code>. 此外, 为了简化边界的情况, 往往在前面增加一个更特殊的字符, 即 <code>abbaab --&gt; $#a#b#b#a#a#b#</code>.</p>
+<p>之前一直是这样写 Manacher 的, 优点是实现起来简单, 不过常数也大一点.</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="Luogu-P3805-【模板】manacher-算法"><a href="#Luogu-P3805-【模板】manacher-算法" class="headerlink" title="Luogu P3805 【模板】manacher 算法"></a>Luogu P3805 【模板】manacher 算法</h3><h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><ul>
+<li><a href="https://www.luogu.com.cn/problem/P3805">https://www.luogu.com.cn/problem/P3805</a></li>
+</ul>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>作为 Manacher 的模板题, 自然是不会用 Manacher 写的 (</p>
+<p>首先是经典的求一个字符串中最长回文子串长度, 此时可以对字符串正反做两次哈希然后二分, 时间复杂度 $O(n\log n)$.</p>
+<p>在忘记 Manacher 怎么写的时候很实用.</p>
+<p>事实上存在时间复杂度为 $O(n)$ 的做法, 不过没有单纯用二分直接. 大体上是对每个位置 $i$, 维护位置 $i$ 结尾的最长回文串长度 $R(i)$. 同时 $R(i)$ 存在性质 $R(i)\le R(i - 1) + 2$. 借助与这个性质, 暴力计算 $R(i)$ 的时间复杂度就可以做到 $O(n)$.</p>
+<p>详见 <a href="https://oi-wiki.org/string/hash/#_4">https://oi-wiki.org/string/hash/#_4</a>.</p>
+<p>不过这道题有点卡常, 我写的双模数哈希的 $O(n)$ 做法 TLE 了, 换成自然溢出就过了, 但显然后者是不可取的 (</p>
+<h3 id="Luogu-P4555-国家集训队-最长双回文串"><a href="#Luogu-P4555-国家集训队-最长双回文串" class="headerlink" title="Luogu P4555 [国家集训队]最长双回文串"></a>Luogu P4555 [国家集训队]最长双回文串</h3><h4 id="题目链接-1"><a href="#题目链接-1" class="headerlink" title="题目链接"></a>题目链接</h4><ul>
+<li><a href="https://www.luogu.com.cn/problem/P4555">https://www.luogu.com.cn/problem/P4555</a></li>
+</ul>
+<h4 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h4><p>在最开始的时候提到了一点, Manacher 维护了一个右端点最靠右的回文串.</p>
+<p>记 $f(i)$ 表示以位置 $i$ 结尾的最大回文串长度, $g(i)$ 表示以位置 $i$ 开头的最大回文串长度, 那么所求即</p>
+<script type="math/tex; mode=display">\max_{1\leq i \leq n - 1}\{f(i) + g(i + 1) \}</script><p>$f(i)$ 和 $g(i)$ 可以借助 $d_1$, $d_2$ 计算出来. 时间复杂度 $O(n)$.</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p>听说”随手开一大块数组就像随地大小便”, 不管了 (</p>
+<div><div class="fold_hider"><div class="close hider_title">> 点击显示 / 隐藏 </div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Luogu P4555</span></span><br><span class="line"><span class="comment">// DeP</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> str[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> f[MAXN], g[MAXN], d1[MAXN], d2[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, str + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  n = <span class="built_in">strlen</span>(str + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>, r = <span class="number">0</span>, i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="keyword">int</span> k = (i &gt; r)? <span class="number">1</span>: <span class="built_in">min</span>(r - i, d1[l + r - i]);</span><br><span class="line">    <span class="keyword">while</span> (i - k &gt;= <span class="number">1</span> &amp;&amp; i + k &lt;= n &amp;&amp; str[i + k] == str[i - k])</span><br><span class="line">      ++k;</span><br><span class="line">    d1[i] = k--;</span><br><span class="line">    <span class="keyword">if</span> (i + k &gt; r)</span><br><span class="line">      l = i - k, r = i + k;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>, r = <span class="number">0</span>, i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="keyword">int</span> k = (i &gt; r)? <span class="number">0</span>: <span class="built_in">min</span>(r - i + <span class="number">1</span>, d2[l + r - i + <span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">while</span> (i - k - <span class="number">1</span> &gt;= <span class="number">1</span> &amp;&amp; i + k &lt;= n &amp;&amp; str[i - <span class="number">1</span> - k] == str[i + k])</span><br><span class="line">      ++k;</span><br><span class="line">    d2[i] = k--;</span><br><span class="line">    <span class="keyword">if</span> (i + k &gt; r)</span><br><span class="line">      l = i - k - <span class="number">1</span>, r = i + k;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i + d1[i] - <span class="number">1</span> &lt;= n)</span><br><span class="line">      f[i + d1[i] - <span class="number">1</span>] = <span class="built_in">max</span>(f[i + d1[i] - <span class="number">1</span>], <span class="number">2</span> * d1[i] - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (i + d2[i] - <span class="number">1</span> &lt;= n)</span><br><span class="line">      f[i + d2[i] - <span class="number">1</span>] = <span class="built_in">max</span>(f[i + d2[i] - <span class="number">1</span>], <span class="number">2</span> * d2[i]);</span><br><span class="line">    <span class="keyword">if</span> (i - d1[i] + <span class="number">1</span> &gt;= <span class="number">1</span>)</span><br><span class="line">      g[i - d1[i] + <span class="number">1</span>] = <span class="built_in">max</span>(g[i - d1[i] + <span class="number">1</span>], <span class="number">2</span> * d1[i] - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (i - d2[i] &gt;= <span class="number">1</span>)</span><br><span class="line">      g[i - d2[i]] = <span class="built_in">max</span>(g[i - d2[i]], <span class="number">2</span> * d2[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">1</span>; --i)</span><br><span class="line">    f[i] = <span class="built_in">max</span>(f[i], f[i + <span class="number">1</span>] - <span class="number">2</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)</span><br><span class="line">    g[i] = <span class="built_in">max</span>(g[i], g[i - <span class="number">1</span>] - <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">1</span>; ++i)</span><br><span class="line">    ans = <span class="built_in">max</span>(ans, f[i] + g[i + <span class="number">1</span>]);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</div></div>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>看完 OI-Wiki 的评论之后, 似乎 Manacher 和 Z Algorithm 有千丝万缕的联系.</p>
+<p>事实上两者都维护了一个右端点最靠右的满足某个性质的子串, 然后利用这个子串来计算接下来一个位置对应值. Manacher 维护的是回文串, Z Algorithm 则是一个前缀.</p>
+<p><del>既然新生赛出了个 Z Algorithm, CCCC 校内选拔出了个 Manacher, 那么以后会不会继续出字符串板子呢</del></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://oi-wiki.org/string/manacher/">https://oi-wiki.org/string/manacher/</a></li>
+</ul>
+<hr>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.z" target="_blank" title="署名-非商业性使用">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/nc.png">
+        
+      <span>
+        本作品采用知识共享 署名-非商业性使用 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+  </footer>
+  
+</article>
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2019-2022 DepletedPrism&#39;s Blog
+    
+	- Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+<script src="/PhotoSwipe/photoswipe.js"></script>
+
+  
+<script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+
+
+<script src="/scripts/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</body>
+</html>

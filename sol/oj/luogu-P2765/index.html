@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    魔术球问题 题解
+  
+</title>
+
+<meta name="description" content="题目链接：https:&#x2F;&#x2F;www.luogu.org&#x2F;problem&#x2F;P2765  似乎可以用奇奇怪怪的贪心来写 可以发现，球放在哪里和柱子是没有关系的，对于一个编号为 now 的球，如果现有柱子上的球不能满足组成完全平方数的条件，就新建一个柱子存放 now，否则就放在可以存在的位置上。由贪心的思想，得到的结果一定是最优的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="魔术球问题 题解">
+<meta property="og:url" content="https://depletedprism.github.io/sol/oj/luogu-P2765/index.html">
+<meta property="og:site_name" content="DepletedPrism&#39;s Blog">
+<meta property="og:description" content="题目链接：https:&#x2F;&#x2F;www.luogu.org&#x2F;problem&#x2F;P2765  似乎可以用奇奇怪怪的贪心来写 可以发现，球放在哪里和柱子是没有关系的，对于一个编号为 now 的球，如果现有柱子上的球不能满足组成完全平方数的条件，就新建一个柱子存放 now，否则就放在可以存在的位置上。由贪心的思想，得到的结果一定是最优的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-28T04:40:58.000Z">
+<meta property="article:modified_time" content="2019-09-28T09:05:37.552Z">
+<meta property="article:author" content="DepletedPrism">
+<meta property="article:tag" content="Graph">
+<meta name="twitter:card" content="summary">
+
+
+  <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/images/favicon.jpg">
+
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+
+
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">DepletedPrism&#39;s Blog</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">DepletedPrism&#39;s Blog</a></h1>
+    
+      <p class="subtitle">
+        厌离秽土, 欣求净土.
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">DepletedPrism</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="/images/favicon.jpg"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">分类</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a><span class="category-list-count">48</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">标签</a>
+                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/" rel="tag">Combinatorics</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/" rel="tag">Graph</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Greedy/" rel="tag">Greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/" rel="tag">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/" rel="tag">Polynomial</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability-Mean/" rel="tag">Probability & Mean</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/" rel="tag">String</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">归档</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">42</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">15</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/index.html" title="Homepage" external="false">Homepage</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/DepletedPrism" title="Github" target="_blank" rel="noopener">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://codeforces.com/profile/DepletedPrism" title="Codeforces" target="_blank" rel="noopener">Codeforces</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-sol/oj/luogu-P2765" class="article article-type-post">
+  
+    <h1 class="article-header">
+      魔术球问题 题解
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2019-09-28
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph/" rel="tag">Graph</a></li></ul>
+	</span>
+
+
+	
+  </div>
+  <div class="article-entry">
+    <hr>
+<ul>
+<li>题目链接：<a href="https://www.luogu.org/problem/P2765">https://www.luogu.org/problem/P2765</a></li>
+</ul>
+<p><del>似乎可以用奇奇怪怪的贪心来写</del></p>
+<p>可以发现，球放在哪里和柱子是没有关系的，对于一个编号为 <code>now</code> 的球，如果现有柱子上的球不能满足组成完全平方数的条件，就新建一个柱子存放 <code>now</code>，否则就放在可以存在的位置上。由贪心的思想，得到的结果一定是最优的。</p>
+<span id="more"></span>
+<p>那么，怎么用网络流的模型来实现呢？</p>
+<p>考虑每个球只能使用一次，容易想到拆点，在代码中体现为 <code>now --&gt; 2*now, 2*now + 1</code>，这样对于拆出的两点，编号 /2 就是原编号，输出方案时比较方便。</p>
+<ul>
+<li>建图流程<ul>
+<li>设源点 $S$，汇点 $T$</li>
+<li>将球 $A$ 拆为 $A’$，$A’’$，连边 $(S, A’)$，$(A’’,T)$，容量为 $1$</li>
+<li>对于球 $A$，$B$，若有编号之和为完全平方数的情况，连边 $(B’,A’’)$，容量为 $1$</li>
+</ul>
+</li>
+</ul>
+<p>若加入一个球后新增流量大于 $0$，则说明该球可以放在已经存在的柱子上，否则新建柱子存放。</p>
+<p>如果新建柱子数超过 $n$，此时能放的球数达到最大。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// luogu P2765</span></span><br><span class="line"><span class="comment">// DeP</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">65</span>, MAXV = (<span class="keyword">int</span>)<span class="number">2e5</span>+<span class="number">5</span>, MAXE = (<span class="keyword">int</span>)<span class="number">2e5</span>+<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, S, T;</span><br><span class="line"><span class="keyword">bool</span> done[MAXV];</span><br><span class="line"><span class="keyword">int</span> List[MAXN], pre[MAXV];</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Graph &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span> <span class="keyword">int</span> nxt, to, cap, flow; &#125; edges[MAXE &lt;&lt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> head[MAXV], eidx;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123; <span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span> head); eidx = <span class="number">1</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">        edges[++eidx] = (Edge)&#123; head[from], to, cap, <span class="number">0</span> &#125;;</span><br><span class="line">        head[from] = eidx;</span><br><span class="line">        edges[++eidx] = (Edge)&#123; head[to], from, <span class="number">0</span>, <span class="number">0</span> &#125;;</span><br><span class="line">        head[to] = eidx;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Dinic &#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> Graph;</span><br><span class="line">    <span class="keyword">bool</span> vis[MAXV];</span><br><span class="line">    <span class="keyword">int</span> depth[MAXV], cur[MAXV];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">BFS</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        queue&lt;<span class="keyword">int</span>&gt; Q;</span><br><span class="line">        <span class="built_in">memset</span>(vis, <span class="literal">false</span>, <span class="keyword">sizeof</span> vis);</span><br><span class="line">        Q.<span class="built_in">push</span>(S);</span><br><span class="line">        depth[S] = <span class="number">0</span>; vis[S] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span> (!Q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="keyword">int</span> u = Q.<span class="built_in">front</span>(); Q.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; ~i; i = edges[i].nxt) &#123;</span><br><span class="line">                <span class="keyword">const</span> Edge&amp; e = edges[i];</span><br><span class="line">                <span class="keyword">if</span> (!vis[e.to] &amp;&amp; e.cap &gt; e.flow)</span><br><span class="line">                    vis[e.to] = <span class="literal">true</span>, depth[e.to] = depth[u] + <span class="number">1</span>, Q.<span class="built_in">push</span>(e.to);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> vis[T];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (u == T || !a) <span class="keyword">return</span> a;</span><br><span class="line">        <span class="keyword">int</span> f, flow = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>&amp; i = cur[u]; ~i; i = edges[i].nxt) &#123;</span><br><span class="line">            Edge&amp; e = edges[i];</span><br><span class="line">            <span class="keyword">if</span> (depth[e.to] == depth[u] + <span class="number">1</span> &amp;&amp; (f = <span class="built_in">DFS</span>(e.to, <span class="built_in">min</span>(a, e.cap - e.flow))) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                flow += f; a -= f;</span><br><span class="line">                e.flow += f; edges[i^<span class="number">1</span>].flow -= f;</span><br><span class="line">                <span class="keyword">if</span> (e.to != T) pre[u/<span class="number">2</span>] = e.to/<span class="number">2</span>;</span><br><span class="line">                <span class="comment">// 某个球放在哪里，只和前一个球的编号相关</span></span><br><span class="line">                <span class="keyword">if</span> (!a) <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> flow;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Maxflow</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> flow = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">BFS</span>()) &#123;</span><br><span class="line">            <span class="built_in">memcpy</span>(cur, head, <span class="keyword">sizeof</span> cur);</span><br><span class="line">            flow += <span class="built_in">DFS</span>(S, INF);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> flow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.in&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="comment">// init</span></span><br><span class="line">    Graph::<span class="built_in">init</span>();</span><br><span class="line">    <span class="comment">// input</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="comment">// build graph</span></span><br><span class="line">    <span class="keyword">int</span> now = <span class="number">0</span>, cntP = <span class="number">0</span>;</span><br><span class="line">    S = <span class="number">0</span>; T = MAXV - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (cntP &lt;= n) &#123;</span><br><span class="line">        ++now;</span><br><span class="line">        Graph::<span class="built_in">AddEdge</span>(S, now*<span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">        Graph::<span class="built_in">AddEdge</span>(now*<span class="number">2</span>+<span class="number">1</span>, T, <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 向源点与汇点连边</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="built_in">sqrt</span>(now) + <span class="number">1</span>; i*i &lt; now*<span class="number">2</span>; ++i)</span><br><span class="line">            Graph::<span class="built_in">AddEdge</span>((i*i-now)*<span class="number">2</span>, now*<span class="number">2</span>+<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 枚举构成完全平方数的情况</span></span><br><span class="line">        <span class="keyword">int</span> flow = Dinic::<span class="built_in">Maxflow</span>();</span><br><span class="line">        <span class="keyword">if</span> (!flow) List[++cntP] = now;</span><br><span class="line">        <span class="comment">// 新建一个柱子</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// output</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, now - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i, <span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>)) <span class="keyword">if</span> (!done[List[i]])</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> u = List[i]; u; u = pre[u])</span><br><span class="line">            <span class="keyword">if</span> (!done[u]) &#123; done[u] = <span class="literal">true</span>, <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, u); &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.z" target="_blank" title="署名-非商业性使用">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/nc.png">
+        
+      <span>
+        本作品采用知识共享 署名-非商业性使用 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+  </footer>
+  
+</article>
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2019-2022 DepletedPrism&#39;s Blog
+    
+	- Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+<script src="/PhotoSwipe/photoswipe.js"></script>
+
+  
+<script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+
+
+<script src="/scripts/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</body>
+</html>
