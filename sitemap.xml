@@ -2,6 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://depletedprism.github.io/memos/taylors-theorem-remainder/</loc>
+    
+    <lastmod>2022-08-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/memos/polynomial-FFT-md/</loc>
+    
+    <lastmod>2022-08-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/memos/binomial-theorem/</loc>
+    
+    <lastmod>2022-08-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/sol/oj/uoj-514/</loc>
+    
+    <lastmod>2022-08-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/sol/oj/uoj-449/</loc>
+    
+    <lastmod>2022-08-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/sol/oj/loj-2541/</loc>
+    
+    <lastmod>2022-08-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/sol/oj/uoj-390/</loc>
+    
+    <lastmod>2022-08-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/memos/simple-partial-order/</loc>
+    
+    <lastmod>2022-08-05</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://depletedprism.github.io/about/index.html</loc>
     
     <lastmod>2022-08-05</lastmod>
@@ -23,20 +79,6 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/memos/binomial-theorem/</loc>
-    
-    <lastmod>2022-08-05</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/memos/polynomial-FFT-md/</loc>
-    
-    <lastmod>2022-08-05</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://depletedprism.github.io/memos/graph-count/</loc>
     
     <lastmod>2022-08-04</lastmod>
@@ -44,7 +86,7 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/sol/Codeforces-short-sol-01/</loc>
+    <loc>https://depletedprism.github.io/sol/codeforces-short-sol-01/</loc>
     
     <lastmod>2022-08-01</lastmod>
     
@@ -121,14 +163,14 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/logs/CSP-S-2019/</loc>
+    <loc>https://depletedprism.github.io/vim-vimrc-solution/</loc>
     
     <lastmod>2022-06-01</lastmod>
     
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/Vim-vimrc-Solution/</loc>
+    <loc>https://depletedprism.github.io/logs/CSP-S-2019/</loc>
     
     <lastmod>2022-06-01</lastmod>
     
@@ -170,13 +212,6 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/memos/simple-partial-order/</loc>
-    
-    <lastmod>2020-06-12</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://depletedprism.github.io/compilation/</loc>
     
     <lastmod>2020-06-04</lastmod>
@@ -198,28 +233,7 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/sol/oj/uoj-514/</loc>
-    
-    <lastmod>2020-05-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/sol/oj/uoj-390/</loc>
-    
-    <lastmod>2020-05-30</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://depletedprism.github.io/sol/oj/51nod-1348/</loc>
-    
-    <lastmod>2020-05-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/sol/oj/uoj-449/</loc>
     
     <lastmod>2020-05-27</lastmod>
     
@@ -229,13 +243,6 @@
     <loc>https://depletedprism.github.io/sol/sx/AHOI-HNOI-2017-sol/</loc>
     
     <lastmod>2020-05-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/sol/oj/loj-2541/</loc>
-    
-    <lastmod>2020-05-25</lastmod>
     
   </url>
   
@@ -310,6 +317,20 @@
   </url>
   
   <url>
+    <loc>https://depletedprism.github.io/sol/sx/HAOI-2018-sol/</loc>
+    
+    <lastmod>2020-04-28</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/sol/oj/luogu-P2766/</loc>
+    
+    <lastmod>2020-04-28</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://depletedprism.github.io/sol/sx/HAOI-2017-sol/</loc>
     
     <lastmod>2020-04-28</lastmod>
@@ -324,20 +345,6 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/sol/sx/union-2018-sol/</loc>
-    
-    <lastmod>2020-04-28</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/sol/oj/luogu-P2766/</loc>
-    
-    <lastmod>2020-04-28</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://depletedprism.github.io/sol/oj/luogu-P4774/</loc>
     
     <lastmod>2020-04-28</lastmod>
@@ -345,14 +352,7 @@
   </url>
   
   <url>
-    <loc>https://depletedprism.github.io/sol/sx/HAOI-2018-sol/</loc>
-    
-    <lastmod>2020-04-28</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/sol/oj/luogu-P4191/</loc>
+    <loc>https://depletedprism.github.io/sol/sx/union-2018-sol/</loc>
     
     <lastmod>2020-04-28</lastmod>
     
@@ -360,6 +360,13 @@
   
   <url>
     <loc>https://depletedprism.github.io/sol/sx/AHOI-HNOI-2018-sol/</loc>
+    
+    <lastmod>2020-04-28</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/sol/oj/luogu-P4191/</loc>
     
     <lastmod>2020-04-28</lastmod>
     
@@ -381,6 +388,13 @@
   
   <url>
     <loc>https://depletedprism.github.io/sol/oj/luogu-P4557/</loc>
+    
+    <lastmod>2020-04-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/sol/oj/luogu-P2756/</loc>
     
     <lastmod>2020-04-09</lastmod>
     
@@ -409,13 +423,6 @@
   
   <url>
     <loc>https://depletedprism.github.io/sol/oj/luogu-P3254/</loc>
-    
-    <lastmod>2020-04-09</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/sol/oj/luogu-P2756/</loc>
     
     <lastmod>2020-04-09</lastmod>
     
@@ -466,7 +473,7 @@
 
   <url>
     <loc>https://depletedprism.github.io/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -474,77 +481,84 @@
   
   <url>
     <loc>https://depletedprism.github.io/tags/Combinatorics/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://depletedprism.github.io/tags/Vim/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://depletedprism.github.io/tags/Data-Structure/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://depletedprism.github.io/tags/Number-Theory/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://depletedprism.github.io/tags/Polynomial/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://depletedprism.github.io/tags/String/</loc>
-    <lastmod>2022-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://depletedprism.github.io/tags/Probability-Mean/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://depletedprism.github.io/tags/Graph/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://depletedprism.github.io/tags/Geometry/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://depletedprism.github.io/tags/Greedy/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://depletedprism.github.io/tags/DP/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/tags/Probability/</loc>
+    <lastmod>2022-08-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://depletedprism.github.io/tags/Calculus/</loc>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -553,21 +567,21 @@
   
   <url>
     <loc>https://depletedprism.github.io/categories/%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://depletedprism.github.io/categories/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://depletedprism.github.io/categories/%E9%A2%98%E8%A7%A3/</loc>
-    <lastmod>2022-08-05</lastmod>
+    <lastmod>2022-08-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

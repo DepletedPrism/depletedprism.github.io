@@ -8,17 +8,24 @@
 
 <title>
   
-    归档: 2022/2
+    泰勒公式的施勒米尔希-洛希余项备忘录
   
 </title>
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="DepletedPrism&#39;s Blog">
-<meta property="og:url" content="https://depletedprism.github.io/archives/2022/02/index.html">
+<meta name="description" content="大一上学高数的时候室友就谈到这个东西, 当时没有注意, 后来…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="泰勒公式的施勒米尔希-洛希余项备忘录">
+<meta property="og:url" content="https://depletedprism.github.io/memos/taylors-theorem-remainder/index.html">
 <meta property="og:site_name" content="DepletedPrism&#39;s Blog">
+<meta property="og:description" content="大一上学高数的时候室友就谈到这个东西, 当时没有注意, 后来…">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://depletedprism.github.io/images/taylors-theorem-remainder/base.jpg">
+<meta property="article:published_time" content="2022-08-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-08T15:02:45.174Z">
 <meta property="article:author" content="DepletedPrism">
+<meta property="article:tag" content="Calculus">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://depletedprism.github.io/images/taylors-theorem-remainder/base.jpg">
 
 
   <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
@@ -144,59 +151,84 @@
       
         <div style="max-width: 1000px">
       
-          
-
+          <article id="post-memos/taylors-theorem-remainder" class="article article-type-post">
+  
+    <h1 class="article-header">
+      泰勒公式的施勒米尔希-洛希余项备忘录
+    </h1>
   
   
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2022" class="archive-year">2022</a></h1>
-        </div>
-        <div class="post-list">
-    
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/logs/2021-summary/" >
-  我的 2021 年终总结
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/logs/2021-summary/"><span class="article-date">
-  2022-02-01
+  <div class="article-info">
+    <span class="article-date">
+  2022-08-08
 </span>
-</a>
-        
+
+    
 	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li></ul>
 	</span>
 
 
-        
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Calculus/" rel="tag">Calculus</a></li></ul>
+	</span>
 
-      </div>
-      <div class="article-entry">
-        
-          <hr>
-<p>连年终总结都拖欠到新年的人是屑 (</p>
-          <p>
-            <a href="/logs/2021-summary/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
 
+	
+  </div>
+  <div class="article-entry">
+    <hr>
+<p>大一上学高数的时候室友就谈到这个东西, 当时没有注意, 后来…</p>
+<div style="text-align:center;"><img src="/images/taylors-theorem-remainder/base.jpg" /> </div>
+
+<span id="more"></span>
+<h2 id="泰勒公式"><a href="#泰勒公式" class="headerlink" title="泰勒公式"></a>泰勒公式</h2><p>如果 $f(x)$ 在 $x_0$ 处具有 $n$ 阶导数, 那么存在 $x_0$ 的邻域 $U(x_0)$, 使得对于 $U(x_0)$ 内的任意 $x$, 有</p>
+<script type="math/tex; mode=display">f(x) = f(x_0) + \frac{f'(x_0)}{1!}(x-x_0) + \cdots + \frac{f^{(n)}(x_0)}{n!}x^n + o\left((x-x_0)^n\right)</script><p>式中的 $o\left((x-x_0)^n\right)$ 也被称为佩亚诺余项.</p>
+<h2 id="施勒米尔希-洛希余项"><a href="#施勒米尔希-洛希余项" class="headerlink" title="施勒米尔希-洛希余项"></a>施勒米尔希-洛希余项</h2><p>根据泰勒公式, 函数 $f(x)$ 可表示为一个 $n$ 次多项式 $p(x)$, 以及一个同 $n$ 相关的余项 $r_n(x)$, 即 $f(x) = p(x) + r_n(x)$. 因此</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+r_n(x) &= f(x) - p(x) \\
+&= f(x) - \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}x^k
+\end{align*}</script><p>设</p>
+<script type="math/tex; mode=display">\varphi(z) = f(x) - \sum_{k=0}^n \frac{f^{(k)}(z)}{k!}x^k</script><p>则有 $\varphi(x) = 0$, $\varphi(x_0) = r_n(x)$. 这样就可以通过 $\varphi(z)$ 来研究 $r_n(x)$了, 在接下来的步骤中这会很有用. 将 $\varphi(z)$ 对 $z$ 求导, 得到</p>
+<script type="math/tex; mode=display">\varphi'(z) = -\frac{f^{(n+1)}(z)}{n!}(x-z)^n</script><p>任取函数 $\psi(x)$, 满足 $\psi(x)$ 在 $x_0$ 与 $x$ 之间连续且可导. 根据柯西中值定理, 有</p>
+<script type="math/tex; mode=display">\frac{\varphi(x) - \varphi(x_0)}{\psi(x) - \psi(x_0)} = \frac{\varphi'(x_0+\theta(x-x_0))}{\psi'(x_0+\theta(x-x_0))} \quad (0<\theta<1)</script><p>故</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+r_n(x) &= \varphi(x_0) \\
+&= \frac{\psi(x) - \psi(x_0)}{\psi'(x_0+\theta(x-x_0))} \cdot \frac{f^{(n+1)}(x_0 + \theta(x-x_0))}{n!}(1-\theta)^n (x-x_0)^n 
+\end{align*}</script><p>取 $\psi(z) = (x-z)^p$, 则 $\psi’(z) = p(x-z)^{p-1}$. 代入并化简后可以得到</p>
+<script type="math/tex; mode=display">r_n(x) = \frac{f^{(n+1)}(x_0 + \theta(x-x_0))}{n!\ p}(1-\theta)^{n+1-p} (x-x_0)^{n+1}</script><p>这就是所谓的施勒米尔希-洛希余项. 通过改变 $p$ 的取值可以得到其他形式的余项. 具体而言, </p>
+<p>取 $p = n + 1$ 可得到拉格朗日余项为</p>
+<script type="math/tex; mode=display">r_n(x) = \frac{f^{(n+1)}(x_0 + \theta (x-x_0))}{(n+1)!} (x-x_0)^{n+1}</script><p>取 $p = 1$ 可得到柯西余项为</p>
+<script type="math/tex; mode=display">r_n(x) = \frac{f^{(n+1)}(x_0 + \theta (x-x_0))}{n!} (1-\theta)^n (x-x_0)^{n+1}</script><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/41444619">泰勒展开式的施勒米尔希-洛希余项 - 知乎</a></li>
+</ul>
+<hr>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.z" target="_blank" title="署名-非商业性使用">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/nc.png">
+        
+      <span>
+        本作品采用知识共享 署名-非商业性使用 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+  </footer>
   
-
+</article>
 
 
 
