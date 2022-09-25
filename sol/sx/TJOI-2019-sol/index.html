@@ -198,7 +198,7 @@
 <li><a href="https://loj.ac/problem/3106">https://loj.ac/problem/3106</a></li>
 </ul>
 <h4 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h4><p>我们可用容斥原理计算讨论 [数据删除] 的队伍数.</p>
-<p>记 $A_i$ 表示满足队伍中存在 $i$ 组讨论 [数据删除] 的集合, 最多情况下讨论 [数据删除] 的组数为 $m = \min \{ a, b, c, d, \lfloor \frac{n}{4} \rfloor \}$. 那么所有 $A_i$ 的补集交即为所求. 根据容斥原理可得</p>
+<p>记 $A_i$ 表示满足队伍中存在 $i$ 组讨论 [数据删除] 的集合, 最多情况下讨论 [数据删除] 的组数为 $m = \min { a, b, c, d, \lfloor \frac{n}{4} \rfloor }$. 那么所有 $A_i$ 的补集交即为所求. 根据容斥原理可得</p>
 <script type="math/tex; mode=display">|\bigcap_{i = 1} ^ m \bar A_i| = \sum_{k = 0} ^ m (-1) ^ k \sum_{1 \le i_1,\ \cdots,\ i_k \le n} |\bigcap_{j = 1} ^ k A_{i_j}|</script><p>队伍中每组讨论各在那个位置并不重要, 因此可枚举讨论组数 $k$, 得</p>
 <script type="math/tex; mode=display">\sum_{k = 0} ^ m (-1) ^ k \binom{n - 3k}{k}\ g(n - 4k, a - k, b - k, c - k, d - k)</script><p>系数 $\binom{n - 3k}{k}$ 表示在队伍中选出 $k$ 组讨论的方案数. 可将每组讨论看作一个人, 那么队伍中人数为 $n - 3k$, 从中选择 $k$ 人作为讨论, 从而得到. </p>
 <p>同时, $g(n, a, b, c, d)$ 表示剩余学生的排列数, 也就是可重集合的排列数. 即</p>
@@ -248,7 +248,7 @@
 <p>因此可将 $s$ 表示为 $s = vz + k$ 的形式, 其中 $v = 2 ^ {a + 1} + 2 ^ {b + 1} - 3$, $k \in [2 ^ b - 1,\ 2 ^ a + 2 ^ {b + 1} - a - b - 3]$. 从而有 $z = \lfloor \frac{s - k}{v} \rfloor$. 注意到 $k &lt; v$, 因此 $z$ 和 $k$ 无关, $z$ 在 $a$, $b$ 确定后唯一.</p>
 <p>此时枚举 $a$, $b$ 的取值, 求满足 $k = s - vz$ 的方案数即可. 根据前文的性质, 此时的问题可转化为, 给定一长为 $a - 1$ 的 0-1 串 $A$ 和一长为 $b$ 的 0-1 串 $B$, 求满足 $2A - \operatorname{popcount}(A) + 2B - \operatorname{popcount}(B) = k$ 的 $A$, $B$ 方案数.</p>
 <p>DP 计算即可. 具体地, 首先枚举 $\operatorname{popcount}(A) + \operatorname{popcount}(B)$ 取值 $w$, 那么限制为 $2(A + B) = k + w$.</p>
-<p>设 $f(i, j, k)$, $k \in \{0,\ 1\}$ 表示考虑前 $i$ 位, 共凑出 $j$ 个 $1$, 且当前位是否存在进位的方案数. 转移即为</p>
+<p>设 $f(i, j, k)$, $k \in {0,\ 1}$ 表示考虑前 $i$ 位, 共凑出 $j$ 个 $1$, 且当前位是否存在进位的方案数. 转移即为</p>
 <script type="math/tex; mode=display">f(i, j + p + q, \lfloor \frac{p + q + k}{2} \rfloor) = \sum_{p,\ q} f(i - 1, j, k)</script><p>实现时需要注意, 要强制 $A$ 的第 $a$ 位为 $0$, 以及 $B$ 的第 $b$ 位为 $1$, 同时要满足 $A + B$ 二进制表示下每一位和 $\frac{1}{2}(k + w)$ 相同.</p>
 <p>时间复杂度 $O(d ^ 5)$.</p>
 <h4 id="代码实现-5"><a href="#代码实现-5" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">> 点击显示 / 隐藏 </div></div><div class="fold">

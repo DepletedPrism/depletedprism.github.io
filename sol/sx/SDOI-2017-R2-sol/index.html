@@ -192,7 +192,7 @@
 <p>但是有精巧的做法, 此处直接把点值做 $Y$ 次幂就好了.</p>
 <p>当年考场 AC 似乎有更为精巧的优化方法, 好像 myy 的论文 &lt;再探快速傅里叶变换&gt; 里有涉及, <del>以后再说以后再说</del></p>
 <p>对于大数据 <del>如果问什么是大数据, 那就是 FFT 跑不过的数据</del>, 则要用到 <a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86#%E6%9E%97%E5%BE%B7%E4%BC%AF%E6%A0%BC%EF%BC%8D%E5%88%97%E7%BB%B4%E5%AE%9A%E7%90%86">中心极限定理</a>.</p>
-<p>记 $\zeta_{n} = \dfrac{\bar X - \mu}{\sigma / \sqrt n} = \dfrac{\sum\limits_{i=1}^n X_i - n \mu}{\sqrt {n \sigma ^2 }}$, 根据中心极限定理, 当 $n \rightarrow \infty$ 时, 认为其满足正态分布 $N(0, 1)$.</p>
+<p>记 $\zeta<em>{n} = \dfrac{\bar X - \mu}{\sigma / \sqrt n} = \dfrac{\sum\limits</em>{i=1}^n X_i - n \mu}{\sqrt {n \sigma ^2 }}$, 根据中心极限定理, 当 $n \rightarrow \infty$ 时, 认为其满足正态分布 $N(0, 1)$.</p>
 <p>而正态分布 $N(\mu, \sigma^2)$ 的概率密度函数为</p>
 <script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{ 2 \sigma^2 \pi }} e ^{ -\frac {(x-\mu)^2}{2 \sigma ^2} }</script><p>对于 $N(0, 1)$, 带进去可得</p>
 <script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{ 2 \pi}} e ^{ -\frac{x^2}{2} }</script><p>具体应用到这道题中, 用自适应 Simpson 计算</p>
@@ -251,7 +251,7 @@
 </ol>
 <p>但是这个算法有一个明显的问题, 遇到原图中点数度数很大的情况就会连很多边…</p>
 <p>考虑如何优化这个过程. </p>
-<p>对于 Trie 上一个节点 $u$, 将 $u$ 周围一圈节点按 DFS 序排序, 类似于后缀数组, 设 $h_i = \operatorname{LCP}(s_i, s_{i+1})$, 那么</p>
+<p>对于 Trie 上一个节点 $u$, 将 $u$ 周围一圈节点按 DFS 序排序, 类似于后缀数组, 设 $h<em>i = \operatorname{LCP}(s_i, s</em>{i+1})$, 那么</p>
 <script type="math/tex; mode=display">\operatorname{LCP}(s_L,\ s_R) = \min \{ h_j \mid L \le j \le R \}</script><p>利用后缀数组中常见套路, 可以利用单调栈求出 LCP 为 $h_i$ 的一段区间, 然后点向区间连边, 区间向点连边即可. 利用线段树优化建图即可.</p>
 <p>但是有更加简便的办法. 还是引用 <a href="https://www.cnblogs.com/clrs97/p/7833797.html">Claris 的博客</a>:</p>
 <blockquote>
@@ -302,7 +302,7 @@
 </li>
 <li><p>CBA</p>
 <p>开 始 了.</p>
-<p>我们先把 $T$ 倒过来再插入 $S$, 得到一个新串 $S_1 T_n S_2 T_{n-1} \cdots S_n T_1$, 那么 CBA 的判断就是在判断得到的新串是否可以被拆成 3 个偶回文串.</p>
+<p>我们先把 $T$ 倒过来再插入 $S$, 得到一个新串 $S<em>1 T_n S_2 T</em>{n-1} \cdots S_n T_1$, 那么 CBA 的判断就是在判断得到的新串是否可以被拆成 3 个偶回文串.</p>
 <p>可以在新串上枚举一个拆分点, 现在的问题就是: 判断后缀是否构成一个双回文串.</p>
 <p>有一个来自 <WC2017 金策 字符串算法选讲> 的结论</p>
 <blockquote>

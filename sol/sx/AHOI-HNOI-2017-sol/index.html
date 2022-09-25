@@ -207,19 +207,19 @@
 <li><a href="https://loj.ac/problem/2019">https://loj.ac/problem/2019</a></li>
 </ul>
 <h4 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h4><p>直接统计不好维护, 于是将操作离线, 枚举每个位置, 依次加入贡献 / 差分统计贡献.</p>
-<p>记 $c = \max \{ k_s \mid i &lt; s &lt; j \}$, 依次讨论什么情况下对答案会有 $p_1$ / $p_2$ 的贡献.</p>
+<p>记 $c = \max { k_s \mid i &lt; s &lt; j }$, 依次讨论什么情况下对答案会有 $p_1$ / $p_2$ 的贡献.</p>
 <ol>
 <li><p>$i + 1 = j$</p>
 <p>此时不存在此 $c$, 对答案有 $p_1$ 的贡献.</p>
 </li>
-<li><p>$c \le \min \{k_i,\ k_j \}$</p>
+<li><p>$c \le \min {k_i,\ k_j }$</p>
 <p>此时有 $p_1$ 的贡献. 但是不好直接统计, 于是转化一下, 考虑某个位置 $i$ 对答案有贡献的情况.</p>
 <p>对于每个位置 $i$, 利用单调栈处理出左侧第一个比 $k_i$ 的位置 $L_i$, 以及右侧第一个比 $k_i$ 大的位置 $R_i$. 可以得到</p>
 <ul>
 <li>如果一个询问完全包含 $[L_i,\ R_i]$, 那么对答案有 $p_1$ 的贡献.</li>
 </ul>
 </li>
-<li><p>$\min \{ k_i,\ k_j \} &lt; c &lt; \max \{ k_i,\ k_j \}$</p>
+<li><p>$\min { k_i,\ k_j } &lt; c &lt; \max { k_i,\ k_j }$</p>
 <p>此处有 $p_2$ 的贡献. 沿用 Case 2 的思路. 可以发现</p>
 <ul>
 <li>如果一个区间包含 $L_i$, 那么 $L_i$ 可以在 $[i+1,\ R_i - 1]$ 对答案有 $p_2$ 的贡献.</li>
@@ -240,7 +240,7 @@
 <h4 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h4><p>首先旋转的操作可以看作是在枚举一个起始点 $k$, 超出部分复制一遍 $x_i$ 接到 $x_n$ 后面即可. 把差异值形式地写下来就是</p>
 <script type="math/tex; mode=display">\min_{c, k} \{ \sum_{i=1}^n (x_{i+k} - y_i + c) ^ 2 \}</script><p>展开, 得</p>
 <script type="math/tex; mode=display">\sum_{i=1}^n (x_i^2 + y_i^2) + 2c \cdot \sum_{i=1}^n (x_i - y_i) + n c^2 - 2 \sum_{i=1}^n x_{i+k} y_i</script><p>除了最后面的和式, 其余部分直接统计 / 二次函数极值就可以解决.</p>
-<p>考虑构造一个序列 $t_i = x_{n-i+1}$, 那么</p>
+<p>考虑构造一个序列 $t<em>i = x</em>{n-i+1}$, 那么</p>
 <script type="math/tex; mode=display">\sum_{i=1}^n x_{i+k} y_i = \sum_{i=1}^n t_{n-i+1+k} y_i</script><p>这就是一个卷积的形式了, 使用 FFT / NTT 优化这一过程即可.</p>
 <p>时间复杂度 $O(n \log n)$.</p>
 <h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><div><div class="fold_hider"><div class="close hider_title">> 点击显示 / 隐藏 </div></div><div class="fold">

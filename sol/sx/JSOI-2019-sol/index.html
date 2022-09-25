@@ -203,7 +203,7 @@
 <ol>
 <li><p>计算每个树中, 分出 $k$ 条链的方案数.</p>
 <p><em>(其实是一个很经典的树形 DP, 譬如<a href="https://loj.ac/problem/2478">「九省联考 2018」林克卡特树</a> 的某档部分分.)</em></p>
-<p>设 $g(u, k, s)$ 表示 $u$ 的子树内, 总共组成 $k$ 条完整的链, 且包含节点 $u$ 的链状态为 $s$ 的方案数. 其中 $s \in \{ 0, 1, 2 \}$, 分别形同 <code>.</code>, <code>/</code>, <code>/\</code>, 也就是节点 $u$ 在子树一侧的链中保留的度数.</p>
+<p>设 $g(u, k, s)$ 表示 $u$ 的子树内, 总共组成 $k$ 条完整的链, 且包含节点 $u$ 的链状态为 $s$ 的方案数. 其中 $s \in { 0, 1, 2 }$, 分别形同 <code>.</code>, <code>/</code>, <code>/\</code>, 也就是节点 $u$ 在子树一侧的链中保留的度数.</p>
 <p>同时, 认为只有形成 $s = 2$ 的局面才认为是一条完整的链, 也就是说, $s = 0,\ 1$ 的情况并未计入总链数. 那么有初值</p>
 <script type="math/tex; mode=display">g(u, 0, 0) = g(u, 0, 1) = g(u, 1, 2) = 1 \\ g(u, 1, 0) = g(u, 1, 1) = g(u, 0, 2) = 0</script><p>转移则枚举形成链条数即可, 具体式子可参考代码. 大体上讲, 转移分作两类</p>
 <ol>
@@ -234,14 +234,14 @@
 <blockquote>
 <p>对于前缀 $S_{1 \ldots k}$, 我们称能够成为该前缀最小循环表示开始位置的位置为候选点.</p>
 <ol>
-<li><p>对于两个位置 $i &lt; j$. 如果 $\mathrm{LCP}(S_{i\ldots n},\ S_{j\ldots n}) \le k - j$, 那么 $i$, $j$ 之间肯定有一个不是候选点.</p>
+<li><p>对于两个位置 $i &lt; j$. 如果 $\mathrm{LCP}(S<em>{i\ldots n},\ S</em>{j\ldots n}) \le k - j$, 那么 $i$, $j$ 之间肯定有一个不是候选点.</p>
 </li>
-<li><p>对于两个位置 $i &lt; j$, 假设 $\mathrm{LCP}(S_{i\ldots n},\ S_{j\ldots n}) &gt; k - j$, 如果有 $k - j \le j - i$, 那么 $j$ 不是候选点.</p>
+<li><p>对于两个位置 $i &lt; j$, 假设 $\mathrm{LCP}(S<em>{i\ldots n},\ S</em>{j\ldots n}) &gt; k - j$, 如果有 $k - j \le j - i$, 那么 $j$ 不是候选点.</p>
 </li>
 </ol>
 </blockquote>
 <p>摘抄自官方题解, 同时官方题解有具体证明. <del>UOJ 用户群有售 (雾</del>. 也可以参考 <a href="https://yhx-12243.github.io/OI-transit/records/lg5334%3Bloj3103.html">yhx-12243 的证明</a>.</p>
-<p>利用性质 1 时, 假定已经维护出前缀 $S_{1 \ldots k-1}$ 的候选点集合, 那么该集合内元素一定满足 $\mathrm{LCP}(S_{i \ldots n},\ S_{j \ldots n}) &gt; (k - 1) - j$. 现在新加入位置 $S_k$, 只需比较 $S_{i + (k - j)}$, $S_{k}$ 的字典序大小即可.</p>
+<p>利用性质 1 时, 假定已经维护出前缀 $S<em>{1 \ldots k-1}$ 的候选点集合, 那么该集合内元素一定满足 $\mathrm{LCP}(S</em>{i \ldots n},\ S<em>{j \ldots n}) &gt; (k - 1) - j$. 现在新加入位置 $S_k$, 只需比较 $S</em>{i + (k - j)}$, $S_{k}$ 的字典序大小即可.</p>
 <p>借助于性质 2, 可以得到候选点个数不会超过 $O(\log n)$, 那么大力维护候选点集合就好了.</p>
 <p>而对于候选点, 可通过 Z-Algorithm 比较循环同构串字典序. 因为其本质是在比较整个串和该串的某个后缀的 LCP. 同时要注意超过长度 $n$, 又从 $1$ 开始的部分.</p>
 <p>时间复杂度 $O(n \log n)$.</p>

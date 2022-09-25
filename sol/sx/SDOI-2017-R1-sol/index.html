@@ -227,7 +227,7 @@
 <h4 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h4><p>看到式子之后容易联想到 0/1 分数规划. 所以直接考虑二分答案.</p>
 <p>假设当前答案 $\ge x$, 也就是</p>
 <script type="math/tex; mode=display">C = \frac{ \sum a_i' }{ \sum b_i' } \ge x</script><p>进一步转化,得</p>
-<script type="math/tex; mode=display">\sum (a_i' - b_i' x) \ge 0</script><p>然后就可以用二分图最大匹配解决了. 具体地说, 二分图内两两边权 $w_{i, j} = a_{i, j} - b_{i, j} x$, 如果最大权匹配 $\ge 0$ 则当前二分到的 $x$ 合法.</p>
+<script type="math/tex; mode=display">\sum (a_i' - b_i' x) \ge 0</script><p>然后就可以用二分图最大匹配解决了. 具体地说, 二分图内两两边权 $w<em>{i, j} = a</em>{i, j} - b_{i, j} x$, 如果最大权匹配 $\ge 0$ 则当前二分到的 $x$ 合法.</p>
 <p>二分图最大权匹配部分采用 KM 算法, 时间复杂度 $O(n^3 \log w)$. 其中 $w$ 为权值上界.</p>
 <p>突然有一种工程界很喜欢 KM 算法的错觉.</p>
 <h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h4><p>听说写费用流有点卡常? 我这一个写 KM 的哪知道啊 = =</p>

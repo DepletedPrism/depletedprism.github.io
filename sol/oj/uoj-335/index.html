@@ -207,7 +207,7 @@
 <script type="math/tex; mode=display">(n - 2)! \prod_{i = 1} ^ n a_i \cdot [x ^ {n - 2}]F(x)</script><p>前半部分为常数, 直接计算即可. 现在的问题在于如何快速求 $F(x)$. 不妨设 $A(x)$, $B(x)$ 两个 EGF, 分别为</p>
 <script type="math/tex; mode=display">A(x) = \sum_{k = 0} ^ \infty \frac{1}{k!} (k + 1) ^ {2m} x ^ k</script><script type="math/tex; mode=display">B(x) = \sum_{k = 0} ^ \infty \frac{1}{k!} (k + 1) ^ m x ^ k</script><p>此时的 $F(x)$ 可写作</p>
 <script type="math/tex; mode=display">F(x) = \sum_{i = 1} ^ n \frac{A(a_i x)}{B(a_i x)} \prod_{j \neq i} B(a_j x)</script><p>利用对数解决这个乘积. 得</p>
-<script type="math/tex; mode=display">F(x) = \sum_{i = 1} ^ n \frac{A(a_i x)}{B(a_i x)} \exp \left( \sum_{j \neq i} \ln B(a_j x) \right)</script><p>考虑到 $a_i$ 的影响, 这个好像不能直接做. 做一步转化, 在计算出 $\frac{A(x)}{B(x)}$ 及 $\ln B(x)$ 后, 对于第 $k$ 项系数乘 $\sum\limits_{i = 1} ^ n a_i ^ k$ 即可得出 $\sum\limits_{i = 1} ^ n \frac{A(a_i x)}{B(a_i x)}$ 和 $\sum\limits_{i = 1} ^ n \ln B(a_i x)$.</p>
+<script type="math/tex; mode=display">F(x) = \sum_{i = 1} ^ n \frac{A(a_i x)}{B(a_i x)} \exp \left( \sum_{j \neq i} \ln B(a_j x) \right)</script><p>考虑到 $a<em>i$ 的影响, 这个好像不能直接做. 做一步转化, 在计算出 $\frac{A(x)}{B(x)}$ 及 $\ln B(x)$ 后, 对于第 $k$ 项系数乘 $\sum\limits</em>{i = 1} ^ n a<em>i ^ k$ 即可得出 $\sum\limits</em>{i = 1} ^ n \frac{A(a<em>i x)}{B(a_i x)}$ 和 $\sum\limits</em>{i = 1} ^ n \ln B(a_i x)$.</p>
 <p>仅剩的问题是计算  $\sum\limits_{i = 1} ^ n a_i ^ k$. 设其 OGF 为 $G(x)$, 即</p>
 <script type="math/tex; mode=display">G(x) = \sum_{k = 0} ^ \infty \left( \sum_{i = 1} ^ n a_i ^ k \right) x ^ k = \sum_{i = 1} ^ n \frac{1}{1 - a_i x}</script><p>此时的 $G(x)$ 不便于快速计算. 下面利用对数和导数对 $G(x)$ 进行转化, 使其成为乘积的形式.</p>
 <p>注意到</p>

@@ -244,7 +244,7 @@
 </ul>
 <h4 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h4><p>首先有一个朴素的网络流思路. 设源汇点分别为 $S$, $T$, 同时将每天视作一个节点, 记 $p$ 为最大天数.</p>
 <ol>
-<li>对于每个蔬菜 $i$, 记其最大售卖天数 $k$ 为 $\min\{ p, \lceil \frac{c_i}{x_i} \rceil \}$.<ul>
+<li>对于每个蔬菜 $i$, 记其最大售卖天数 $k$ 为 $\min{ p, \lceil \frac{c_i}{x_i} \rceil }$.<ul>
 <li>向第 $1 \sim k - 1$ 天依次连边, 容量为 $x_i$, 费用为 $a_i$.</li>
 <li>向第 $k$ 天连边, 容量为 $c_i - k x_i - 1$, 费用为 $a_i$.</li>
 <li>向第 $k$ 天连边, 容量为 $1$, 费用为 $a_i + s_i$</li>

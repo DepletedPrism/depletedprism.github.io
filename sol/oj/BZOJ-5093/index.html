@@ -191,9 +191,9 @@
 <li>NTT</li>
 <li><p>第二类 Stirling 数的一些性质</p>
 <ul>
-<li><p>$m^n=\sum_{i=0}^{m} \begin{Bmatrix}n \\ i\end{Bmatrix}\  i! \cdot  \binom{m}{i}$<br>提供了一个计算自然数幂的新思路.</p>
+<li><p>$m^n=\sum_{i=0}^{m} \begin{Bmatrix}n \ i\end{Bmatrix}\  i! \cdot  \binom{m}{i}$<br>提供了一个计算自然数幂的新思路.</p>
 </li>
-<li><p>$\begin{Bmatrix} n\\ m\end{Bmatrix} =  \sum_{i=0}^{m} \frac{(-1)^i}{i!} \frac{(m-i)^n}{(m-i)!}$<br>显然是一个卷积的形式, 可以在 $O(n \log n)$ 的时间复杂度计算.</p>
+<li><p>$\begin{Bmatrix} n\ m\end{Bmatrix} =  \sum_{i=0}^{m} \frac{(-1)^i}{i!} \frac{(m-i)^n}{(m-i)!}$<br>显然是一个卷积的形式, 可以在 $O(n \log n)$ 的时间复杂度计算.</p>
 <p>详尽的解释可以在这里找到: <a href="https://www.cnblogs.com/y2823774827y/p/10700231.html">https://www.cnblogs.com/y2823774827y/p/10700231.html</a></p>
 </li>
 </ul>
@@ -205,7 +205,7 @@
 <p>整理, 得</p>
 <script type="math/tex; mode=display">n \cdot 2^{\frac{1}{2} (n-1)(n-2)} \sum_{i=0}^{n-1} \ \binom{n-1}{i} i^k</script><p>现在的问题主要在后半部分, 由第二类 Stirling 数的性质, 得</p>
 <script type="math/tex; mode=display">\sum_{i=0}^{n-1} \ \binom{n-1}{i} \sum_{j=0}^{i} \  \begin{Bmatrix}k \\ j \end{Bmatrix}\ j!\ \binom{i}{j}</script><p>改变 $i, j$ 的枚举顺序, 有</p>
-<script type="math/tex; mode=display">\sum_{j=0}^{n-1}\ \begin{Bmatrix} k\\ j \end{Bmatrix} \cdot j! \ \sum_{i = j}^{n - 1}\ \binom{n-1}{i} \binom{i}{j}</script><p>不过要注意到 $\forall \ m &gt; n,\ \begin{Bmatrix} n \\ m \end{Bmatrix} = 0$</p>
+<script type="math/tex; mode=display">\sum_{j=0}^{n-1}\ \begin{Bmatrix} k\\ j \end{Bmatrix} \cdot j! \ \sum_{i = j}^{n - 1}\ \binom{n-1}{i} \binom{i}{j}</script><p>不过要注意到 $\forall \ m &gt; n,\ \begin{Bmatrix} n \ m \end{Bmatrix} = 0$</p>
 <p>接下来的 trick 来源于 <a href="https://www.cnblogs.com/Tiw-Air-OAO/p/10286501.html">Tiw’s Blog</a>, 考虑右边和式的组合意义, 即在 $n-1$ 个物品中选取 $i$ 个物品, 并在 $i$ 个物品中选择 $j$ 个的方案数. 可以发现, 这样等同于在 $n-1$ 个物品中选择 $j$ 个, 剩下部分可选可不选, 这样就同 $i$ 无关了. 可得</p>
 <script type="math/tex; mode=display">\sum_{j=0}^{n-1}\ \begin{Bmatrix} k\\ j \end{Bmatrix} \cdot j! \ \binom{n-1}{j}\ 2^{ n-1-j } \\ \sum_{j=0}^{n-1}\ \begin{Bmatrix} k\\ j \end{Bmatrix} \ \frac{(n-1)!}{(n-1-j)!}\ 2^{ n-1-j }</script><p>接下来就可以写了…</p>
 <p>先计算 $k$ 对应的第二类 Stirling 数, 之后 $O(n)$ 扫一遍统计答案. 式子中间的一项在 $j$ 增加的过程中每次只多出一个乘积, 顺手维护就好了.</p>

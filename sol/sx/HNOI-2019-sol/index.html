@@ -252,7 +252,7 @@
 <h4 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h4><ul>
 <li><p>单位根反演</p>
 <p><del>之前看 <a href="http://vfleaking.blog.uoj.ac/blog/87">VFleaKing</a> 课件还以为这个东西没考过 (</del></p>
-<p>给定两个长度为 $n$ 的序列 $a_0,\ a_1,\ \ldots,\ a_{n-1}$, $b_0,\ b_1,\ \ldots,\ b_{n-1}$, 求序列 $c$ 满足</p>
+<p>给定两个长度为 $n$ 的序列 $a<em>0,\ a_1,\ \ldots,\ a</em>{n-1}$, $b<em>0,\ b_1,\ \ldots,\ b</em>{n-1}$, 求序列 $c$ 满足</p>
 <script type="math/tex; mode=display">c_r = \sum_{p,\ q} [(p + q) \bmod n = r] a_p b_q</script><p>由单位根反演, 可得</p>
 <script type="math/tex; mode=display">c_r = \sum_{p,\ q} (\frac{1}{n} \sum_{k = 0} ^ {n-1} \omega_{n}^{-rk} \omega_{n}^{pk} \omega_{n}^{qk} )\ a_p b_q = \frac{1}{n} \sum_{k = 0}^{n-1} \omega_{n}^{-rk} \sum_{p} \omega_{n}^{pk} a_p \sum_{q} \omega_{n}^{qk} b_q</script><p>具体证明参见课件好了…</p>
 </li>
@@ -264,7 +264,7 @@
 <script type="math/tex; mode=display">A_t = \sum_{i = 1} ^ L \frac{1}{k} \sum_{j = 0} ^ {k-1} \omega_{k}^{-tj} \omega_{k}^{ij}\ f(i, y)</script><p>简单整理, 得</p>
 <script type="math/tex; mode=display">A_t = \frac{1}{k} \sum_{j = 0}^{k-1} \omega_{k}^{-tj} \sum_{i = 1} ^ L \omega_{k}^{ij} \binom{L}{i} g(i, j) \\\\
 A_t = \frac{1}{k} \sum_{j = 0}^{k-1} \omega_{k}^{-tj} \sum_{i = 1} ^ L \binom{L}{i} \omega_{k}^{ij} G_0 S^i</script><p>根据二项式定理, 并设矩阵 $B_t$ 的第 $y$ 项为 $A_t$, 可知</p>
-<script type="math/tex; mode=display">B_t = \frac{1}{k} \sum_{i = 0}^{k-1} \omega_{k}^{-ti} G_0 (\omega_{k}^{i} S + I)^L</script><p>设 $h_i$ 为 $G_0 (\omega_{k}^{i} + I) ^ L$ 的第 $y$ 项. 那么</p>
+<script type="math/tex; mode=display">B_t = \frac{1}{k} \sum_{i = 0}^{k-1} \omega_{k}^{-ti} G_0 (\omega_{k}^{i} S + I)^L</script><p>设 $h<em>i$ 为 $G_0 (\omega</em>{k}^{i} + I) ^ L$ 的第 $y$ 项. 那么</p>
 <script type="math/tex; mode=display">A_t = \frac{1}{k} \sum_{i = 0} ^ {k-1} \omega_{k}^{-ti} h_i</script><p>考虑 $\omega_{k}^{ti}$ 如何处理. 此处可以构造</p>
 <script type="math/tex; mode=display">ti = \binom{t + i}{2} - \binom{t}{2} - \binom{i}{2}</script><p>容易发现这是对的. 此外还有</p>
 <script type="math/tex; mode=display">ti = \frac{1}{2} (t + i) ^ 2 - \frac{1}{2}\ t ^ 2 - \frac{1}{2}\ i ^ 2</script><p>不过在此题中并不适用. <del>想一想, 为什么.</del></p>

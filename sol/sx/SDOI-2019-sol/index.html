@@ -212,11 +212,11 @@
 <p>从这个角度出发, 只考虑被染色的列. 我们称上下两行任意一格已经被染色的列为关键列. 对于两个 “相邻” 的关键列, 也就是两列间不包含其他的关键列, 其对方案数的贡献只和两列的染色的相对情况, 以及相隔未染色列个数有关.</p>
 <p>具体地, 关键列的排布只有以下几种情况. (其中 $x$, $y$ 表示已经确定过的颜色, $w$ 为不同于 $x$, $y$ 的颜色)</p>
 <script type="math/tex; mode=display">\begin{bmatrix} x & \ldots & x \\ y & \ldots & y \end{bmatrix} \tag{0}</script><script type="math/tex; mode=display">\begin{bmatrix} x & \ldots & y \\ y & \ldots & x \end{bmatrix} \tag{1}</script><script type="math/tex; mode=display">\begin{bmatrix} x & \ldots & x \\ y & \ldots & w \end{bmatrix},  \begin{bmatrix} x & \ldots & w \\ y & \ldots & y \end{bmatrix} \tag{2}</script><script type="math/tex; mode=display">\begin{bmatrix} x & \ldots & y \\ y & \ldots & w \end{bmatrix},  \begin{bmatrix} x & \ldots & w \\ y & \ldots & x \end{bmatrix} \tag{3}</script><script type="math/tex; mode=display">\begin{bmatrix} x & \ldots & w_1 \\ y & \ldots & w_2 \end{bmatrix} \tag{4}</script><p>那么预处理出两关键列之间的转移. 设 $g(i, s)$ 表示两关键列相隔长度为 $i$, 后一关键列状态为 $s$ 的方案数.</p>
-<p>设 $\mathbf{g_i} =\begin{bmatrix} g(i, 0) \\ g(i, 1) \\ g(i, 2) \\ g(i, 3) \\ g(i, 4) \end{bmatrix}$, 大力分类讨论后可以得到转移</p>
+<p>设 $\mathbf{g_i} =\begin{bmatrix} g(i, 0) \ g(i, 1) \ g(i, 2) \ g(i, 3) \ g(i, 4) \end{bmatrix}$, 大力分类讨论后可以得到转移</p>
 <script type="math/tex; mode=display">\mathbf{g_{i + 1}} = \begin{bmatrix} 0 & 1 & 0 & 2(c-2) & (c-2)(c-3) \\ 1 & 0 & 2(c-2) & 0 & (c-2)(c-3) \\ 0 & 1 & c-2 & (c-2) + (c-3) & (c-3)^2 \\ 1 & 0 & (c - 2) + (c - 3) & c-2 & (c-3) ^ 2 \\ 1 & 1 & 2(c-3) & 2(c-3) & c^2 - 7c + 13  \end{bmatrix} \times \mathbf{g_i}</script><p>(其中 $c ^ 2 - 7c + 13$ 由 $(c-2)(c-3) - (c-2) - (c-3)$ 得到)</p>
 <p>通过预处理 $g$, 只需枚举关键列, 通过关键列的颜色分布以及关键列相隔距离转移即可得出答案.</p>
 <p>具体地, 和 yhx-12243 的题解一样, 将转移分为 brute, open, close, move 四个部分, 具体定义参见上述题解 (</p>
-<p>为了表述方便, 记两关键列的颜色的分布情况为 $\begin{bmatrix} l_1 &amp; \ldots &amp; r_1 \\ l_2 &amp; \ldots &amp; r_2 \end{bmatrix}$.</p>
+<p>为了表述方便, 记两关键列的颜色的分布情况为 $\begin{bmatrix} l_1 &amp; \ldots &amp; r_1 \ l_2 &amp; \ldots &amp; r_2 \end{bmatrix}$.</p>
 <ol>
 <li><p>brute</p>
 <p>此时两关键列的情况都唯一, 根据颜色相对情况填上对应情况的数值即可.</p>

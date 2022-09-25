@@ -219,7 +219,7 @@ f(i + 1,\ j + k,\ l,\ c - k - l,\ 1) = \max_{c = k + l} ^ {\operatorname{Cnt}(i 
 <h4 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h4><p>很贴切实际地, 嘉宾团看到的动作和实际在哪个交点选择哪个操作并没有关系, 对答案的贡献只和观察范围内的交点个数有关.</p>
 <p>所以题目可分作两个部分. 第一部分考虑交点的动作选择, 第二部分统计嘉宾团观察交点个数.</p>
 <p>考虑如何处理第一部分.</p>
-<p>注意到两直线相交的条件为 $y_0$ 和 $y_1$ 在 $x_{st}$ 处和 $x_{ed}$ 处的呈逆序, 并保证直线交点个数不大 ($\le 500,000$). 那么直接枚举直线, 暴力统计所有满足的直线计算交点即可. 具体可通过在 <code>set</code> 中二分实现.</p>
+<p>注意到两直线相交的条件为 $y<em>0$ 和 $y_1$ 在 $x</em>{st}$ 处和 $x_{ed}$ 处的呈逆序, 并保证直线交点个数不大 ($\le 500,000$). 那么直接枚举直线, 暴力统计所有满足的直线计算交点即可. 具体可通过在 <code>set</code> 中二分实现.</p>
 <p>设不计嘉宾团的影响下的答案为 $w$, 选择 $x$ 处交点交换, 共有 $m$ 个交点. 则有</p>
 <script type="math/tex; mode=display">w = a x + b \cdot (m - x)</script><p>容易发现 $w$ 是关于 $x$ 的一次函数, 其极值显然在 $x$ 的上下界处取到.</p>
 <p>一个显然的上界是交点个数. 注意到交换航线的操作并不影响纵坐标相对顺序, “能交换就交换” 一定能保持原有的相对位置.</p>
@@ -242,13 +242,13 @@ f(i + 1,\ j + k,\ l,\ c - k - l,\ 1) = \max_{c = k + l} ^ {\operatorname{Cnt}(i 
 <p>如果将两个 $1\times 1$ 方砖填入 $2 \times n$ 的格子, 且要求两方砖分别处于第一列和最后一列, 那么只在 $n \ge 3$ 的情况下有合法方案, 可能的方案只有两种, 且具体排布方式和 $n$ 的奇偶性相关.</p>
 <p>此时可以得到这样的思路: 枚举两方砖的间距, 将整体分成两部分, 统计方案数. 可以得出方案数为</p>
 <script type="math/tex; mode=display">2 \sum_{i = 3} ^ {n} \sum_{j = 0} ^ {n - i} f_j \cdot f_{n - i - j}</script><p><del>卷积!</del> 卷个锤子. 交换求和顺序, 得</p>
-<script type="math/tex; mode=display">2 \sum_{i = 0} ^ {n - 3} f_i \sum_{j = 0} ^ {n - i - 3} f_j</script><p>设 Fibonacci 数列的前缀和第 $n$ 项为 $s_n$, 有 $s_n = s_{n - 1} + s_{n - 2} + 1 = f_{n + 2} - 1$. 归纳可证.</p>
+<script type="math/tex; mode=display">2 \sum_{i = 0} ^ {n - 3} f_i \sum_{j = 0} ^ {n - i - 3} f_j</script><p>设 Fibonacci 数列的前缀和第 $n$ 项为 $s<em>n$, 有 $s_n = s</em>{n - 1} + s<em>{n - 2} + 1 = f</em>{n + 2} - 1$. 归纳可证.</p>
 <p>带入原式, 得</p>
 <script type="math/tex; mode=display">2 \sum_{i = 0} ^ {n - 3} f_i \cdot (f_{n - i - 1} - 1) =
-2 \sum_{i = 0} ^ {n - 3} f_i \cdot f_{n - i - 1} - 2 f_{n - 1} + 2</script><p>设 $g_n = \sum\limits_{ i = 0 } ^ n f_i \cdot f_{n - i}$, 那么可化为</p>
+2 \sum_{i = 0} ^ {n - 3} f_i \cdot f_{n - i - 1} - 2 f_{n - 1} + 2</script><p>设 $g<em>n = \sum\limits</em>{ i = 0 } ^ n f<em>i \cdot f</em>{n - i}$, 那么可化为</p>
 <script type="math/tex; mode=display">2\ (\sum_{i = 0} ^ {n - 1} f_i \cdot f_{n - i - 1} - f_{n - 1} \cdot f_0 - f_{n - 2} \cdot f_1) - 2 f_{n - 1} + 2</script><script type="math/tex; mode=display">2 g_{n - 1} - 2 f_{n - 2} - 4 f_{n - 1} + 2</script><p>现在的问题在于如何快速求出 $g_n$.</p>
 <script type="math/tex; mode=display">g_n = \sum_{i = 0} ^ {n - 1} f_i \cdot f_{n - i} = \sum_{i = 0} ^ {n - 2} f_i \cdot (f_{n - i - 1} + f_{n - i - 2}) + f_{n} + f_{n - 1}</script><p><del>想必大家都知道接下来要做什么</del></p>
-<script type="math/tex; mode=display">g_n = (f_{n - 1} + \sum_{i = 0} ^ {n - 2} f_i \cdot f_{n - i - 1} ) + \sum_{i = 0} ^ {n - 2} f_i \cdot f_{n - i - 2} + f_n = g_{n - 1} + g_{n - 2} + f_n</script><p>设 $\mathbf{A_{n}} = \begin{bmatrix} f_{n - 1} \\ f_n \\ g_{n - 1} \\ g_{n} \end{bmatrix}$, 有</p>
+<script type="math/tex; mode=display">g_n = (f_{n - 1} + \sum_{i = 0} ^ {n - 2} f_i \cdot f_{n - i - 1} ) + \sum_{i = 0} ^ {n - 2} f_i \cdot f_{n - i - 2} + f_n = g_{n - 1} + g_{n - 2} + f_n</script><p>设 $\mathbf{A<em>{n}} = \begin{bmatrix} f</em>{n - 1} \ f<em>n \ g</em>{n - 1} \ g_{n} \end{bmatrix}$, 有</p>
 <script type="math/tex; mode=display">\mathbf{A_i} = \begin{bmatrix} 0 & 1 & 0 & 0 \\ 1 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 1 & 1 & 1 \end{bmatrix} \times \mathbf{A_{i - 1}}</script><p>矩阵快速幂即可.</p>
 <p>时间复杂度为 $O(T \cdot 4 ^ 3 \log n)$.</p>
 <p><del>那个 12 x 12 的矩阵是大力设状态, xjb 转移的产物.</del></p>

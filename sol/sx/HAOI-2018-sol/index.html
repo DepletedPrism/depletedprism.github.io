@@ -278,7 +278,7 @@
 <h4 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h4><p>如果想到了二项式反演, 那么这道题还算套路吧…</p>
 <p><del>可惜没有, 溜了溜了, 还在化卷积上浪费时间, 退役稳了</del></p>
 <p>设 $f(x)$ 表示钦定 $x$ 种颜色出现 $S$ 次, $g(x)$ 表示恰好 $x$ 种颜色出现 $S$ 次.</p>
-<p>记 $N = \min \{ m,\ \lfloor \dfrac{n}{S} \rfloor \}$, 那么答案即为</p>
+<p>记 $N = \min { m,\ \lfloor \dfrac{n}{S} \rfloor }$, 那么答案即为</p>
 <script type="math/tex; mode=display">\sum_{k=0}^N W_k \cdot g(k)</script><p>先考虑如何计算 $f(x)$, 也就是在 $m$ 种颜色中挑出 $x$ 种出现 $S$ 次, 任意排列, 且不管其余位置的颜色, 那么可以得到</p>
 <script type="math/tex; mode=display">f(x) = \binom{m}{x} \cdot \frac{n!}{(S!)^x \cdot (n-Sx)!} \cdot (m-x)^{n-Sx}</script><p>(中间部分是一个多重集合的排列数, 为了方便就拆开了)</p>
 <p>对于 $f(x)$ 和 $g(x)$, 有</p>
