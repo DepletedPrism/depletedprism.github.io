@@ -191,8 +191,8 @@
 <p>此时的 $f(n)$, $g(n)$ 有组合意义, 例如 $f(n)$ 表示在总共 $m$ 个物品中, 恰好选择 $n$ 个满足某个条件元素的方案数, $g(n)$ 表示钦定 $n$ 个满足某个条件元素的方案数.</p>
 <h3 id="子集反演"><a href="#子集反演" class="headerlink" title="子集反演"></a>子集反演</h3><p>记 $f(S)$, $g(S)$ 为两个关于集合 $S$ 的函数, 那么有</p>
 <script type="math/tex; mode=display">f(S) = \sum_{T \subseteq S} g(T) \Leftrightarrow g(S) = \sum_{T \subseteq S} (-1) ^ {|S| - |T|} f(T)</script><p>类似地, 有</p>
-<script type="math/tex; mode=display">f(S) = \sum_{S \subseteq T} g(T) \Leftrightarrow g(S) = \sum_{S \subseteq T} (-1) ^ {|T| - |S|} f(T)</script><h3 id="Min-Max-容斥"><a href="#Min-Max-容斥" class="headerlink" title="Min-Max 容斥"></a>Min-Max 容斥</h3><p>对于一个集合 $S$, 记 $\max{S}$ 为集合 $S$ 中最大值, $\min{S}$ 为集合 $S$ 中最小值, 那么有</p>
-<script type="math/tex; mode=display">\max\{ S \} = \sum_{T \neq \varnothing,\ T \subseteq S} (-1) ^ {|T| - 1} \min\{ T \}</script><p>同时可以推广到第 $k$ 大值. 记 $\operatorname{kmax}{S}$ 为集合 $S$ 中的第 $k$ 大值, 那么有</p>
+<script type="math/tex; mode=display">f(S) = \sum_{S \subseteq T} g(T) \Leftrightarrow g(S) = \sum_{S \subseteq T} (-1) ^ {|T| - |S|} f(T)</script><h3 id="Min-Max-容斥"><a href="#Min-Max-容斥" class="headerlink" title="Min-Max 容斥"></a>Min-Max 容斥</h3><p>对于一个集合 $S$, 记 $\max\{S\}$ 为集合 $S$ 中最大值, $\min\{S\}$ 为集合 $S$ 中最小值, 那么有</p>
+<script type="math/tex; mode=display">\max\{ S \} = \sum_{T \neq \varnothing,\ T \subseteq S} (-1) ^ {|T| - 1} \min\{ T \}</script><p>同时可以推广到第 $k$ 大值. 记 $\operatorname{kmax}\{S\}$ 为集合 $S$ 中的第 $k$ 大值, 那么有</p>
 <script type="math/tex; mode=display">\operatorname{kmax}\{ S \} = \sum_{|T| \ge k,\ T \subseteq S} (-1) ^ {|T| - k} \binom{|T| - 1}{k - 1} \min\{T\}</script><p>同时由期望的线性性可以得到</p>
 <script type="math/tex; mode=display">E(\max\{S\}) = \sum_{T \neq \varnothing,\ T \subseteq S} (-1) ^ {|T| - 1} E(\min\{T\})</script><p>一个常见的问题为, 询问一个集合中所有元素都出现的期望时间. 此时就可以套用该公式, 从而转为计算子集中元素第一次出现的期望时间.</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
