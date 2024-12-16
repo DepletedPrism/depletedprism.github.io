@@ -20,7 +20,7 @@
 <meta property="og:description" content="最后一步判断最为关键, 也最容易想错… 请读者思考如何区分这两种情况.   题目链接: https:&#x2F;&#x2F;vjudge.net&#x2F;problem&#x2F;UVA-10572  由于某些原因, 链接指向的其实是 vjudge 毒瘤啊! 其实是常规的插头 DP 维护棋盘格连通性的问题, 第一次见感觉很新鲜, 然后… 就自闭了. &#x3D; &#x3D;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-24T12:27:59.000Z">
-<meta property="article:modified_time" content="2024-12-16T03:40:20.674Z">
+<meta property="article:modified_time" content="2024-12-16T03:55:04.762Z">
 <meta property="article:author" content="DepletedPrism">
 <meta property="article:tag" content="DP">
 <meta name="twitter:card" content="summary">
@@ -352,6 +352,25 @@
 
 
 <script src="/scripts/main.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax();
+    for (var i = 0; i < all.length; ++i)
+      all[i].SourceElement().parentNode.className += ' has-jax';
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>

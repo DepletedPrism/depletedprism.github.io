@@ -20,7 +20,7 @@
 <meta property="og:description" content="综述拜读了毒瘤的数据结构课件, 深受启发, 甚是谔谔, 当即感觉自己之前一直在玩泥巴. 初学数据结构, 恳请指正.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-14T15:15:28.000Z">
-<meta property="article:modified_time" content="2024-12-16T03:40:20.674Z">
+<meta property="article:modified_time" content="2024-12-16T03:55:04.758Z">
 <meta property="article:author" content="DepletedPrism">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
@@ -519,6 +519,25 @@
 
 
 <script src="/scripts/main.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax();
+    for (var i = 0; i < all.length; ++i)
+      all[i].SourceElement().parentNode.className += ' has-jax';
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
