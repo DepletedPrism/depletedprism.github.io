@@ -20,7 +20,7 @@
 <meta property="og:description" content="题目链接 https:&#x2F;&#x2F;codeforces.com&#x2F;problemset&#x2F;problem&#x2F;321&#x2F;E https:&#x2F;&#x2F;m1.oi-archive.org:9000&#x2F;problem&#x2F;?oj&#x3D;bzoj&amp;pid&#x3D;5311  同时总结一些 DP 优化的方法.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-15T07:42:44.000Z">
-<meta property="article:modified_time" content="2024-12-16T03:55:04.762Z">
+<meta property="article:modified_time" content="2024-12-16T05:34:17.302Z">
 <meta property="article:author" content="DepletedPrism">
 <meta property="article:tag" content="DP">
 <meta name="twitter:card" content="summary">
@@ -186,7 +186,7 @@
 <li>算法 0: 暴力 DP</li>
 </ul>
 <p>考虑 DP. 设 $f(i, j)$ 表示在前 $i$ 个人中, 选出 $j$ 个队伍的最小花费. 那么有转移</p>
-<script type="math/tex; mode=display">f(i, j) = \min_{j - 1 \le k \le i - 1} \{ f(k, j - 1) + w(k + 1, i) \}</script><p>其中 $w(L, R)$ 表示选择 $[L,\ R]$ 作为一个队伍的花费, 可用利用二维前缀和在 $O(1)$ 的时间内计算. 具体地, 记 $s(i, j)$ 表示 $u$ 的二维前缀和, 那么 $w$ 可表示为</p>
+<script type="math/tex; mode=display">f(i, j) = \min_{j - 1 \le k \le i - 1} \{ f(k, j - 1) + w(k + 1, i) \}</script><p>其中 $w(L, R)$ 表示选择 $[L, R]$ 作为一个队伍的花费, 可用利用二维前缀和在 $O(1)$ 的时间内计算. 具体地, 记 $s(i, j)$ 表示 $u$ 的二维前缀和, 那么 $w$ 可表示为</p>
 <script type="math/tex; mode=display">w(L, R) = \frac{1}{2} \sum_{i = L} ^ R \sum_{j = L} ^ R u_{i, j} = \frac{1}{2} \big( s(R, R) - s(R, L - 1) - s(L - 1, R) + s(L - 1, L - 1) \big)</script><p>此时直接计算的时间复杂度为 $O(n ^ 2 k)$. 还有许多优化的空间.</p>
 <ul>
 <li>算法 1: 四边形不等式优化</li>

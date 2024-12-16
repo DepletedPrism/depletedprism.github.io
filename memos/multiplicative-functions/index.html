@@ -21,7 +21,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://depletedprism.github.io/images/multiplicative-functions/table.jpg">
 <meta property="article:published_time" content="2022-08-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-16T03:55:04.758Z">
+<meta property="article:modified_time" content="2024-12-16T05:34:17.302Z">
 <meta property="article:author" content="DepletedPrism">
 <meta property="article:tag" content="Number Theory">
 <meta name="twitter:card" content="summary">
@@ -188,7 +188,7 @@
 <ol>
 <li><p>$f(1) = 1$.</p>
 </li>
-<li><p>当 $a$ 和 $b$ 互质 (也记作 $a\perp b$), 即 $\gcd(a,\ b) = 1$ 时, 有 $f(ab) = f(a)\cdot f(b)$.</p>
+<li><p>当 $a$ 和 $b$ 互质 (也记作 $a\perp b$), 即 $\gcd(a, b) = 1$ 时, 有 $f(ab) = f(a)\cdot f(b)$.</p>
 </li>
 </ol>
 <p>则称 $f$ 为积性函数. 特别地, 在此基础上如果 $f$ 还满足对于任意正整数 $a$, $b$ 均有 $f(ab) = f(a)\cdot f(b)$, 则称 $f$ 为完全积性函数.</p>
@@ -291,7 +291,7 @@ T(n) &= O(S) + \sum_{k=1}^{n/S} O\left(\sqrt{\left\lfloor\frac{n}{k}\right\rfloo
 <script type="math/tex; mode=display">g(n) = \sum_{d|n}f(d) \iff f(n) = \sum_{d|n}g(d)\mu\left(\frac{n}{d}\right)</script><p>其实就是所谓的莫比乌斯反演.</p>
 <p>记 $M(n) = \sum_{k=1}^n \mu(k)$, 利用</p>
 <script type="math/tex; mode=display">\sum_{k=1}^n [k = 1] = 1 = \sum_{k=1}^n\sum_{d|k}\mu\left(\frac{k}{d}\right)</script><p>借助于分析 $\phi(n)$ 时同样的思路可以得到</p>
-<script type="math/tex; mode=display">M(n) = 1 - \sum_{d=2}^n M\left(\left\lfloor\frac{n}{d}\right\rfloor\right)</script><h3 id="约数个数函数-1"><a href="#约数个数函数-1" class="headerlink" title="约数个数函数"></a>约数个数函数</h3><p>虽然有 $\sigma_k = \operatorname{Id}_k \ast\ 1$, 但是</p>
+<script type="math/tex; mode=display">M(n) = 1 - \sum_{d=2}^n M\left(\left\lfloor\frac{n}{d}\right\rfloor\right)</script><h3 id="约数个数函数-1"><a href="#约数个数函数-1" class="headerlink" title="约数个数函数"></a>约数个数函数</h3><p>虽然有 $\sigma_k = \operatorname{Id}_k \ast 1$, 但是</p>
 <script type="math/tex; mode=display">\sum_{k=1}^n \sigma_k(n) = \sum_{d=1}^n \left\lfloor\frac{n}{d}\right\rfloor \cdot d^k</script><p>直接数论分块就好了, 剩余部分就是正整数的 $k$ 次方和.</p>
 <h3 id="稍微一般的形式"><a href="#稍微一般的形式" class="headerlink" title="稍微一般的形式"></a>稍微一般的形式</h3><p>对于数论函数 $f$ 与 $g$, 记 $F(n) = \sum_{k=1}^n f(k)$, 则</p>
 <script type="math/tex; mode=display">

@@ -20,7 +20,7 @@
 <meta property="og:description" content="さぁ、ゲームをはじめよう来吧，游戏开始了。 - NO GAME NO LIFE  综述在 OI&#x2F;XCPC 的范畴中, 博弈论的题目往往是在研究公平组合游戏, 似乎称为组合博弈论会好一点, 是寻常意义下的博弈论的一部分. 本文由有向图游戏开始, 到 Nim 游戏和 SG 定理结束, 介绍了一些简单的博弈论相关的内容.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-16T03:55:04.758Z">
+<meta property="article:modified_time" content="2024-12-16T05:34:17.302Z">
 <meta property="article:author" content="DepletedPrism">
 <meta property="article:tag" content="Game Theory">
 <meta name="twitter:card" content="summary">
@@ -193,12 +193,12 @@
 <li>如果一个结点既不是必败结点又不是必胜结点, 则为平局结点.</li>
 </ul>
 <p>反转 $G$ 中每条边的起点和终点, 从必败结点或者必胜结点开始 DFS, 根据上述条件依次判定就好了. 记 $G$ 的边数为 $m$, 则可以在 $O(m)$ 的时间复杂度内完成对所有点的判断.</p>
-<h2 id="Nim-游戏"><a href="#Nim-游戏" class="headerlink" title="Nim 游戏"></a>Nim 游戏</h2><p>给定 $n$ 堆石子, 石子数分别为 $a_1,\ a_2,\ \ldots,\ a_n$. 每一次操作可以选择唯一一堆, 取出正整数个石子. 现在两名玩家轮流操作, 规定无法进行操作的玩家失败, 也就是取走最后一枚石子的玩家胜利. 显然此时不存在平局的情况. 判断先手必胜或者必败.</p>
+<h2 id="Nim-游戏"><a href="#Nim-游戏" class="headerlink" title="Nim 游戏"></a>Nim 游戏</h2><p>给定 $n$ 堆石子, 石子数分别为 $a_1, a_2, \ldots, a_n$. 每一次操作可以选择唯一一堆, 取出正整数个石子. 现在两名玩家轮流操作, 规定无法进行操作的玩家失败, 也就是取走最后一枚石子的玩家胜利. 显然此时不存在平局的情况. 判断先手必胜或者必败.</p>
 <p>将石子序列看作一个状态, 每次操作看作一条有向边, 则得到一张 DAG. 当前状态的变化可以视作棋子在 DAG 上的移动, 于是可以利用有向图游戏来解决 Nim 游戏. 但直接建图然后 DFS 的时间复杂度过大, 并不可取.</p>
 <p>事实上存在直接的结论. 记 $\oplus$ 表示异或, 当且仅当 $a_1 \oplus a_2 \oplus \cdots \oplus a_n = 0$ 时先手必败, 其余情况先手必胜. 借助于有向图游戏可以证明这个结论.</p>
 <blockquote>
-<p>首先, 最终状态 $(0,\ 0,\ \ldots,\ 0)$ 满足所有数异或和为 $0$ 且为先手必败态.</p>
-<p>其次, 对于一个不全为 $0$ 的状态 $(a_1,\ a_2,\ \ldots,\ a_n)$, 记 $a_1 \oplus a_2 \oplus \cdots \oplus a_n = s$, 一次操作之后异或和更改为 $s’$. 只需证明 $s=0$ 状态的后继状态中 $s’$ 均不为 $0$, 以及 $s\neq 0$ 状态的后继状态中存在 $s’=0$ 的状态.</p>
+<p>首先, 最终状态 $(0, 0, \ldots, 0)$ 满足所有数异或和为 $0$ 且为先手必败态.</p>
+<p>其次, 对于一个不全为 $0$ 的状态 $(a_1, a_2, \ldots, a_n)$, 记 $a_1 \oplus a_2 \oplus \cdots \oplus a_n = s$, 一次操作之后异或和更改为 $s’$. 只需证明 $s=0$ 状态的后继状态中 $s’$ 均不为 $0$, 以及 $s\neq 0$ 状态的后继状态中存在 $s’=0$ 的状态.</p>
 <p>对于前者, 任选一个位置 $i$ 并将 $a_i$ 变为 $a_i’$. 由于 $a_i &gt; a_i’$, 有</p>
 <script type="math/tex; mode=display">s'=s\oplus a_i\oplus a_i' = a_i \oplus a_i'\neq 0</script><p>对于后者, 选择满足 $a_i &gt; a_i\oplus s$ 的位置 $i$ 并将 $a_i$ 变为 $a_i\oplus s$ 即可, 此时有 $s’=0$. 根据异或的性质可以得出满足该条件的 $a_i$ 一定存在.</p>
 </blockquote>
@@ -215,16 +215,16 @@
 </ul>
 <p>显然 Nim 游戏就是一个公平组合游戏. 事实上, 通过 SG 定理 (Sprague-Grundy Theorem) 可以将任何公平组合游戏转化为 Nim 游戏, 这也就是 SG 定理的强大之处.</p>
 <p>对于集合 $S$, 记 $\operatorname{mex}(S)$ 表示不在 $S$ 中的最小非负整数.</p>
-<p>对于一个公平组合游戏中的状态 $x$, 设 $x$ 后继状态有 $y_1,\ y_2,\ \ldots,\ y_k$. 定义 $x$ 的 SG 函数 $\operatorname{SG}(x)$ 为</p>
+<p>对于一个公平组合游戏中的状态 $x$, 设 $x$ 后继状态有 $y_1, y_2, \ldots, y_k$. 定义 $x$ 的 SG 函数 $\operatorname{SG}(x)$ 为</p>
 <script type="math/tex; mode=display">\operatorname{SG}(x) = \operatorname{mex}(\operatorname{SG}(y_1),\ \operatorname{SG}(y_2),\ \ldots,\ \operatorname{SG}(y_k))</script><p>特别地, 如果 $x$ 不存在后继状态, 则 $x$ 为先手必败态, 有 $\operatorname{SG}(x) = 0$.</p>
 <p>其中 $\operatorname{SG}(x)$ 也被称为 Nim 数, Grundy 值等. 状态 $x$ 可以视为包含个数为 $\operatorname{SG}(x)$ 的一堆石子的 Nim 游戏. 接下来将证明这一点</p>
 <blockquote>
 <p>可以用归纳法来证明.</p>
 <p>对于不存在后继的状态 $x$, $\operatorname{SG}(x) = \operatorname{mex}(\varnothing) = 0$, 同时初始状态为 $0$ 的 Nim 游戏也是先手必败.</p>
-<p>对于存在后继的状态 $x$, 假设定理对 $x$ 的后继 $y_1,\ y_2,\ \ldots,\ y_k$ 均成立, 现在需要证明定理对 $x$ 也成立.</p>
-<p>记 $p = \operatorname{mex}(\operatorname{SG}(y_1),\ \operatorname{SG}(y_2),\ \ldots,\ \operatorname{SG}(y_k))$, 那么在后继状态中, 对于所有小于 $p$ 的状态, 均可以由 $p$ 通过去除石子的操作得到; 对于存在的大于 $p$ 的状态, 可以由 $p$ 通过添加石子的操作得到. 因此 $\operatorname{SG}(x) = p$.</p>
+<p>对于存在后继的状态 $x$, 假设定理对 $x$ 的后继 $y_1, y_2, \ldots, y_k$ 均成立, 现在需要证明定理对 $x$ 也成立.</p>
+<p>记 $p = \operatorname{mex}(\operatorname{SG}(y_1), \operatorname{SG}(y_2), \ldots, \operatorname{SG}(y_k))$, 那么在后继状态中, 对于所有小于 $p$ 的状态, 均可以由 $p$ 通过去除石子的操作得到; 对于存在的大于 $p$ 的状态, 可以由 $p$ 通过添加石子的操作得到. 因此 $\operatorname{SG}(x) = p$.</p>
 </blockquote>
-<p>根据 SG 定理, 对于 $n$ 个同时进行且相互独立的公平组合游戏 $x_1,\ x_2,\ \ldots,\ x_n$, 每回合选择一个游戏进行一次操作, 那么当且仅当 $\operatorname{SG}(x_1) \oplus \operatorname{SG}(x_2) \oplus \cdots \oplus \operatorname{SG}(x_n) = 0$ 时先手必败, 否则先手必胜.</p>
+<p>根据 SG 定理, 对于 $n$ 个同时进行且相互独立的公平组合游戏 $x_1, x_2, \ldots, x_n$, 每回合选择一个游戏进行一次操作, 那么当且仅当 $\operatorname{SG}(x_1) \oplus \operatorname{SG}(x_2) \oplus \cdots \oplus \operatorname{SG}(x_n) = 0$ 时先手必败, 否则先手必胜.</p>
 <h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="Crosses-crosses"><a href="#Crosses-crosses" class="headerlink" title="Crosses-crosses"></a>Crosses-crosses</h4><p>直接从 cp-algorithms.com 搬来的例子.</p>
 <p><strong>题目链接</strong></p>
 <ul>

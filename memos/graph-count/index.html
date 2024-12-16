@@ -20,7 +20,7 @@
 <meta property="og:description" content="老年健忘选手终于下定决心去学数数了. 综述大概是利用生成函数推出一些式子, 然后拿多项式去算吧 &#x3D; &#x3D;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-07T13:31:16.000Z">
-<meta property="article:modified_time" content="2024-12-16T03:55:04.758Z">
+<meta property="article:modified_time" content="2024-12-16T05:34:17.302Z">
 <meta property="article:author" content="DepletedPrism">
 <meta property="article:tag" content="Combinatorics">
 <meta property="article:tag" content="Polynomial">
@@ -185,24 +185,24 @@
 <p>最好有跑地比谁都快的板子, 以免在做题的时候被卡常.</p>
 </li>
 <li><p>生成函数</p>
-<p>对于一个数列 ${ a_n }$, 有</p>
-<p>${ a_n }$ 的普通生成函数 (<strong>O</strong>rdinary <strong>G</strong>enerating <strong>F</strong>unction, OGF), 为</p>
+<p>对于一个数列 $\{ a_n \}$, 有</p>
+<p>$\{ a_n \}$ 的普通生成函数 (<strong>O</strong>rdinary <strong>G</strong>enerating <strong>F</strong>unction, OGF), 为</p>
 <script type="math/tex; mode=display">g(x) = \sum\limits_{k = 0}^\infty a_k x^k</script><p>常用于处理无标号计数问题.</p>
-<p>${ a_n }$ 的指数生成函数, (<strong>E</strong>xponential <strong>G</strong>enerating <strong>F</strong>unction, EGF), 为</p>
+<p>$\{ a_n \}$ 的指数生成函数, (<strong>E</strong>xponential <strong>G</strong>enerating <strong>F</strong>unction, EGF), 为</p>
 <script type="math/tex; mode=display">g(x) = \sum\limits_{k = 0}^\infty a_k \frac{x^k}{k!}</script><p>常用于处理有标号计数问题.</p>
-<p>${ a_n }$ 的组合生成函数, 为</p>
+<p>$\{ a_n \}$ 的组合生成函数, 为</p>
 <script type="math/tex; mode=display">g(x) = \sum\limits_{k = 0}^\infty a_k \frac{x^k}{2 ^ \binom{k}{2} k!}</script><p>其中 “组合生成函数” 是从 JOHNKRAM 课件里看来的新东西, 似乎只在有标号有向图计数中用到过…</p>
 </li>
 <li><p>拉格朗日反演</p>
 <p>在遇到多项式复合逆的时候快速计算出某一位的值. 如果要计算多个位的值, 可考虑分块. 详见 <a href="https://www.luogu.com.cn/problem/P5809">Luogu P5809 【模板】多项式复合逆</a>.</p>
-<p>设多项式 $F(x),\ G(x)$ 满足 $F(G(x)) = G(F(x)) = x$, 并记 $[x^n]F(x)$ 表示 $F(x)$ 的第 $n$ 次项系数, 那么</p>
+<p>设多项式 $F(x), G(x)$ 满足 $F(G(x)) = G(F(x)) = x$, 并记 $[x^n]F(x)$ 表示 $F(x)$ 的第 $n$ 次项系数, 那么</p>
 <script type="math/tex; mode=display">[x^n] G(x) = \frac{1}{n} [x^{n-1}] \left(\frac{x}{F(x)}\right)^n</script><p>还有一个拓展形式. 设 $H(x)$ 是另一个多项式, 那么</p>
 <script type="math/tex; mode=display">[x^n] H\left(G(x)\right) = \frac{1}{n} [x^{n-1}] H'(x) \left(\frac{x}{F(x)}\right)^n</script></li>
 </ol>
 <h2 id="连通-不连通"><a href="#连通-不连通" class="headerlink" title="连通 / 不连通?"></a>连通 / 不连通?</h2><p>对于有标号元素 $A$ 组成的集合 $B$, 不妨设 $A$ 的 EGF 为 $A(x)$. 考虑到集合内的元素没有顺序关系, 可以得到 $B$ 的 EGF 为</p>
 <script type="math/tex; mode=display">B(x) = \sum_{k = 0} ^ \infty \frac{A(x) ^ k}{k!} = \exp A(x)</script><p>应用在图计数中, 可以将非连通图看作多个连通图构成的集合.</p>
 <p>也就是在确定连通图个数的 EGF 后, 可以通过多项式 $\exp$ 得出非连通图个数的 EGF.</p>
-<h2 id="有标号无向图计数"><a href="#有标号无向图计数" class="headerlink" title="有标号无向图计数"></a>有标号无向图计数</h2><h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><p>考虑到 Prufer 序列将一个带标号且有 $n$ 个节点的树用 $[1,\ n]$ 中 $n-2$ 个整数表示, 且 Prufer 序列同树一一对应. 那么, 直接统计 Prufer 序列的个数即可.</p>
+<h2 id="有标号无向图计数"><a href="#有标号无向图计数" class="headerlink" title="有标号无向图计数"></a>有标号无向图计数</h2><h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><p>考虑到 Prufer 序列将一个带标号且有 $n$ 个节点的树用 $[1, n]$ 中 $n-2$ 个整数表示, 且 Prufer 序列同树一一对应. 那么, 直接统计 Prufer 序列的个数即可.</p>
 <p>记树的 EGF 为 $T(x)$, 那么</p>
 <script type="math/tex; mode=display">T(x) = \sum_{k = 2} ^ \infty \frac{k ^ {k - 2}}{k!} x^k</script><p>此时得到是无根树的结果, 而对于有根树, 枚举根的位置计算即可, 也就是无根树的个数乘以点数.</p>
 <h3 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h3><p>对于含有 $n$ 个点的无向图, 先考虑不连通的情况, 直接利用 $\binom{n}{2}$ 条边的存在情况计算即可.</p>
@@ -253,7 +253,7 @@
 <li><a href="https://www.luogu.com.cn/problem/P5827">Luogu P5827 点双连通图计数</a></li>
 </ul>
 <h2 id="有标号有向图计数"><a href="#有标号有向图计数" class="headerlink" title="有标号有向图计数"></a>有标号有向图计数</h2><h3 id="有向无环图"><a href="#有向无环图" class="headerlink" title="有向无环图"></a>有向无环图</h3><p>考虑容斥.</p>
-<p>设 $d<em>n$ 表示有 $n$ 个节点的 DAG 个数, 且不要求弱连通. 记 $A</em>{n, i}$ 表示有 $n$ 个节点, 其中有 $i$ 个节点入度为 $0$. 有</p>
+<p>设 $d_n$ 表示有 $n$ 个节点的 DAG 个数, 且不要求弱连通. 记 $A_{n, i}$ 表示有 $n$ 个节点, 其中有 $i$ 个节点入度为 $0$. 有</p>
 <script type="math/tex; mode=display">d_n = \mid \bigcap_{i = 0} ^ n A_{n, i} \mid</script><p>根据容斥原理展开, 得</p>
 <script type="math/tex; mode=display">d_n = \sum_{k = 1} ^ n (-1) ^ {k - 1} \sum_{1 \le i_1, \cdots, i_k \le n} ^ {} \mid \bigcup_{j = 1} ^ k A_{n, i_j} \mid</script><p>注意到后者的并集大小和 $i_j$ 具体取值无关, 也就是在 $n$ 个点中取出 $k$ 个点, 而将这 $k$ 个点删去后剩余 $n - k$ 个点仍然组成 DAG, 且这 $k$ 个点同其余点连边不破坏两边的性质. 因此可得出</p>
 <script type="math/tex; mode=display">d_n = \sum_{k = 1} ^ n (-1) ^ {k - 1} \binom{n}{k} d_{n - k} 2 ^ {k (n - k)}</script><p>我们有 $k (n - k) = \binom{n}{2} - \binom{k}{2} - \binom{n - k}{2}$, 所以原式可化作</p>
@@ -284,7 +284,7 @@
 <script type="math/tex; mode=display">F(x) = x \cdot \mathcal E \big(F(x)\big) = x \cdot \prod_{k = 0} ^ \infty (\frac{1}{1 - x ^ k}) ^ {f_k}</script><p>两边同时取 $\ln$, 得</p>
 <script type="math/tex; mode=display">\ln F(x) = \ln x - \sum_{k = 0} ^ \infty f_k \ln (1 - x ^ k)</script><p>求导, 得</p>
 <script type="math/tex; mode=display">\frac{F(x)'}{F(x)} = \frac{1}{x} + \sum_{k = 1} ^ \infty f_k \cdot \frac{k x ^ {k - 1}}{1 - x ^ k}</script><p>两侧同时乘 $F(x) \cdot x$, 得</p>
-<script type="math/tex; mode=display">x \cdot F(x)' = F(x) + F(x) \left( \sum_{k = 1} ^ \infty k f_k \cdot \frac{x ^ k}{1 - x ^ k}\right)</script><p>取第 $n$ 项系数, 同时设 $g<em>n = \sum</em>{k \mid n} k f_k$. 则有</p>
+<script type="math/tex; mode=display">x \cdot F(x)' = F(x) + F(x) \left( \sum_{k = 1} ^ \infty k f_k \cdot \frac{x ^ k}{1 - x ^ k}\right)</script><p>取第 $n$ 项系数, 同时设 $g_n = \sum_{k \mid n} k f_k$. 则有</p>
 <script type="math/tex; mode=display">n \cdot f_n = f_n + \sum_{k = 1} ^ n f_k g_{n - k}</script><script type="math/tex; mode=display">f_n = \frac{1}{n - 1} \sum_{k = 1} ^ n f_k g_{n - k}</script><p>分治 FFT 计算即可, 时间复杂度为 $O(n \log ^ 2 n)$.</p>
 <p>实现时, 在计算 $f_n$ 后枚举 $n$ 的倍数更新 $g$. 注意到如果分治的左端点为 $1$, $g$ 位数不够. 在计算左区间对右区间的贡献时, 需要额外注意.</p>
 <div><div class="fold_hider"><div class="close hider_title">> 点击显示 / 隐藏 </div></div><div class="fold">

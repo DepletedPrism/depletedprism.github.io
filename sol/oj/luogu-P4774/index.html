@@ -20,7 +20,7 @@
 <meta property="og:description" content="NOI 又不怎么考数论题. from 某神仙   题目链接: https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;problem&#x2F;P4774  最近好颓啊 &#x3D; &#x3D;, 写题又不想自己写, 学东西又不能静下来好好学 这是一道拓展中国剩余定理的模板题, 由此发现之前学的 Ex CRT 很假, 所以来整理一下.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-27T13:11:04.000Z">
-<meta property="article:modified_time" content="2024-12-16T03:55:04.762Z">
+<meta property="article:modified_time" content="2024-12-16T05:34:17.306Z">
 <meta property="article:author" content="DepletedPrism">
 <meta property="article:tag" content="Number Theory">
 <meta name="twitter:card" content="summary">
@@ -193,7 +193,7 @@
 </ol>
 <h4 id="题目思路"><a href="#题目思路" class="headerlink" title="题目思路"></a>题目思路</h4><p>记对第 $i$ 个巨龙使用剑的攻击力为 $A_i$.</p>
 <p>容易发现, $A_i$ 的值其实很好确定, 直接在 <code>multiset</code> 上二分即可. 那么, 现在的问题为</p>
-<p>给定 $a_i,\ A_i,\ p_i$, 有</p>
+<p>给定 $a_i, A_i, p_i$, 有</p>
 <script type="math/tex; mode=display">
 \begin{equation}  
 \left \{
@@ -207,9 +207,9 @@
 <ul>
 <li><p>化简同余式时无解</p>
 <p>考虑化简的过程, 我们把 $A_i x \equiv a_i \pmod {p_i}$ 化成不定方程的形式, 即</p>
-<script type="math/tex; mode=display">A_i x + y p_i = a_i</script><p>根据裴蜀定理, 该方程有解需要满足 $\gcd(A_i,\ p_i) \mid a_i$, 否则无解.</p>
+<script type="math/tex; mode=display">A_i x + y p_i = a_i</script><p>根据裴蜀定理, 该方程有解需要满足 $\gcd(A_i, p_i) \mid a_i$, 否则无解.</p>
 <p>虽然无解的情况已经解决了, 不妨顺水推舟, 把化简的过程写完.</p>
-<p>记 $g = \gcd(A_i,\ p_i)$, 于是两边同除 $g$, 有</p>
+<p>记 $g = \gcd(A_i, p_i)$, 于是两边同除 $g$, 有</p>
 <script type="math/tex; mode=display">\frac{A_i}{g} x + \frac{p_i}{g} y = \frac{a_i}{g}</script><p>记 $A_i^{-1}$ 为模 $p_i$ 意义下的逆元, 整理, 得</p>
 <script type="math/tex; mode=display">x \equiv \frac{a_i}{g}\cdot A_i^{-1}\pmod{ \frac{p_i}{g} }</script></li>
 <li><p>合并同余式时无解</p>

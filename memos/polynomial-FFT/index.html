@@ -20,7 +20,7 @@
 <meta property="og:description" content="很多两年前学过的东西已经忘了, 虽然很大一部分原因在于当时就没有学明白, 但还是有一种原有的认知落空的感觉. 综述在 OI&#x2F;XCPC 中, FFT 常用于加速卷积的计算. 此外, 配合牛顿迭代得到的一系列多项式算法提供了对生成函数进行快速运算的方法, 因此在许多计数问题中也 FFT 也很有用.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-24T03:11:03.000Z">
-<meta property="article:modified_time" content="2024-12-16T03:55:04.758Z">
+<meta property="article:modified_time" content="2024-12-16T05:34:17.302Z">
 <meta property="article:author" content="DepletedPrism">
 <meta property="article:tag" content="Polynomial">
 <meta name="twitter:card" content="summary">
@@ -179,12 +179,12 @@
 <p>很多两年前学过的东西已经忘了, 虽然很大一部分原因在于当时就没有学明白, 但还是有一种原有的认知落空的感觉.</p>
 <h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>在 OI/XCPC 中, FFT 常用于加速卷积的计算. 此外, 配合牛顿迭代得到的一系列多项式算法提供了对生成函数进行快速运算的方法, 因此在许多计数问题中也 FFT 也很有用.</p>
 <span id="more"></span>
-<h2 id="定义与前置知识"><a href="#定义与前置知识" class="headerlink" title="定义与前置知识"></a>定义与前置知识</h2><h3 id="多项式和形式幂级数"><a href="#多项式和形式幂级数" class="headerlink" title="多项式和形式幂级数"></a>多项式和形式幂级数</h3><p>对于环 $R$, $a_1,\ a_2,\ \ldots,\ a_n \in R$ 且 $a_n \neq 0$, 称</p>
+<h2 id="定义与前置知识"><a href="#定义与前置知识" class="headerlink" title="定义与前置知识"></a>定义与前置知识</h2><h3 id="多项式和形式幂级数"><a href="#多项式和形式幂级数" class="headerlink" title="多项式和形式幂级数"></a>多项式和形式幂级数</h3><p>对于环 $R$, $a_1, a_2, \ldots, a_n \in R$ 且 $a_n \neq 0$, 称</p>
 <script type="math/tex; mode=display">f(x) = \sum_{k=0}^n a_k x^k</script><p>为环 $R$ 上次数为 $n$ 的多项式 $f(x)$. 其中次数也称作度, 记作 $\deg f$.</p>
 <p>如果允许无限项存在, 则可以得到 $R$ 上的形式幂级数</p>
 <script type="math/tex; mode=display">f(x) = \sum_{k = 0}^\infty a_k x^k</script><p>环 $R$ 上的多项式构成了一个环, 记为 $R[x]$. 类似地, 环 $R$ 上的形式幂级数也构成了一个环, 记作 $R[[x]]$.</p>
 <p>先来讨论在复数域 $\mathbb{C}$ 上的情况. 当然也可以是其他环.</p>
-<h3 id="多项式的点值表示"><a href="#多项式的点值表示" class="headerlink" title="多项式的点值表示"></a>多项式的点值表示</h3><p>对于度数为 $n$ 的多项式 $f(x) = \sum_{k=0}^n a_kx^k$, 带入 $n+1$ 个点 $x_0,\ x_1,\ \ldots,\ x_n$ 可得到 $f(x)$ 对应的点值表示 $f(x_0),\ f(x_1),\ \ldots,\ f(x_n)$. 表示成矩阵形式为</p>
+<h3 id="多项式的点值表示"><a href="#多项式的点值表示" class="headerlink" title="多项式的点值表示"></a>多项式的点值表示</h3><p>对于度数为 $n$ 的多项式 $f(x) = \sum_{k=0}^n a_kx^k$, 带入 $n+1$ 个点 $x_0, x_1, \ldots, x_n$ 可得到 $f(x)$ 对应的点值表示 $f(x_0), f(x_1), \ldots, f(x_n)$. 表示成矩阵形式为</p>
 <script type="math/tex; mode=display">
 \begin{bmatrix}
 f(x_0) \\ f(x_1) \\ f(x_2) \\ \vdots \\ f(x_n)
@@ -200,24 +200,24 @@ f(x_0) \\ f(x_1) \\ f(x_2) \\ \vdots \\ f(x_n)
 
 \begin{bmatrix}
 a_0 \\ a_1 \\ a_2 \\ \vdots \\ a_{n}
-\end{bmatrix}</script><p>如果这 $n+1$ 个点互不相同, 那么中间的矩阵可逆, 根据 $n+1$ 个点对 $(x_k,\ f(x_k))$ 就可以唯一确定 $f(x)$.</p>
+\end{bmatrix}</script><p>如果这 $n+1$ 个点互不相同, 那么中间的矩阵可逆, 根据 $n+1$ 个点对 $(x_k, f(x_k))$ 就可以唯一确定 $f(x)$.</p>
 <h3 id="卷积和循环卷积"><a href="#卷积和循环卷积" class="headerlink" title="卷积和循环卷积"></a>卷积和循环卷积</h3><p>对于一个长为 $n$ 的序列 $a$ 和一个长为 $m$ 的序列 $b$, 有 $a$ 和 $b$ 的卷积为</p>
 <script type="math/tex; mode=display">c_k = \sum_{i+j=k}a_i b_j = \sum_{i=0}^k a_i b_{k-i} = \sum_{j=0}^k a_{k-j} b_j</script><p>卷积可以用来表示多项式相乘的结果. 如果把 $a$ 和 $b$ 分别看作多项式 $f(x)$ 和 $g(x)$ 的各项系数, 那么两多项式之积 $f(x)g(x)$ 可表示为</p>
 <script type="math/tex; mode=display">f(x)g(x) = \sum_{i=0}^{n-1}\sum_{j=0}^{m-1} a_ib_jx^{i+j} = \sum_{k=0}^{n+m-2}\left(\sum_{i+j=k} a_ib_j\right)x^k = \sum_{k=0}^{n+m-2} c_kx^k</script><p>对于两个长度为 $n$ 的序列 $a$, $b$, 有 $a$ 和 $b$ 的循环卷积为</p>
-<script type="math/tex; mode=display">c_k = \sum_{(i+j)\bmod n = k}a_i b_j = \sum_{i+j=k}a_i b_j + \sum_{i+j=n+k}a_i b_j</script><h3 id="离散傅里叶变换及其逆变换"><a href="#离散傅里叶变换及其逆变换" class="headerlink" title="离散傅里叶变换及其逆变换"></a>离散傅里叶变换及其逆变换</h3><p>离散傅里叶变换 (Discrete Fourier Transform, DFT) 将一个长为 $N$ 的序列 $x<em>{0},\ x</em>{1},\ \ldots,\ x<em>{N-1}$ 变换为一个长为 $N$ 的复数序列 $X</em>{0},\ X<em>{1},\ \ldots,\ X</em>{N-1}$. 具体而言</p>
+<script type="math/tex; mode=display">c_k = \sum_{(i+j)\bmod n = k}a_i b_j = \sum_{i+j=k}a_i b_j + \sum_{i+j=n+k}a_i b_j</script><h3 id="离散傅里叶变换及其逆变换"><a href="#离散傅里叶变换及其逆变换" class="headerlink" title="离散傅里叶变换及其逆变换"></a>离散傅里叶变换及其逆变换</h3><p>离散傅里叶变换 (Discrete Fourier Transform, DFT) 将一个长为 $N$ 的序列 $x_{0}, x_{1}, \ldots, x_{N-1}$ 变换为一个长为 $N$ 的复数序列 $X_{0}, X_{1}, \ldots, X_{N-1}$. 具体而言</p>
 <script type="math/tex; mode=display">X_k = \sum_{n = 0}^{N - 1} x_n e^{-i\frac{2\pi}{N}kn}</script><p>同时有逆变换 (Inverse Discrete Fourier Transform, IDFT)</p>
 <script type="math/tex; mode=display">x_n = \frac{1}{N}\sum_{k = 0}^{N - 1} X_k e^{i\frac{2\pi}{N}kn}</script><p>逆变换的正确性可以通过代入验证.</p>
-<p>记 $\omega_n = e^{i\frac{2\pi}{n}}$, 根据复数的性质 $1,\ \omega_n,\ \ldots,\ \omega_n^{n-1}$ 组成了方程 $x^n = 1$ 的 $n$ 个不同的根, 称这 $n$ 个根为单位根.</p>
-<p>如果将 $x_n$ 看作多项式 $f(x)$ 的系数, 那么 $X_k$ 就是 $f(x)$ 在 $x = e^{-i\frac{2\pi}{N}n}$ 处的点值. 因此 DFT 可以理解为多项式在 $n$ 个单位根处的点值表示. 同时, 实现上在计算 DFT 时往往使用 $1,\ \omega_n,\ \ldots,\ \omega_n^{n-1}$, 而非它们的倒数.</p>
+<p>记 $\omega_n = e^{i\frac{2\pi}{n}}$, 根据复数的性质 $1, \omega_n, \ldots, \omega_n^{n-1}$ 组成了方程 $x^n = 1$ 的 $n$ 个不同的根, 称这 $n$ 个根为单位根.</p>
+<p>如果将 $x_n$ 看作多项式 $f(x)$ 的系数, 那么 $X_k$ 就是 $f(x)$ 在 $x = e^{-i\frac{2\pi}{N}n}$ 处的点值. 因此 DFT 可以理解为多项式在 $n$ 个单位根处的点值表示. 同时, 实现上在计算 DFT 时往往使用 $1, \omega_n, \ldots, \omega_n^{n-1}$, 而非它们的倒数.</p>
 <h3 id="卷积定理"><a href="#卷积定理" class="headerlink" title="卷积定理"></a>卷积定理</h3><p>对于两个长度为 $n$ 的序列 $a$ 和 $b$, 记 $a$ 和 $b$ 的循环卷积为 $c$, 那么有</p>
 <script type="math/tex; mode=display">\operatorname{IDFT}(\operatorname{DFT}(a) \cdot \operatorname{DFT}(b)) = c</script><p>也就是说, 对 $a$ 和 $b$ 分别做 DFT, 两个结果逐项相乘就得到 $\operatorname{DFT}(c)$, 再做一次 IDFT 就可以得到 $c$. </p>
 <p>证明可以从 DFT 与多项式在 $n$ 个单位根处的点值表示的关系入手. 设以 $a$, $b$ 和 $c$ 作为各项系数的多项式分别为 $f(x)$, $g(x)$ 和 $h(x)$. 对于 $s\in \mathbb{Z}$, 有</p>
 <script type="math/tex; mode=display">f(\omega_n^s)g(\omega_n^s) = \sum_{k=0}^{n-1}\left(\sum_{i+j=k} a_ib_j + \sum_{i+j=n+k} a_ib_j\right)(\omega_n^s)^k = h(w_n^s)</script><p>也就是说 $\operatorname{DFT}(a) \cdot \operatorname{DFT}(b) = \operatorname{DFT}(c)$. 等式两端同时做 IDFT 就得到卷积定理.</p>
 <p>利用卷积定理得到的计算结果实际上是循环卷积, 而非卷积. 但实际上可以通过补 0 使 $a$ 和 $b$ 的项数变为 $2n$, 得到项数为 $2n$ 的 $c$. 此时的循环卷积相当于普通的卷积. 在 $a$ 和 $b$ 长度不同且需要计算卷积时同样可以这样做.</p>
 <h2 id="快速傅里叶变换"><a href="#快速傅里叶变换" class="headerlink" title="快速傅里叶变换"></a>快速傅里叶变换</h2><p>快速傅里叶变换 (Fast Fourier Transform, FFT) 能够在 $O(n\log n)$ 的时间复杂度内实现 DFT/IDFT 的计算, 再利用卷积定理即可在 $O(n\log n)$ 的时间复杂度内计算卷积.</p>
-<p>对于 $n\in\mathbb{N}<em>+$, $k\in\mathbb{Z}$, 单位根 $\omega_n$ 有性质 $\omega_n^k=\omega</em>{2n}^{2k}$, $\omega<em>{2n}^{k+n}=-\omega</em>{2n}^k$. 接下来的推导将用到这些性质.</p>
+<p>对于 $n\in\mathbb{N}_+$, $k\in\mathbb{Z}$, 单位根 $\omega_n$ 有性质 $\omega_n^k=\omega_{2n}^{2k}$, $\omega_{2n}^{k+n}=-\omega_{2n}^k$. 接下来的推导将用到这些性质.</p>
 <p>出于简便考虑, 只讨论对长度为 2 的幂次的序列做 FFT 的情况. 其余情况可以通过补 0 让长度变为 2 的幂次.</p>
-<p>先来讨论 DFT. 考虑分治, 将当前序列分作奇数项和偶数项, 假定已经得到了奇数项对应 DFT 的各项值 $g(\omega<em>n^k)$, 以及偶数项对应的各项值 $h(\omega_n^k)$. 现在需要合并两者得到 $f(\omega</em>{2n}^k)$. 具体有</p>
+<p>先来讨论 DFT. 考虑分治, 将当前序列分作奇数项和偶数项, 假定已经得到了奇数项对应 DFT 的各项值 $g(\omega_n^k)$, 以及偶数项对应的各项值 $h(\omega_n^k)$. 现在需要合并两者得到 $f(\omega_{2n}^k)$. 具体有</p>
 <script type="math/tex; mode=display">
 \begin{align*}
 f(\omega_{2n}^k) &= g(\omega_{2n}^{2k}) + \omega_{2n}^k \cdot h(\omega_{2n}^{2k}) \\

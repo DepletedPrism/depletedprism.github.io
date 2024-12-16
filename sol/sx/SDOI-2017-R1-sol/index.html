@@ -20,7 +20,7 @@
 <meta property="og:description" content="考虑到写详解有点花时间, 不写又容易忘 &#x3D; &#x3D;, 那就写个大概吧. SD 两轮省选 (可能?) 会比较科学一点吧">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-06T08:17:15.000Z">
-<meta property="article:modified_time" content="2024-12-16T03:55:04.766Z">
+<meta property="article:modified_time" content="2024-12-16T05:34:17.306Z">
 <meta property="article:author" content="DepletedPrism">
 <meta name="twitter:card" content="summary">
 
@@ -225,7 +225,7 @@
 <h4 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h4><p>看到式子之后容易联想到 0/1 分数规划. 所以直接考虑二分答案.</p>
 <p>假设当前答案 $\ge x$, 也就是</p>
 <script type="math/tex; mode=display">C = \frac{ \sum a_i' }{ \sum b_i' } \ge x</script><p>进一步转化,得</p>
-<script type="math/tex; mode=display">\sum (a_i' - b_i' x) \ge 0</script><p>然后就可以用二分图最大匹配解决了. 具体地说, 二分图内两两边权 $w<em>{i, j} = a</em>{i, j} - b_{i, j} x$, 如果最大权匹配 $\ge 0$ 则当前二分到的 $x$ 合法.</p>
+<script type="math/tex; mode=display">\sum (a_i' - b_i' x) \ge 0</script><p>然后就可以用二分图最大匹配解决了. 具体地说, 二分图内两两边权 $w_{i, j} = a_{i, j} - b_{i, j} x$, 如果最大权匹配 $\ge 0$ 则当前二分到的 $x$ 合法.</p>
 <p>二分图最大权匹配部分采用 KM 算法, 时间复杂度 $O(n^3 \log w)$. 其中 $w$ 为权值上界.</p>
 <p>突然有一种工程界很喜欢 KM 算法的错觉.</p>
 <h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h4><p>听说写费用流有点卡常? 我这一个写 KM 的哪知道啊 = =</p>
@@ -253,7 +253,7 @@
 <li><a href="https://loj.ac/problem/2005">https://loj.ac/problem/2005</a></li>
 </ul>
 <h4 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h4><p>读过高中必修课本的 (忘了是哪本了 = =) 都知道, 询问的 $\hat a$ 可以展开, 当然不知道这个式子也是可推的…</p>
-<script type="math/tex; mode=display">\hat a = \frac{\sum\limits_{i = L} ^ R (x_i - \bar{x})(y_i - \bar{y})}{\sum\limits_{i = L} ^ R (x_i - \bar{x}) ^ 2} = \frac{ \sum\limits_{i=L}^R x_i y_i - n \bar x \bar y }{\sum\limits_{i=L}^R x_i^2 - n \bar x^2}</script><p>对于询问, 直接用线段树维护 $\sum {x_i},\ \sum {y_i},\ \sum x_i y_i,\ \sum x_i ^ 2$ 就可以回答了.</p>
+<script type="math/tex; mode=display">\hat a = \frac{\sum\limits_{i = L} ^ R (x_i - \bar{x})(y_i - \bar{y})}{\sum\limits_{i = L} ^ R (x_i - \bar{x}) ^ 2} = \frac{ \sum\limits_{i=L}^R x_i y_i - n \bar x \bar y }{\sum\limits_{i=L}^R x_i^2 - n \bar x^2}</script><p>对于询问, 直接用线段树维护 $\sum {x_i}, \sum {y_i}, \sum x_i y_i, \sum x_i ^ 2$ 就可以回答了.</p>
 <p>区间加… 把这几个东西加起来再展开就好了.</p>
 <script type="math/tex; mode=display">\sum_{i=L}^R (x_i + S) = \sum_{i=L}^R x_i + (R-L+1) \cdot S</script><script type="math/tex; mode=display">\sum_{i=L}^R (y_i + T) = \sum_{i=L}^R y_i + (R-L+1) \cdot T</script><script type="math/tex; mode=display">\sum_{i=L}^R (x_i + S) (y_i + T) = \sum_{i=L}^R x_i y_i + T \sum_{i=L}^R x_i + S \sum_{i=L}^R y_i + (R-L+1) \cdot ST</script><script type="math/tex; mode=display">\sum_{i=L}^R (x_i + S) ^ 2 = \sum_{i=L}^R x_i^2 + 2S \sum_{i=L}^R x_i + (R-L+1) \cdot S^2</script><p>区间赋值… 注意所赋值具有特殊性, 也就是第 $i$ 个位置改成 $i$, 然后再跑一遍区间加的操作就好了.</p>
 <p><del>看错条件多推了一倍的式子, 人没了</del></p>

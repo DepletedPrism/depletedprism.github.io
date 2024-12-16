@@ -20,7 +20,7 @@
 <meta property="og:description" content="今天的 Codeforces 有在下饭吗? 是原先在 洛谷的文章 的精神续作, 直接原因是受 某个学长的视频 的启发.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-16T05:19:11.000Z">
-<meta property="article:modified_time" content="2024-12-16T03:55:04.758Z">
+<meta property="article:modified_time" content="2024-12-16T05:34:17.302Z">
 <meta property="article:author" content="DepletedPrism">
 <meta name="twitter:card" content="summary">
 
@@ -182,12 +182,12 @@
 <h2 id="Edu-Round-131-Div-2"><a href="#Edu-Round-131-Div-2" class="headerlink" title="Edu Round #131 (Div. 2)"></a>Edu Round #131 (Div. 2)</h2><h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>答案只可能是 0, 1 或者 2, 就是样例里的情况.</p>
 <h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><p>$d$ 取 2 的时候答案最优, 按照 $d=2$ 贪心构造排列就好了.</p>
 <h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>先假定所有工人都只做对应的任务, 然后调整. 把一项任务从对应的工人转移给另一个人, 就是一人工作时间减 1, 一人工作时间加 2. 反复调整让工作时间最大值最小就好了.</p>
-<h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><p>处理出每个位置可能取值的范围 $\left[\lfloor \frac{i}{b_i + 1} \rfloor + 1,\ \lfloor \frac{i}{b_i} \rfloor \right]$, 问题转化为给每个区间依次填数, 要求填的数包含在对应区间中且组成一个排列. 从小到大枚举要填的数, 在包含这个数的所有区间中, 显然要先满足右端点小的区间, 取右端点最小的区间填进去就好了.</p>
+<h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><p>处理出每个位置可能取值的范围 $\left[\lfloor \frac{i}{b_i + 1} \rfloor + 1, \lfloor \frac{i}{b_i} \rfloor \right]$, 问题转化为给每个区间依次填数, 要求填的数包含在对应区间中且组成一个排列. 从小到大枚举要填的数, 在包含这个数的所有区间中, 显然要先满足右端点小的区间, 取右端点最小的区间填进去就好了.</p>
 <p>注意直接按左右端点为一二关键字排序是错的, WA 了好多发都没反应过来 (</p>
-<h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><p>首先 home 键至多被按一次, 枚举 $s$ 中按 home 键的位置 $i$, 已经利用 $s<em>{i+1\ldots n}$ 得到了 $t</em>{j+1\ldots m}$, 这一段只使用 left 和 backspace, 操作数是 $m - j$. 然后按 home 键, 不断按 right, 遇到不匹配的字符就再按一次 backspace, 直到 $s<em>{1\ldots i}$ 和 $t</em>{1\ldots j}$ 的最长公共后缀. 记这个后缀长为 $l$, 那么这一部分的操作数是 $(i - j) + (i - l)$.</p>
+<h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><p>首先 home 键至多被按一次, 枚举 $s$ 中按 home 键的位置 $i$, 已经利用 $s_{i+1\ldots n}$ 得到了 $t_{j+1\ldots m}$, 这一段只使用 left 和 backspace, 操作数是 $m - j$. 然后按 home 键, 不断按 right, 遇到不匹配的字符就再按一次 backspace, 直到 $s_{1\ldots i}$ 和 $t_{1\ldots j}$ 的最长公共后缀. 记这个后缀长为 $l$, 那么这一部分的操作数是 $(i - j) + (i - l)$.</p>
 <p>最长公共后缀反转 $s$ 和 $t$ 利用 z 函数求出, 时间复杂度 $O(n^2)$.</p>
-<h3 id="F-1"><a href="#F-1" class="headerlink" title="F"></a>F</h3><p>对每个加入的点 $x$ 维护一个 $f(x)$ 表示在区间 $[x + 1,\ x + d]$ 内点的个数, 那么最后的答案为 $\sum \binom{f(x)}{2}$.</p>
-<p>考虑用线段树维护这个东西. 加入一个点 $x$ 之后需要算 $f(x)$, 维护区间内点的个数就好了. 此外 $x$ 还影响了 $[x-d,\ x-1]$ 内的 $f$, 打一个加法标记就好了, 具体维护过程可以通过比较 $\sum \binom{f(x)}{2}$ 和 $\sum \binom{f(x) + t}{2}$ 得到, 需要额外维护出 $\sum f(x)$. 删除一个点类似, 所有操作取反就好了.</p>
+<h3 id="F-1"><a href="#F-1" class="headerlink" title="F"></a>F</h3><p>对每个加入的点 $x$ 维护一个 $f(x)$ 表示在区间 $[x + 1, x + d]$ 内点的个数, 那么最后的答案为 $\sum \binom{f(x)}{2}$.</p>
+<p>考虑用线段树维护这个东西. 加入一个点 $x$ 之后需要算 $f(x)$, 维护区间内点的个数就好了. 此外 $x$ 还影响了 $[x-d, x-1]$ 内的 $f$, 打一个加法标记就好了, 具体维护过程可以通过比较 $\sum \binom{f(x)}{2}$ 和 $\sum \binom{f(x) + t}{2}$ 得到, 需要额外维护出 $\sum f(x)$. 删除一个点类似, 所有操作取反就好了.</p>
 <p>时间复杂度 $O(q \log a)$.</p>
 <h2 id="Round-796-Div-2"><a href="#Round-796-Div-2" class="headerlink" title="Round #796 (Div. 2)"></a>Round #796 (Div. 2)</h2><h3 id="A-1"><a href="#A-1" class="headerlink" title="A"></a>A</h3><p>取 $x$ 二进制下最小的那一位. 如果 xor 起来是 0, 就再添上前面一位就好了.</p>
 <h3 id="B-1"><a href="#B-1" class="headerlink" title="B"></a>B</h3><p>如果有奇数, 直接把所有偶数全部合并到奇数上就好了.</p>
@@ -197,7 +197,7 @@
 <h2 id="Round-796-Div-1"><a href="#Round-796-Div-1" class="headerlink" title="Round #796 (Div. 1)"></a>Round #796 (Div. 1)</h2><h3 id="A-2"><a href="#A-2" class="headerlink" title="A"></a>A</h3><p>先考虑 $k \ge n$ 的情况. 为了尽可能利用每分钟生长的蘑菇和原有的蘑菇, 每个位置都要去到, 且最后的 n 分钟内一定正好采到 n 个位置上的蘑菇. 那么在位置 1 逗留 $k - n$ 分钟, 然后一直采到位置 n 就好了.</p>
 <p>对于 $k &lt; n$ 的情况, 每分钟生长的蘑菇对答案的总贡献是形如 0, 1, …, k - 1 的等差数列, 和开始位置无关. 那么选择一个长度为 k, 其中 $a_i$ 和最大的区间就好了.</p>
 <h3 id="B-2"><a href="#B-2" class="headerlink" title="B"></a>B</h3><p>首先通过 $m$ 次只标记一条边的询问得到每条边的权值 $l_i$, 按边权从小到大的顺序加入边 $i$, 询问加入 $i$ 之后的结果. 如果加入前后相差不等于 $l_i$, 那么加入 $i$ 之后图的连通性不变, $i$ 就不出现在最后的答案中. 这样的询问有 $m-1$ 次, 总共询问 $2m-1$ 次.</p>
-<h3 id="C-2"><a href="#C-2" class="headerlink" title="C"></a>C</h3><p>记 $s<em>i = \sum</em>{j = 1}^i a<em>j - b_j$, 那么对于区间 $[l,\ r]$, 能操作的条件为 $s</em>{l-1} = s<em>r$, 操作后的效果是区间内的所有数都替换为 $s_r$, 同时也是 $s</em>{l-1}$. 最后的目的是把所有 $s_i$ 都替换成 0.</p>
+<h3 id="C-2"><a href="#C-2" class="headerlink" title="C"></a>C</h3><p>记 $s_i = \sum_{j = 1}^i a_j - b_j$, 那么对于区间 $[l, r]$, 能操作的条件为 $s_{l-1} = s_r$, 操作后的效果是区间内的所有数都替换为 $s_r$, 同时也是 $s_{l-1}$. 最后的目的是把所有 $s_i$ 都替换成 0.</p>
 <p>直接从 $s_i= 0$ 的位置开始 BFS, 在对应区间上替换 $s_i \neq 0$ 的位置. 可能会重复使用同一个位置, 用 set 记录未覆盖的位置就好了.  时间复杂度 $O(n \log n)$.</p>
 <h2 id="Round-785-Div-2"><a href="#Round-785-Div-2" class="headerlink" title="Round #785 (Div. 2)"></a>Round #785 (Div. 2)</h2><h3 id="A-3"><a href="#A-3" class="headerlink" title="A"></a>A</h3><p>Alice 在 n 为偶数的时候肯定全取走, 在 n 为奇数的时候给 Bob 剩一个最小的. 之后 Bob 就没得选了. 之后计算得分作比较就好了.</p>
 <p>可能要特判 n 为 1 的情况.</p>
@@ -205,19 +205,19 @@
 <h3 id="C-3"><a href="#C-3" class="headerlink" title="C"></a>C</h3><p>打表发现 n 的范围之内最多有 498 个满足条件的数可以用, 然后就是普通的无穷背包计算方案数的问题了.</p>
 <h3 id="D-1"><a href="#D-1" class="headerlink" title="D"></a>D</h3><p>记 B 中的最小值为 b1, 最大值为 b2, C 中的最小值为 c1, 最大值为 c2. 核心的思路是在 C 的基础上增加一部分元素来得到 A.</p>
 <p>首先要保证 C 中元素全部出现在 B 中, 否则答案一定为 0. 具体而言, 就是保证 c1, c2 都在 B 的范围之内, B 和 C 的公差也能对上. 然后考虑无解的情况, 无解就是 C 往两边无限延伸, 新增的元素也没有和 B 中相同的. 也就是 $c_1 - r &lt; b_1$ 或是 $c_2 + r &gt; b_2$.</p>
-<p>其余情况下, A 的公差一定是 $r$ 的约数, 枚举 $r$ 的约数 $d$, 从 $c_2$ 往后下一个与 B 有重叠的位置就在 $c_2 + \mathrm{lcm}(d,\ q)$, 显然有 $\mathrm{lcm}(d,\ q) \leq r$, 但其实是不希望有小于的情况的, 因为此时 $c_1$ 和 $c_2$ 之间 A 和 B 又有除 C 以外的重合. 其余情况对答案就有 ${(\frac{r}{d})}^2$ 的贡献.</p>
+<p>其余情况下, A 的公差一定是 $r$ 的约数, 枚举 $r$ 的约数 $d$, 从 $c_2$ 往后下一个与 B 有重叠的位置就在 $c_2 + \mathrm{lcm}(d, q)$, 显然有 $\mathrm{lcm}(d, q) \leq r$, 但其实是不希望有小于的情况的, 因为此时 $c_1$ 和 $c_2$ 之间 A 和 B 又有除 C 以外的重合. 其余情况对答案就有 ${(\frac{r}{d})}^2$ 的贡献.</p>
 <p>时间复杂度 $O(\sqrt{r} \log r)$. 细节和可能写挂的地方可能有点多… 还是 Think twice, code once 说得有道理.</p>
 <h2 id="Round-781-Div-2"><a href="#Round-781-Div-2" class="headerlink" title="Round #781 (Div. 2)"></a>Round #781 (Div. 2)</h2><h3 id="A-4"><a href="#A-4" class="headerlink" title="A"></a>A</h3><p>构造. 输出 1, n - 3, 1, 1.</p>
 <p><del>system testing 的时候 A FST 一大片, 还好是假的</del></p>
 <h3 id="B-4"><a href="#B-4" class="headerlink" title="B"></a>B</h3><p>模拟. 首先最后数组里的所有数都会是原先出现次数最多的那个数, 一直重复替换其他数值, 然后复制替换后的数组这个过程就好了.</p>
 <h3 id="C-4"><a href="#C-4" class="headerlink" title="C"></a>C</h3><p>首先 spreading 只会发生在某个节点的孩子节点中, 那么 infection 就可以依次选择所有节点的孩子集合, 如果选择完之后还存在没有被感染的节点, 选择未感染节点数最多的孩子集合, 感染一个就好了.</p>
 <h3 id="D-2"><a href="#D-2" class="headerlink" title="D"></a>D</h3><p>看到这个数据范围先猜一个二进制.</p>
-<p>考虑计算 $x \bmod 2^k$ 的值, 这个可以递推得到. 假定已经知道了 $x \bmod 2^{k - 1} = r$, 现在来计算 $x \bmod 2^k$. 考虑 $r$ 的意义, $r$ 就是 $x$ 二进制下前 $k$ 位组成的数, 如果 $x$ 的第 $k + 1$ 位是 1, 那么 $\gcd(x + 2^{k-1} - r,\ 2^k) = 2^k$, 否则就是 0. 这个 gcd 可以体现为 $\gcd(x + 2^{k-1} - r,\ x + 2^{k-1} - r + 2^k)$, 然后询问就好了.</p>
+<p>考虑计算 $x \bmod 2^k$ 的值, 这个可以递推得到. 假定已经知道了 $x \bmod 2^{k - 1} = r$, 现在来计算 $x \bmod 2^k$. 考虑 $r$ 的意义, $r$ 就是 $x$ 二进制下前 $k$ 位组成的数, 如果 $x$ 的第 $k + 1$ 位是 1, 那么 $\gcd(x + 2^{k-1} - r, 2^k) = 2^k$, 否则就是 0. 这个 gcd 可以体现为 $\gcd(x + 2^{k-1} - r, x + 2^{k-1} - r + 2^k)$, 然后询问就好了.</p>
 <p>最终的答案就是 $x \bmod 2^{30}$, 总共询问次数就是 30 次.</p>
 <h3 id="E-1"><a href="#E-1" class="headerlink" title="E"></a>E</h3><p>对于小于 $2^k$ 的数, 只需要维护 $a_i$ 前 $k + 1$ 小的位置. 可以利用归纳法证明, 使 $a_i | a_j$ 最小的 $i$ 和 $j$ 一定出现在这 $k + 1$ 个位置中. 用线段树大力维护就好了.</p>
 <p><del>赛时维护了前 2 小的位置, 写着写着发现假了. 官方题解里看到有莫队写法了, 莫队已经走向国际化了 (</del></p>
 <h2 id="Edu-Round-125-Div-2"><a href="#Edu-Round-125-Div-2" class="headerlink" title="Edu Round #125 (Div. 2)"></a>Edu Round #125 (Div. 2)</h2><h3 id="A-5"><a href="#A-5" class="headerlink" title="A"></a>A</h3><p>$O(n^4)$ 暴力 DP.</p>
-<p>进一步思考, 答案不会超过 2. 因为可以先从 $(0,\ 0)$ 到 $(x,\ 0)$, 然后再到 $(x,\ y)$. 此外再额外讨论答案是 0 和是 1 情况就好了.</p>
+<p>进一步思考, 答案不会超过 2. 因为可以先从 $(0, 0)$ 到 $(x, 0)$, 然后再到 $(x, y)$. 此外再额外讨论答案是 0 和是 1 情况就好了.</p>
 <h3 id="B-5"><a href="#B-5" class="headerlink" title="B"></a>B</h3><p>贪心. 能 +x 就加, 不行就 -y.</p>
 <h3 id="C-5"><a href="#C-5" class="headerlink" title="C"></a>C</h3><p>模拟. 括号匹配和回文串判定都是经典问题, 这就是个缝合题 (</p>
 <p>然后就写了个栈又写了个哈希… 其实没有必要, 首先依次枚举每一个字符, 讨论一下遇到的是 <code>(</code> 还是 <code>)</code> 然后计算答案就好了.</p>
@@ -232,21 +232,21 @@
 <h3 id="B-7"><a href="#B-7" class="headerlink" title="B"></a>B</h3><p>令 $c = 1$, 然后直接暴力找 $a$, $b$ 就好了.</p>
 <h3 id="C-7"><a href="#C-7" class="headerlink" title="C"></a>C</h3><p>对于一个数 $a_i$, 经过一次操作后可以得到从 $1$ 到 $\lfloor \frac{a_i - 1}{2} \rfloor$ 的任一整数. 然后从小到大构造排列, 如果原先就存在需要的数, 就用原来的, 否则选择一个最小的满足条件的 $a_i$ 进行一次操作.</p>
 <h3 id="D-5"><a href="#D-5" class="headerlink" title="D"></a>D</h3><p>记 $f(i)$ 表示 <code>? i i+1 i+2</code> 得到的结果.</p>
-<p>首先每三个位置分作一组询问, 得到 $f(i),\ f(i + 3),\ \cdots$, 由于 $k$ 范围的限制, 一定会存在一个 $i$, 使得 $f(i) \neq f(i+3)$. 然后查询 $f(i + 1)$, $f(i + 2)$. 从 $i$ 到 $i + 5$ 之间一定会有一个位置 $p$, 满足 $f(p) \neq f(p - 1)$ 且 $p$ 和 $p+1$ 一定一个是 imposter, 一个是 crewmate. 此时根据 <code>? p p+1 i</code> 就可以知道 $i$ 的成分, 这样再来 $4$ 次就可以知道从 $i$ 到 $i+5$ 中除去 $p$ 和 $p+1$ 的答案, 额外查询 $1$ 个 <code>? imposter crewmate p</code> 就可以得到 $p$ 和 $p+1$ 的答案.</p>
+<p>首先每三个位置分作一组询问, 得到 $f(i), f(i + 3), \cdots$, 由于 $k$ 范围的限制, 一定会存在一个 $i$, 使得 $f(i) \neq f(i+3)$. 然后查询 $f(i + 1)$, $f(i + 2)$. 从 $i$ 到 $i + 5$ 之间一定会有一个位置 $p$, 满足 $f(p) \neq f(p - 1)$ 且 $p$ 和 $p+1$ 一定一个是 imposter, 一个是 crewmate. 此时根据 <code>? p p+1 i</code> 就可以知道 $i$ 的成分, 这样再来 $4$ 次就可以知道从 $i$ 到 $i+5$ 中除去 $p$ 和 $p+1$ 的答案, 额外查询 $1$ 个 <code>? imposter crewmate p</code> 就可以得到 $p$ 和 $p+1$ 的答案.</p>
 <p>对于剩下的 $\frac n3 - 2$ 个三元组, 借助于一个确定的 imposter 和一个确定的 crewmate 并根据 $f(i)$ 的值讨论就好了, 每个三元组用 $2$ 次询问.</p>
 <p>总询问次数是 $n + 3$.</p>
-<h2 id="Edu-Round-118-Div-2"><a href="#Edu-Round-118-Div-2" class="headerlink" title="Edu Round #118 (Div. 2)"></a>Edu Round #118 (Div. 2)</h2><h3 id="A-8"><a href="#A-8" class="headerlink" title="A"></a>A</h3><p>注意读题. 当 $x + y$ 是奇数时无解, 否则给出答案 $(\lfloor \frac x2 \rfloor,\ \lceil \frac y2 \rceil)$.</p>
+<h2 id="Edu-Round-118-Div-2"><a href="#Edu-Round-118-Div-2" class="headerlink" title="Edu Round #118 (Div. 2)"></a>Edu Round #118 (Div. 2)</h2><h3 id="A-8"><a href="#A-8" class="headerlink" title="A"></a>A</h3><p>注意读题. 当 $x + y$ 是奇数时无解, 否则给出答案 $(\lfloor \frac x2 \rfloor, \lceil \frac y2 \rceil)$.</p>
 <h3 id="B-8"><a href="#B-8" class="headerlink" title="B"></a>B</h3><p>贪心. 尽可能把较大的数放在左边, 较小的数放在右边. 如果按照该原则无法构造出符合限制的答案, 那么一定无解.</p>
 <h3 id="C-8"><a href="#C-8" class="headerlink" title="C"></a>C</h3><p><del>学二分, 拿红名.</del> 发送出去的表情数量是随行数单调增加的, 直接二分就好了.</p>
-<h3 id="D-6"><a href="#D-6" class="headerlink" title="D"></a>D</h3><p>和求 GCD 思路差不多的一道题. 首先考虑 $a = b$ 的情况, 直接判断 $a$ 和 $x$ 是否相等. 再令 $a &lt; b$, 并记答案为 $f(a,\ b)$, 枚举一些后继情况之后可以发现</p>
-<script type="math/tex; mode=display">f(a,\ b) = \begin{cases}\text{true} & a \mid b - x \\ \text{false} & b < x\ \text{or}\ a = 0 \\ f(b \bmod a,\ a) & \text{otherwise} \end{cases}</script><h3 id="E-2"><a href="#E-2" class="headerlink" title="E"></a>E</h3><p>对于信息 $j$, 如果学生 $i$ 满足 $m_i = j$, 那么对答案有贡献 $\frac{\min{ k_i,\ t }}{t}$. 注意到一个重要条件 $k_i \leq 20$. 首先考虑 $t &gt; 20$ 的情况, 容易发现该条件下 $t+1$ 时的答案一定小于 $t$ 时的答案. 于是从 $1$ 到 $20$ 枚举 $t$, 对于每一个 $t$ 选择对答案贡献最多的 $t$ 个信息就好了.</p>
+<h3 id="D-6"><a href="#D-6" class="headerlink" title="D"></a>D</h3><p>和求 GCD 思路差不多的一道题. 首先考虑 $a = b$ 的情况, 直接判断 $a$ 和 $x$ 是否相等. 再令 $a &lt; b$, 并记答案为 $f(a, b)$, 枚举一些后继情况之后可以发现</p>
+<script type="math/tex; mode=display">f(a,\ b) = \begin{cases}\text{true} & a \mid b - x \\ \text{false} & b < x\ \text{or}\ a = 0 \\ f(b \bmod a,\ a) & \text{otherwise} \end{cases}</script><h3 id="E-2"><a href="#E-2" class="headerlink" title="E"></a>E</h3><p>对于信息 $j$, 如果学生 $i$ 满足 $m_i = j$, 那么对答案有贡献 $\frac{\min\{ k_i, t \}}{t}$. 注意到一个重要条件 $k_i \leq 20$. 首先考虑 $t &gt; 20$ 的情况, 容易发现该条件下 $t+1$ 时的答案一定小于 $t$ 时的答案. 于是从 $1$ 到 $20$ 枚举 $t$, 对于每一个 $t$ 选择对答案贡献最多的 $t$ 个信息就好了.</p>
 <p>时间复杂度 $O(n + km\log m)$.</p>
 <h2 id="Round-736-Div-2"><a href="#Round-736-Div-2" class="headerlink" title="Round #736 (Div. 2)"></a>Round #736 (Div. 2)</h2><h3 id="A-9"><a href="#A-9" class="headerlink" title="A"></a>A</h3><p>注意到 $P \geq 5$, 那么 $P - 1$ 一定是个偶数, 直接输出 $(P - 1) / 2$ 和 $P - 1$ 就好了.</p>
 <h3 id="B-9"><a href="#B-9" class="headerlink" title="B"></a>B</h3><p>贪心, 让每个棋子的最终位置尽可能往一边靠就好了.</p>
 <h2 id="Round-736-Div-1"><a href="#Round-736-Div-1" class="headerlink" title="Round #736 (Div. 1)"></a>Round #736 (Div. 1)</h2><h3 id="A-10"><a href="#A-10" class="headerlink" title="A"></a>A</h3><p>注意读题, 查询操作并不会改变图的结构, 所以不是模拟, 是分类讨论 = =</p>
 <p>首先, 孤立的点, 以及编号大于所有相邻结点的点一定不会被删去. 其次, 对于一个结点 $u$, 如果存在相邻的点 $v$ 满足 $v &gt; u$, 那么 $u$ 最终一定被删去. 那么对一个结点 $u$ 记录相邻且编号大于 $u$ 的结点个数, 并依此维护答案就好了.</p>
 <p>时间复杂度 $O(m + q)$.</p>
-<h3 id="B-10"><a href="#B-10" class="headerlink" title="B"></a>B</h3><p>记 $d<em>i = a_i - a</em>{i - 1}$, 那么 $a<em>{L\ldots R}$ 是 friends group 的条件就是 $\gcd(d</em>{L + 1},\ \ldots,\ d_{R}) \geq 2$. 此时二分区间长度, 并维护区间 GCD 就好了. 可以用 ST 表或是线段树来实现.</p>
+<h3 id="B-10"><a href="#B-10" class="headerlink" title="B"></a>B</h3><p>记 $d_i = a_i - a_{i - 1}$, 那么 $a_{L\ldots R}$ 是 friends group 的条件就是 $\gcd(d_{L + 1}, \ldots, d_{R}) \geq 2$. 此时二分区间长度, 并维护区间 GCD 就好了. 可以用 ST 表或是线段树来实现.</p>
 <p>如果用 ST 表, 那么时间复杂度为 $O(n \log n)$.</p>
 <hr>
 

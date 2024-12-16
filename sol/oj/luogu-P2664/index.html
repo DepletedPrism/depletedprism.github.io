@@ -20,7 +20,7 @@
 <meta property="og:description" content="题目链接: https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;problem&#x2F;P2664  这是一道点分治好题, 至少我现在这么认为. &#x3D; &#x3D;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-28T13:40:09.000Z">
-<meta property="article:modified_time" content="2024-12-16T03:55:04.762Z">
+<meta property="article:modified_time" content="2024-12-16T05:34:17.306Z">
 <meta property="article:author" content="DepletedPrism">
 <meta property="article:tag" content="Graph">
 <meta name="twitter:card" content="summary">
@@ -192,7 +192,7 @@
 <p>在处理这道题的时候我们沿用这个思路. 也就是说, 上面是两段废话, 和这题毫无关系.</p>
 <p>为了表述方便, 记 <code>C[u]</code> 为节点 $u$ 的颜色, <code>size[u]</code> 为节点 $u$ 的子树大小.</p>
 <p>可以观察到一个事实, 单独考虑根节点 $root$ 一个子树中的某一个节点 $u$, ($u$ 满足在 $root$ 到 $u$ 的路径中 <code>C[u]</code> 第一次出现), 那么这个节点 $u$ 可以对其他子树中的节点 $v$, ($v$ 满足 $v$ 到 $root$ 路径上不包含 <code>C[u]</code>, 有 <code>size[u]</code> 的贡献.</p>
-<p>正确性显然. 单独考虑每个颜色的贡献, 因为 $u$ 的颜色只在 $u,\ v$ 路径上出现过一次, 所以 $u$ 的子树都可以同 $v$ 构成一个点对, $u$ 的颜色对 $v$ 做一次贡献, 共 <code>size[u]</code>.</p>
+<p>正确性显然. 单独考虑每个颜色的贡献, 因为 $u$ 的颜色只在 $u, v$ 路径上出现过一次, 所以 $u$ 的子树都可以同 $v$ 构成一个点对, $u$ 的颜色对 $v$ 做一次贡献, 共 <code>size[u]</code>.</p>
 <p>考虑如何在点分治的过程中维护这个东西.</p>
 <p>先维护满足以上条件 $u$ 的子树大小和, (也就是 $u$ 满足 $root$ 到 $u$ 的路径中 (不包括 $root$), $u$ 的颜色第一次出现), 以颜色为下标, 记作 $\operatorname{W}(c) = \sum\limits_{\operatorname{C}(u) = c} \operatorname{size}(u)$.</p>
 <p>并记 <code>tot</code> 为所有 <code>W[c]</code> 的和.</p>

@@ -20,7 +20,7 @@
 <meta property="og:description" content="题目链接: https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;problem&#x2F;P4557  这是一道 九条可怜 计算几何题, 在思路上不算困难但是有一些细节值得留念.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-20T04:51:21.000Z">
-<meta property="article:modified_time" content="2024-12-16T03:55:04.762Z">
+<meta property="article:modified_time" content="2024-12-16T05:34:17.306Z">
 <meta property="article:author" content="DepletedPrism">
 <meta property="article:tag" content="Geometry">
 <meta name="twitter:card" content="summary">
@@ -185,8 +185,8 @@
 <li>二维凸包</li>
 <li>闵可夫斯基和</li>
 </ol>
-<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p>给定两个大小分别为 $n,\ m$ 的点集, $q$ 次询问, 每次给出一个偏移向量 $\vec{v}$, 问将第二个点集的所有点按这个向量偏移后, 是否存在一个点, 在另一点集的凸包内.</p>
-<p>其中 $3 \le n, m \le 10^5,\ q \le 10^5$</p>
+<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p>给定两个大小分别为 $n, m$ 的点集, $q$ 次询问, 每次给出一个偏移向量 $\vec{v}$, 问将第二个点集的所有点按这个向量偏移后, 是否存在一个点, 在另一点集的凸包内.</p>
+<p>其中 $3 \le n, m \le 10^5, q \le 10^5$</p>
 <h4 id="题目思路"><a href="#题目思路" class="headerlink" title="题目思路"></a>题目思路</h4><p>考虑最简单的思路, 每次直接将第二个点集暴力平移, 求凸包, 判断是否存在一个点在另一个凸包内.</p>
 <p>时间复杂度 $O(n \log n + q (m \log m + n m)\,)$, 期望得分 40 pts.</p>
 <p>如果再加一些技巧, 大概是 $O(n \log n + m\log m + q(n\log m + m\log n))\,)$, 期望得分 40 pts, 并没有本质区别…</p>
