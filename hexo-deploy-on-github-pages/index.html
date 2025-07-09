@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    使用 Github Actions 在 Github Pages 上部署 Hexo
+  
+</title>
+
+<meta name="description" content="前言尽管在 2022 年的某个时间点后，我就不再继续写博客了，未完成文章的草稿也放在那里不去处理了。一方面是因为已经和所谓 Competitive Programming 彻底说再见，也可能是单纯地变懒了，失去了努力的动力。在 2024 年年底，我突然心血来潮，决定使用 Github Actions 来完善先前使用 Hexo 写博客的工作流，在半年后又突发奇想，基于回忆将改变的过程记录了下来。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Github Actions 在 Github Pages 上部署 Hexo">
+<meta property="og:url" content="https://depletedprism.github.io/hexo-deploy-on-github-pages/index.html">
+<meta property="og:site_name" content="DepletedPrism&#39;s Blog">
+<meta property="og:description" content="前言尽管在 2022 年的某个时间点后，我就不再继续写博客了，未完成文章的草稿也放在那里不去处理了。一方面是因为已经和所谓 Competitive Programming 彻底说再见，也可能是单纯地变懒了，失去了努力的动力。在 2024 年年底，我突然心血来潮，决定使用 Github Actions 来完善先前使用 Hexo 写博客的工作流，在半年后又突发奇想，基于回忆将改变的过程记录了下来。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-09T03:49:47.000Z">
+<meta property="article:modified_time" content="2025-07-09T08:40:16.323Z">
+<meta property="article:author" content="DepletedPrism">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+
+
+  <link rel="alternative" href="/atom.xml" title="DepletedPrism&#39;s Blog" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/images/favicon.jpg">
+
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+
+
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">DepletedPrism&#39;s Blog</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">DepletedPrism&#39;s Blog</a></h1>
+    
+      <p class="subtitle">
+        厌离秽土, 欣求净土.
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">DepletedPrism</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="/images/favicon.jpg"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">分类</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a><span class="category-list-count">38</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">标签</a>
+                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Calculus/" rel="tag">Calculus</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/" rel="tag">Combinatorics</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game-Theory/" rel="tag">Game Theory</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/" rel="tag">Graph</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Greedy/" rel="tag">Greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/" rel="tag">Number Theory</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynomial/" rel="tag">Polynomial</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Probability/" rel="tag">Probability</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/" rel="tag">String</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">归档</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9102/">9102</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">42</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">4</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/index.html" title="Homepage" external="false">Homepage</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/DepletedPrism" title="Github" target="_blank" rel="noopener">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://codeforces.com/profile/DepletedPrism" title="Codeforces" target="_blank" rel="noopener">Codeforces</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-hexo-deploy-on-github-pages" class="article article-type-post">
+  
+    <h1 class="article-header">
+      使用 Github Actions 在 Github Pages 上部署 Hexo
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2025-07-09
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+	</span>
+
+
+    
+  </div>
+  <div class="article-entry">
+    <hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>尽管在 2022 年的某个时间点后，我就不再继续写博客了，未完成文章的草稿也放在那里不去处理了。一方面是因为已经和所谓 Competitive Programming 彻底说再见，也可能是单纯地变懒了，失去了努力的动力。在 2024 年年底，我突然心血来潮，决定使用 Github Actions 来完善先前使用 Hexo 写博客的工作流，在半年后又突发奇想，基于回忆将改变的过程记录了下来。</p>
+<span id="more"></span>
+<h2 id="Hexo、管理主题的方法和-LaTeX-的支持"><a href="#Hexo、管理主题的方法和-LaTeX-的支持" class="headerlink" title="Hexo、管理主题的方法和 LaTeX 的支持"></a>Hexo、管理主题的方法和 LaTeX 的支持</h2><p>Hexo 作为静态网站生成器，能够做的工作包括将 Markdown 格式的文本转换为 HTML 之类浏览器认识的东西，并支持主题来让大家的博客看起来不一样。考虑到我对前端一窍不通、同时也没有什么设计能力和审美水平，在 2019 年我就决心使用 <a href="https://github.com/denjones/hexo-theme-chan">hexo-theme-chan</a>。这个主题已经多年没有更新，好处是原先的代码并不复杂，在没有 LLM 的时代，一个没有前端经验的高中生都可以做简单的修改，同时不用担心上游再引入什么更新。</p>
+<p>为了便于后续自动化部署使用修改后的主题，我 <a href="https://github.com/DepletedPrism/hexo-theme-chan">fork</a> 了 hexo-theme-chan。后续只需新建一个 private repo 记录 hexo 需要的各项文件，在 themes/ 目录下使用 git submodule 使用 fork 后的版本就好了。为了避免在 submodule 中引入修改，我选择额外记录一个 themes/config.yml 然后在部署时额外做一步替换。当然也可以直接修改 themes 里的 _config.yml 然后在原来的 repo 中记录修改。此处怎么做都可以，只要能够用 Github Actions 描述这一过程实现自动部署就好了。</p>
+<p>之前选择的 LaTeX 支持方式是使用 MathJax，需要将渲染引擎由原先的 hexo-renderer-marked 换成 hexo-renderer-kramed。后者依赖 kramed，已经多年没有更新，好在多年以来使用的人足够多（时至今日，在搜索引擎上搜索“Hexo 支持 LaTeX”还能够找到），对于支持 LaTeX 这种比较普遍的需求，即使有问题大家也已经有了相对应的解决方法。比如说，kramed 支持形同 <code>_italic_</code> 的斜体语法，但和 LaTeX 中的下标不太兼容，使用 <code>$</code> 包裹的公式中下标使用的 <code>_</code> 会被错误地渲染为斜体。</p>
+<p>那怎么办呢？在互联网中流行的做法是砍掉 Markdown 中使用下划线 <code>_</code> 表示斜体的语法，在 kramed 中做对应改动。此前只在本地使用 hexo，直接在 node_modules 里做修改也不是不能跑。不过如果希望自动化部署、接着在 repo 中传个 node_modules 中有点过于幽默了，所以干脆 <a href="https://github.com/DepletedPrism/kramed">fork</a> 一份自己改，再修改 package.json 就好了。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    ...</span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;overrides&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;kramed&quot;</span><span class="punctuation">:</span> <span class="string">&quot;git+http://github.com/DepletedPrism/kramed.git#master&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>使用 MathJax 的手段是在页面引入一段 JavaScript 代码，负责公式的渲染。从使用 MathJax 开始，我时不时就会遇到插入的这段 JavaScript 代码消失的情况，但重新生成就又回来了，原因不明。这就是我一直想实现自动部署的原因，希望能够以此解决这个问题。可惜的是，在我大量写文章的那段时间并没有花时间处理这件事，但如果在实现后反而不更新博客的话，就更加可惜了。</p>
+<h2 id="使用-Github-Actions-部署-Hexo-到-Github-Pages"><a href="#使用-Github-Actions-部署-Hexo-到-Github-Pages" class="headerlink" title="使用 Github Actions 部署 Hexo 到 Github Pages"></a>使用 Github Actions 部署 Hexo 到 Github Pages</h2><p>在得到 Github Actions 脚本后剩余的工作只有生成一个有修改 repo 权限的 token。我的建议是 token 距离报废的时间尽量拉长一点，因为即使有安全洁癖，我体感认为洁癖程度会随着续 token 的次数增加而不断减少，那还不如一开始就把时间拉到最长，方便我放手不管。</p>
+<p>对应 YAML 文件的名字没有什么所谓，不同的是路径中 workflows 里的 s 少了 Github 就不认识了…</p>
+<div><div class="fold_hider"><div class="close hider_title">> 点击显示 / 隐藏 </div></div><div class="fold">
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .github/workflows/hexo-depoly.yml</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">Hexo</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">deploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">blog</span> <span class="string">source</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">blog</span></span><br><span class="line">          <span class="attr">submodules:</span> <span class="literal">true</span> <span class="comment"># 因为选择使用 submodule 管理 theme，所以要指定</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Set</span> <span class="string">up</span> <span class="string">Node.js</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="number">22</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/cache@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">node_modules</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">$&#123;&#123;</span> <span class="string">runner.os</span> <span class="string">&#125;&#125;-node-$&#123;&#123;</span> <span class="string">hashFiles(&#x27;**/package-lock.json&#x27;)</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line"><span class="string">            $&#123;&#123; runner.os &#125;&#125;-node-</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm install</span></span><br><span class="line"><span class="string"></span>        <span class="attr">working-directory:</span> <span class="string">./blog</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Hexo</span> <span class="string">CLI</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm install -g hexo-cli</span></span><br><span class="line"><span class="string"></span>        <span class="attr">working-directory:</span> <span class="string">./blog</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 我选择的方法是复制 themes/_config.yml 到对应的主题中</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">static</span> <span class="string">pages</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          cp -f themes/_config.yml themes/your-hexo-theme/_config.yml</span></span><br><span class="line"><span class="string">          hexo generate</span></span><br><span class="line"><span class="string"></span>        <span class="attr">working-directory:</span> <span class="string">./blog</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">Pages</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">personal_token:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.PERSONAL_TOKEN</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./blog/public</span></span><br><span class="line">          <span class="attr">external_repository:</span> <span class="string">your-repo/your-repo.github.io</span> <span class="comment"># 对应 Github Pages 的 repo</span></span><br><span class="line">          <span class="attr">publish_branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+</div></div>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>最近 CODING 宣布停止提供服务，重复发了好多次邮件。由于众所周知的网络原因，在最开始学 OI 的时候，我选择 CODING 作为 git 托管记录自己写过的题和看到的代码模板。当然过一阵子就换了，原先的仓库也就没有再管过，直到现在。下载来看的话，所有文件加起来不过几十 KB，README 里写的还是“一个蒟蒻写出来但是没有 AC 的代码”和“还是中文看着舒服”。不过，到最后这些代码有没有 AC 我早就不清楚了，英文界面对于现在的我而言也不算什么大的障碍了。但是，我的青春就在这些旧代码、旧文章里，变成历史的尘埃了吧。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://cps.ninja/2019/03/16/hexo-with-latex/">让 Hexo 搭建的博客支持 LaTeX</a></li>
+<li><a href="https://hackergavin.com/2024/01/11/hexo-automate-deploy/">利用 GitHub Actions 实现自动化部署 Hexo 到 Github Pages - Gavin Zhou</a></li>
+</ul>
+<hr>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.z" target="_blank" title="署名-非商业性使用">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/nc.png">
+        
+      <span>
+        本作品采用知识共享 署名-非商业性使用 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+  </footer>
+</article>
+
+
+
+
+
+          <div class="main-footer">
+  
+    ©
+    
+      2019-2025
+    
+    DepletedPrism&#39;s Blog
+    
+	- Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+<script src="/PhotoSwipe/photoswipe.js"></script>
+
+  
+<script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+
+
+<script src="/scripts/main.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax();
+    for (var i = 0; i < all.length; ++i)
+      all[i].SourceElement().parentNode.className += ' has-jax';
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+</body>
+</html>
