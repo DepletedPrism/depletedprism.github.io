@@ -20,7 +20,7 @@
 <meta property="og:description" content="快过年了，不要再讨论什么 NAS、HTPC、OpenWrt 了。你带你的大机箱回到家并不能给你带来任何实质性作用，朋友们兜里掏出一大把钱吃喝玩乐，你默默的在家里摆弄你的破群晖。亲戚朋友吃饭问你收获了什么，你说我组了一个 RAID 0 的 ALL IN ONE，亲戚们懵逼了，你还在心里默默嘲笑他们，笑他们不懂你的刮削器，不懂你的 Auto Backup，也笑他们看爱奇艺还要忍受会员专属广告。你父">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-02T11:23:43.000Z">
-<meta property="article:modified_time" content="2025-10-03T07:36:55.956Z">
+<meta property="article:modified_time" content="2025-10-05T12:58:15.787Z">
 <meta property="article:author" content="DepletedPrism">
 <meta name="twitter:card" content="summary">
 
@@ -186,14 +186,18 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">[ <span class="string">&quot;<span class="variable">$ACTION</span>&quot;</span> = ifup ] || <span class="built_in">exit</span> 0</span><br><span class="line">route -A inet6 add default gw `(ip -6 route | grep default | awk <span class="string">&#x27;&#123;print $5,$6,$7&#125;&#x27;</span> | sed -n <span class="string">&#x27;1p&#x27;</span>)`</span><br></pre></td></tr></table></figure>
 <p>设置权限并重启使之生效</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x /etc/hotplug.d/iface/99-ipv6</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
-<p>出于众所周知的原因，<a href="https://test-ipv6.com/">https://test-ipv6.com</a> 这种难以直连的测试网站会受到诸多其他因素的影响，除此以外可以使用 <a href="http://test6.ustc.edu.cn/">http://test6.ustc.edu.cn</a> 之类的 IPv6 only 网站进行测试。当然 <code>ping -6</code> 也是可以的。</p>
+<p>出于众所周知的原因，<a href="https://test-ipv6.com/">https://test-ipv6.com</a> 这种难以直连的测试网站会受到诸多其他因素的影响，除此以外可以使用 <a href="https://test6.ustc.edu.cn/">https://test6.ustc.edu.cn</a> 之类的 IPv6 only 网站进行测试。当然 <code>ping -6</code> 也是可以的。</p>
 <h2 id="使用-Nikki-作为透明代理"><a href="#使用-Nikki-作为透明代理" class="headerlink" title="使用 Nikki 作为透明代理"></a>使用 Nikki 作为透明代理</h2><p>在不够幸运情况下，可能会因为网络问题难以得到 GeoIP 的数据。一个可能的解决方法是使用其他下载源，Nikki 也提供了替换下载地址的方法。以 <a href="https://github.com/Loyalsoldier/geoip">https://github.com/Loyalsoldier/geoip</a> 为例，在<strong>服务→Nikki→混入配置→GeoX配置</strong>中给出格式和对应的链接就可以了。</p>
 <p>同时，需要把“外部控制配置”和“入站配置”之类存在密码的地方进行一些修改，总不能用默认的吧。</p>
+<p>一个可能的问题是使用 SSH 连接 GitHub 时会提示 <code>Connection closed by x.x.x.x port 22</code>，此时可以让路由器额外考虑一下 22 端口，或者在 HTTPS 端口上使用 SSH。后者的方案可以参考 Github 文档，在文件 <code>~/.ssh/config</code> 中写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">    Hostname ssh.github.com</span><br><span class="line">    Port 443</span><br><span class="line">    User git</span><br></pre></td></tr></table></figure>
+<p>之后可以通过 <code>ssh -T git@github.com</code> 来验证配置是否有效。</p>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>在 2025 年，我在配置 OpenWrt 时第一时间选择的方法是问问 ChatGPT。然而 LLM 在这一类问题中表现的并不好，在一些方向性的内容可能有指导意义，但具体的命令或是配置方法上仍有严重的幻觉。更好的做法是找到一些靠谱的教程然后一步步走，希望往后 AI 的发展能解决好这个问题。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://zhuanlan.zhihu.com/p/480264018">OpenWrt 路由器连接 wpa-enterprise 无线热点的方法 - 知乎</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/492774540">校园网环境下 Openwrt 配置 ipv6 教程——以 nat6 为例 - 知乎</a></li>
 <li><a href="https://www.xrgzs.top/posts/openwrt-istoreos-x-wrt-config-ipv6-nat6">OpenWrt 配置 IPv6 NAT6 | 潇然工作室</a></li>
+<li><a href="https://docs.github.com/zh/authentication/troubleshooting-ssh/using-ssh-over-the-https-port#enabling-ssh-connections-over-https">在 HTTPS 端口使用 SSH - GitHub 文档</a></li>
 </ul>
 <hr>
 
